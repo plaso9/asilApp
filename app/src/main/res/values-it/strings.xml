@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">asilApp</string>
+    <string name="app_name">asilApp</string>
     <string name="userRecognition">Riconoscimento Utente</string>
     <string name="personalData">Dati Anagrafici</string>
     <string name="informationSection">Sezione informativa</string>
     <string name="medicalRecords">Parametri Medici</string>
     <string name="questionnaires">Questionari</string>
-    <string name="chat" translatable="false">Chat</string>
-    <string name="video" translatable="false">Video</string>
     <string name="acceptance">Accoglienza</string>
     <string name="cityInfo">Informazioni Città</string>
     <string name="bylaw">Regolamenti</string>

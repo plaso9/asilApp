@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch(v.getId()) {
             case R.id.card_personalData : i = new Intent(this, PersonalDataActivity.class); startActivity(i); break;
-
+            case R.id.card_informationSection : i = new Intent(this, InformativeActivity.class); startActivity(i); break;
             default: break;
         }
     }
