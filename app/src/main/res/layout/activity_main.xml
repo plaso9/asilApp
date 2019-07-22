@@ -9,7 +9,7 @@
 
     <GridLayout
         android:id="@+id/gridHomeLayout"
-        android:rowCount="3"
+        android:rowCount="2"
         android:columnCount="2"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
@@ -18,44 +18,7 @@
         android:layout_height="match_parent"
         android:padding="14dp">
 
-    <!-- ROW 1  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_userRecognition"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <RelativeLayout
-                android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical">
-                <ImageView
-                    android:id="@+id/image_recognitionUser"
-                    android:src="@drawable/recognition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="@string/userRecognition"
-                    android:textSize="10sp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 2  -->
+        <!-- ROW 1  -->
         <android.support.v7.widget.CardView
             android:id="@+id/card_personalData"
             android:layout_width="0dp"
@@ -78,10 +41,11 @@
                     android:id="@+id/image_personalData"
                     android:src="@drawable/personal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/personalData"/>
                 <TextView
                     android:text="@string/personalData"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -89,10 +53,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-        <!-- ROW 3  -->
+        <!-- ROW 2  -->
         <android.support.v7.widget.CardView
             android:id="@+id/card_informationSection"
             android:layout_width="0dp"
@@ -115,10 +79,11 @@
                     android:id="@+id/image_information"
                     android:src="@drawable/information"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/informationSection"/>
                 <TextView
                     android:text="@string/informationSection"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -126,10 +91,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-        <!-- ROW 4  -->
+        <!-- ROW 3  -->
         <android.support.v7.widget.CardView
             android:id="@+id/card_medicalRecords"
             android:layout_width="0dp"
@@ -152,10 +117,11 @@
                     android:id="@+id/image_medicalRecords"
                     android:src="@drawable/medical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/medicalRecords"/>
                 <TextView
                     android:text="@string/medicalRecords"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -163,10 +129,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-        <!-- ROW 5  -->
+        <!-- ROW 4  -->
         <android.support.v7.widget.CardView
             android:id="@+id/card_questionnaires"
             android:layout_width="0dp"
@@ -189,10 +155,11 @@
                     android:id="@+id/image_questionnaires"
                     android:src="@drawable/questionnaires"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/questionnaires"/>
                 <TextView
                     android:text="@string/questionnaires"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -200,44 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 6  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_chat"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/image_chat"
-                    android:src="@drawable/chat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="@string/chat"
-                    android:textSize="10sp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
     </GridLayout>
