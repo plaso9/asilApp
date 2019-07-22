@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
     tools:context=".MainActivity">
 
     <GridLayout
@@ -13,7 +14,7 @@
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
         android:layout_weight="8"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:padding="14dp">
 
@@ -30,26 +31,29 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
+                android:layout_margin="16dp"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal|center_vertical">
                 <ImageView
                     android:id="@+id/image_recognitionUser"
+                    android:src="@drawable/recognition"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/recognition" />
+                    android:layout_height="wrap_content"/>
                 <TextView
+                    android:text="@string/userRecognition"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/userRecognition"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
         <!-- ROW 2  -->
         <android.support.v7.widget.CardView
@@ -64,7 +68,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -72,18 +76,21 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/image_personalData"
+                    android:src="@drawable/personal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/personal" />
+                    android:layout_height="wrap_content"/>
                 <TextView
+                    android:text="@string/personalData"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/personalData"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
         <!-- ROW 3  -->
         <android.support.v7.widget.CardView
@@ -98,7 +105,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -106,18 +113,21 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/image_information"
+                    android:src="@drawable/information"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/information" />
+                    android:layout_height="wrap_content" />
                 <TextView
+                    android:text="@string/informationSection"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/informationSection"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
         <!-- ROW 4  -->
         <android.support.v7.widget.CardView
@@ -132,7 +142,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -140,18 +150,21 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/image_medicalRecords"
+                    android:src="@drawable/medical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/medical" />
+                    android:layout_height="wrap_content"/>
                 <TextView
+                    android:text="@string/medicalRecords"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/medicalRecords"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
         <!-- ROW 5  -->
         <android.support.v7.widget.CardView
@@ -166,7 +179,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -174,18 +187,21 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/image_questionnaires"
+                    android:src="@drawable/questionnaires"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/questionnaires" />
+                    android:layout_height="wrap_content"/>
                 <TextView
+                    android:text="@string/questionnaires"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/questionnaires"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
         <!-- ROW 6  -->
         <android.support.v7.widget.CardView
@@ -200,7 +216,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -208,18 +224,21 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/image_chat"
+                    android:src="@drawable/chat"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/chat" />
+                    android:layout_height="wrap_content"/>
                 <TextView
+                    android:text="@string/chat"
+                    android:textSize="10sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/chat"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
     </GridLayout>
 
