@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card_view_PersonalData = findViewById(R.id.card_personalData);
         card_view_Informative = findViewById(R.id.card_informationSection);
 
+
         //set function to card
         card_view_PersonalData.setOnClickListener(this);
         card_view_Informative.setOnClickListener(this);
