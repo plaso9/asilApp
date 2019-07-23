@@ -23,7 +23,9 @@
         <activity android:name=".CityInfoActivity" />
         <activity android:name=".BylawActivity" />
         <activity android:name=".UsefulNumbersActivity" />
-        <activity android:name=".MyInfoActivity"></activity>
+        <activity android:name=".MyInfoActivity" />
+        <activity android:name=".QuestionnairesActivity" >
+        </activity>
     </application>
 
 </manifest>
