@@ -11,4 +11,8 @@
     <string name="bylaw">Regolamenti</string>
     <string name="usefulNumbers">Numeri utili</string>
     <string name="myInfo">Mie info</string>
+    <string name="sf12Questionnaires">SF12</string>
+    <string name="habitsQuestionnaires">Abitudini</string>
+    <string name="demographicQuestionnaires">Demografico</string>
+    <string name="qualityOfLifeQuestionnaires">Qualità Della Vita</string>
 </resources>
