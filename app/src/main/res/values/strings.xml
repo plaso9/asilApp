@@ -1,15 +1,19 @@
 <resources>
     <string name="app_name" translatable="false">asilApp</string>
-    <string name="userRecognition">Riconoscimento Utente</string>
-    <string name="personalData">Dati Anagrafici</string>
-    <string name="informationSection">Sezione informativa</string>
-    <string name="medicalRecords">Parametri Medici</string>
-    <string name="questionnaires">Questionari</string>
+    <string name="userRecognition">User Recognition</string>
+    <string name="personalData">Personal Data</string>
+    <string name="informationSection">Information Section</string>
+    <string name="medicalRecords">Medical Records</string>
+    <string name="questionnaires">Questionnaries</string>
     <string name="chat" translatable="false">Chat</string>
     <string name="video" translatable="false">Video</string>
-    <string name="acceptance">Accoglienza</string>
-    <string name="cityInfo">Informazioni Città</string>
-    <string name="bylaw">Regolamenti</string>
-    <string name="usefulNumbers">Numeri utili</string>
-    <string name="myInfo">Mie info</string>
+    <string name="acceptance">Acceptance</string>
+    <string name="cityInfo">City Info</string>
+    <string name="bylaw">By Law</string>
+    <string name="myInfo">My Info</string>
+    <string name="sf12Questionnaires">SF12</string>
+    <string name="habitsQuestionnaires">Habits</string>
+    <string name="usefulNumbers">Useful Numbers</string>
+    <string name="demographicQuestionnaires">Demographic</string>
+    <string name="qualityOfLifeQuestionnaires">Quality Of Life</string>
 </resources>
