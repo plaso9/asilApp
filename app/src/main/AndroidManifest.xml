@@ -17,7 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InformativeActivity"></activity>
+        <activity android:name=".InformativeActivity" />
+        <activity android:name=".VideoActivity" />
+        <activity android:name=".AcceptanceActivity" />
+        <activity android:name=".CityInfoActivity" />
+        <activity android:name=".BylawActivity" />
+        <activity android:name=".UsefulNumbersActivity" />
+        <activity android:name=".MyInfoActivity"></activity>
     </application>
 
 </manifest>
