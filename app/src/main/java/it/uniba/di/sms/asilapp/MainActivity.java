@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity{
     GridLayout gridLayout;
     CardView card_view_PersonalData;
     CardView card_view_Informative;
+    CardView card_view_Questionnaires;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +22,13 @@ public class MainActivity extends AppCompatActivity{
         //defined card variable
         card_view_PersonalData = findViewById(R.id.card_personalData);
         card_view_Informative = findViewById(R.id.card_informationSection);
+        card_view_Questionnaires = findViewById(R.id.card_questionnaires);
 
 
         //set function to card
         card_view_Informative.setOnClickListener(card_view_Informative_listener);
         card_view_PersonalData.setOnClickListener(card_view_Informative_personaldata);
+        card_view_Questionnaires.setOnClickListener(card_view_Questionnaries_listener);
 
 
     }
@@ -44,6 +47,14 @@ public class MainActivity extends AppCompatActivity{
             Intent i = new Intent(getApplicationContext(), PersonalDataActivity.class);
             startActivity(i);
 
+        }
+    };
+
+    public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getApplicationContext(), QuestionnairesActivity.class);
+            startActivity(i);
         }
     };
 }
