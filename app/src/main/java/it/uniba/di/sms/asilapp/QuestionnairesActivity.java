@@ -12,8 +12,5 @@ public class QuestionnairesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questionnaires);
 
         //Creation and set of Toolbar
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
     }
 }
