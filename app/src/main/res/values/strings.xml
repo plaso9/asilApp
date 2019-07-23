@@ -9,11 +9,13 @@
     <string name="video" translatable="false">Video</string>
     <string name="acceptance">Acceptance</string>
     <string name="cityInfo">City Info</string>
-    <string name="bylaw">By Law</string>
+    <string name="bylaw">Bylaw</string>
     <string name="myInfo">My Info</string>
     <string name="sf12Questionnaires">SF12</string>
     <string name="habitsQuestionnaires">Habits</string>
     <string name="usefulNumbers">Useful Numbers</string>
     <string name="demographicQuestionnaires">Demographic</string>
     <string name="qualityOfLifeQuestionnaires">Quality Of Life</string>
+    <string name="Video1">First video</string>
+    <string name="Video2">Second video</string>
 </resources>

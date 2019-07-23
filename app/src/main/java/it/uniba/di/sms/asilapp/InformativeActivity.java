@@ -34,31 +34,69 @@ public class InformativeActivity extends AppCompatActivity{
         card_view_UsefulNumbers = findViewById(R.id.card_usefulNumbers);
         card_view_MyInfo = findViewById(R.id.card_myInfo);
 
-        //set function to card
-      /*  card_view_Video.setOnClickListener(this);
-        card_view_Acceptance.setOnClickListener(this);
-        card_view_CityInfo.setOnClickListener(this);
-        card_view_Bylaw.setOnClickListener(this);
-        card_view_UsefulNumbers.setOnClickListener(this);
-        card_view_MyInfo.setOnClickListener(this);
+        card_view_Video.setOnClickListener(card_view_Video_listener);
+        card_view_Acceptance.setOnClickListener(card_view_Acceptance_listener);
+        card_view_CityInfo.setOnClickListener(card_view_CityInfo_listener);
+        card_view_Bylaw.setOnClickListener(card_view_Bylaw_listener);
+        card_view_UsefulNumbers.setOnClickListener(card_view_UsefulNumbers_listener);
+        card_view_MyInfo.setOnClickListener(card_view_MyInfo_listener);
+
 
     }
 
-    @Override
-    //function called at card onclick
-    public void onClick(View v) {
-        Intent i;
+    public View.OnClickListener card_view_Video_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,VideoActivity.class);
+            startActivity(sens);
 
-        switch(v.getId()) {
-            case R.id.card_video : i = new Intent(this, VideoActivity.class); startActivity(i); break;
-            case R.id.card_acceptance : i = new Intent(this, AcceptanceActivity.class); startActivity(i); break;
-            case R.id.city_info: i = new Intent(this, CityInfoActivity.class); startActivity(i); break;
-            case R.id.card_bylaw : i = new Intent(this, BylawActivity.class); startActivity(i); break;
-            case R.id.card_usefulNumbers : i = new Intent(this, UsefulNumbersActivity.class); startActivity(i); break;
-            case R.id.card_myInfo : i = new Intent(this, MyInfoActivity.class); startActivity(i); break;
-
-            default: break;
         }
-        */
-    }
+    };
+    public View.OnClickListener card_view_Acceptance_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,AcceptanceActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
+    public View.OnClickListener card_view_CityInfo_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,CityInfoActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
+    public View.OnClickListener card_view_Bylaw_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,BylawActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
+    public View.OnClickListener card_view_UsefulNumbers_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,UsefulNumbersActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
+    public View.OnClickListener card_view_MyInfo_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (InformativeActivity.this,MyInfoActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
+
 }
+
