@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuestionnairesActivity"></activity>
         <activity android:name=".PersonalDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,6 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".InformativeActivity" />
+        <activity android:name=".VideoActivity" />
+        <activity android:name=".AcceptanceActivity" />
+        <activity android:name=".CityInfoActivity" />
+        <activity android:name=".BylawActivity" />
+        <activity android:name=".UsefulNumbersActivity" />
+        <activity android:name=".MyInfoActivity"></activity>
     </application>
 
 </manifest>

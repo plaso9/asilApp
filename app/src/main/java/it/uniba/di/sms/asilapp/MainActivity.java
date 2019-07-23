@@ -10,6 +10,7 @@ import android.widget.GridLayout;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     GridLayout gridLayout;
     CardView card_view_PersonalData;
+    CardView card_view_Informative;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +20,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gridLayout=findViewById(R.id.gridHomeLayout);
         //defined card variable
         card_view_PersonalData = findViewById(R.id.card_personalData);
+        card_view_Informative = findViewById(R.id.card_informationSection);
 
         //set function to card
         card_view_PersonalData.setOnClickListener(this);
+        card_view_Informative.setOnClickListener(this);
     }
 
     @Override
