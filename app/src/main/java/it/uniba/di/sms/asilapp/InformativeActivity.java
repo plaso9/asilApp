@@ -21,7 +21,7 @@ public class InformativeActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_informative);
 
         //defined gridlayout variable
         gridLayout=findViewById(R.id.gridInformativeLayout);

@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
+
     public View.OnClickListener card_view_Informative_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(getApplicationContext(), InformativeActivity.class);
-            startActivity(i);
+            Intent sens = new Intent (MainActivity.this,InformativeActivity.class);
+            startActivity(sens);
 
         }
     };
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity{
     public View.OnClickListener card_view_Informative_personaldata = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(getApplicationContext(), PersonalDataActivity.class);
-            startActivity(i);
+            Intent sens = new Intent (MainActivity.this,PersonalDataActivity.class);
+            startActivity(sens);
 
         }
     };
