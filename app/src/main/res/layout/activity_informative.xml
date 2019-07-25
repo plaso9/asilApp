@@ -75,12 +75,13 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
+
                 <ImageView
                     android:id="@+id/image_acceptance"
-                    android:src="@drawable/information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/acceptance"/>
+                    android:contentDescription="@string/acceptance"
+                    android:src="@drawable/acceptance" />
                 <TextView
                     android:text="@string/acceptance"
                     android:textSize="12sp"
@@ -119,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/cityInfo"
-                    android:src="@drawable/medical" />
+                    android:src="@drawable/cityinfo" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,12 +154,13 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
+
                 <ImageView
                     android:id="@+id/image_bylaw"
-                    android:src="@drawable/questionnaires"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/bylaw"/>
+                    android:contentDescription="@string/bylaw"
+                    android:src="@drawable/bylaw" />
                 <TextView
                     android:text="@string/bylaw"
                     android:textSize="12sp"
@@ -191,12 +193,13 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
+
                 <ImageView
                     android:id="@+id/image_usefulNumbers"
-                    android:src="@drawable/medical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/usefulNumbers"/>
+                    android:contentDescription="@string/usefulNumbers"
+                    android:src="@drawable/numbers" />
                 <TextView
                     android:text="@string/usefulNumbers"
                     android:textSize="12sp"
@@ -235,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/myInfo"
-                    android:src="@drawable/recognition" />
+                    android:src="@drawable/myinfo" />
                 <TextView
                     android:text="@string/myInfo"
                     android:textSize="12sp"

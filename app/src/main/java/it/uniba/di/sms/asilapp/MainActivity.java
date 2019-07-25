@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
 
         //set function to card
         card_view_Informative.setOnClickListener(card_view_Informative_listener);
-        card_view_PersonalData.setOnClickListener(card_view_Informative_personaldata);
+        card_view_PersonalData.setOnClickListener(card_view_Personaldata_listener);
         card_view_Questionnaires.setOnClickListener(card_view_Questionnaries_listener);
 
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-    public View.OnClickListener card_view_Informative_personaldata = new View.OnClickListener() {
+    public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent sens = new Intent (MainActivity.this,PersonalDataActivity.class);
