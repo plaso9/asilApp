@@ -10,6 +10,7 @@
     <color name="secondary_text">#EBEBEB</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="window_background">#ebebebeb</color>
 
 
 </resources>
