@@ -11,17 +11,6 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
-    <!-->
-    <shape name="bg">
-        <gradient
-            android:startColor = "#19769F"
-            android:endColor = "35D8A6"
-            android:centerColor = "#00A9B8"
-            android:angle = "270"
-            android:type = "linear"/>
-    </shape>
-    <!-->
-
 
 </resources>
 
