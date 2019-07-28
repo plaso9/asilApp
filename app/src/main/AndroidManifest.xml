@@ -26,6 +26,8 @@
         <activity android:name=".MyInfoActivity" />
         <activity android:name=".QuestionnairesActivity" >
         </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".HomepageActivity"/>
     </application>
 
 </manifest>
