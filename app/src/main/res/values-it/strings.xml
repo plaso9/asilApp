@@ -17,4 +17,9 @@
     <string name="qualityOfLifeQuestionnaires">Qualità Della Vita</string>
     <string name="Video1">Primo video</string>
     <string name="Video2">Secondo video</string>
+    <string name="birth_place">Luogo di nascita</string>
+    <string name="date_of_birth">Data di nascita</string>
+    <string name="gender">Sesso</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
 </resources>

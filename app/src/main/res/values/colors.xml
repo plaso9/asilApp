@@ -3,13 +3,12 @@
     <color name="colorPrimary">#35D8A6</color>
     <color name="colorPrimaryDark">#19769F</color>
     <color name="colorAccent">#8BC34A</color>
-
-
     <color name="primary_light">#5FE5BC</color>
     <color name="primary_text">#3E3E3E</color>
     <color name="secondary_text">#EBEBEB</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="window_background">#F0F0F0</color>
 
 
 </resources>
