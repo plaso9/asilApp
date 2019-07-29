@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">asilApp</string>
     <string name="userRecognition">User Recognition</string>
     <string name="personalData">Personal Data</string>
-    <string name="informationSection">Information Section</string>
+    <string name="informationSection" translatable="false">Info</string>
     <string name="medicalRecords">Medical Records</string>
     <string name="questionnaires">Questionnaries</string>
     <string name="chat" translatable="false">Chat</string>
@@ -27,5 +27,13 @@
     <string name="cell" translatable="false">Cell</string>
     <string name="radioBtnMale" translatable="false">M</string>
     <string name="radioBtnFemale" translatable="false">F</string>
+    <string name="temperature">Temperature</string>
+    <string name="bloodPressure">Blood pressure</string>
+    <string name="glycemia">Glycemia</string>
+    <string name="heartbeat">Heartbeat</string>
+    <string name="ecg" translatable="false">ECG</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="pathology">Pathology</string>
+
 
 </resources>
