@@ -25,4 +25,10 @@
     <string name="centerName">Nome del centro</string>
     <string name="centerRegulation">Regolamento interno</string>
     <string name="centerServices">Servizi</string>
+    <string name="ambulance">Pronto soccorso</string>
+    <string name="financeguard">Guardia di finanza</string>
+    <string name="firebrigade">Vigili del fuoco</string>
+    <string name="militarypolice">Carabinieri</string>
+    <string name="police">Polizia</string>
+    <string name="seaemergency">Guardia costiera</string>
 </resources>
