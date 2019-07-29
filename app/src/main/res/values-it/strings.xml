@@ -31,4 +31,8 @@
     <string name="militarypolice">Carabinieri</string>
     <string name="police">Polizia</string>
     <string name="seaemergency">Guardia costiera</string>
+    <string name="appDetails">Dettagli app</string>
+    <string name="pathology">Patologia</string>
+    <string name="rating">Valutazione</string>
+    <string name="retrieveBasicNecessities">Reperimento beni</string>
 </resources>

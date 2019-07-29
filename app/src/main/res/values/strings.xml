@@ -36,6 +36,10 @@
     <string name="militarypolice">Military Police</string>
     <string name="financeguard">Finance Guard</string>
     <string name="seaemergency">Sea Emergency</string>
+    <string name="pathology">Pathology</string>
+    <string name="retrieveBasicNecessities">Retrieve basic necessities</string>
+    <string name="appDetails">App details</string>
+    <string name="rating">Rating</string>
 
 
 
