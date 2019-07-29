@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">asilApp</string>
     <string name="userRecognition">User Recognition</string>
     <string name="personalData">Personal Data</string>
-    <string name="informationSection">Information Section</string>
+    <string name="informationSection" translatable="false">Info</string>
     <string name="medicalRecords">Medical Records</string>
     <string name="questionnaires">Questionnaries</string>
     <string name="chat" translatable="false">Chat</string>
