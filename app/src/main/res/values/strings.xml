@@ -23,6 +23,8 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="birth_place">Birth place</string>
     <string name="gender">Gender</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="cell" translatable="false">Cell</string>
     <string name="radioBtnMale" translatable="false">M</string>
     <string name="radioBtnFemale" translatable="false">F</string>
 
