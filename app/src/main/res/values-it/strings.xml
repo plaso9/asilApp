@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">asilApp</string>
     <string name="userRecognition">Riconoscimento Utente</string>
     <string name="personalData">Dati Anagrafici</string>
     <string name="medicalRecords">Parametri Medici</string>
@@ -21,4 +20,9 @@
     <string name="gender">Sesso</string>
     <string name="name">Nome</string>
     <string name="surname">Cognome</string>
+    <string name="titleAcceptance">Centro di accoglienza</string>
+    <string name="centerLocation">Locazione</string>
+    <string name="centerName">Nome del centro</string>
+    <string name="centerRegulation">Regolamento interno</string>
+    <string name="centerServices">Servizi</string>
 </resources>

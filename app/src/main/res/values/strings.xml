@@ -25,5 +25,11 @@
     <string name="gender">Gender</string>
     <string name="radioBtnMale" translatable="false">M</string>
     <string name="radioBtnFemale" translatable="false">F</string>
+    <string name="titleAcceptance">Reception Center</string>
+    <string name="centerName">Center name</string>
+    <string name="centerLocation">Location</string>
+    <string name="centerServices">Services</string>
+    <string name="centerRegulation">Internal regulation</string>
+
 
 </resources>
