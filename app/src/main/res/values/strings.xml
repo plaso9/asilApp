@@ -42,13 +42,19 @@
     <string name="retrieveBasicNecessities">Retrieve basic necessities</string>
     <string name="appDetails">App details</string>
     <string name="rating">Rating</string>
-
     <string name="temperature">Temperature</string>
     <string name="bloodPressure">Blood pressure</string>
     <string name="glycemia">Glycemia</string>
     <string name="heartbeat">Heartbeat</string>
     <string name="ecg" translatable="false">ECG</string>
     <string name="symptoms">Symptoms</string>
+    <string name="ambulatory">Ambulatory</string>
+    <string name="municipality">Municipality</string>
+    <string name="postoffice">Post office</string>
+    <string name="placesofworship">Places of worship</string>
+    <string name="school">School</string>
+    <string name="pharmacy">Pharmacy</string>
+
 
 
 </resources>

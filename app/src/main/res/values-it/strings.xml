@@ -40,6 +40,12 @@
     <string name="heartbeat">Battito Cardiaco</string>
     <string name="pathology">Patologia</string>
     <string name="symptoms">Sintomi</string>
+    <string name="ambulatory">Ambulatorio</string>
+    <string name="school">Scuola</string>
+    <string name="postoffice">Ufficio postale</string>
+    <string name="pharmacy">Farmacia</string>
+    <string name="placesofworship">Luoghi di culto</string>
+    <string name="municipality">Municipio</string>
 </resources>
 
 
