@@ -3,7 +3,6 @@
     <string name="app_name">asilApp</string>
     <string name="userRecognition">Riconoscimento Utente</string>
     <string name="personalData">Dati Anagrafici</string>
-    <string name="informationSection">Sezione informativa</string>
     <string name="medicalRecords">Parametri Medici</string>
     <string name="questionnaires">Questionari</string>
     <string name="acceptance">Accoglienza</string>
