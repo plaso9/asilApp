@@ -32,7 +32,18 @@
     <string name="police">Polizia</string>
     <string name="seaemergency">Guardia costiera</string>
     <string name="appDetails">Dettagli app</string>
-    <string name="pathology">Patologia</string>
     <string name="rating">Valutazione</string>
     <string name="retrieveBasicNecessities">Reperimento beni</string>
+    <string name="temperature">Temperatura</string>
+    <string name="bloodPressure">Pressione sanguigna</string>
+    <string name="glycemia">Glicemia</string>
+    <string name="heartbeat">Battito Cardiaco</string>
+    <string name="pathology">Patologia</string>
+    <string name="symptoms">Sintomi</string>
 </resources>
+
+
+
+
+
+
