@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "947560561649",
+    "firebase_url": "https://asilapp-1dd34.firebaseio.com",
+    "project_id": "asilapp-1dd34",
+    "storage_bucket": "asilapp-1dd34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947560561649:android:ae94a70ca59cdf4c",
+        "android_client_info": {
+          "package_name": "it.uniba.di.sms.asilapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947560561649-6u57qbgs76jq2e85unco1uni8d5efhns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.uniba.di.sms.asilapp",
+            "certificate_hash": "6d93f3b7aec33767a32180e212ce60364e9c643b"
+          }
+        },
+        {
+          "client_id": "947560561649-3adk0sua2jcvc0v97jmnhu0rmhjkl30n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB78IFKNBusACsPLVIfPXiSviW0FHgzEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947560561649-3adk0sua2jcvc0v97jmnhu0rmhjkl30n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
