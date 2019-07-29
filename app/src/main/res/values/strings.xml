@@ -25,5 +25,13 @@
     <string name="gender">Gender</string>
     <string name="radioBtnMale" translatable="false">M</string>
     <string name="radioBtnFemale" translatable="false">F</string>
+    <string name="temperature">Temperature</string>
+    <string name="bloodPressure">Blood pressure</string>
+    <string name="glycemia">Glycemia</string>
+    <string name="heartbeat">Heartbeat</string>
+    <string name="ecg" translatable="false">ECG</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="pathology">Pathology</string>
+
 
 </resources>

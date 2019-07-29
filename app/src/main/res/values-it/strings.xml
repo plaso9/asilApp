@@ -22,4 +22,10 @@
     <string name="gender">Sesso</string>
     <string name="name">Nome</string>
     <string name="surname">Cognome</string>
+    <string name="temperature">Temperatura</string>
+    <string name="bloodPressure">Pressione sanguigna</string>
+    <string name="glycemia">Glicemia</string>
+    <string name="heartbeat">Battito Cardiaco</string>
+    <string name="pathology">Patologia</string>
+    <string name="symptoms">Sintomi</string>
 </resources>
