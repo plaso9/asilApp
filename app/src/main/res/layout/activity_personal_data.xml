@@ -70,6 +70,28 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBirthday" />
+    <!--EMAIL-->
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/email"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
+    <!--CELL-->
+    <TextView
+        android:id="@+id/textViewCell"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/cell"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
     <!--GENDER-->
     <TextView
         android:id="@+id/textViewGender"
@@ -80,7 +102,7 @@
         android:text="@string/gender"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
 
 <!--    EDIT LINE COLUMN  -->
 
@@ -91,9 +113,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text=""
         android:textSize="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewName"
@@ -106,9 +131,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text=""
         android:textSize="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSurname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewSurname"
@@ -121,9 +149,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text=""
         android:textSize="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
         app:layout_constraintBottom_toBottomOf="@+id/textViewBirthday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewBirthday"
@@ -136,12 +167,45 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text=""
         android:textSize="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
         app:layout_constraintBottom_toBottomOf="@+id/textViewBirthPlace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewBirthPlace"
+        tools:text="asilApp" />
+    <!--EMAIL-->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewEmail"
+        tools:text="asilApp" />
+    <!--CELL-->
+    <EditText
+        android:id="@+id/editTextCell"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewCell"
         tools:text="asilApp" />
     <!--GENDER-->
     <RadioGroup
