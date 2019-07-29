@@ -43,6 +43,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/gradient"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
@@ -55,15 +56,13 @@
 
                 <ImageView
                     android:id="@+id/image_personalData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:src="@drawable/personal"
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
                     android:contentDescription="@string/personalData"/>
 
                 <TextView
                     android:text="@string/personalData"
-                    android:textSize="12sp"
-                    android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -90,6 +89,7 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
+                android:background="#FFFFFF"
                 android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,15 +98,13 @@
 
                 <ImageView
                     android:id="@+id/image_information"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
                     android:src="@drawable/information"
                     android:contentDescription="@string/informationSection"/>
 
                 <TextView
                     android:text="@string/informationSection"
-                    android:textSize="12sp"
-                    android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -133,6 +131,7 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
+                android:background="#FFFFFF"
                 android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,14 +141,12 @@
                 <ImageView
                     android:id="@+id/image_medicalRecords"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="168dp"
                     android:src="@drawable/medical"
                     android:contentDescription="@string/medicalRecords"/>
 
                 <TextView
                     android:text="@string/medicalRecords"
-                    android:textSize="12sp"
-                    android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -177,6 +174,7 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
+                android:background="#FFFFFF"
                 android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,14 +184,12 @@
                 <ImageView
                     android:id="@+id/image_questionnaires"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="168dp"
                     android:src="@drawable/questionnaires"
                     android:contentDescription="@string/questionnaires"/>
 
                 <TextView
                     android:text="@string/questionnaires"
-                    android:textSize="12sp"
-                    android:textColor="#000"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
