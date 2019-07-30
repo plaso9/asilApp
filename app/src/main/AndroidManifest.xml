@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MedicalRecordsActivity"></activity>
+        <activity android:name=".DoctorActivity"></activity>
+        <activity android:name=".MedicalRecordsActivity" />
         <activity android:name=".PersonalDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -25,7 +26,7 @@
         <activity android:name=".BylawActivity" />
         <activity android:name=".UsefulNumbersActivity" />
         <activity android:name=".MyInfoActivity" />
-        <activity android:name=".QuestionnairesActivity"></activity>
+        <activity android:name=".QuestionnairesActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomepageActivity" />
     </application>

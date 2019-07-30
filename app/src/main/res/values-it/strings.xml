@@ -46,6 +46,8 @@
     <string name="pharmacy">Farmacia</string>
     <string name="placesofworship">Luoghi di culto</string>
     <string name="municipality">Municipio</string>
+    <string name="kitOpening">Apertura kit</string>
+    <string name="searchPatient">Ricerca paziente</string>
 </resources>
 
 
