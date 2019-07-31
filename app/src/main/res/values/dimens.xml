@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="toolbarWeight" type="dimen" format="float">0.7</item>
+    <dimen name="buttonTextSize">15dp</dimen>
+    <dimen name="titleTextSize">24dp</dimen>
+    <dimen name="textSize">20dp</dimen>
 </resources>

@@ -7,327 +7,263 @@
     tools:context=".MedicalRecordsActivity">
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/include2"
         layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="132dp"
         tools:layout_editor_absoluteY="0dp" />
 
-    <!--    PAGE TITLE -->
+    <Button
+        android:id="@+id/buttonAdd7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd6" />
+
+    <ImageView
+        android:id="@+id/image_graphic7"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd7"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic6"
+        app:srcCompat="@drawable/graphic" />
+
+    <Button
+        android:id="@+id/buttonAdd6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd5" />
+
+    <ImageView
+        android:id="@+id/image_graphic6"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd6"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic5"
+        app:srcCompat="@drawable/graphic" />
+
+    <Button
+        android:id="@+id/buttonAdd5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd4" />
+
+    <ImageView
+        android:id="@+id/image_graphic5"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd5"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic4"
+        app:srcCompat="@drawable/graphic" />
+
+    <Button
+        android:id="@+id/buttonAdd4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd3" />
+
+    <ImageView
+        android:id="@+id/image_graphic4"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd4"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic3"
+        app:srcCompat="@drawable/graphic" />
+
+    <Button
+        android:id="@+id/buttonAdd3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd2" />
+
+    <ImageView
+        android:id="@+id/image_graphic3"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd3"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic2"
+        app:srcCompat="@drawable/graphic" />
+
+    <Button
+        android:id="@+id/buttonAdd2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
+
+    <ImageView
+        android:id="@+id/image_graphic2"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd2"
+        app:layout_constraintTop_toBottomOf="@+id/image_graphic"
+        app:srcCompat="@drawable/graphic" />
+
     <TextView
-        android:id="@+id/pageTitle"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:text="@string/medicalRecords"
         android:textAllCaps="true"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    TEXT LINE COLUMN  -->
-    <!--TEMPERATURE-->
     <TextView
         android:id="@+id/textViewTemperature"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="76dp"
         android:text="@string/temperature"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
-    <!--BLOOD PRESSURE-->
     <TextView
-        android:id="@+id/textViewBloodPressure"
-        android:layout_width="0dp"
+        android:id="@+id/textViewPressure"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/bloodPressure"
+        android:layout_marginTop="40dp"
+        android:text="@string/pressure"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
 
-    <!--GLYCEMIA-->
     <TextView
         android:id="@+id/textViewGlycemia"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/glycemia"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBloodPressure" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPressure" />
 
-    <!--HEARTBEAT-->
     <TextView
         android:id="@+id/textViewHeartbeat"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/heartbeat"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewGlycemia" />
 
-    <!--ECG-->
     <TextView
         android:id="@+id/textViewECG"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/ecg"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeartbeat" />
 
-    <!--SYMPTOMS-->
     <TextView
         android:id="@+id/textViewSymptoms"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/symptoms"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewECG" />
 
-    <!--PATHOLOGY-->
     <TextView
         android:id="@+id/textViewPathology"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/pathology"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSymptoms" />
 
-    <!--BUTTON SHOW TEMPERATURE STATS -->
-    <Button
-        android:id="@+id/buttonSeeTemperatureStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTemperature"
-        app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
-        app:layout_constraintTop_toTopOf="@+id/textViewTemperature"
-        app:layout_constraintVertical_bias="0.761" />
-
-    <!--BUTTON ADD TEMPERATURE STATS-->
-    <Button
-        android:id="@+id/buttonAddTemperature"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeTemperatureStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW BLOOD PRESSURE STATS -->
-    <Button
-        android:id="@+id/buttonSeeBloodPressureStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewBloodPressure"
-        app:layout_constraintStart_toEndOf="@+id/textViewBloodPressure"
-        app:layout_constraintTop_toTopOf="@+id/textViewBloodPressure"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <!--BUTTON ADD BLOOD PRESSURE STATS-->
-    <Button
-        android:id="@+id/buttonAddBloodPressure"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeBloodPressureStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW GLYCEMIA STATS -->
-    <Button
-        android:id="@+id/buttonSeeGlycemiaStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewGlycemia"
-        app:layout_constraintStart_toEndOf="@+id/textViewGlycemia"
-        app:layout_constraintTop_toTopOf="@+id/textViewGlycemia"
-        app:layout_constraintVertical_bias="0.576" />
-
-    <!--BUTTON ADD GLYCEMIA STATS-->
-    <Button
-        android:id="@+id/buttonAddGlycemiaPressure"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeGlycemiaStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW HEARTBEAT STATS -->
-    <Button
-        android:id="@+id/buttonSeeHeartBeatStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewHeartbeat"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeartbeat"
-        app:layout_constraintTop_toTopOf="@+id/textViewHeartbeat"
-        app:layout_constraintVertical_bias="0.653" />
-
-    <!--BUTTON ADD HEARTBEAT STATS-->
-    <Button
-        android:id="@+id/buttonAddHeartbeat"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeHeartBeatStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW ECG STATS-->
-    <Button
-        android:id="@+id/buttonSeeECGStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewECG"
-        app:layout_constraintStart_toEndOf="@+id/textViewECG"
-        app:layout_constraintTop_toTopOf="@+id/textViewECG" />
-
-    <!--BUTTON ADD ECG-->
-    <Button
-        android:id="@+id/buttonAddECG"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="376dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeECGStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW SYMPTOMS STATS -->
-    <Button
-        android:id="@+id/buttonSeeSymptomsStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSymptoms"
-        app:layout_constraintStart_toEndOf="@+id/textViewSymptoms"
-        app:layout_constraintTop_toTopOf="@+id/textViewSymptoms"
-        app:layout_constraintVertical_bias="0.615" />
-
-    <!--BUTTON ADD SYMPTOMS-->
-    <Button
-        android:id="@+id/buttonAddSymptoms"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="428dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonSeeSymptomsStats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--BUTTON SHOW PATHOLOGY STATS -->
-    <Button
-        android:id="@+id/buttonSeePathologyStats"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="128dp"
-        android:drawableRight="@drawable/ic_see_stats"
-        android:text="See"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPathology"
-        app:layout_constraintStart_toEndOf="@+id/textViewPathology"
-        app:layout_constraintTop_toTopOf="@+id/textViewPathology" />
-
-    <!--BUTTON ADD PATHOLOGY-->
-    <Button
-        android:id="@+id/buttonAddPathology"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="488dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+    <TextView
+        android:id="@+id/textViewLastMeasurement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="334dp" />
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/lastMeasurement"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/buttonTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_graphic"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/graphic" />
 
 </android.support.constraint.ConstraintLayout>

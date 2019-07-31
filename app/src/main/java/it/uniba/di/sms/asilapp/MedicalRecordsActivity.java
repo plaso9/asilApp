@@ -1,105 +1,110 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import it.uniba.di.sms.asilapp.models.User;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 public class MedicalRecordsActivity extends AppCompatActivity {
-    private static final String TAG = "MedicalRecordsActivity";
-    private Button seeTemperatureStats;
-    private Button addTemperature;
-    private Button seeBloodPressureStats;
-    private Button addBloodPressure;
-    private Button seeGlycemiaStats;
-    private Button addGlycemia;
-    private Button seeHeartbeatStats;
-    private Button addHeartbeat;
-    private Button seeECGStats;
-    private Button addECG;
-    private Button seeSymptomsStats;
-    private Button addSymptoms;
-    private Button seePathologyStats;
-    private Button addPathology;
 
-    private DatabaseReference mUserReference;
-    private String uId;
-    private Long mRole;
+    ImageView image_graphic;
+    ImageView image_graphic2;
+    ImageView image_graphic3;
+    ImageView image_graphic4;
+    ImageView image_graphic5;
+    ImageView image_graphic6;
+    ImageView image_graphic7;
+    Button add_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_records);
 
-        seeTemperatureStats = findViewById(R.id.buttonSeeTemperatureStats);
-        addTemperature = findViewById(R.id.buttonAddTemperature);
-        seeBloodPressureStats = findViewById(R.id.buttonSeeBloodPressureStats);
-        addBloodPressure = findViewById(R.id.buttonAddBloodPressure);
-        seeGlycemiaStats = findViewById(R.id.buttonSeeGlycemiaStats);
-        addGlycemia = findViewById(R.id.buttonAddGlycemiaPressure);
-        seeHeartbeatStats = findViewById(R.id.buttonSeeHeartBeatStats);
-        addHeartbeat = findViewById(R.id.buttonAddHeartbeat);
-        seeECGStats = findViewById(R.id.buttonSeeECGStats);
-        addECG = findViewById(R.id.buttonAddECG);
-        seeSymptomsStats = findViewById(R.id.buttonSeeSymptomsStats);
-        addSymptoms = findViewById(R.id.buttonAddSymptoms);
-        seePathologyStats = findViewById(R.id.buttonSeePathologyStats);
-        addPathology = findViewById(R.id.buttonAddPathology);
+        image_graphic = findViewById(R.id.image_graphic);
+        image_graphic2 = findViewById(R.id.image_graphic2);
+        image_graphic3 = findViewById(R.id.image_graphic3);
+        image_graphic4 = findViewById(R.id.image_graphic4);
+        image_graphic5 = findViewById(R.id.image_graphic5);
+        image_graphic6 = findViewById(R.id.image_graphic6);
+        image_graphic7 = findViewById(R.id.image_graphic7);
+
+        add_button = findViewById(R.id.buttonAdd);
+
+
+        image_graphic.setOnClickListener(image_graphic_listener);
+        image_graphic2.setOnClickListener(image_graphic_listener2);
+        image_graphic3.setOnClickListener(image_graphic_listener3);
+        image_graphic4.setOnClickListener(image_graphic_listener4);
+        image_graphic5.setOnClickListener(image_graphic_listener5);
+        image_graphic6.setOnClickListener(image_graphic_listener6);
+        image_graphic7.setOnClickListener(image_graphic_listener7);
+
+        add_button.setOnClickListener(add_button_listener);
 
 
 
-        // Initialize FirebaseUser
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Get userId
-        uId = user.getUid();
-        // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        ValueEventListener userListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get User object and use the values to update the UI
-                User user = dataSnapshot.getValue(User.class);
-               mRole = user.getRole();
+    public View.OnClickListener add_button_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(sens);
+        }
+    };
 
-               if (mRole != 3){
-                   addTemperature.setVisibility(View.INVISIBLE);
-                   addBloodPressure.setVisibility(View.INVISIBLE);
-                   addGlycemia.setVisibility(View.INVISIBLE);
-                   addHeartbeat.setVisibility(View.INVISIBLE);
-                   addECG.setVisibility(View.INVISIBLE);
-                   addSymptoms.setVisibility(View.INVISIBLE);
-                   addPathology.setVisibility(View.INVISIBLE);
-
-               }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting User failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                Toast.makeText(MedicalRecordsActivity.this, "Failed to load user.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-        mUserReference.addValueEventListener(userListener);
-    }
+    public View.OnClickListener image_graphic_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener2 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener3 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener4 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener5 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener6 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
+    public View.OnClickListener image_graphic_listener7 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(sens);
+        }
+    };
 }

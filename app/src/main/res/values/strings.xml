@@ -38,7 +38,6 @@
     <string name="militarypolice">Military Police</string>
     <string name="financeguard">Finance Guard</string>
     <string name="seaemergency">Sea Emergency</string>
-    <string name="pathology">Pathology</string>
     <string name="retrieveBasicNecessities">Retrieve basic necessities</string>
     <string name="appDetails">App details</string>
     <string name="rating">Rating</string>
@@ -66,6 +65,10 @@
     <string name="centerRating">How would your rate your center?</string>
     <string name="comment">Add a comment (optional)</string>
     <string name="submit">Submit</string>
-
+    <string name="add" translatable="false">+</string>
+    <string name="pressure">Pressure</string>
+    <string name="lastMeasurement">Last Measurement</string>
+    <string name="addMeasurement">Add New Measurement</string>
+    <string name="pathology">Pathology</string>
 
 </resources>

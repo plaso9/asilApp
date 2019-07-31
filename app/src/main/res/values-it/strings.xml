@@ -58,6 +58,9 @@
     <string name="appRating">Come valuteresti questa applicazione?</string>
     <string name="comment">Aggiungi un commento (facoltativo)</string>
     <string name="submit">Invia</string>
+    <string name="pressure">Pressione</string>
+    <string name="addMeasurement">Aggiungi Nuova Misurazione</string>
+    <string name="lastMeasurement">Ultima Misurazione</string>
 </resources>
 
 
