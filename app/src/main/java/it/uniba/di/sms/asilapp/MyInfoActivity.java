@@ -11,7 +11,7 @@ public class MyInfoActivity extends AppCompatActivity {
     GridLayout gridLayout;
     CardView card_view_Pathology,
             card_view_RetrieveBasicNecessities,
-            card_view_AppDetais,
+            card_view_AppDetails,
             card_view_Rating;
 
     @Override
@@ -25,12 +25,12 @@ public class MyInfoActivity extends AppCompatActivity {
         //defined card variable
         card_view_Pathology = findViewById(R.id.card_pathology);
         card_view_RetrieveBasicNecessities = findViewById(R.id.card_retrieveBasicNecessities);
-        card_view_AppDetais = findViewById(R.id.card_appDetails);
+        card_view_AppDetails = findViewById(R.id.card_appDetails);
         card_view_Rating = findViewById(R.id.card_rating);
 
         card_view_Pathology.setOnClickListener(card_view_Pathology_listener);
         card_view_RetrieveBasicNecessities.setOnClickListener( card_view_RetrieveBasicNecessities_listener);
-        card_view_AppDetais.setOnClickListener(card_view_AppDetais_listener);
+        card_view_AppDetails.setOnClickListener(card_view_AppDetais_listener);
         card_view_Rating.setOnClickListener(card_view_Rating_listener);
 
     }
@@ -64,7 +64,7 @@ public class MyInfoActivity extends AppCompatActivity {
     public View.OnClickListener card_view_Rating_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this, MyInfoActivity.class);
+            Intent sens = new Intent (MyInfoActivity.this, RatingActivity.class);
             startActivity(sens);
 
         }

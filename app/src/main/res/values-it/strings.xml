@@ -53,6 +53,11 @@
     <string name="search">Cerca</string>
     <string name="scan">Scansione il codice QR</string>
     <string name="insertCode">Inserisci il codice del paziente</string>
+    <string name="centerRating">Come valuteresti il tuo centro di accoglienza?</string>
+    <string name="cityRating">Come valuteresti la tua città?</string>
+    <string name="appRating">Come valuteresti questa applicazione?</string>
+    <string name="comment">Aggiungi un commento (facoltativo)</string>
+    <string name="submit">Invia</string>
 </resources>
 
 

@@ -4,12 +4,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/asilapp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PatientDetailActivity"></activity>
+        <activity android:name=".RatingActivity"></activity>
+        <activity android:name=".PatientDetailActivity" />
         <activity android:name=".KitOpeningActivity" />
         <activity android:name=".PatientListActivity" />
         <activity android:name=".SearchPatientActivity" />

@@ -12,11 +12,12 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/medical"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="72dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
+            android:src="@drawable/asilapp" />
 
         <!--  Email Label -->
         <android.support.design.widget.TextInputLayout

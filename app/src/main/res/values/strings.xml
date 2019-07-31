@@ -61,6 +61,11 @@
     <string name="search">Search</string>
     <string name="alternative">OR</string>
     <string name="scan">Scan QR code</string>
+    <string name="cityRating">How would your rate your city?</string>
+    <string name="appRating">How would your rate this application?</string>
+    <string name="centerRating">How would your rate your center?</string>
+    <string name="comment">Add a comment (optional)</string>
+    <string name="submit">Submit</string>
 
 
 </resources>
