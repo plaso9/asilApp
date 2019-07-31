@@ -58,6 +58,11 @@
     <string name="appRating">Come valuteresti questa applicazione?</string>
     <string name="comment">Aggiungi un commento (facoltativo)</string>
     <string name="submit">Invia</string>
+    <string name="medicine">Farmaci</string>
+    <string name="food">Cibo</string>
+    <string name="go">"Recati presso: "</string>
+    <string name="show">"Mostra: "</string>
+    <string name="ask">"Richiedi: "</string>
 </resources>
 
 
