@@ -48,6 +48,11 @@
     <string name="municipality">Municipio</string>
     <string name="kitOpening">Apertura kit</string>
     <string name="searchPatient">Ricerca paziente</string>
+    <string name="patientList">Pazienti visitati</string>
+    <string name="alternative">OPPURE</string>
+    <string name="search">Cerca</string>
+    <string name="scan">Scansione il codice QR</string>
+    <string name="insertCode">Inserisci il codice del paziente</string>
 </resources>
 
 

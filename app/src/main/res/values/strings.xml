@@ -56,7 +56,11 @@
     <string name="pharmacy">Pharmacy</string>
     <string name="searchPatient">Search patient</string>
     <string name="kitOpening">Kit opening</string>
-
+    <string name="patientList">Visited patients</string>
+    <string name="insertCode">Insert patient\'s code</string>
+    <string name="search">Search</string>
+    <string name="alternative">OR</string>
+    <string name="scan">Scan QR code</string>
 
 
 </resources>
