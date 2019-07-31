@@ -43,7 +43,7 @@ public class DoctorActivity extends AppCompatActivity {
     public View.OnClickListener card_view_kitOpening_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (DoctorActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent (DoctorActivity.this,KitOpeningActivity.class);
             startActivity(sens);
 
         }
@@ -52,7 +52,7 @@ public class DoctorActivity extends AppCompatActivity {
     public View.OnClickListener card_view_patientList_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (DoctorActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent (DoctorActivity.this,PatientListActivity.class);
             startActivity(sens);
 
         }

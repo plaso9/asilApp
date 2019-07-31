@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".DoctorActivity">
+    tools:context=".PatientDetailActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,8 +21,8 @@
     </RelativeLayout>
 
     <GridLayout
-        android:id="@+id/gridDoctorLayout"
-        android:rowCount="2"
+        android:id="@+id/gridPatientDetailLayout"
+        android:rowCount="3"
         android:columnCount="2"
         android:padding="14dp"
         android:layout_weight="8"
@@ -35,7 +35,7 @@
         <!-- ROW 1  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_searchPatient"
+            android:id="@+id/card_personalData"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -55,14 +55,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_searchPatient"
-                    android:src="@drawable/searchpatient"
+                    android:id="@+id/image_personalData"
+                    android:src="@drawable/personal"
                     android:layout_width="match_parent"
                     android:layout_height="168dp"
-                    android:contentDescription="@string/searchPatient"/>
+                    android:contentDescription="@string/personalData"/>
 
                 <TextView
-                    android:text="@string/searchPatient"
+                    android:text="@string/personalData"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
         <!-- ROW 2  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_kitOpening"
+            android:id="@+id/card_medicalRecords"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -97,14 +97,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_kitOpening"
-                    android:layout_width="match_parent"
+                    android:id="@+id/image_medicalRecords"
+                    android:layout_width="wrap_content"
                     android:layout_height="168dp"
-                    android:src="@drawable/kitopening"
-                    android:contentDescription="@string/kitOpening"/>
+                    android:src="@drawable/medical"
+                    android:contentDescription="@string/medicalRecords"/>
 
                 <TextView
-                    android:text="@string/kitOpening"
+                    android:text="@string/medicalRecords"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -112,6 +112,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal" />
+
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
@@ -119,7 +120,7 @@
         <!-- ROW 3  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_patientList"
+            android:id="@+id/card_questionnaires"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -139,14 +140,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_patientList"
-                    android:layout_width="match_parent"
+                    android:id="@+id/image_questionnaires"
+                    android:layout_width="wrap_content"
                     android:layout_height="168dp"
-                    android:src="@drawable/patientlist"
-                    android:contentDescription="@string/patientList"/>
+                    android:src="@drawable/questionnaires"
+                    android:contentDescription="@string/questionnaires"/>
 
                 <TextView
-                    android:text="@string/patientList"
+                    android:text="@string/questionnaires"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -154,6 +155,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal" />
+
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
