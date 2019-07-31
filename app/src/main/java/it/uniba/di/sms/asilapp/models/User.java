@@ -7,6 +7,7 @@ public class User {
     public String birth_place;
     public String cell;
     public String gender;
+    public Long role;
 
 //empty constructor
     public User(){
@@ -68,5 +69,13 @@ public class User {
 
     public void setCell(String cell) {
         this.cell = cell;
+    }
+
+    public Long getRole() {
+        return role;
+    }
+
+    public void setRole(Long role) {
+        this.role = role;
     }
 }
