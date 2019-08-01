@@ -8,19 +8,21 @@ public class User {
     public String cell;
     public String gender;
     public Long role;
+    public int _acceptance;
 
-//empty constructor
+    //empty constructor
     public User(){
 
     }
-//constructor
-    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender) {
+    //constructor
+    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, int _acceptance) {
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
         this.birth_place = birth_place;
         this.cell = cell;
         this.gender = gender;
+        this._acceptance = _acceptance;
     }
 
     public String getName() {

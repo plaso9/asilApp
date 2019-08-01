@@ -72,7 +72,7 @@ public class PersonalDataActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting User failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
                 Toast.makeText(PersonalDataActivity.this, "Failed to load user.",
                         Toast.LENGTH_SHORT).show();
             }
