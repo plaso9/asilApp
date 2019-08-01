@@ -16,6 +16,8 @@
         <activity android:name=".PatientListActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
+        <activity android:name=".PopUpTemperatureActivity"
+            android:theme="@style/PopupTheme"></activity>
         <activity android:name=".MedicalRecordsActivity" />
         <activity android:name=".PersonalDataActivity" />
         <activity android:name=".MainActivity">
