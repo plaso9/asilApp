@@ -75,5 +75,4 @@
     <string name="pressure">Pressure</string>
     <string name="lastMeasurement">Last Measurement</string>
     <string name="addMeasurement">Add New Measurement</string>
-
 </resources>

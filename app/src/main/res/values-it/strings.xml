@@ -63,7 +63,6 @@
     <string name="go">"Recati presso: "</string>
     <string name="show">"Mostra: "</string>
     <string name="ask">"Richiedi: "</string>
-    <string name="add">+</string>
     <string name="addMeasurement">Aggiungi Misurazione</string>
     <string name="lastMeasurement">Ultima Misurazione</string>
     <string name="pressure">Pressione</string>
