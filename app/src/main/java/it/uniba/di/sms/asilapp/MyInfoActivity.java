@@ -38,7 +38,7 @@ public class MyInfoActivity extends AppCompatActivity {
     public View.OnClickListener card_view_Pathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent (MyInfoActivity.this,PathologyActivity.class);
             startActivity(sens);
 
         }
@@ -46,7 +46,7 @@ public class MyInfoActivity extends AppCompatActivity {
     public View.OnClickListener card_view_RetrieveBasicNecessities_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent (MyInfoActivity.this,RetrieveBasicNecessitiesActivity.class);
             startActivity(sens);
 
         }
@@ -55,7 +55,7 @@ public class MyInfoActivity extends AppCompatActivity {
     public View.OnClickListener card_view_AppDetais_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent (MyInfoActivity.this, AppDetailsActivity.class);
             startActivity(sens);
 
         }
