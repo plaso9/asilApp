@@ -71,9 +71,9 @@
     <string name="go">Go to: </string>
     <string name="ask">Ask for: </string>
     <string name="show">Show: </string>
-    <string name="add">Add</string>
+    <string name="add" translatable="false">+</string>
     <string name="pressure">Pressure</string>
     <string name="lastMeasurement">Last Measurement</string>
-    <string name="addMeasurement">Add Measurement</string>
+    <string name="addMeasurement">Add New Measurement</string>
 
 </resources>
