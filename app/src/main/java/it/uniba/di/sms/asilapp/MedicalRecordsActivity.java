@@ -96,14 +96,14 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_graphic_listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent sens = new Intent(MedicalRecordsActivity.this, SymptomsListActivity.class);
             startActivity(sens);
         }
     };
     public View.OnClickListener image_graphic_listener7 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent sens = new Intent(MedicalRecordsActivity.this, PathologyListActivity.class);
             startActivity(sens);
         }
     };
