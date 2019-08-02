@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RetrieveBasicNecessitiesActivity"></activity>
+        <activity android:name=".SymptomsActivity"></activity>
+        <activity android:name=".RetrieveBasicNecessitiesActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".PatientDetailActivity" />
         <activity android:name=".KitOpeningActivity" />
         <activity android:name=".PatientListActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
-        <activity android:name=".PopUpTemperatureActivity"
-            android:theme="@style/PopupTheme"></activity>
+        <activity
+            android:name=".PopUpTemperatureActivity"
+            android:theme="@style/PopupTheme" />
         <activity android:name=".MedicalRecordsActivity" />
         <activity android:name=".PersonalDataActivity" />
         <activity android:name=".MainActivity">

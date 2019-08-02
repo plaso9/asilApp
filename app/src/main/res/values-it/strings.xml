@@ -63,10 +63,20 @@
     <string name="go">"Recati presso: "</string>
     <string name="show">"Mostra: "</string>
     <string name="ask">"Richiedi: "</string>
-    <string name="add">+</string>
     <string name="addMeasurement">Aggiungi Misurazione</string>
     <string name="lastMeasurement">Ultima Misurazione</string>
     <string name="pressure">Pressione</string>
+    <string name="Fever">Febbre</string>
+    <string name="asthenia">Astenia</string>
+    <string name="thirst">Sete</string>
+    <string name="insomnia">Insonnia</string>
+    <string name="dyspnoea">Dispnea</string>
+    <string name="cramps">Crampi</string>
+    <string name="bonePains">Dolori Ossei</string>
+    <string name="arthralgia">Artralgia</string>
+    <string name="paresthesia">Parestesia</string>
+    <string name="itch">Prurito</string>
+    <string name="save">Sa</string>
 </resources>
 
 

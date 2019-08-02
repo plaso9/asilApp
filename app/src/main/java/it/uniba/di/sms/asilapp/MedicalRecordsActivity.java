@@ -18,6 +18,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     ImageView image_graphic6;
     ImageView image_graphic7;
     Button add_button;
+    Button add_button6;
 
 
     @Override
@@ -34,6 +35,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         image_graphic7 = findViewById(R.id.image_graphic7);
 
         add_button = findViewById(R.id.buttonAdd);
+        add_button6 = findViewById(R.id.buttonAdd6);
 
 
         image_graphic.setOnClickListener(image_graphic_listener);
@@ -45,10 +47,19 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         image_graphic7.setOnClickListener(image_graphic_listener7);
 
         add_button.setOnClickListener(add_button_listener);
+        add_button6.setOnClickListener(add_button_listener6);
 
 
 
     }
+
+    public View.OnClickListener add_button_listener6 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent sens = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
+            startActivity(sens);
+        }
+    };
 
     public View.OnClickListener add_button_listener = new View.OnClickListener() {
         @Override
