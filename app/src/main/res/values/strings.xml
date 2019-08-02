@@ -76,5 +76,17 @@
     <string name="lastMeasurement">Last Measurement</string>
     <string name="addMeasurement">Add New Measurement</string>
     <string name="addPatient">Add Patient</string>
+    <string name="itch">Itch</string>
+    <string name="fever">Fever</string>
+    <string name="thirst">Thirst</string>
+    <string name="bonesPain">Bones Pain</string>
+    <string name="arthralgia">Arthralgia</string>
+    <string name="paresthesia">Paresthesia</string>
+    <string name="cramps">Cramps</string>
+    <string name="dyspnoea">Dyspnoea</string>
+    <string name="insomnia">Insomnia</string>
+    <string name="nausea" translatable="false">Nausea</string>
+    <string name="asthenia">Asthenia</string>
+    <string name="save">Save</string>
 
 </resources>

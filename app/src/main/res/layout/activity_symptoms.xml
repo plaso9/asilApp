@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:text="@string/Fever"
+        android:text="@string/fever"
         android:textSize="@dimen/textSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSymtomsTitle" />
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="@string/bonePains"
+        android:text="@string/bonesPain"
         android:textSize="@dimen/textSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewThirst5" />
