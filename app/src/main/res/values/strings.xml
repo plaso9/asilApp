@@ -75,5 +75,6 @@
     <string name="pressure">Pressure</string>
     <string name="lastMeasurement">Last Measurement</string>
     <string name="addMeasurement">Add New Measurement</string>
-    <string name="addPatient">Add new patient</string>
+    <string name="addPatient">Add Patient</string>
+
 </resources>
