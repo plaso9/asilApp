@@ -9,9 +9,12 @@
     tools:context=".MyInfoActivity">
 
     <include
+        android:id="@+id/include"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <GridLayout
         android:id="@+id/gridMyInfoLayout"

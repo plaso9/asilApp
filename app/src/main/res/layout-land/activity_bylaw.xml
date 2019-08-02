@@ -8,11 +8,16 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"/>
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <!--    PAGE TITLE -->
+
+        <!--    PAGE TITLE -->
     <TextView
         android:id="@+id/pageTitle"
         android:layout_marginTop="100dp"
@@ -56,9 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCenterRegulation" />
-
-
-
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
