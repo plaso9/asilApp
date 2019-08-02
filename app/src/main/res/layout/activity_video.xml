@@ -28,6 +28,7 @@
 
         <!-- ROW 1  -->
         <TextView
+            android:id="@+id/textViewFirstVideo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -40,6 +41,7 @@
             android:textStyle="bold" />
 
         <VideoView
+            android:id="@+id/videoViewFirstVideo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -51,6 +53,7 @@
         <!-- ROW 2  -->
 
         <TextView
+            android:id="@+id/textViewSecondVideo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -63,7 +66,7 @@
             android:textStyle="bold" />
 
         <VideoView
-            android:id="@+id/videoView2"
+            android:id="@+id/videoViewSecondVideo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"

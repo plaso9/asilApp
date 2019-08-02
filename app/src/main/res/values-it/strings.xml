@@ -66,6 +66,7 @@
     <string name="addMeasurement">Aggiungi Misurazione</string>
     <string name="lastMeasurement">Ultima Misurazione</string>
     <string name="pressure">Pressione</string>
+    <string name="addPatient">Aggiungi un nuovo paziente</string>
 </resources>
 
 
