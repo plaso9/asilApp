@@ -10,15 +10,14 @@ import android.widget.PopupMenu;
 
 public class MedicalRecordsActivity extends AppCompatActivity {
 
-    ImageView image_graphic;
-    ImageView image_graphic2;
-    ImageView image_graphic3;
-    ImageView image_graphic4;
-    ImageView image_graphic5;
-    ImageView image_graphic6;
-    ImageView image_graphic7;
+    ImageView image_seeTemperatureStats;
+    ImageView image_seeBloodPressureStats;
+    ImageView image_seeGlycemiaStats;
+    ImageView image_seeHeartbeatStats;
+    ImageView image_seeECGStats;
+    ImageView image_seeSymptomsStats;
+    ImageView image_SeePathologyStats;
     Button add_button;
-    Button add_button6;
 
 
     @Override
@@ -26,40 +25,30 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_records);
 
-        image_graphic = findViewById(R.id.image_graphic);
-        image_graphic2 = findViewById(R.id.image_graphic2);
-        image_graphic3 = findViewById(R.id.image_graphic3);
-        image_graphic4 = findViewById(R.id.image_graphic4);
-        image_graphic5 = findViewById(R.id.image_graphic5);
-        image_graphic6 = findViewById(R.id.image_graphic6);
-        image_graphic7 = findViewById(R.id.image_graphic7);
+        image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
+        image_seeBloodPressureStats = findViewById(R.id.image_seeBloodPressureStats);
+        image_seeGlycemiaStats = findViewById(R.id.image_seeGlycemiaStats);
+        image_seeHeartbeatStats = findViewById(R.id.image_seeHeartbeatStats);
+        image_seeECGStats = findViewById(R.id.image_seeECGStats);
+        image_seeSymptomsStats = findViewById(R.id.image_seeSymptomsStats);
+        image_SeePathologyStats = findViewById(R.id.image_SeePathologyStats);
 
-        add_button = findViewById(R.id.buttonAdd);
-        add_button6 = findViewById(R.id.buttonAdd6);
+        add_button = findViewById(R.id.buttonAddTemperature);
 
 
-        image_graphic.setOnClickListener(image_graphic_listener);
-        image_graphic2.setOnClickListener(image_graphic_listener2);
-        image_graphic3.setOnClickListener(image_graphic_listener3);
-        image_graphic4.setOnClickListener(image_graphic_listener4);
-        image_graphic5.setOnClickListener(image_graphic_listener5);
-        image_graphic6.setOnClickListener(image_graphic_listener6);
-        image_graphic7.setOnClickListener(image_graphic_listener7);
+        image_seeTemperatureStats.setOnClickListener(image_seeTemperatureStats_listener);
+        image_seeBloodPressureStats.setOnClickListener(image_seeBloodPressureStats_listener);
+        image_seeGlycemiaStats.setOnClickListener(image_seeGlycemiaStats_listener);
+        image_seeHeartbeatStats.setOnClickListener(image_seeHeartbeatStats_listener);
+        image_seeECGStats.setOnClickListener(image_seeECGStats_listener);
+        image_seeSymptomsStats.setOnClickListener(image_seeSymptomsStats_listener);
+        image_SeePathologyStats.setOnClickListener(image_SeePathologyStats_listener);
 
         add_button.setOnClickListener(add_button_listener);
-        add_button6.setOnClickListener(add_button_listener6);
 
 
 
     }
-
-    public View.OnClickListener add_button_listener6 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
-            startActivity(sens);
-        }
-    };
 
     public View.OnClickListener add_button_listener = new View.OnClickListener() {
         @Override
@@ -69,49 +58,49 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         }
     };
 
-    public View.OnClickListener image_graphic_listener = new View.OnClickListener() {
+    public View.OnClickListener image_seeTemperatureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener2 = new View.OnClickListener() {
+    public View.OnClickListener image_seeBloodPressureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener3 = new View.OnClickListener() {
+    public View.OnClickListener image_seeGlycemiaStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener4 = new View.OnClickListener() {
+    public View.OnClickListener image_seeHeartbeatStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener5 = new View.OnClickListener() {
+    public View.OnClickListener image_seeECGStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener6 = new View.OnClickListener() {
+    public View.OnClickListener image_seeSymptomsStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
             startActivity(sens);
         }
     };
-    public View.OnClickListener image_graphic_listener7 = new View.OnClickListener() {
+    public View.OnClickListener image_SeePathologyStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
