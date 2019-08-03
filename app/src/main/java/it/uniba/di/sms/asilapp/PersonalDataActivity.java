@@ -90,8 +90,11 @@ public class PersonalDataActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String newCell = mCell.getText().toString();
+            if (!newCell.equals("")){
                 mUserReference.child("cell").setValue(newCell);
-
+            } else {
+                //Show Toast
+            }
         }
     };
 }
