@@ -39,7 +39,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     Button button_addPathology;
     private DatabaseReference mUserReference;
     private String uId;
-    private Long mRole;
+    private int mRole;
 
 
     @Override
