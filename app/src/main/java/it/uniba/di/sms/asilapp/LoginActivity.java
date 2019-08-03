@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,11 +47,16 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
+                                    onLoginFailed();
                                     return;
                                 }
                             }
                         });
             }
         });
+    }
+
+    public void onLoginFailed(){
+        Toast.makeText(getBaseContext(), "Login Failed", Toast.LENGTH_LONG).show();
     }
 }
