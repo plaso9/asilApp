@@ -26,14 +26,13 @@ public class PersonalDataActivity extends AppCompatActivity {
     private EditText mBirthPlace;
     private EditText mEmail;
     private EditText mCell;
-//    private EditText mGender;
+    private EditText mGender;
     private DatabaseReference mUserReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
-
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -51,7 +50,7 @@ public class PersonalDataActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.editTextEmail);
         mEmail.setText(user.getEmail());
         mCell = findViewById(R.id.editTextCell);
-//        mGender = findViewById(R.id.editTextName);
+        mGender = findViewById(R.id.editTextGender);
     }
 
     @Override
@@ -67,6 +66,7 @@ public class PersonalDataActivity extends AppCompatActivity {
                 mDateOfBirth.setText(user.date_of_birth);
                 mBirthPlace.setText(user.birth_place);
                 mCell.setText(user.cell);
+                mGender.setText(user.gender);
             }
 
             @Override
