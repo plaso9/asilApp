@@ -81,6 +81,15 @@
     <string name="addFood">Aggiungi riperimento beni</string>
     <string name="readRatings">Leggi le valutazioni</string>
     <string name="addAcceptance">Aggiungi accettazione</string>
+
+    <string name="strTextMedia">Average</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="action_settings">Settings</string>
+    <string name="connectBtn">connect</string>
+    <string name="btnSend">send</string>
+    <string name="strTextConnection">Not connected</string>
+    <string name="btnDevices">Devices connected</string>
 </resources>
 
 
