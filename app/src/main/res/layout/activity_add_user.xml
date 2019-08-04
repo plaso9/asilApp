@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPatientActivity">
-
+    tools:context=".AddUserActivity">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <include
             android:id="@+id/include"
             layout="@layout/toolbar"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:textAllCaps="true"
-        android:text="@string/addPatient"
+        android:text="@string/addUser"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

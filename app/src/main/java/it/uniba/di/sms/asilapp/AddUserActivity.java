@@ -11,14 +11,14 @@ import android.widget.EditText;
 
 import java.util.Calendar;
 
-public class AddPatientActivity extends AppCompatActivity {
+public class AddUserActivity extends AppCompatActivity {
     private EditText editTextBirthday;
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_patient);
+        setContentView(R.layout.activity_add_user);
         editTextBirthday = (EditText) findViewById(R.id.editTextBirthday);
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +28,7 @@ public class AddPatientActivity extends AppCompatActivity {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(AddPatientActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, dateSetListener, year
+                DatePickerDialog dialog = new DatePickerDialog(AddUserActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, dateSetListener, year
                         ,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 dialog.show();
