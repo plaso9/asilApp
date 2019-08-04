@@ -58,7 +58,7 @@ public class HomepageActivity extends AppCompatActivity {
     public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), QuestionnairesActivity.class);
+            Intent i = new Intent(HomepageActivity.this, QuestionnairesActivity.class);
             startActivity(i);
         }
     };
@@ -66,7 +66,7 @@ public class HomepageActivity extends AppCompatActivity {
     public  View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), MedicalRecordsActivity.class);
+            Intent intent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
             startActivity(intent);
         }
     };
