@@ -1,235 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UsefulNumbersActivity">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UsefulNumbersActivity">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="0dp" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!-- PAGE TITLE -->
-    <ImageView
-        android:id="@+id/imageViewSeaEmergency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSeaEmergencyNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergencyNumber"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <include
+                android:id="@+id/include"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageViewFinanceGuard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFinanceGuardNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewFinanceGuardNumber"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <!-- PAGE TITLE -->
+            <ImageView
+                android:id="@+id/imageViewSeaEmergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSeaEmergencyNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergencyNumber"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-    <ImageView
-        android:id="@+id/imageViewMilitaryPolice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewMilitaryPoliceNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewMilitaryPoliceNumber"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <ImageView
+                android:id="@+id/imageViewFinanceGuard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewFinanceGuardNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewFinanceGuardNumber"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-    <ImageView
-        android:id="@+id/imageViewFireBrigade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFireBrigadeNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewFireBrigadeNumber"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <ImageView
+                android:id="@+id/imageViewMilitaryPolice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewMilitaryPoliceNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewMilitaryPoliceNumber"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-    <TextView
-        android:id="@+id/pageTitle"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textAllCaps="true"
-        android:text="@string/usefulNumbers"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/imageViewFireBrigade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewFireBrigadeNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewFireBrigadeNumber"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-    <!--    TEXT LINE COLUMN  -->
-    <!--AMBULANCE-->
-    <TextView
-        android:id="@+id/textViewAmbulance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="152dp"
-        android:text="@string/ambulance"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <!--FIRE BRIGADE-->
-    <TextView
-        android:id="@+id/textViewFireBrigade"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/firebrigade"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAmbulance" />
-    <!--POLICE-->
-    <TextView
-        android:id="@+id/textViewPolice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/police"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFireBrigade" />
-    <!--MILITARY POLICE-->
-    <TextView
-        android:id="@+id/textViewMilitaryPolice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/militarypolice"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPolice" />
-    <!--FINANCE GUARD-->
-    <TextView
-        android:id="@+id/textViewFinanceGuard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/financeguard"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMilitaryPolice" />
-    <!--SEA EMERGENCY-->
-    <TextView
-        android:id="@+id/textViewSeaEmergency"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/seaemergency"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFinanceGuard" />
+            <TextView
+                android:id="@+id/pageTitle"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textAllCaps="true"
+                android:text="@string/usefulNumbers"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!--    TEXT LINE COLUMN  -->
+            <!--AMBULANCE-->
+            <TextView
+                android:id="@+id/textViewAmbulance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="152dp"
+                android:text="@string/ambulance"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--FIRE BRIGADE-->
+            <TextView
+                android:id="@+id/textViewFireBrigade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/firebrigade"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAmbulance" />
+            <!--POLICE-->
+            <TextView
+                android:id="@+id/textViewPolice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/police"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFireBrigade" />
+            <!--MILITARY POLICE-->
+            <TextView
+                android:id="@+id/textViewMilitaryPolice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/militarypolice"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPolice" />
+            <!--FINANCE GUARD-->
+            <TextView
+                android:id="@+id/textViewFinanceGuard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/financeguard"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMilitaryPolice" />
+            <!--SEA EMERGENCY-->
+            <TextView
+                android:id="@+id/textViewSeaEmergency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/seaemergency"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFinanceGuard" />
 
 
-    <!--    EDIT LINE COLUMN  -->
+            <!--    EDIT LINE COLUMN  -->
 
-    <!--AMBULANCE NUMMBER-->
-    <TextView
-        android:id="@+id/textViewAmbulanceNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="118"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewAmbulance"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewAmbulance"
-        app:layout_constraintTop_toTopOf="@+id/textViewAmbulance" />
-    <!--FIRE BRIGADE NUMBER-->
-    <TextView
-        android:id="@+id/textViewFireBrigadeNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="115"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFireBrigade"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewFireBrigade"
-        app:layout_constraintTop_toTopOf="@+id/textViewFireBrigade" />
-    <!--POLICE NUMBER-->
-    <TextView
-        android:id="@+id/textViewPoliceNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="113"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPolice"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewPolice"
-        app:layout_constraintTop_toTopOf="@+id/textViewPolice" />
-    <!--MILITARY POLICE NUMBER-->
-    <ImageView
-        android:id="@+id/imageViewPolice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPoliceNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewPoliceNumber"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <!--AMBULANCE NUMMBER-->
+            <TextView
+                android:id="@+id/textViewAmbulanceNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="118"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewAmbulance"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewAmbulance"
+                app:layout_constraintTop_toTopOf="@+id/textViewAmbulance" />
+            <!--FIRE BRIGADE NUMBER-->
+            <TextView
+                android:id="@+id/textViewFireBrigadeNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="115"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewFireBrigade"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewFireBrigade"
+                app:layout_constraintTop_toTopOf="@+id/textViewFireBrigade" />
+            <!--POLICE NUMBER-->
+            <TextView
+                android:id="@+id/textViewPoliceNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="113"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPolice"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewPolice"
+                app:layout_constraintTop_toTopOf="@+id/textViewPolice" />
+            <!--MILITARY POLICE NUMBER-->
+            <ImageView
+                android:id="@+id/imageViewPolice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPoliceNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewPoliceNumber"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-    <TextView
-        android:id="@+id/textViewMilitaryPoliceNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="112"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewMilitaryPolice"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewMilitaryPolice"
-        app:layout_constraintTop_toTopOf="@+id/textViewMilitaryPolice" />
-    <!--FINANCE GUARD NUMBER-->
-    <TextView
-        android:id="@+id/textViewFinanceGuardNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="117"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFinanceGuard"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewFinanceGuard"
-        app:layout_constraintTop_toTopOf="@+id/textViewFinanceGuard"
-        app:layout_constraintVertical_bias="1.0" />
-    <!--SEA EMERGENCY NUMBER-->
-    <TextView
-        android:id="@+id/textViewSeaEmergencyNumber"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="1530"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSeaEmergency"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewSeaEmergency"
-        app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergency" />
+            <TextView
+                android:id="@+id/textViewMilitaryPoliceNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="112"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewMilitaryPolice"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewMilitaryPolice"
+                app:layout_constraintTop_toTopOf="@+id/textViewMilitaryPolice" />
+            <!--FINANCE GUARD NUMBER-->
+            <TextView
+                android:id="@+id/textViewFinanceGuardNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="117"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewFinanceGuard"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewFinanceGuard"
+                app:layout_constraintTop_toTopOf="@+id/textViewFinanceGuard"
+                app:layout_constraintVertical_bias="1.0" />
+            <!--SEA EMERGENCY NUMBER-->
+            <TextView
+                android:id="@+id/textViewSeaEmergencyNumber"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="1530"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSeaEmergency"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewSeaEmergency"
+                app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergency" />
 
-    <ImageView
-        android:id="@+id/imageViewAmbulance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewAmbulanceNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewAmbulanceNumber"
-        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+            <ImageView
+                android:id="@+id/imageViewAmbulance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewAmbulanceNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewAmbulanceNumber"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
-</android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+</ScrollView>
