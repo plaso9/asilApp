@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".VideoActivity">
+    android:orientation="horizontal"
+    tools:context=".InformativeActivity">
 
     <include
         android:id="@+id/include"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_height="wrap_content" />
 
     <GridLayout
         android:id="@+id/gridVideoLayout"
