@@ -58,7 +58,7 @@
     <string name="appRating">Come valuteresti questa applicazione?</string>
     <string name="comment">Aggiungi un commento (facoltativo)</string>
     <string name="submit">Invia</string>
-    <string name="medicine">Farmaci</string>
+    <string name="medicines">Farmaci</string>
     <string name="food">Cibo</string>
     <string name="go">"Recati presso: "</string>
     <string name="show">"Mostra: "</string>
@@ -78,6 +78,9 @@
     <string name="insomnia">Insonnia</string>
     <string name="asthenia">Astenia</string>
     <string name="save">Salva</string>
+    <string name="description">Descrizione</string>
+    <string name="nutritionalSuggestions">Suggerimenti Nutrizionali</string>
+    <string name="lifestyle">Stile di Vita</string>
 </resources>
 
 
