@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SearchPatientActivity extends AppCompatActivity {
 
     public static EditText editTextCode;
+    private ImageView imageViewScanCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +21,9 @@ public class SearchPatientActivity extends AppCompatActivity {
 
         editTextCode = (EditText) findViewById(R.id.editTextCode);
 
-        Button btn = (Button) findViewById(R.id.buttonSearch);
+        imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        imageViewScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SearchPatientActivity.this, ScanActivity.class);
