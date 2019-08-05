@@ -67,7 +67,7 @@
     <string name="comment">Add a comment (optional)</string>
     <string name="submit">Submit</string>
     <string name="food">Food</string>
-    <string name="medicine">Medicine</string>
+    <string name="medicines">Medicines</string>
     <string name="go">Go to: </string>
     <string name="ask">Ask for: </string>
     <string name="show">Show: </string>
@@ -88,6 +88,9 @@
     <string name="nausea" translatable="false">Nausea</string>
     <string name="asthenia">Asthenia</string>
     <string name="save">Save</string>
+    <string name="description">Description</string>
+    <string name="nutritionalSuggestions">Nutritional Suggestions</string>
+    <string name="lifestyle">Lifestyle</string>
     <string name="addFood">Add retriving necessities</string>
     <string name="readRatings">Read ratings</string>
     <string name="addAcceptance">Add new acceptance</string>
@@ -95,11 +98,9 @@
     <string name="internalRegulation">Internal regulation</string>
     <string name="norms">Behaviour norms</string>
     <string name="readNorms">Click here to read the internal regulation</string>
-
     <string name="discoverable">Make discoverable</string>
     <string name="on">ON</string>
     <string name="btnSend">send</string>
-    <string name="off">Bluetooth Off</string>
-
+    <string name="off" translatable="false">Bluetooth Off</string>
 
 </resources>
