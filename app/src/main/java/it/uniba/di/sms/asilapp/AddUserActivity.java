@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import java.util.Calendar;
 
@@ -16,20 +15,10 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextBirthday;
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
-    //View Objects
-    private ImageView scanCode;
-    private EditText editTextCode;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-
-
-
 
         editTextBirthday = (EditText) findViewById(R.id.editTextBirthday);
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
@@ -57,10 +46,6 @@ public class AddUserActivity extends AppCompatActivity {
         };
 
     }
-
-
-
-
 
 
 }
