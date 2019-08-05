@@ -166,7 +166,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener button_addPathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            Intent sens = new Intent(MedicalRecordsActivity.this, PathologyActivity.class);
             startActivity(sens);
         }
     };
