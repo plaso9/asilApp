@@ -1,12 +1,22 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,11 +41,32 @@ public class CityInfoActivity extends AppCompatActivity {
     private DatabaseReference mUserReference;
     private DatabaseReference mAcceptanceReference;
     private DatabaseReference mCityReference;
+    private CardView card_view_Ambulatory,
+            card_view_Municipality,
+            card_view_Postoffice,
+            card_view_PlacesOfWorship,
+            card_view_School,
+            card_view_Pharmacy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cityinfo);
+
+        
+        card_view_Ambulatory = findViewById(R.id.card_ambulatory);
+        card_view_Ambulatory.setOnClickListener(card_view_Ambulatory_listener);
+        card_view_Municipality = findViewById(R.id.card_municipality);
+        card_view_Municipality.setOnClickListener(card_view_Municipality_listener);
+        card_view_Postoffice = findViewById(R.id.card_postoffice);
+        card_view_Postoffice.setOnClickListener(card_view_Postoffice_listener);
+        card_view_PlacesOfWorship = findViewById(R.id.card_placesofworship);
+        card_view_PlacesOfWorship.setOnClickListener(card_view_PlacesOfWorship_listener);
+        card_view_School = findViewById(R.id.card_school);
+        card_view_School.setOnClickListener(card_view_School_listener);
+        card_view_Pharmacy = findViewById(R.id.card_pharmacy);
+        card_view_Pharmacy.setOnClickListener(card_view_Pharmacy_listener);
+
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -48,6 +79,7 @@ public class CityInfoActivity extends AppCompatActivity {
 
         mDescription = findViewById(R.id.textViewCityDescription);
     }
+
 
     //function to get city basically information
     public void getCityInformation(String cityId) {
@@ -112,4 +144,56 @@ public class CityInfoActivity extends AppCompatActivity {
         super.onStart();
         getAcceptanceId();
     }
+
+    //Open Google Maps with especific view (ambulatory, postoffice...)
+
+    public View.OnClickListener card_view_Ambulatory_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    public View.OnClickListener card_view_Municipality_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=municipio");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    public View.OnClickListener card_view_Postoffice_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=ufficio+postale");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    public View.OnClickListener card_view_PlacesOfWorship_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=luoghi+di+culto");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    public View.OnClickListener card_view_School_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=scuola+di+italiano");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    public View.OnClickListener card_view_Pharmacy_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=farmacia");
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    
 }

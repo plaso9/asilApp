@@ -85,8 +85,8 @@
 
                 <ImageView
                     android:id="@+id/image_acceptance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="168dp"
+                    android:layout_width="124dp"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/acceptance"
                     android:src="@drawable/acceptance" />
 
