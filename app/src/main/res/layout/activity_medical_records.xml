@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MedicalRecordsActivity">
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/buttonAddPathology"
@@ -19,7 +23,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddSymptoms" />
@@ -41,7 +45,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddECG" />
@@ -63,7 +67,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddHeartbeat" />
@@ -85,7 +89,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddGlycemia" />
@@ -107,7 +111,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddBloodPressure" />
@@ -129,7 +133,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddTemperature" />
@@ -251,7 +255,7 @@
         android:layout_marginTop="182dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -267,3 +271,4 @@
         app:srcCompat="@drawable/graphic" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

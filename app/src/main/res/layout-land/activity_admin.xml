@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".DoctorActivity">
+    tools:context=".AdminActivity">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <GridLayout
-        android:id="@+id/gridDoctorLayout"
+        android:id="@+id/gridAdminLayout"
         android:rowCount="2"
         android:columnCount="2"
         android:padding="14dp"
@@ -29,7 +30,7 @@
         <!-- ROW 1  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_searchPatient"
+            android:id="@+id/card_addUser"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -49,14 +50,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_searchPatient"
-                    android:src="@drawable/searchpatient"
+                    android:id="@+id/image_newUser"
+                    android:src="@drawable/adduser"
                     android:layout_width="match_parent"
                     android:layout_height="168dp"
-                    android:contentDescription="@string/searchPatient"/>
+                    android:contentDescription="@string/addUser"/>
 
                 <TextView
-                    android:text="@string/searchPatient"
+                    android:text="@string/addUser"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -64,14 +65,14 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal" />
-            </RelativeLayout>
 
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
 
         <!-- ROW 2  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_kitOpening"
+            android:id="@+id/card_addAcceptance"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -91,14 +92,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_kitOpening"
+                    android:id="@+id/image_addAcceptance"
                     android:layout_width="match_parent"
                     android:layout_height="168dp"
-                    android:src="@drawable/kitopening"
-                    android:contentDescription="@string/kitOpening"/>
+                    android:src="@drawable/addacceptance"
+                    android:contentDescription="@string/addAcceptance"/>
 
                 <TextView
-                    android:text="@string/kitOpening"
+                    android:text="@string/addAcceptance"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -113,7 +114,7 @@
         <!-- ROW 3  -->
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_patientList"
+            android:id="@+id/card_addFood"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -133,14 +134,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_patientList"
-                    android:layout_width="match_parent"
+                    android:id="@+id/image_addFood"
+                    android:layout_width="wrap_content"
                     android:layout_height="168dp"
-                    android:src="@drawable/patientlist"
-                    android:contentDescription="@string/patientList"/>
+                    android:src="@drawable/addfood"
+                    android:contentDescription="@string/addFood"/>
 
                 <TextView
-                    android:text="@string/patientList"
+                    android:text="@string/addFood"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
@@ -148,6 +149,50 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- ROW 4  -->
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_readRatings"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:background="#FFFFFF"
+                android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_readRatings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="168dp"
+                    android:src="@drawable/readratings"
+                    android:contentDescription="@string/readRatings"/>
+
+                <TextView
+                    android:text="@string/readRatings"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal" />
+
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
