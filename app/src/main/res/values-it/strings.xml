@@ -84,6 +84,7 @@
     <string name="healthStandards">Norme sanitarie</string>
     <string name="internalRegulation">Regolamento interno</string>
     <string name="norms">Norme comportamentali</string>
+    <string name="readNorms">Clicca qui per leggere il regolamento interno</string>
 
     <string name="discoverable">Rendi visibile</string>
     <string name="on">Attiva</string>

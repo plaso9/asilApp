@@ -88,13 +88,14 @@
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+
                 <TextView
                     android:id="@+id/editTextCenterRegulation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="BUTTON"
+                    android:text="@string/readNorms"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
