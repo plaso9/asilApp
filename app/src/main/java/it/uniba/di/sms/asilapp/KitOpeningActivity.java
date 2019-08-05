@@ -156,7 +156,7 @@ public class KitOpeningActivity extends Activity {
                         adapter.notifyDataSetChanged();
                     }
                 } catch (Exception e) {
-                   
+
                     e.printStackTrace();
                 }//connect(bdDevice);
                 Log.i("Log", "The bond is created: "+isBonded);

@@ -91,7 +91,9 @@
     <string name="addFood">Add retriving necessities</string>
     <string name="readRatings">Read ratings</string>
     <string name="addAcceptance">Add new acceptance</string>
-
+    <string name="healthStandards">Health standards</string>
+    <string name="internalRegulation">Internal regulation</string>
+    <string name="norms">Behaviour norms</string>
 
     <string name="discoverable">Make discoverable</string>
     <string name="on">ON</string>

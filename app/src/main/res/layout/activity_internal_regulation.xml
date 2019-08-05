@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BylawActivity">
+    tools:context=".InternalRegulationActivity">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,6 +13,7 @@
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
 
         <!--    PAGE TITLE -->
         <TextView
@@ -23,32 +24,32 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:textAllCaps="true"
-            android:text="@string/bylaw"
+            android:text="@string/internalRegulation"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--HEALTH STANDARDS-->
+        <!--CENTER REGULATION-->
         <TextView
-            android:id="@+id/textHealthStandards"
+            android:id="@+id/textCenterRegulation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="152dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/healthStandards"
+            android:text="@string/norms"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textBylaw"
+            android:id="@+id/textNorms"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="HEALTH STANDARDS STORED IN FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
+            android:text="NORMS PROVIDED BY THE CENTER, STORED INTO FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
         adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in
@@ -57,7 +58,7 @@
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textHealthStandards" />
+            app:layout_constraintTop_toBottomOf="@+id/textCenterRegulation" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

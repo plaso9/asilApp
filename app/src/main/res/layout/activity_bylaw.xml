@@ -27,15 +27,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!--CENTER REGULATION-->
+    <!--HEALTH STANDARDS-->
     <TextView
-        android:id="@+id/textCenterRegulation"
+        android:id="@+id/textHealthStandards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="152dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/centerRegulation"
+        android:text="@string/healthStandards"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="NORMS PROVIDED BY THE CENTER, STORED INTO FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
+        android:text="HEALTH STANDARDS STORED IN FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
         adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in
@@ -57,7 +57,7 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCenterRegulation" />
+        app:layout_constraintTop_toBottomOf="@+id/textHealthStandards" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
