@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
@@ -60,6 +61,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = mEmailView.getText().toString();
                 final String psw = mPasswordView.getText().toString();
+
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                        R.style.AppTheme_Dark_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
 
                 //Tries to sign in a user with the given email address and password
                 mAuth.signInWithEmailAndPassword(email, psw).
