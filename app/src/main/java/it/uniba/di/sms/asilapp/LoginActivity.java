@@ -89,7 +89,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void getRoleActivity(int role_id) {
         if(role_id == 1){
-            //Load admin activity
+            //Admin Role
+            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
         } else if (role_id == 2) {
             //User Role
             Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
