@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_personalData"
+            android:icon="@drawable/personal"
+            android:title="@string/personalData" />
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/information"
+            android:title="@string/informationSection" />
+
+
+        <item
+            android:id="@+id/nav_medicalRecords"
+            android:icon="@drawable/medical"
+            android:title="@string/medicalRecords" />
+
+
+        <item
+            android:id="@+id/nav_questionnaires"
+            android:icon="@drawable/questionnaires"
+            android:title="@string/questionnaires" />
+
+    </group>
+</menu>
