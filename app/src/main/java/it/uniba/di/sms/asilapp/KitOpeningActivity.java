@@ -37,9 +37,10 @@ public class KitOpeningActivity extends Activity {
     ArrayList<BluetoothDevice> arrayListPairedBluetoothDevices;
     private ButtonClicked clicked;
     ListItemClickedonPaired listItemClickedonPaired;
-    BluetoothAdapter bluetoothAdapter = null;
+    BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     ArrayList<BluetoothDevice> arrayListBluetoothDevices = null;
     ListItemClicked listItemClicked;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,16 +83,19 @@ public class KitOpeningActivity extends Activity {
         listViewPaired.setOnItemClickListener(listItemClickedonPaired);
     }
     private void getPairedDevices() {
-        Set<BluetoothDevice> pairedDevice = bluetoothAdapter.getBondedDevices();
-        if(pairedDevice.size()>0)
-        {
-            for(BluetoothDevice device : pairedDevice)
-            {
-                arrayListpaired.add(device.getName()+"\n"+device.getAddress());
-                arrayListPairedBluetoothDevices.add(device);
+        if (bluetoothAdapter == null) {
+            //bluetooth not supported!
+            finish();
+        } else {
+            Set<BluetoothDevice> pairedDevice = bluetoothAdapter.getBondedDevices();
+            if (pairedDevice.size() > 0) {
+                for (BluetoothDevice device : pairedDevice) {
+                    arrayListpaired.add(device.getName() + "\n" + device.getAddress());
+                    arrayListPairedBluetoothDevices.add(device);
+                }
             }
+            adapter.notifyDataSetChanged();
         }
-        adapter.notifyDataSetChanged();
     }
     class ListItemClicked implements AdapterView.OnItemClickListener
     {
