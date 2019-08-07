@@ -14,10 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanActivity"></activity>
+        <activity android:name=".NewAcceptanceActivity"></activity>
+        <activity android:name=".ScanActivity" />
         <activity android:name=".InternalRegulationActivity" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".AppDetailsActivity"/>
+        <activity android:name=".AppDetailsActivity" />
         <activity android:name=".RetrieveBasicNecessitiesActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".PatientDetailActivity" />

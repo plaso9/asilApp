@@ -92,6 +92,7 @@
     <string name="on">Attiva</string>
     <string name="btnSend">Invia</string>
     <string name="off">Disattiva</string>
+    <string name="chooseFile">Scegli un file</string>
 </resources>
 
 

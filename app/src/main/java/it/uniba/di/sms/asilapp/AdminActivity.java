@@ -40,7 +40,7 @@ public class AdminActivity extends AppCompatActivity {
     public View.OnClickListener card_view_addAcceptance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (AdminActivity.this,AdminActivity.class);
+            Intent sens = new Intent (AdminActivity.this,NewAcceptanceActivity.class);
             startActivity(sens);
 
         }
