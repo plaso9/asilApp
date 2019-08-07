@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                             onLoginSuccess();
                         } else {
                             onLoginFailed();
+                            progressDialog.dismiss();
                             return;
                         }
                     }
@@ -136,5 +137,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login Failed", Toast.LENGTH_LONG).show();
+
     }
 }
