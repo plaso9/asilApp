@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class NewAcceptanceActivity extends AppCompatActivity {
+public class AddAcceptanceActivity extends AppCompatActivity {
     private Button selectFile;
     private int PICK_PDF_CODE =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_acceptance);
+        setContentView(R.layout.activity_add_acceptance);
 
         selectFile = findViewById(R.id.btnCenterRegulation);
         selectFile.setOnClickListener(selectFile_listener);

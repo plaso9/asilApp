@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewAcceptanceActivity">
+    tools:context=".AddFoodActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,24 +25,24 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:textAllCaps="true"
-            android:text="@string/addAcceptance"
+            android:text="@string/addFood"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <!--    TEXT LINE COLUMN  -->
-        <!--CENTER NAME-->
+        <!--CITY-->
         <TextView
-            android:id="@+id/textViewCenterName"
+            android:id="@+id/textViewCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="152dp"
-            android:text="@string/centerName"
+            android:text="@string/city"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
-            android:id="@+id/editTextCenterName"
+            android:id="@+id/editTextCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -54,22 +54,22 @@
             android:textColor="#000000"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterName" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
 
 
-        <!--CENTER LOCATION-->
+        <!--MALL DISCOUNTED-->
         <TextView
-            android:id="@+id/textViewCenterLocation"
+            android:id="@+id/textMallLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/centerLocation"
+            android:text="@string/mallLocation"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
         <EditText
-            android:id="@+id/editTextCenterLocation"
+            android:id="@+id/editTextMallLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -81,60 +81,37 @@
             android:textColor="#000000"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
+            app:layout_constraintTop_toBottomOf="@+id/textMallLocation" />
 
-        <!--CENTER REGULATION-->
+        <!--PHARMACY DISCOUNTED-->
         <TextView
-            android:id="@+id/textViewCenterRegulation"
+            android:id="@+id/textViewPharmacyLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/centerRegulation"
+            android:text="@string/pharmacyLocation"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
-
-        <Button
-            android:id="@+id/btnCenterRegulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/chooseFile"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterRegulation" />
-
-
-        <!--CENTER SERVICES-->
-        <TextView
-            android:id="@+id/textViewCenterServices"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/centerServices"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCenterRegulation" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextMallLocation" />
 
         <EditText
-            android:id="@+id/editTextCenterServices"
-            android:layout_width="385dp"
-            android:layout_height="109dp"
+            android:id="@+id/editTextPharmacyLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:ems="100"
+            android:ems="10"
             android:inputType="text"
-            android:text="List of services provided by the center"
+            tools:text="asilApp"
+            android:text=""
             android:textColor="#000000"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterServices" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewPharmacyLocation" />
+
+
+
 
         <Button
             android:id="@+id/btnSubmit"
@@ -145,7 +122,7 @@
             android:text="@string/submit"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCenterServices" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPharmacyLocation" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
