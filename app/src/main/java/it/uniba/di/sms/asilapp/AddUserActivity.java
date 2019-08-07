@@ -86,7 +86,19 @@ public class AddUserActivity extends AppCompatActivity {
     public View.OnClickListener submitButton_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            registerUser();
+            if (editTextName.getText().toString().equals("") ||
+                    editTextSurname.getText().toString().equals("") ||
+                    editTextCell.getText().toString().equals("") ||
+                    editTextBirthPlace.getText().toString().equals("") ||
+                    editTextBirthday.getText().toString().equals("") ||
+                    editTextMail.getText().toString().equals("") ||
+                    editTextPassword.getText().toString().equals("") ||
+                    editTextGender.getText().toString().equals("")
+            ){
+                Toast.makeText(AddUserActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
+            } else {
+                registerUser();
+            }
         }
     };
 
