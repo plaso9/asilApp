@@ -17,6 +17,7 @@
         <activity android:name=".ScanActivity"></activity>
         <activity android:name=".InternalRegulationActivity" />
         <activity android:name=".AdminActivity" />
+        <activity android:name=".AppDetailsActivity"/>
         <activity android:name=".RetrieveBasicNecessitiesActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".PatientDetailActivity" />
