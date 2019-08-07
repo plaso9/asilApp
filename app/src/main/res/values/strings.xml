@@ -103,5 +103,6 @@
     <string name="btnSend">send</string>
     <string name="off" translatable="false">Bluetooth Off</string>
     <string name="chooseFile">Choose a file</string>
+    <string name="password" translatable="false">Password</string>
 
 </resources>
