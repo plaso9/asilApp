@@ -13,6 +13,13 @@ import java.util.Calendar;
 
 public class AddUserActivity extends AppCompatActivity {
     private EditText editTextBirthday;
+    private EditText editTextName;
+    private EditText editTextSurname;
+    private EditText editTextCell;
+    private EditText editTextBirthPlace;
+    private EditText editTextMail;
+    private EditText editTextPassword;
+    private EditText editTextGender;
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
@@ -20,7 +27,7 @@ public class AddUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
-        editTextBirthday = (EditText) findViewById(R.id.editTextBirthday);
+        editTextBirthday = findViewById(R.id.editTextBirthday);
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
