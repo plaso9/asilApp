@@ -84,6 +84,17 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
+        <!--PASSWORD-->
+        <TextView
+            android:id="@+id/textViewPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/password"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
     <!--CELL-->
     <TextView
         android:id="@+id/textViewCell"
@@ -94,7 +105,7 @@
         android:text="@string/cell"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
     <!--GENDER-->
     <TextView
         android:id="@+id/textViewGender"
@@ -106,6 +117,8 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
+
+
 
     <!--    EDIT LINE COLUMN  -->
 
@@ -186,6 +199,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewEmail"
         tools:text="asilApp" />
+        <!--EMAIL-->
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text=""
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewPassword"
+            tools:text="asilApp" />
     <!--CELL-->
     <EditText
         android:id="@+id/editTextCell"
