@@ -40,7 +40,7 @@ public class AdminActivity extends AppCompatActivity {
     public View.OnClickListener card_view_addAcceptance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (AdminActivity.this,NewAcceptanceActivity.class);
+            Intent sens = new Intent (AdminActivity.this, AddAcceptanceActivity.class);
             startActivity(sens);
 
         }
@@ -58,7 +58,7 @@ public class AdminActivity extends AppCompatActivity {
     public View.OnClickListener card_view_addFood_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(AdminActivity.this, AdminActivity.class);
+            Intent i = new Intent(AdminActivity.this, AddFoodActivity.class);
             startActivity(i);
         }
     };
@@ -66,7 +66,7 @@ public class AdminActivity extends AppCompatActivity {
     public  View.OnClickListener card_view_readRatings_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(AdminActivity.this, AdminActivity.class);
+            Intent intent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
             startActivity(intent);
         }
     };
