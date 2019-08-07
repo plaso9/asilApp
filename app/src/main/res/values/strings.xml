@@ -104,5 +104,8 @@
     <string name="off" translatable="false">Bluetooth Off</string>
     <string name="chooseFile">Choose a file</string>
     <string name="password" translatable="false">Password</string>
+    <string name="city">City</string>
+    <string name="mallLocation">Mall location</string>
+    <string name="pharmacyLocation">Pharmacy location</string>
 
 </resources>
