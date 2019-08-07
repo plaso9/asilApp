@@ -1,9 +1,13 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +24,13 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity {
     //variable declaration
     private static final String TAG = "RBasicNecesActivity"; //tag too long
     private String uId;
+    private ImageView imageMapFood;
+    private ImageView imageMapPharmacy;
     private String _acceptance;
-    private TextView mAddress;
+    private TextView mAddressFood;
+    private TextView mAddressPharmacy;
+    private TextView userId;
+    private TextView userId2;
 
     private DatabaseReference mUserReference;
     private DatabaseReference mBasicNecessities;
@@ -31,18 +40,44 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve_basic_necessities);
 
+        imageMapFood = findViewById(R.id.imageMapFood);
+        imageMapFood.setOnClickListener(image_Map_Food_listener);
+        imageMapPharmacy = findViewById(R.id.imageMapPharmacy);
+        imageMapPharmacy.setOnClickListener(image_Map_Pharmacy_listener);
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId
         uId = user.getUid();
+
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(uId);
         mBasicNecessities = FirebaseDatabase.getInstance().getReference().child("basic_necessities");
 
-        mAddress = findViewById(R.id.textViewFoodAddress);
+        mAddressFood = findViewById(R.id.textViewFoodAddress);
+        mAddressPharmacy = findViewById(R.id.textViewPharmacyAddress);
+        userId = findViewById(R.id.textViewUserId);
+        userId2 = findViewById(R.id.textViewUserId2);
     }
 
+    //Intent on image Map
+    public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText());
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
+    //Intent on image Map
+    public View.OnClickListener image_Map_Pharmacy_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText());
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+        }
+    };
 
     //function to get basic necessities basically information
     public void getBasicNecessitiesInfo(String acceptanceId) {
@@ -50,7 +85,10 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BasicNecessities basic_necessities = dataSnapshot.getValue(BasicNecessities.class);
-                mAddress.setText(basic_necessities.name);
+                mAddressFood.setText(basic_necessities.name);
+                mAddressPharmacy.setText(basic_necessities.name);
+                userId.setText(uId);
+                userId2.setText(uId);
 
             }
 
