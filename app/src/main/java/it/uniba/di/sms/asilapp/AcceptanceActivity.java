@@ -1,9 +1,11 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +22,7 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 public class AcceptanceActivity extends AppCompatActivity {
     //variable declaration
     private static final String TAG = "AcceptanceActivity";
-
+    private TextView regulation;
     private String uId;
     private String _acceptance;
 
@@ -35,6 +37,11 @@ public class AcceptanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceptance);
 
+        //Button for norms
+        regulation = findViewById(R.id.editTextCenterRegulation);
+        regulation.setOnClickListener(editTextCenterRegulation_listener);
+
+
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId
@@ -46,6 +53,17 @@ public class AcceptanceActivity extends AppCompatActivity {
         mName = findViewById(R.id.editTextCenterName);
         mAddress = findViewById(R.id.editTextCenterLocation);
     }
+
+    // Listener for the button
+    public View.OnClickListener editTextCenterRegulation_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent sens = new Intent (AcceptanceActivity.this,InternalRegulationActivity.class);
+            startActivity(sens);
+
+        }
+    };
+
 
     //function to get city basically information
     public void getAcceptanceInfo(String acceptanceId) {

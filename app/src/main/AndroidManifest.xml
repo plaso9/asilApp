@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.uniba.di.sms.asilapp">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <meta-data
+        android:name="com.google.android.gms.vision.DEPENDENCIES"
+        android:value="barcode" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/asilapp"
@@ -9,15 +21,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RetrieveBasicNecessitiesActivity"></activity>
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".ReadRatingsActivity"></activity>
+        <activity android:name=".AddFoodActivity" />
+        <activity android:name=".AddAcceptanceActivity" />
+        <activity android:name=".ScanActivity" />
+        <activity android:name=".InternalRegulationActivity" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".AppDetailsActivity" />
+        <activity android:name=".RetrieveBasicNecessitiesActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".PatientDetailActivity" />
         <activity android:name=".KitOpeningActivity" />
         <activity android:name=".PatientListActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
-        <activity android:name=".PopUpTemperatureActivity"
-            android:theme="@style/PopupTheme"></activity>
+        <activity
+            android:name=".PopUpTemperatureActivity"
+            android:theme="@style/PopupTheme" />
         <activity android:name=".MedicalRecordsActivity" />
         <activity android:name=".PersonalDataActivity" />
         <activity android:name=".MainActivity">
@@ -37,7 +58,8 @@
         <activity android:name=".QuestionnairesActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomepageActivity" />
-        <activity android:name=".SymptomsActivity"/>
+        <activity android:name=".SymptomsActivity" />
+        <activity android:name=".AddUserActivity" />
     </application>
 
 </manifest>

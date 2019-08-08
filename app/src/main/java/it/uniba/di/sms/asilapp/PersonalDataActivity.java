@@ -90,10 +90,11 @@ public class PersonalDataActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String newCell = mCell.getText().toString();
-            if (!newCell.equals("")){
+            if (!newCell.equals("") && newCell.length()>5){
                 mUserReference.child("cell").setValue(newCell);
             } else {
-                //Show Toast
+                Toast.makeText(PersonalDataActivity.this, "You need to insert at least 6 numbers!",
+                        Toast.LENGTH_SHORT).show();
             }
         }
     };

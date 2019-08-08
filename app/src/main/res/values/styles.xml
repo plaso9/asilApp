@@ -25,4 +25,11 @@
         <item name="android:editTextColor">#3E3E3E</item>
     </style>
 
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/window_background</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+
 </resources>

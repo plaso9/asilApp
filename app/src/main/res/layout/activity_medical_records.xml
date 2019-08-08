@@ -10,11 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
     <Button
         android:id="@+id/buttonAddPathology"
@@ -23,7 +19,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddSymptoms" />
@@ -45,7 +41,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddECG" />
@@ -67,7 +63,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddHeartbeat" />
@@ -89,7 +85,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddGlycemia" />
@@ -111,7 +107,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddBloodPressure" />
@@ -133,7 +129,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddTemperature" />
@@ -255,7 +251,7 @@
         android:layout_marginTop="182dp"
         android:layout_marginEnd="15dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/buttonTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

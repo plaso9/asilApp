@@ -67,7 +67,7 @@
     <string name="comment">Add a comment (optional)</string>
     <string name="submit">Submit</string>
     <string name="food">Food</string>
-    <string name="medicine">Medicine</string>
+    <string name="medicines">Medicines</string>
     <string name="go">Go to: </string>
     <string name="ask">Ask for: </string>
     <string name="show">Show: </string>
@@ -75,7 +75,7 @@
     <string name="pressure">Pressure</string>
     <string name="lastMeasurement">Last Measurement</string>
     <string name="addMeasurement">Add New Measurement</string>
-    <string name="addPatient">Add Patient</string>
+    <string name="addUser">Add user</string>
     <string name="itch">Itch</string>
     <string name="fever">Fever</string>
     <string name="thirst">Thirst</string>
@@ -88,5 +88,28 @@
     <string name="nausea" translatable="false">Nausea</string>
     <string name="asthenia">Asthenia</string>
     <string name="save">Save</string>
-
+    <string name="description">Description</string>
+    <string name="nutritionalSuggestions">Nutritional Suggestions</string>
+    <string name="lifestyle">Lifestyle</string>
+    <string name="addFood">Add retriving necessities</string>
+    <string name="readRatings">Read ratings</string>
+    <string name="addAcceptance">Add new acceptance</string>
+    <string name="healthStandards">Health standards</string>
+    <string name="internalRegulation">Internal regulation</string>
+    <string name="norms">Behaviour norms</string>
+    <string name="readNorms">Click here to read the internal regulation</string>
+    <string name="discoverable">Make discoverable</string>
+    <string name="on">ON</string>
+    <string name="btnSend">send</string>
+    <string name="off" translatable="false">Bluetooth Off</string>
+    <string name="pages">Pages</string>
+    <string name= "navigation_drawer_open" translatable="false">Open navigation draw</string>
+    <string name= "navigation_drawer_close" translatable="false">Close navigation draw</string>
+    <string name="chooseFile">Choose a file</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="city">City</string>
+    <string name="mallLocation">Mall location</string>
+    <string name="pharmacyLocation">Pharmacy location</string>
+    <string name="backHome">Go to Home</string>
+    <string name="downloadSuccess">File downloaded</string>
 </resources>

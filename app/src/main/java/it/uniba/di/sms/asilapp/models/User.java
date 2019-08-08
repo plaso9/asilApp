@@ -16,7 +16,7 @@ public class User {
 
     }
     //constructor
-    public User(String id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, int _acceptance) {
+    public User(String id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, int _acceptance, int role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -25,6 +25,7 @@ public class User {
         this.cell = cell;
         this.gender = gender;
         this._acceptance = _acceptance;
+        this.role = role;
     }
 
     public String getId() {

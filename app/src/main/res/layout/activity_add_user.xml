@@ -4,18 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPatientActivity">
+    tools:context=".AddUserActivity">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
 
     <!--    PAGE TITLE -->
     <TextView
@@ -26,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:textAllCaps="true"
-        android:text="@string/addPatient"
+        android:text="@string/addUser"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -86,6 +79,17 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
+        <!--PASSWORD-->
+        <TextView
+            android:id="@+id/textViewPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/password"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
     <!--CELL-->
     <TextView
         android:id="@+id/textViewCell"
@@ -96,7 +100,7 @@
         android:text="@string/cell"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
     <!--GENDER-->
     <TextView
         android:id="@+id/textViewGender"
@@ -108,6 +112,8 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
+
+
 
     <!--    EDIT LINE COLUMN  -->
 
@@ -188,6 +194,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewEmail"
         tools:text="asilApp" />
+        <!--EMAIL-->
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text=""
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewPassword"
+            tools:text="asilApp" />
     <!--CELL-->
     <EditText
         android:id="@+id/editTextCell"
@@ -204,43 +225,32 @@
         app:layout_constraintTop_toTopOf="@+id/textViewCell"
         tools:text="asilApp" />
     <!--GENDER-->
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <EditText
+        app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewGender"
+        android:id="@+id/editTextGender"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewGender">
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="20dp"
+        tools:text="asilApp" >
+    </EditText>
 
-        <RadioButton
-            android:id="@+id/radioBtnMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="M"
-            android:textSize="20dp"/>
-
-        <RadioButton
-            android:id="@+id/radioBtnFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="F"
-            android:textSize="20dp"/>
-    </RadioGroup>
     <!--SUBMIT BUTTON-->
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="30dp"
         android:text="@string/submit"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextGender"
+        app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

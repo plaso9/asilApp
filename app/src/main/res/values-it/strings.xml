@@ -58,7 +58,7 @@
     <string name="appRating">Come valuteresti questa applicazione?</string>
     <string name="comment">Aggiungi un commento (facoltativo)</string>
     <string name="submit">Invia</string>
-    <string name="medicine">Farmaci</string>
+    <string name="medicines">Farmaci</string>
     <string name="food">Cibo</string>
     <string name="go">"Recati presso: "</string>
     <string name="show">"Mostra: "</string>
@@ -66,7 +66,7 @@
     <string name="addMeasurement">Aggiungi Misurazione</string>
     <string name="lastMeasurement">Ultima Misurazione</string>
     <string name="pressure">Pressione</string>
-    <string name="addPatient">Aggiungi Paziente</string>
+    <string name="addUser">Aggiungi utente</string>
     <string name="itch">Prurito</string>
     <string name="fever">Febbre</string>
     <string name="thirst">Sete</string>
@@ -78,6 +78,27 @@
     <string name="insomnia">Insonnia</string>
     <string name="asthenia">Astenia</string>
     <string name="save">Salva</string>
+    <string name="description">Descrizione</string>
+    <string name="nutritionalSuggestions">Suggerimenti Nutrizionali</string>
+    <string name="lifestyle">Stile di Vita</string>
+    <string name="addFood">Aggiungi riperimento beni</string>
+    <string name="readRatings">Leggi le valutazioni</string>
+    <string name="addAcceptance">Aggiungi accettazione</string>
+    <string name="healthStandards">Norme sanitarie</string>
+    <string name="internalRegulation">Regolamento interno</string>
+    <string name="norms">Norme comportamentali</string>
+    <string name="readNorms">Clicca qui per leggere il regolamento interno</string>
+    <string name="discoverable">Rendi visibile</string>
+    <string name="on">Attiva</string>
+    <string name="btnSend">Invia</string>
+    <string name="off">Disattiva</string>
+    <string name="pages">Pagine</string>
+    <string name="chooseFile">Scegli un file</string>
+    <string name="city">Città</string>
+    <string name="mallLocation">Indirizzo del supermecato convenzionato</string>
+    <string name="pharmacyLocation">Indirizzo della farmacia convenzionata</string>
+    <string name="backHome">Torna alla Home</string>
+    <string name="downloadSuccess">File scaricato</string>
 </resources>
 
 

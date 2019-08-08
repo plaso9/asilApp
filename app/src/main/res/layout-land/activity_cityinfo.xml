@@ -12,9 +12,7 @@
             android:id="@+id/include"
             layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_height="wrap_content" />
 
     <!--  PAGE TITLE -->
     <TextView
@@ -131,7 +129,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/image_acceptance"
+                        android:id="@+id/image_municipality"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:contentDescription="@string/municipality"
@@ -150,7 +148,7 @@
             </android.support.v7.widget.CardView>
             <!-- ROW 3  -->
             <android.support.v7.widget.CardView
-                android:id="@+id/city_postoffice"
+                android:id="@+id/card_postoffice"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
