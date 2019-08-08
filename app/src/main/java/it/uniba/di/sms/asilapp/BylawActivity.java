@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BylawActivity extends AppCompatActivity {
 
@@ -41,7 +42,7 @@ public class BylawActivity extends AppCompatActivity {
         request.setTitle("ISCRIZIONE AL SERVIZIO SANITARIO NAZIONALE");
 
         //Setting description of request
-        request.setDescription("Android Data download using DownloadManager.");
+        request.setDescription("AsilApp");
 
         //Set the local destination for the downloaded file to a path
         //within the application's external files directory
@@ -50,8 +51,10 @@ public class BylawActivity extends AppCompatActivity {
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
-
+        Toast.makeText(this, "SUCCESS",
+                Toast.LENGTH_LONG).show();
         return downloadReference;
+
     }
 
 
