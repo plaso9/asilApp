@@ -9,5 +9,6 @@ public class PatientDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_detail);
+        System.out.println("Display Name = " + getIntent().getExtras().getString("display_name"));
     }
 }

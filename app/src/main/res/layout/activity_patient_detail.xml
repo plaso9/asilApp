@@ -15,6 +15,19 @@
             android:layout_height="wrap_content"/>
 
 
+
+    <TextView
+        android:text="USER DATA"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal" />
+
+
+
     <GridLayout
         android:id="@+id/gridPatientDetailLayout"
         android:rowCount="3"
