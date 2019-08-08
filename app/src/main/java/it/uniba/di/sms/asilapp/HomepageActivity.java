@@ -13,6 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
+import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.widget.ProgressBar;
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridLayout gridLayout;
@@ -20,6 +24,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     CardView card_view_Informative;
     CardView card_view_Questionnaires;
     CardView card_view_MedicalRecords;
+
+    int REQUEST_CODE=0;
+    ProgressDialog progressBar;
 
 
     private DrawerLayout drawer;
@@ -139,5 +146,19 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         }
     };
 
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        afterExecution();
+    }
+
+
+   public void afterExecution(){
+       if (REQUEST_CODE == 1){
+           progressBar.dismiss();
+           REQUEST_CODE=0;
+       }
+   }
 
 }

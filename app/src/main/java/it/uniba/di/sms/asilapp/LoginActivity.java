@@ -2,6 +2,8 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -77,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                             onLoginSuccess();
                         } else {
                             onLoginFailed();
+                            progressDialog.dismiss();
                             return;
                         }
                     }
@@ -87,7 +90,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void getRoleActivity(int role_id) {
         if(role_id == 1){
-            //Load admin activity
+            //Admin Role
+            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
         } else if (role_id == 2) {
             //User Role
             Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
@@ -131,5 +137,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login Failed", Toast.LENGTH_LONG).show();
+
     }
 }

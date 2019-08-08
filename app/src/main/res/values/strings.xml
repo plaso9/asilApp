@@ -105,5 +105,10 @@
     <string name="pages">Pages</string>
     <string name= "navigation_drawer_open" translatable="false">Open navigation draw</string>
     <string name= "navigation_drawer_close" translatable="false">Close navigation draw</string>
-
+    <string name="chooseFile">Choose a file</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="city">City</string>
+    <string name="mallLocation">Mall location</string>
+    <string name="pharmacyLocation">Pharmacy location</string>
+    <string name="backHome">Go to Home</string>
 </resources>

@@ -93,6 +93,11 @@
     <string name="btnSend">Invia</string>
     <string name="off">Disattiva</string>
     <string name="pages">Pagine</string>
+    <string name="chooseFile">Scegli un file</string>
+    <string name="city">Città</string>
+    <string name="mallLocation">Indirizzo del supermecato convenzionato</string>
+    <string name="pharmacyLocation">Indirizzo della farmacia convenzionata</string>
+    <string name="backHome">Torna alla Home</string>
 </resources>
 
 

@@ -47,7 +47,7 @@ public class InformativeActivity extends AppCompatActivity{
     public View.OnClickListener card_view_Video_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,TestActivity.class);
+            Intent sens = new Intent (InformativeActivity.this,VideoActivity.class);
             startActivity(sens);
 
         }
