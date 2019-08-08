@@ -1,24 +1,12 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.DownloadManager;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.os.TestLooperManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
 
 public class BylawActivity extends AppCompatActivity {
 
@@ -50,7 +38,7 @@ public class BylawActivity extends AppCompatActivity {
         DownloadManager.Request request = new DownloadManager.Request(uri);
 
         //Setting title of request
-        request.setTitle("Data Download");
+        request.setTitle("ISCRIZIONE AL SERVIZIO SANITARIO NAZIONALE");
 
         //Setting description of request
         request.setDescription("Android Data download using DownloadManager.");
@@ -58,7 +46,7 @@ public class BylawActivity extends AppCompatActivity {
         //Set the local destination for the downloaded file to a path
         //within the application's external files directory
             request.setDestinationInExternalFilesDir(BylawActivity.this,
-                    Environment.DIRECTORY_DOWNLOADS,"SANITARY.jpg");
+                    Environment.DIRECTORY_DOWNLOADS,"help.png");
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
