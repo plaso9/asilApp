@@ -97,6 +97,7 @@
     <string name="mallLocation">Indirizzo del supermecato convenzionato</string>
     <string name="pharmacyLocation">Indirizzo della farmacia convenzionata</string>
     <string name="backHome">Torna alla Home</string>
+    <string name="downloadSuccess">File scaricato</string>
 </resources>
 
 

@@ -44,6 +44,9 @@ public class BylawActivity extends AppCompatActivity {
         //Setting description of request
         request.setDescription("AsilApp");
 
+        //Setting visibility
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
         //Set the local destination for the downloaded file to a path
         //within the application's external files directory
             request.setDestinationInExternalFilesDir(BylawActivity.this,
@@ -51,7 +54,8 @@ public class BylawActivity extends AppCompatActivity {
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
-        Toast.makeText(this, "SUCCESS",
+
+        Toast.makeText(this, getResources().getString(R.string.downloadSuccess),
                 Toast.LENGTH_LONG).show();
         return downloadReference;
 

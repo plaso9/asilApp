@@ -108,4 +108,5 @@
     <string name="mallLocation">Mall location</string>
     <string name="pharmacyLocation">Pharmacy location</string>
     <string name="backHome">Go to Home</string>
+    <string name="downloadSuccess">File downloaded</string>
 </resources>
