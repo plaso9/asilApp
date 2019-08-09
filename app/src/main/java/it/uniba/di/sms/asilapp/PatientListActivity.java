@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,12 +44,26 @@ public class PatientListActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<User,UserViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<User,UserViewHolder>
                 (User.class, R.layout.activity_patient_row, UserViewHolder.class, mDatabaseUser){
             @Override
-            protected void populateViewHolder(UserViewHolder viewHolder, User model, int position){
+            protected void populateViewHolder(UserViewHolder viewHolder, User model, final int position){
                 //Set value in viewHolder
                 viewHolder.setName(model.getName());
                 viewHolder.setSurname(model.getSurname());
                 viewHolder.setDate_of_birth(model.getDate_of_birth());
+                //Set on click listener to get id of user clicked
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Get id of user clicked
+                        String user_clicked = getRef(position).getKey();
+                        //Create new intent
+                        Intent patientDetailIntent = new Intent(PatientListActivity.this, PatientDetailActivity.class);
+                        //pass parameter to intent
+                        patientDetailIntent.putExtra("user_clicked", user_clicked);
+                        startActivity(patientDetailIntent);
+                    }
+                });
             }
+
 
         };
         //Used to associate an adapter with the list
