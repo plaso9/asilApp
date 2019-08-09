@@ -1,9 +1,12 @@
 package it.uniba.di.sms.asilapp.models;
 
+import java.util.ArrayList;
+
 public class Acceptance {
     public String name;
     public String address;
     public String regulation;
+    public ArrayList<String> listOfServices;
 
     //empty constructor
     public Acceptance(){
@@ -15,6 +18,12 @@ public class Acceptance {
         this.name = name;
         this.address = address;
         this.regulation = regulation;
+    }
+    //constructor
+    public Acceptance(String name, String address, ArrayList<String> listOfServices){
+        this.name = name;
+        this.address = address;
+        this.listOfServices = listOfServices;
     }
 
     public String getName() {
