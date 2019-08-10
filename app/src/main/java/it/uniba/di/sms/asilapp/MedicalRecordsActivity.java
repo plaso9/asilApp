@@ -130,103 +130,105 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         mUserReference.addValueEventListener(userListener);
     }
 
+    //On Click Listener to add medical records
     public View.OnClickListener button_addTemperature_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            startActivity(sens);
+            Intent add_temperatureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(add_temperatureIntent);
         }
     };
     public View.OnClickListener button_addBloodPressure_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            startActivity(sens);
+            Intent add_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(add_bloodPressureIntent);
         }
     };
     public View.OnClickListener button_addGlycemia_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            startActivity(sens);
+            Intent add_glycemiaIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(add_glycemiaIntent);
         }
     };
     public View.OnClickListener button_addHeartbeat_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            startActivity(sens);
+            Intent add_heartbeatIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(add_heartbeatIntent);
         }
     };
     public View.OnClickListener button_addECG_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            startActivity(sens);
+            Intent add_ecgIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            startActivity(add_ecgIntent);
         }
     };
     public View.OnClickListener button_addSymptoms_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
-            startActivity(sens);
+            Intent add_symptomsIntent = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
+            startActivity(add_symptomsIntent);
         }
     };
     public View.OnClickListener button_addPathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, PathologyActivity.class);
-            startActivity(sens);
+            Intent add_pathologyIntent = new Intent(MedicalRecordsActivity.this, PathologyActivity.class);
+            startActivity(add_pathologyIntent);
         }
     };
 
+    //On Click Listener to see medical records
     public View.OnClickListener image_seeTemperatureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_temperatureIntent);
         }
     };
     public View.OnClickListener image_seeBloodPressureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_bloodPressureIntent);
         }
     };
     public View.OnClickListener image_seeGlycemiaStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_glycemiaIntent);
         }
     };
     public View.OnClickListener image_seeHeartbeatStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_heartbeatIntent);
         }
     };
     public View.OnClickListener image_seeECGStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_ecgIntent);
         }
     };
     public View.OnClickListener image_seeSymptomsStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_symptomsIntent);
         }
     };
     public View.OnClickListener image_seePathologyStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent sens = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
-            startActivity(sens);
+            Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            startActivity(see_pathologyIntent);
         }
     };
 }
