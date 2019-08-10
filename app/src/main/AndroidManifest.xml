@@ -34,6 +34,7 @@
         <activity android:name=".PatientDetailActivity" />
         <activity android:name=".KitOpeningActivity" />
         <activity android:name=".PatientListActivity" />
+        <activity android:name=".PathologyActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
         <activity
