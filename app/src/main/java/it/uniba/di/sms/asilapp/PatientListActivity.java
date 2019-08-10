@@ -5,13 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import it.uniba.di.sms.asilapp.models.User;
@@ -80,7 +77,7 @@ public class PatientListActivity extends AppCompatActivity {
         }
         //Set value methods
         public void setName(String name){
-            TextView userName = (TextView)mView.findViewById(R.id.userName);
+            TextView userName = (TextView)mView.findViewById(R.id.text_userNameClicked);
             userName.setText(name);
         }
         public void setSurname(String surname){
