@@ -135,6 +135,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_temperatureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            add_temperatureIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_temperatureIntent);
         }
     };
@@ -142,6 +143,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            add_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_bloodPressureIntent);
         }
     };
@@ -149,6 +151,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_glycemiaIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            add_glycemiaIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_glycemiaIntent);
         }
     };
@@ -156,6 +159,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_heartbeatIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            add_heartbeatIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_heartbeatIntent);
         }
     };
@@ -163,6 +167,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_ecgIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            add_ecgIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_ecgIntent);
         }
     };
@@ -170,6 +175,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_symptomsIntent = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
+            add_symptomsIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_symptomsIntent);
         }
     };
@@ -177,6 +183,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent add_pathologyIntent = new Intent(MedicalRecordsActivity.this, PathologyActivity.class);
+            add_pathologyIntent.putExtra("user_clicked", userClickedId);
             startActivity(add_pathologyIntent);
         }
     };
@@ -186,6 +193,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_temperatureIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_temperatureIntent);
         }
     };
@@ -193,6 +201,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_bloodPressureIntent);
         }
     };
@@ -200,6 +209,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_glycemiaIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_glycemiaIntent);
         }
     };
@@ -207,6 +217,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_heartbeatIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_heartbeatIntent);
         }
     };
@@ -214,6 +225,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_ecgIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_ecgIntent);
         }
     };
@@ -221,6 +233,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_symptomsIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_symptomsIntent);
         }
     };
@@ -228,6 +241,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            see_pathologyIntent.putExtra("user_clicked", userClickedId);
             startActivity(see_pathologyIntent);
         }
     };
