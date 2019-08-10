@@ -113,8 +113,8 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Informative_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (HomepageActivity.this,InformativeActivity.class);
-            startActivity(sens);
+            Intent informativeIntent = new Intent (HomepageActivity.this,InformativeActivity.class);
+            startActivity(informativeIntent);
 
         }
     };
@@ -122,8 +122,8 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (HomepageActivity.this,PersonalDataActivity.class);
-            startActivity(sens);
+            Intent personalDataIntent = new Intent (HomepageActivity.this,PersonalDataActivity.class);
+            startActivity(personalDataIntent);
 
         }
     };
@@ -131,16 +131,16 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(HomepageActivity.this, QuestionnairesActivity.class);
-            startActivity(i);
+            Intent questionnairesIntent = new Intent(HomepageActivity.this, QuestionnairesActivity.class);
+            startActivity(questionnairesIntent);
         }
     };
 
     public  View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
-            startActivity(intent);
+            Intent medicalRecordsIntent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
+            startActivity(medicalRecordsIntent);
         }
     };
 
