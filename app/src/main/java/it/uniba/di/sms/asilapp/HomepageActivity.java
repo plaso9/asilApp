@@ -14,9 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.widget.ProgressBar;
+
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridLayout gridLayout;

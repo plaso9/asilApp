@@ -25,6 +25,7 @@ import it.uniba.di.sms.asilapp.models.User;
 public class PersonalDataActivity extends AppCompatActivity {
     private static final String TAG = "PersonalDataActivity";
     private String uId;
+    private String userClickedId;
     private EditText mName;
     private EditText mSurname;
     private EditText mDateOfBirth;
@@ -39,14 +40,21 @@ public class PersonalDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
-
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Get userId
-        uId = user.getUid();
+        //Initialize variable to get extra value from other intent
+        userClickedId = getIntent().getExtras().getString("user_clicked");
+        //Condition
+        if (userClickedId != null) {
+            uId = userClickedId;
+        } else {
+            // Get userId Logged
+            uId = user.getUid();
+        }
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
+
 
         // Defined personal data variable
         mName = findViewById(R.id.editTextName);

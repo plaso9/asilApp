@@ -39,6 +39,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     Button button_addPathology;
     private DatabaseReference mUserReference;
     private String uId;
+    private String userClickedId;
     private int mRole;
 
 
@@ -81,8 +82,16 @@ public class MedicalRecordsActivity extends AppCompatActivity {
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Get userId
-        uId = user.getUid();
+        //Initialize variable to get extra value from other intent
+        userClickedId = getIntent().getExtras().getString("user_clicked");
+        //Condition
+        if (userClickedId != null) {
+            uId = userClickedId;
+        } else {
+            // Get userId Logged
+            uId = user.getUid();
+        }
+
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);

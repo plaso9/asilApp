@@ -1,9 +1,13 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +21,18 @@ import it.uniba.di.sms.asilapp.models.User;
 
 public class PatientDetailActivity extends AppCompatActivity {
     private static final String TAG = "PatientDetailActivity";
-
+    //Define variable
     private String userClickedId;
     private TextView mName;
     private DatabaseReference mUserReference;
+
+    //Define cards
+    CardView card_view_personalData;
+    CardView card_view_medicalRecords;
+    CardView card_view_questionnaires;
+
+    int REQUEST_CODE=0;
+    ProgressDialog progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +45,16 @@ public class PatientDetailActivity extends AppCompatActivity {
         mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(userClickedId);
         // Defined patient data variable
         mName = findViewById(R.id.text_userNameClicked);
+        //defined card variable
+        card_view_personalData = findViewById(R.id.card_personalData);
+        card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
+        card_view_questionnaires = findViewById(R.id.card_questionnaires);
+
+        //set function to card
+        card_view_personalData.setOnClickListener(card_view_Personaldata_listener);
+        card_view_medicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
+        card_view_questionnaires.setOnClickListener(card_view_Questionnaries_listener);
+
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
@@ -51,5 +73,47 @@ public class PatientDetailActivity extends AppCompatActivity {
             }
         };
         mUserReference.addValueEventListener(userListener);
+    }
+
+    //Open Personal Data Intent
+    public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent personalDataIntent = new Intent (PatientDetailActivity.this,PersonalDataActivity.class);
+            personalDataIntent.putExtra("user_clicked", userClickedId);
+            startActivity(personalDataIntent);
+        }
+    };
+    //Open Questionnaires Intent
+    public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent questionnairesIntent = new Intent(PatientDetailActivity.this, QuestionnairesActivity.class);
+            questionnairesIntent.putExtra("user_clicked", userClickedId);
+            startActivity(questionnairesIntent);
+        }
+    };
+    //Open Medical Records Intent
+    public  View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent medicalRecordsIntent = new Intent(PatientDetailActivity.this, MedicalRecordsActivity.class);
+            medicalRecordsIntent .putExtra("user_clicked", userClickedId);
+            startActivity(medicalRecordsIntent );
+        }
+    };
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        afterExecution();
+    }
+
+
+    public void afterExecution(){
+        if (REQUEST_CODE == 1){
+            progressBar.dismiss();
+            REQUEST_CODE=0;
+        }
     }
 }
