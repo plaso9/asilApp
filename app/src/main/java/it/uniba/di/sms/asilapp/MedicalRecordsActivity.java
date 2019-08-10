@@ -84,13 +84,8 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Initialize variable to get extra value from other intent
         userClickedId = getIntent().getExtras().getString("user_clicked");
-        //Condition
-        if (userClickedId != null) {
-            uId = userClickedId;
-        } else {
-            // Get userId Logged
-            uId = user.getUid();
-        }
+        // Get userId Logged
+        uId = user.getUid();
 
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
