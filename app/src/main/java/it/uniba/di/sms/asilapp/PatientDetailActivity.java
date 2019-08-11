@@ -40,7 +40,9 @@ public class PatientDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_detail);
 
         //Get User Clicked Id
-        userClickedId = getIntent().getExtras().getString("user_clicked");
+        if (getIntent().getExtras() != null) {
+            userClickedId = getIntent().getExtras().getString("user_clicked");
+        }
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(userClickedId);
         // Defined patient data variable

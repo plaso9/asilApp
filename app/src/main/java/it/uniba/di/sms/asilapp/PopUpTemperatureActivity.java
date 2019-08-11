@@ -47,8 +47,10 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pop_up_temperature);
 
         //Get value from previous intent
-        user_clicked_id = getIntent().getExtras().getString("user_clicked");
-        parameter_clicked_id = getIntent().getExtras().getString("_parameter");
+        if (getIntent().getExtras() != null) {
+            user_clicked_id = getIntent().getExtras().getString("user_clicked");
+            parameter_clicked_id = getIntent().getExtras().getString("_parameter");
+        }
         //find R.id from xml
         editValueParameter = findViewById(R.id.editValueParameter);
         submitMeasurement = findViewById(R.id.buttonSaveMeasurement);
