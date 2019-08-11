@@ -23,7 +23,9 @@ public class QuestionnairesActivity extends AppCompatActivity {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Initialize variable to get extra value from other intent
-        userClickedId = getIntent().getExtras().getString("user_clicked");
+        if (getIntent().getExtras() != null) {
+            userClickedId = getIntent().getExtras().getString("user_clicked");
+        }
         //Condition
         if (userClickedId != null) {
             uId = userClickedId;
