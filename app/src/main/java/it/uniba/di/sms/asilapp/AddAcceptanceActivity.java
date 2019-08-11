@@ -79,7 +79,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
 
         String[] services = centerServices.split(",");
         ArrayList<String> listOfServices = new ArrayList<String>();
-        for (int i = 0; i<services.length; i++){
+        for (int i = 0; i < services.length; i++){
             listOfServices.add(services[i]);
         }
 
