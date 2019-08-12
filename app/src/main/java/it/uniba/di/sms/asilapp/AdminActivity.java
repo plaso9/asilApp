@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,8 @@ public class AdminActivity extends AppCompatActivity {
     CardView card_view_addAcceptance;
     CardView card_view_addFood;
     CardView card_view_readRatings;
+    FloatingActionButton chatButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class AdminActivity extends AppCompatActivity {
         card_view_addAcceptance = findViewById(R.id.card_addAcceptance);
         card_view_addFood = findViewById(R.id.card_addFood);
         card_view_readRatings = findViewById(R.id.card_readRatings);
-
+        chatButton = findViewById(R.id.chatBtn);
 
 
         //set function to card
@@ -33,7 +36,7 @@ public class AdminActivity extends AppCompatActivity {
         card_view_addUser.setOnClickListener(card_view_addUser_listener);
         card_view_addFood.setOnClickListener(card_view_addFood_listener);
         card_view_readRatings.setOnClickListener(card_view_readRatings_listener);
-
+        chatButton.setOnClickListener(chatButton_listener);
 
     }
 
@@ -68,6 +71,14 @@ public class AdminActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
             startActivity(intent);
+        }
+    };
+
+    public View.OnClickListener chatButton_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent chatIntent = new Intent(AdminActivity.this, ChatActivity.class);
+            startActivity(chatIntent);
         }
     };
 

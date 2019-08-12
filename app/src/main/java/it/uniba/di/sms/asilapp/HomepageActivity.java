@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +23,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     CardView card_view_Informative;
     CardView card_view_Questionnaires;
     CardView card_view_MedicalRecords;
+    FloatingActionButton chatButton;
 
     int REQUEST_CODE=0;
     ProgressDialog progressBar;
@@ -59,7 +61,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_Informative = findViewById(R.id.card_informationSection);
         card_view_Questionnaires = findViewById(R.id.card_questionnaires);
         card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
-
+        chatButton = findViewById(R.id.chatBtn);
 
 
         //set function to card
@@ -67,7 +69,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_PersonalData.setOnClickListener(card_view_Personaldata_listener);
         card_view_Questionnaires.setOnClickListener(card_view_Questionnaries_listener);
         card_view_MedicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
-
+        chatButton.setOnClickListener(chatButton_listener);
 
     }
 
@@ -141,6 +143,14 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         public void onClick(View view) {
             Intent medicalRecordsIntent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
             startActivity(medicalRecordsIntent);
+        }
+    };
+
+    public View.OnClickListener chatButton_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent chatIntent = new Intent(HomepageActivity.this, ChatActivity.class);
+            startActivity(chatIntent);
         }
     };
 
