@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextMail;
     private EditText editTextPassword;
     private EditText editTextGender;
+    private Spinner spinnerAcceptance;
     private Button submitButton;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private FirebaseAuth mAuth;
@@ -52,6 +54,7 @@ public class AddUserActivity extends AppCompatActivity {
         editTextMail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextGender = findViewById(R.id.editTextGender);
+        spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
 
         submitButton.setOnClickListener(submitButton_listener);
@@ -111,7 +114,7 @@ public class AddUserActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
-
+        
         mAuth.createUserWithEmailAndPassword(eMail,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
