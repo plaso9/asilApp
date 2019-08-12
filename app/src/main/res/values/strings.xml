@@ -103,8 +103,8 @@
     <string name="btnSend">send</string>
     <string name="off" translatable="false">Bluetooth Off</string>
     <string name="pages">Pages</string>
-    <string name= "navigation_drawer_open" translatable="false">Open navigation draw</string>
-    <string name= "navigation_drawer_close" translatable="false">Close navigation draw</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation draw</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation draw</string>
     <string name="chooseFile">Choose a file</string>
     <string name="password" translatable="false">Password</string>
     <string name="city">City</string>

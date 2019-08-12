@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -12,6 +13,8 @@ public class DoctorActivity extends AppCompatActivity {
     CardView  card_view_searchPatient,
             card_view_kitOpening,
             card_view_patientList;
+    FloatingActionButton chatButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +28,12 @@ public class DoctorActivity extends AppCompatActivity {
         card_view_searchPatient = findViewById(R.id.card_searchPatient);
         card_view_kitOpening = findViewById(R.id.card_kitOpening);
         card_view_patientList = findViewById(R.id.card_patientList);
+        chatButton = findViewById(R.id.chatBtn);
 
         card_view_searchPatient.setOnClickListener(card_view_searchPatient_listener);
         card_view_kitOpening.setOnClickListener(card_view_kitOpening_listener);
         card_view_patientList.setOnClickListener(card_view_patientList_listener);
-
+        chatButton.setOnClickListener(chatButton_listener);
     }
 
     public View.OnClickListener card_view_searchPatient_listener = new View.OnClickListener() {
@@ -55,6 +59,14 @@ public class DoctorActivity extends AppCompatActivity {
             Intent sens = new Intent (DoctorActivity.this,PatientListActivity.class);
             startActivity(sens);
 
+        }
+    };
+
+    public View.OnClickListener chatButton_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent chatIntent = new Intent(DoctorActivity.this, ChatActivity.class);
+            startActivity(chatIntent);
         }
     };
 
