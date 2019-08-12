@@ -9,6 +9,7 @@ public class User {
     public String gender;
     public int role;
     public int _acceptance;
+    public String acceptanceName;
 
     //empty constructor
     public User(){
@@ -23,6 +24,18 @@ public class User {
         this.cell = cell;
         this.gender = gender;
         this._acceptance = _acceptance;
+        this.role = role;
+    }
+
+    //constructor
+    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role) {
+        this.name = name;
+        this.surname = surname;
+        this.date_of_birth = date_of_birth;
+        this.birth_place = birth_place;
+        this.cell = cell;
+        this.gender = gender;
+        this.acceptanceName = acceptanceName;
         this.role = role;
     }
 

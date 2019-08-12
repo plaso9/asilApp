@@ -113,6 +113,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
 
+        <!--ACCEPTANCE-->
+        <TextView
+            android:id="@+id/textViewAcceptance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/acceptance"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+
 
 
     <!--    EDIT LINE COLUMN  -->
@@ -240,6 +252,22 @@
         android:textSize="20dp"
         tools:text="asilApp" >
     </EditText>
+        <!--ACCEPTANCE-->
+       <!-- <EditText
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewAcceptance"
+            android:id="@+id/editTextAcceptance"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20dp"
+            tools:text="asilApp" >
+        </EditText> -->
 
     <!--SUBMIT BUTTON-->
     <Button
@@ -249,8 +277,20 @@
         android:layout_marginTop="30dp"
         android:text="@string/submit"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/editTextGender"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerAcceptnace"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAcceptnace" />
 
-</android.support.constraint.ConstraintLayout>
+        <Spinner
+            android:id="@+id/spinnerAcceptnace"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewAcceptance" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>
