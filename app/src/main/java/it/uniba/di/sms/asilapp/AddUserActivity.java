@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -18,11 +19,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class AddUserActivity extends AppCompatActivity {
@@ -39,6 +46,8 @@ public class AddUserActivity extends AppCompatActivity {
     private Button submitButton;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private FirebaseAuth mAuth;
+    private DatabaseReference acceptanceRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +93,33 @@ public class AddUserActivity extends AppCompatActivity {
             }
         };
 
+        //Initialize DB to get acceptance reference
+        acceptanceRef = FirebaseDatabase.getInstance().getReference("acceptance");
+        acceptanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Acceptance> acceptances = new ArrayList<>();
+                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
+                {
+                    acceptances.add(acceptanceSnapShot.getValue(Acceptance.class));
+                }
+                //Get all names of acceptance
+                List<String> name_list = new ArrayList<>();
+                for(Acceptance acceptance: acceptances){
+                    name_list.add(acceptance.getName());
+                }
+                //Create adapter and set for spinner
+                ArrayAdapter<String> stringArrayAdapter;
+                stringArrayAdapter = new ArrayAdapter<>(AddUserActivity.this, android.R.layout.simple_list_item_1, name_list);
+                spinnerAcceptance.setAdapter(stringArrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Set toast message
+            }
+        });
+
     }
 
     public View.OnClickListener submitButton_listener = new View.OnClickListener() {
@@ -114,6 +150,7 @@ public class AddUserActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
+        final String acceptanceName = spinnerAcceptance.getSelectedItem().toString();
         
         mAuth.createUserWithEmailAndPassword(eMail,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -127,7 +164,7 @@ public class AddUserActivity extends AppCompatActivity {
                                     birthPlace,
                                     cell,
                                     gender,
-                                    1,
+                                    acceptanceName,
                                     2
                             );
 

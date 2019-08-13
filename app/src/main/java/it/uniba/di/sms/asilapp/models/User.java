@@ -8,7 +8,7 @@ public class User {
     public String cell;
     public String gender;
     public int role;
-    public int _acceptance;
+    //public int _acceptance;
     public String acceptanceName;
 
     //empty constructor
@@ -16,14 +16,14 @@ public class User {
 
     }
     //constructor
-    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, int _acceptance, int role) {
+    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
         this.birth_place = birth_place;
         this.cell = cell;
         this.gender = gender;
-        this._acceptance = _acceptance;
+        //this._acceptance = _acceptance;
         this.role = role;
     }
 
@@ -95,11 +95,12 @@ public class User {
         this.role = role;
     }
 
-    public int get_acceptance() {
+   /* public int get_acceptance() {
         return _acceptance;
     }
 
     public void set_acceptance(int _acceptance) {
         this._acceptance = _acceptance;
     }
+    */
 }
