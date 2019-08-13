@@ -63,11 +63,11 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         public void onClick(View view) {
             if (eTcenterName.getText().toString().equals("") ||
                     eTcenterLocation.getText().toString().equals("") ||
-                    eTcenterServices.getText().toString().equals("")){
+                    eTcenterServices.getText().toString().equals("")){ //Check if all the fields are not empty
                 Toast.makeText(AddAcceptanceActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
 
             } else {
-                addNewAcceptance();
+                addNewAcceptance(); //Method to add a new acceptance
             }
         }
     };
@@ -76,11 +76,10 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         final String nameCenter = eTcenterName.getText().toString();
         final String locationCenter = eTcenterLocation.getText().toString();
         final String centerServices = eTcenterServices.getText().toString();
-
-        String[] services = centerServices.split(",");
-        ArrayList<String> listOfServices = new ArrayList<String>();
+        String[] services = centerServices.split(","); //Split string every comma
+        ArrayList<String> listOfServices = new ArrayList<>();
         for (int i = 0; i < services.length; i++){
-            listOfServices.add(services[i]);
+            listOfServices.add(services[i]);//add string_service to the list
         }
 
         Acceptance acceptance = new Acceptance(
@@ -95,7 +94,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Toast.makeText(AddAcceptanceActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                 } else {
-                    //add a failure message
+                    Toast.makeText(AddAcceptanceActivity.this, "Error, can't add the acceptance", Toast.LENGTH_LONG).show();
                 }
             }
         });
