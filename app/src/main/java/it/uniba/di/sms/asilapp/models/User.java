@@ -10,6 +10,7 @@ public class User {
     public int role;
     //public int _acceptance;
     public String acceptanceName;
+    public String mail;
 
     //empty constructor
     public User(){
@@ -28,7 +29,7 @@ public class User {
     }
 
     //constructor
-    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role) {
+    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail) {
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
@@ -37,6 +38,7 @@ public class User {
         this.gender = gender;
         this.acceptanceName = acceptanceName;
         this.role = role;
+        this.mail = mail;
     }
 
     public String getName() {
@@ -103,4 +105,12 @@ public class User {
         this._acceptance = _acceptance;
     }
     */
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 }

@@ -146,7 +146,7 @@ public class AddUserActivity extends AppCompatActivity {
         final String surname = editTextSurname.getText().toString().trim();
         final String cell =  editTextCell.getText().toString().trim();
         final String birthPlace = editTextBirthPlace.getText().toString().trim();
-        String eMail = editTextMail.getText().toString().trim();
+        final String eMail = editTextMail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
@@ -165,7 +165,8 @@ public class AddUserActivity extends AppCompatActivity {
                                     cell,
                                     gender,
                                     acceptanceName,
-                                    2
+                                    2,
+                                    eMail
                             );
 
                             FirebaseDatabase.getInstance().getReference("user")

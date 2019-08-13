@@ -64,7 +64,7 @@ public class PersonalDataActivity extends AppCompatActivity {
         mDateOfBirth = findViewById(R.id.editTextBirthday);
         mBirthPlace = findViewById(R.id.editTextBirthPlace);
         mEmail = findViewById(R.id.editTextEmail);
-        mEmail.setText(user.getEmail());
+        //mEmail.setText(user.getEmail());
         mCell = findViewById(R.id.editTextCell);
         mGender = findViewById(R.id.editTextGender);
         mSavePersonalData = findViewById(R.id.buttonSavePersonalData);
@@ -81,6 +81,7 @@ public class PersonalDataActivity extends AppCompatActivity {
                 mBirthPlace.setText(user.birth_place);
                 mCell.setText(user.cell);
                 mGender.setText(user.gender);
+                mEmail.setText(user.getMail());
             }
 
             @Override
