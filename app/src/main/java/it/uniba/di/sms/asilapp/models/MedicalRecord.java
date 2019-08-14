@@ -1,12 +1,15 @@
 package it.uniba.di.sms.asilapp.models;
 
-public class Temperature {
+public class MedicalRecord {
     public String value;
     public String _user;
     public String _parameter;
     public String data_measurement;
 
-    public Temperature(String value, String _user, String _parameter, String data_measurement) {
+    public MedicalRecord() {
+    }
+
+    public MedicalRecord(String value, String _user, String _parameter, String data_measurement) {
         this.value = value;
         this._user = _user;
         this._parameter = _parameter;
