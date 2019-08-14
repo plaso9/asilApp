@@ -151,13 +151,14 @@ public class AddUserActivity extends AppCompatActivity {
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
         final String acceptanceName = spinnerAcceptance.getSelectedItem().toString();
-        
+
         mAuth.createUserWithEmailAndPassword(eMail,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             User user = new User(
+                                    mAuth.getUid(),
                                     name,
                                     surname,
                                     dateOfBirth,
