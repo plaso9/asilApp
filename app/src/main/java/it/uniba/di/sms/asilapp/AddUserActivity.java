@@ -42,6 +42,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextMail;
     private EditText editTextPassword;
     private EditText editTextGender;
+    private EditText editTextRole;
     private Spinner spinnerAcceptance;
     private Button submitButton;
     private DatePickerDialog.OnDateSetListener dateSetListener;
@@ -63,6 +64,7 @@ public class AddUserActivity extends AppCompatActivity {
         editTextMail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextGender = findViewById(R.id.editTextGender);
+        editTextRole = findViewById(R.id.editTextRole);
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
 
@@ -151,11 +153,21 @@ public class AddUserActivity extends AppCompatActivity {
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
         final String acceptanceName = spinnerAcceptance.getSelectedItem().toString();
+        final String role = editTextRole.getText().toString();
+        final int int_role;
+
+        if (role.equalsIgnoreCase("dottore")){
+            int_role = 3;
+        } else if (role.equalsIgnoreCase("admin")){
+            int_role = 1;
+        } else
+            int_role = 2;
 
         mAuth.createUserWithEmailAndPassword(eMail,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()){
                             User user = new User(
                                     mAuth.getUid(),
@@ -166,7 +178,7 @@ public class AddUserActivity extends AppCompatActivity {
                                     cell,
                                     gender,
                                     acceptanceName,
-                                    2,
+                                    int_role,
                                     eMail
                             );
 
