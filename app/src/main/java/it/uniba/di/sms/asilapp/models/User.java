@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp.models;
 
 public class User {
+    public String user_id;
     public String name;
     public String surname;
     public String date_of_birth;
@@ -17,7 +18,8 @@ public class User {
 
     }
     //constructor
-    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
+    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
+        this.user_id = user_id;
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
@@ -29,7 +31,8 @@ public class User {
     }
 
     //constructor
-    public User(String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail) {
+    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail) {
+        this.user_id = user_id;
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
@@ -39,6 +42,14 @@ public class User {
         this.acceptanceName = acceptanceName;
         this.role = role;
         this.mail = mail;
+    }
+
+    public String getUserId() {
+        return user_id;
+    }
+
+    public void setUserId(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
