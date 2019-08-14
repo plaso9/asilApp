@@ -196,7 +196,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeTemperatureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_temperatureIntent.putExtra("user_clicked", userClickedId);
             see_temperatureIntent.putExtra("_parameter", "1");
             startActivity(see_temperatureIntent);
@@ -205,7 +205,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeBloodPressureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             see_bloodPressureIntent.putExtra("_parameter", "2");
             startActivity(see_bloodPressureIntent);
@@ -214,7 +214,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeGlycemiaStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_glycemiaIntent.putExtra("user_clicked", userClickedId);
             see_glycemiaIntent.putExtra("_parameter", "3");
             startActivity(see_glycemiaIntent);
@@ -223,7 +223,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeHeartbeatStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_heartbeatIntent.putExtra("user_clicked", userClickedId);
             see_heartbeatIntent.putExtra("_parameter", "4");
             startActivity(see_heartbeatIntent);
@@ -232,7 +232,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeECGStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_ecgIntent.putExtra("user_clicked", userClickedId);
             see_ecgIntent.putExtra("_parameter", "5");
             startActivity(see_ecgIntent);
@@ -241,7 +241,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seeSymptomsStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_symptomsIntent.putExtra("user_clicked", userClickedId);
             see_symptomsIntent.putExtra("_parameter", "6");
             startActivity(see_symptomsIntent);
@@ -250,7 +250,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener image_seePathologyStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
+            Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             see_pathologyIntent.putExtra("user_clicked", userClickedId);
             see_pathologyIntent.putExtra("_parameter", "7");
             startActivity(see_pathologyIntent);
