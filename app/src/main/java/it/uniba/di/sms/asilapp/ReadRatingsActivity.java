@@ -33,7 +33,7 @@ public class ReadRatingsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.ratingList);
         //Used to know size top avoid expensive layout operation
         recyclerView.setHasFixedSize(true);
-        //Create layoutmanager, it is responsible for measuring and positioning item views within a RecyclerView
+        //Create layout manager, it is responsible for measuring and positioning item views within a RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
