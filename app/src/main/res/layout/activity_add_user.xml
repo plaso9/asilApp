@@ -113,6 +113,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
 
+        <!--ROLE-->
+        <TextView
+            android:id="@+id/textViewRole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/role"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+
         <!--ACCEPTANCE-->
         <TextView
             android:id="@+id/textViewAcceptance"
@@ -123,7 +135,7 @@
             android:text="@string/acceptance"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewRole" />
 
 
 
@@ -252,22 +264,21 @@
         android:textSize="20dp"
         tools:text="asilApp" >
     </EditText>
-        <!--ACCEPTANCE-->
-       <!-- <EditText
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewAcceptance"
-            android:id="@+id/editTextAcceptance"
+
+        <!--ROLE-->
+        <EditText
+            android:id="@+id/editTextRole"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:ems="10"
             android:inputType="text"
             android:text=""
             android:textSize="20dp"
-            tools:text="asilApp" >
-        </EditText> -->
+            app:layout_constraintBottom_toBottomOf="@+id/textViewRole"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewRole"
+            tools:text="asilApp"></EditText>
 
     <!--SUBMIT BUTTON-->
     <Button
@@ -286,6 +297,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"

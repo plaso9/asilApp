@@ -112,4 +112,5 @@
     <string name="pharmacyLocation">Pharmacy location</string>
     <string name="backHome">Go to Home</string>
     <string name="downloadSuccess">File downloaded</string>
+    <string name="role">Role</string>
 </resources>

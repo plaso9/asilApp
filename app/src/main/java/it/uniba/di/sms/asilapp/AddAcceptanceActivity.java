@@ -82,21 +82,27 @@ public class AddAcceptanceActivity extends AppCompatActivity {
             listOfServices.add(services[i]);//add string_service to the list
         }
 
+        String id = FirebaseDatabase.getInstance().getReference("acceptance").push().getKey();
         Acceptance acceptance = new Acceptance(
                 nameCenter,
                 locationCenter,
-                listOfServices
+                listOfServices,
+                id
         );
 
-        FirebaseDatabase.getInstance().getReference().child("acceptance").push().setValue(acceptance).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(AddAcceptanceActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(AddAcceptanceActivity.this, "Error, can't add the acceptance", Toast.LENGTH_LONG).show();
-                }
+        FirebaseDatabase.getInstance().getReference("acceptance").child(id).setValue(acceptance);
+        /*FirebaseDatabase.getInstance().getReference().child("acceptance").push().setValue(acceptance).addOnCompleteListener(new OnCompleteListener<Void>() {
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            if (task.isSuccessful()){
+                Toast.makeText(AddAcceptanceActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(AddAcceptanceActivity.this, "Error, can't add the acceptance", Toast.LENGTH_LONG).show();
             }
-        });
+        }
+        */
+
     }
+
+
 }

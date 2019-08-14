@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp.models;
 import java.util.ArrayList;
 
 public class Acceptance {
+    public String id;
     public String name;
     public String address;
     public String regulation;
@@ -20,10 +21,11 @@ public class Acceptance {
         this.regulation = regulation;
     }
     //constructor
-    public Acceptance(String name, String address, ArrayList<String> listOfServices){
+    public Acceptance(String name, String address, ArrayList<String> listOfServices, String id){
         this.name = name;
         this.address = address;
         this.listOfServices = listOfServices;
+        this.id = id;
     }
 
     public String getName() {
