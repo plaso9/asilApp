@@ -17,18 +17,18 @@ public class User {
     public User(){
 
     }
-    //constructor
-    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
-        this.user_id = user_id;
-        this.name = name;
-        this.surname = surname;
-        this.date_of_birth = date_of_birth;
-        this.birth_place = birth_place;
-        this.cell = cell;
-        this.gender = gender;
-        //this._acceptance = _acceptance;
-        this.role = role;
-    }
+//    //constructor
+//    public User( String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
+////        this.id = id;
+//        this.name = name;
+//        this.surname = surname;
+//        this.date_of_birth = date_of_birth;
+//        this.birth_place = birth_place;
+//        this.cell = cell;
+//        this.gender = gender;
+//        //this._acceptance = _acceptance;
+//        this.role = role;
+//    }
 
     //constructor
     public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail) {
