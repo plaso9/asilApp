@@ -9,25 +9,12 @@ public class User {
     public String cell;
     public String gender;
     public int role;
-    //public int _acceptance;
     public String acceptanceName;
     public String mail;
 
     //empty constructor
     public User(){
 
-    }
-    //constructor
-    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, /*int _acceptance,*/ int role) {
-        this.user_id = user_id;
-        this.name = name;
-        this.surname = surname;
-        this.date_of_birth = date_of_birth;
-        this.birth_place = birth_place;
-        this.cell = cell;
-        this.gender = gender;
-        //this._acceptance = _acceptance;
-        this.role = role;
     }
 
     //constructor

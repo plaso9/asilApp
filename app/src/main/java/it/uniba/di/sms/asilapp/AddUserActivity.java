@@ -134,7 +134,8 @@ public class AddUserActivity extends AppCompatActivity {
                     editTextBirthday.getText().toString().equals("") ||
                     editTextMail.getText().toString().equals("") ||
                     editTextPassword.getText().toString().equals("") ||
-                    editTextGender.getText().toString().equals("")
+                    editTextGender.getText().toString().equals("") ||
+                    editTextRole.getText().toString().equals("")
             ){
                 Toast.makeText(AddUserActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
             } else {
