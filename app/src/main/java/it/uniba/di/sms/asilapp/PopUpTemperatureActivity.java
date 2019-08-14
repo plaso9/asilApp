@@ -24,8 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import it.uniba.di.sms.asilapp.models.Parameter;
-import it.uniba.di.sms.asilapp.models.Temperature;
-import it.uniba.di.sms.asilapp.models.User;
+import it.uniba.di.sms.asilapp.models.MedicalRecord;
 
 public class PopUpTemperatureActivity extends AppCompatActivity {
     private static final String TAG = "PopUpTempActivity";
@@ -119,7 +118,7 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         String current_data = formatter.format(date);
 
         //New Constructor
-        Temperature temperature = new Temperature(
+        MedicalRecord medicalRecord = new MedicalRecord(
             value,
             user_clicked_id,
             parameter_clicked_id,
@@ -127,7 +126,7 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("medical_records").push().setValue(temperature).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
