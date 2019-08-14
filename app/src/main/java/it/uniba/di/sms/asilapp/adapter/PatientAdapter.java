@@ -3,7 +3,6 @@ package it.uniba.di.sms.asilapp.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,11 +48,6 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
 
                 //Get id of user clicked
                 String user_clicked = user.getUserId();
-                System.out.println("OBJ : " + user);
-                System.out.println("EMAIL : " + user.getMail());
-                System.out.println("NAME : " + user.getName());
-                System.out.println("ID : " + user.getUserId());
-
                 //Create new intent
                 Intent patientDetailIntent = new Intent(mContext, PatientDetailActivity.class);
                 //pass parameter to intent
