@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -33,7 +34,7 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class AddUserActivity extends AppCompatActivity {
-    private String uId;
+    private String id;
     private EditText editTextBirthday;
     private EditText editTextName;
     private EditText editTextSurname;
@@ -100,13 +101,13 @@ public class AddUserActivity extends AppCompatActivity {
         acceptanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<Acceptance> acceptances = new ArrayList<>();
+                final List<Acceptance> acceptances = new ArrayList<>();
                 for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
                 {
                     acceptances.add(acceptanceSnapShot.getValue(Acceptance.class));
                 }
                 //Get all names of acceptance
-                List<String> name_list = new ArrayList<>();
+                final List<String> name_list = new ArrayList<>();
                 for(Acceptance acceptance: acceptances){
                     name_list.add(acceptance.getName());
                 }
@@ -114,6 +115,19 @@ public class AddUserActivity extends AppCompatActivity {
                 ArrayAdapter<String> stringArrayAdapter;
                 stringArrayAdapter = new ArrayAdapter<>(AddUserActivity.this, android.R.layout.simple_list_item_1, name_list);
                 spinnerAcceptance.setAdapter(stringArrayAdapter);
+
+                //Method to retrieve the id code of the item selected in the spinner
+                spinnerAcceptance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        id = acceptances.get(i).getId();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
             }
 
             @Override
@@ -153,9 +167,10 @@ public class AddUserActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
-        final String acceptanceName = spinnerAcceptance.getSelectedItem().toString();
         final String role = editTextRole.getText().toString();
         final int int_role;
+
+
 
         if (role.equalsIgnoreCase("dottore")){
             int_role = 3;
@@ -178,7 +193,7 @@ public class AddUserActivity extends AppCompatActivity {
                                     birthPlace,
                                     cell,
                                     gender,
-                                    acceptanceName,
+                                    id,
                                     int_role,
                                     eMail
                             );

@@ -51,4 +51,12 @@ public class Acceptance {
     public void setRegulation(String regulation) {
         this.regulation = regulation;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

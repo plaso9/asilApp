@@ -9,7 +9,7 @@ public class User {
     public String cell;
     public String gender;
     public int role;
-    public String acceptanceName;
+    public String acceptanceId;
     public String mail;
 
     //empty constructor
@@ -26,7 +26,7 @@ public class User {
         this.birth_place = birth_place;
         this.cell = cell;
         this.gender = gender;
-        this.acceptanceName = acceptanceName;
+        this.acceptanceId = acceptanceName;
         this.role = role;
         this.mail = mail;
     }
