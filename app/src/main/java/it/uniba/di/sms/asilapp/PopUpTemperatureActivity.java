@@ -116,13 +116,15 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         String current_data = formatter.format(date);
+        String pathology = "";
 
         //New Constructor
         MedicalRecord medicalRecord = new MedicalRecord(
             value,
             user_clicked_id,
             parameter_clicked_id,
-            current_data
+            current_data,
+            pathology
         );
 
         //Adding value to DB

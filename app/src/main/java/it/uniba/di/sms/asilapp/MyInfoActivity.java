@@ -7,12 +7,17 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.GridLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MyInfoActivity extends AppCompatActivity {
     GridLayout gridLayout;
     CardView card_view_Pathology,
             card_view_RetrieveBasicNecessities,
             card_view_AppDetails,
             card_view_Rating;
+
+    String user_clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +38,18 @@ public class MyInfoActivity extends AppCompatActivity {
         card_view_AppDetails.setOnClickListener(card_view_AppDetais_listener);
         card_view_Rating.setOnClickListener(card_view_Rating_listener);
 
+        // Initialize FirebaseUser
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // Get userId Logged
+        user_clicked = user.getUid();
     }
 
     public View.OnClickListener card_view_Pathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,PathologyActivity.class);
+            Intent sens = new Intent (MyInfoActivity.this,ReadMedicalRecordsActivity.class);
+            sens.putExtra("user_clicked", user_clicked);
+            sens.putExtra("_parameter", "7");
             startActivity(sens);
 
         }

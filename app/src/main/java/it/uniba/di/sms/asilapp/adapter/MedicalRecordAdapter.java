@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import it.uniba.di.sms.asilapp.PathologyActivity;
 
 import it.uniba.di.sms.asilapp.R;
 import it.uniba.di.sms.asilapp.models.MedicalRecord;
@@ -36,9 +39,25 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdap
     //Function to populate ViewHolder
     @Override
     public void onBindViewHolder(@NonNull MedicalRecordAdapter.ViewHolder holder, int position){
-        MedicalRecord medicalRecord = mMedicalRecord.get(position);
+        final MedicalRecord medicalRecord = mMedicalRecord.get(position);
         holder.text_valueMedicalRecord.setText(medicalRecord.getValue());
         holder.text_dataMedicalRecord.setText(medicalRecord.getData_measurement());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get id of parameter and condition
+                if (medicalRecord.get_parameter().equals("7") && medicalRecord.getPathology() != "") {
+                    //Get id of pathology clicked for that user
+                    String pathology_id = medicalRecord.getPathology();
+                    //Create new intent
+                    Intent pathologyDetailIntent = new Intent(mContext, PathologyActivity.class);
+                    //pass parameter to intent
+                    pathologyDetailIntent.putExtra("pathology_clicked", pathology_id);
+                    mContext.startActivity(pathologyDetailIntent);
+                }
+
+            }
+        });
     }
 
     //Get number of medical record

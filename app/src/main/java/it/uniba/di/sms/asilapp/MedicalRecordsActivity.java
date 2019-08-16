@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -185,7 +184,7 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     public View.OnClickListener button_addPathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent add_pathologyIntent = new Intent(MedicalRecordsActivity.this, PathologyActivity.class);
+            Intent add_pathologyIntent = new Intent(MedicalRecordsActivity.this, AddPathologyActivity.class);
             add_pathologyIntent.putExtra("user_clicked", userClickedId);
             add_pathologyIntent.putExtra("_parameter", "7");
             startActivity(add_pathologyIntent);

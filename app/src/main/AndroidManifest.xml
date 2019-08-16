@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReadMedicalRecordsActivity"></activity>
+        <activity android:name=".PathologyActivity"></activity>
+        <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".ReadRatingsActivity" />
@@ -37,7 +38,7 @@
         <activity android:name=".PatientDetailActivity" />
         <activity android:name=".KitOpeningActivity" />
         <activity android:name=".PatientListActivity" />
-        <activity android:name=".PathologyActivity" />
+        <activity android:name=".AddPathologyActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
         <activity

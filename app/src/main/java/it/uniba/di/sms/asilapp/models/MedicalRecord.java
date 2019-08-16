@@ -5,15 +5,17 @@ public class MedicalRecord {
     public String _user;
     public String _parameter;
     public String data_measurement;
+    public String pathology;
 
     public MedicalRecord() {
     }
 
-    public MedicalRecord(String value, String _user, String _parameter, String data_measurement) {
+    public MedicalRecord(String value, String _user, String _parameter, String data_measurement, String pathology) {
         this.value = value;
         this._user = _user;
         this._parameter = _parameter;
         this.data_measurement = data_measurement;
+        this.pathology = pathology;
     }
 
     public String getValue() {
@@ -46,5 +48,13 @@ public class MedicalRecord {
 
     public void setData_measurement(String data_measurement) {
         this.data_measurement = data_measurement;
+    }
+
+    public String getPathology() {
+        return pathology;
+    }
+
+    public void setPathology(String pathology) {
+        this.pathology = pathology;
     }
 }
