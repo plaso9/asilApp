@@ -8,6 +8,7 @@ public class Acceptance {
     public String address;
     public String regulation;
     public ArrayList<String> listOfServices;
+    public long city;
 
     //empty constructor
     public Acceptance(){
@@ -21,11 +22,12 @@ public class Acceptance {
         this.regulation = regulation;
     }
     //constructor
-    public Acceptance(String name, String address, ArrayList<String> listOfServices, String id){
+    public Acceptance(String name, String address, ArrayList<String> listOfServices, String id, long city){
         this.name = name;
         this.address = address;
         this.listOfServices = listOfServices;
         this.id = id;
+        this.city = city;
     }
 
     public String getName() {

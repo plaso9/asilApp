@@ -15,7 +15,7 @@
         <!--    PAGE TITLE -->
         <TextView
             android:id="@+id/pageTitle"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="65dp"
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginTop="120dp"
             android:text="@string/centerName"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
             android:text="@string/centerRegulation"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
 
         <Button
             android:id="@+id/btnCenterRegulation"
@@ -102,6 +102,30 @@
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCenterRegulation" />
+
+        <!--CITY-->
+        <TextView
+            android:id="@+id/textViewCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/city"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="385dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCenterRegulation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
 
         <!--CENTER SERVICES-->
@@ -119,7 +143,7 @@
         <EditText
             android:id="@+id/editTextCenterServices"
             android:layout_width="385dp"
-            android:layout_height="109dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
