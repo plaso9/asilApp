@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +10,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.DecimalFormat;
 
 import it.uniba.di.sms.asilapp.models.Rating;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class ReadRatingsActivity extends AppCompatActivity {
 
@@ -45,9 +52,22 @@ public class ReadRatingsActivity extends AppCompatActivity {
                         Rating.class, R.layout.activity_rating_row, RatinViewHolder.class, mDatabaseRating
                 ) {
                     @Override
-                    protected void populateViewHolder(RatinViewHolder viewHolder, Rating model, final int position) {
-                        viewHolder.setName(model.getUser());
-                        viewHolder.setAvgRating(model.getAvgRating());
+                    protected void populateViewHolder(final RatinViewHolder viewHolder, final Rating model, final int position) {
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("user").child(model.getUser());
+                        db.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                User user = dataSnapshot.getValue(User.class);
+                                viewHolder.setName(user.getName()+" "+user.getSurname());
+                                viewHolder.setAvgRating(roundTwoDecimals(model.getAvgRating()));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
 
                         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
                             @Override
@@ -85,5 +105,12 @@ public class ReadRatingsActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public float roundTwoDecimals(float d)
+    {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+
+        return Float.valueOf(twoDForm.format(d));
     }
 }
