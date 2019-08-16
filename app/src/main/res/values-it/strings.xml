@@ -99,6 +99,8 @@
     <string name="pharmacyLocation">Indirizzo della farmacia convenzionata</string>
     <string name="backHome">Torna alla Home</string>
     <string name="downloadSuccess">File scaricato</string>
+    <string name="role">Ruolo</string>
+    <string name="centerAddress">Indirizzo</string>
 </resources>
 
 

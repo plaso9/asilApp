@@ -5,26 +5,36 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.uniba.di.sms.asilapp.models.Acceptance;
+import it.uniba.di.sms.asilapp.models.City;
 
 public class AddAcceptanceActivity extends AppCompatActivity {
     private Button selectFile;
     private int PICK_PDF_CODE =0;
-
+    private long idCity;
     private EditText eTcenterName;
     private EditText eTcenterLocation;
     private EditText eTcenterServices;
+    private Spinner spinnerCity;
     private Button buttonSubmitAcceptance;
 
 
@@ -36,6 +46,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         eTcenterName = findViewById(R.id.editTextCenterName);
         eTcenterLocation = findViewById(R.id.editTextCenterLocation);
         eTcenterServices = findViewById(R.id.editTextCenterServices);
+        spinnerCity = findViewById(R.id.spinnerCity);
         buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
 
         selectFile = findViewById(R.id.btnCenterRegulation);
@@ -43,6 +54,45 @@ public class AddAcceptanceActivity extends AppCompatActivity {
 
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
 
+        //Initialize DB to get acceptance reference
+        DatabaseReference cityRef = FirebaseDatabase.getInstance().getReference("city");
+        cityRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<City> cities = new ArrayList<>();
+                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
+                {
+                    cities.add(acceptanceSnapShot.getValue(City.class));
+                }
+                //Get all names of acceptance
+                final List<String> name_list = new ArrayList<>();
+                for(City city: cities){
+                    name_list.add(city.getName());
+                }
+                //Create adapter and set for spinner
+                ArrayAdapter<String> stringArrayAdapterCity;
+                stringArrayAdapterCity = new ArrayAdapter<>(AddAcceptanceActivity.this, android.R.layout.simple_list_item_1, name_list);
+                spinnerCity.setAdapter(stringArrayAdapterCity);
+
+                //Method to retrieve the id code of the item selected in the spinner
+                spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        idCity = cities.get(i).getId();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Set toast message
+            }
+        });
     }
 
     //Open filePicker and choose a pdf-file
@@ -87,7 +137,8 @@ public class AddAcceptanceActivity extends AppCompatActivity {
                 nameCenter,
                 locationCenter,
                 listOfServices,
-                id
+                id,
+                idCity
         );
 
         FirebaseDatabase.getInstance().getReference("acceptance").child(id).setValue(acceptance);
@@ -95,7 +146,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         @Override
         public void onComplete(@NonNull Task<Void> task) {
             if (task.isSuccessful()){
-                Toast.makeText(AddAcceptanceActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddAcceptanceActivity.this, "Added successfully", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(AddAcceptanceActivity.this, "Error, can't add the acceptance", Toast.LENGTH_LONG).show();
             }
