@@ -3,18 +3,27 @@ package it.uniba.di.sms.asilapp.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import it.uniba.di.sms.asilapp.PersonalDataActivity;
 import it.uniba.di.sms.asilapp.R;
 import it.uniba.di.sms.asilapp.models.Message;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
     //variables to choose msg type in chat view
@@ -51,7 +60,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position){
         Message message = mMessage.get(position);
+
         holder.show_message.setText(message.getMessage());
+        holder.time_message.setText(message.getDate());
+        holder.from_message.setText(message.getUser_id());
     }
 
     //Get number of messages
@@ -74,10 +86,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     //Declaration class ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView show_message;
+        public TextView time_message;
+        public TextView from_message;
 
         public ViewHolder(View itemView){
             super(itemView);
             show_message = itemView.findViewById(R.id.show_message);
+            time_message = itemView.findViewById(R.id.time_message);
+            from_message = itemView.findViewById(R.id.from_message);
         }
     }
 }
