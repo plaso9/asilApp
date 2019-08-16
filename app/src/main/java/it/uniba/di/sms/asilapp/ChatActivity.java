@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -101,6 +103,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //Success message
                     //Toast.makeText(ChatActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
+                    mMessage.setText("");
                 } else {
                     //Failure message
                     Toast.makeText(ChatActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
@@ -109,8 +112,19 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    // Function to read messages
     private void readMessages(){
+    // Function to read messages
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String getCurrentTime = sdf.format(c.getTime());
+        String time_start ="10:00";
+        String time_end ="20:00";
+
+        if (getCurrentTime .compareTo(time_end) > 0 || getCurrentTime .compareTo(time_start) < 0  ) {
+            canSendMessage();
+        }
+
         // ArrayList variable
         mMessagesList = new ArrayList<>();
         // Initialize Database Reference
@@ -139,5 +153,21 @@ public class ChatActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void canSendMessage(){
+        mSend.setEnabled(false);
+
+        final Toast toast = Toast.makeText(getApplicationContext(), "Chat closed, it's open from 10 am to 8 pm, retry later", Toast.LENGTH_LONG);
+        toast.show();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 5000);
+
     }
 }
