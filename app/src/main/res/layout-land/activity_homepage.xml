@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10"
-    tools:context=".HomepageActivity">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".TestActivity">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 
     <GridLayout
         android:id="@+id/gridHomeLayout"
-        android:rowCount="3"
-        android:columnCount="2"
-        android:padding="14dp"
-        android:layout_weight="8"
-        android:layout_height="0dp"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="8"
         android:alignmentMode="alignMargins"
-        android:layout_marginTop="50dp"
-        android:columnOrderPreserved="false">
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:padding="14dp"
+        android:rowCount="3">
 
         <!-- ROW 1  -->
 
@@ -36,6 +54,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/gradient"
@@ -43,33 +62,26 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
-                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:text="@string/personalData"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
-
+                    android:id="@+id/image_personalData"
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
+                    android:contentDescription="@string/personalData"
+                    android:src="@drawable/personal" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginBottom="15dp"
                     android:text="@string/personalData"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -85,6 +97,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:layout_marginTop="60dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -92,29 +105,29 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
-                android:background="#FFFFFF"
-                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_information"
                     android:layout_width="match_parent"
                     android:layout_height="168dp"
-                    android:src="@drawable/information"
-                    android:contentDescription="@string/informationSection"/>
+                    android:contentDescription="@string/informationSection"
+                    android:src="@drawable/information" />
 
                 <TextView
-                    android:text="@string/informationSection"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/informationSection"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
@@ -134,29 +147,29 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
-                android:background="#FFFFFF"
-                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_medicalRecords"
                     android:layout_width="wrap_content"
                     android:layout_height="168dp"
-                    android:src="@drawable/medical"
-                    android:contentDescription="@string/medicalRecords"/>
+                    android:contentDescription="@string/medicalRecords"
+                    android:src="@drawable/medical" />
 
                 <TextView
-                    android:text="@string/medicalRecords"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/medicalRecords"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -177,34 +190,33 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
-                android:background="#FFFFFF"
-                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_questionnaires"
                     android:layout_width="wrap_content"
                     android:layout_height="168dp"
-                    android:src="@drawable/questionnaires"
-                    android:contentDescription="@string/questionnaires"/>
+                    android:contentDescription="@string/questionnaires"
+                    android:src="@drawable/questionnaires" />
 
                 <TextView
-                    android:text="@string/questionnaires"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/questionnaires"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
-
     </GridLayout>
 
     <RelativeLayout
@@ -223,5 +235,13 @@
             android:layout_margin="16dp" />
 
     </RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu" />
+
 
 </android.support.v4.widget.DrawerLayout>
