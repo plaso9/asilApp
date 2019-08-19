@@ -15,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -96,6 +99,13 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
                 drawer.closeDrawer(GravityCompat.START);
                 sens = new Intent (HomepageActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                FirebaseAuth.getInstance().signOut();
+                sens = new Intent(HomepageActivity.this, MainActivity.class);
+                startActivity(sens);
+                finish();
                 break;
         }
         return true;

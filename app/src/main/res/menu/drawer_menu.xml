@@ -26,5 +26,10 @@
             android:icon="@drawable/questionnaires"
             android:title="@string/questionnaires" />
 
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/app"
+            android:title="Sign Out" />
+
     </group>
 </menu>
