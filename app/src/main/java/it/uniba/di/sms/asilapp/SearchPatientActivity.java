@@ -13,6 +13,7 @@ public class SearchPatientActivity extends AppCompatActivity {
 
     public static EditText editTextCode;
     private ImageView imageViewScanCode;
+    private Button buttonSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +21,23 @@ public class SearchPatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_patient);
 
         editTextCode = (EditText) findViewById(R.id.editTextCode);
-
+        buttonSearch = (Button) findViewById(R.id.buttonSearch);
         imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
+
 
         imageViewScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SearchPatientActivity.this, ScanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchPatientActivity.this, PatientDetailActivity.class);
+                intent.putExtra("user_clicked", editTextCode.getText().toString());
                 startActivity(intent);
             }
         });

@@ -22,7 +22,7 @@ import it.uniba.di.sms.asilapp.models.User;
 public class PatientDetailActivity extends AppCompatActivity {
     private static final String TAG = "PatientDetailActivity";
     //Define variable
-    private String userClickedId;
+    private String user_id;
     private TextView mName;
     private DatabaseReference mUserReference;
 
@@ -41,10 +41,11 @@ public class PatientDetailActivity extends AppCompatActivity {
 
         //Get User Clicked Id
         if (getIntent().getExtras() != null) {
-            userClickedId = getIntent().getExtras().getString("user_clicked");
+            user_id = getIntent().getStringExtra("user_clicked");
+            Log.d("valore di user_id", String.valueOf(user_id));
         }
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(userClickedId);
+        mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(user_id);
         // Defined patient data variable
         mName = findViewById(R.id.text_userNameClicked);
         //defined card variable
@@ -82,7 +83,7 @@ public class PatientDetailActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent personalDataIntent = new Intent (PatientDetailActivity.this,PersonalDataActivity.class);
-            personalDataIntent.putExtra("user_clicked", userClickedId);
+            personalDataIntent.putExtra("user_clicked", user_id);
             startActivity(personalDataIntent);
         }
     };
@@ -91,7 +92,7 @@ public class PatientDetailActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent questionnairesIntent = new Intent(PatientDetailActivity.this, QuestionnairesActivity.class);
-            questionnairesIntent.putExtra("user_clicked", userClickedId);
+            questionnairesIntent.putExtra("user_clicked", user_id);
             startActivity(questionnairesIntent);
         }
     };
@@ -100,7 +101,7 @@ public class PatientDetailActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent medicalRecordsIntent = new Intent(PatientDetailActivity.this, MedicalRecordsActivity.class);
-            medicalRecordsIntent .putExtra("user_clicked", userClickedId);
+            medicalRecordsIntent .putExtra("user_clicked", user_id);
             startActivity(medicalRecordsIntent );
         }
     };
