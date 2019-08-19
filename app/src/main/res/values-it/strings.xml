@@ -101,6 +101,7 @@
     <string name="downloadSuccess">File scaricato</string>
     <string name="role">Ruolo</string>
     <string name="centerAddress">Indirizzo</string>
+    <string name="survey">Compila questo questionario</string>
 </resources>
 
 
