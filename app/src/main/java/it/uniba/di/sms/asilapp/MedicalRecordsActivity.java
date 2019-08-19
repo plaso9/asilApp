@@ -1,9 +1,16 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import it.uniba.di.sms.asilapp.models.User;
 
-public class MedicalRecordsActivity extends AppCompatActivity {
+public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MedicalRecordsActivity";
     ImageView image_seeTemperatureStats;
@@ -41,11 +48,28 @@ public class MedicalRecordsActivity extends AppCompatActivity {
     private String userClickedId;
     private int mRole;
 
+    private DrawerLayout drawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_records);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
         image_seeBloodPressureStats = findViewById(R.id.image_seeBloodPressureStats);
@@ -92,6 +116,51 @@ public class MedicalRecordsActivity extends AppCompatActivity {
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent sens;
+        switch (item.getItemId()){
+            case R.id.nav_info:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MedicalRecordsActivity.this, InformativeActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_medicalRecords:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MedicalRecordsActivity.this, MedicalRecordsActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_personalData:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MedicalRecordsActivity.this, PersonalDataActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_questionnaires:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MedicalRecordsActivity.this, QuestionnairesActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                FirebaseAuth.getInstance().signOut();
+                sens = new Intent(MedicalRecordsActivity.this, MainActivity.class);
+                startActivity(sens);
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+    }
+
 
     @Override
     protected void onStart() {
