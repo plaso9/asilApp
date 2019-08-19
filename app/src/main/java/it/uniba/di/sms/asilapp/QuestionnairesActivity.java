@@ -33,6 +33,9 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     private DatabaseReference mUserReference;
     private DrawerLayout drawer;
     private Button btnSf12;
+    private Button btnHabits;
+    private Button btnDemo;
+    private Button btnQuality;
     private DatabaseReference mQuestionnaires;
 
     @Override
@@ -42,6 +45,15 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
         btnSf12 =(Button) findViewById(R.id.btnSf12);
         btnSf12.setOnClickListener(btnSf12_listener);
+
+        btnHabits =(Button) findViewById(R.id.btnHabits);
+        btnHabits.setOnClickListener(btnSf12_listener);
+
+        btnDemo =(Button) findViewById(R.id.btnDemo);
+        btnDemo.setOnClickListener(btnSf12_listener);
+
+        btnQuality =(Button) findViewById(R.id.btnQuality);
+        btnQuality.setOnClickListener(btnSf12_listener);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
