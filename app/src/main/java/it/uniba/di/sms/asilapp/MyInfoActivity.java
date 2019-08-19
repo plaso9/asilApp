@@ -1,21 +1,30 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MyInfoActivity extends AppCompatActivity {
+public class MyInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridLayout gridLayout;
     CardView card_view_Pathology,
             card_view_RetrieveBasicNecessities,
             card_view_AppDetails,
             card_view_Rating;
+
+    private DrawerLayout drawer;
 
     String user_clicked;
 
@@ -23,6 +32,22 @@ public class MyInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfo);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+
 
         //defined gridlayout variable
         gridLayout=findViewById(R.id.gridInformativeLayout);
@@ -43,6 +68,53 @@ public class MyInfoActivity extends AppCompatActivity {
         // Get userId Logged
         user_clicked = user.getUid();
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent sens;
+        switch (item.getItemId()){
+            case R.id.nav_info:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MyInfoActivity.this, InformativeActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_medicalRecords:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MyInfoActivity.this, MedicalRecordsActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_personalData:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MyInfoActivity.this, PersonalDataActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_questionnaires:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (MyInfoActivity.this, QuestionnairesActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                FirebaseAuth.getInstance().signOut();
+                sens = new Intent(MyInfoActivity.this, MainActivity.class);
+                startActivity(sens);
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+    }
+
+
+
 
     public View.OnClickListener card_view_Pathology_listener = new View.OnClickListener() {
         @Override

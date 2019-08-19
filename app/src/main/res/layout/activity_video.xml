@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".InformativeActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".VideoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <GridLayout
         android:id="@+id/gridVideoLayout"
@@ -26,9 +48,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
             android:text="@string/Video1"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -39,6 +62,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp" />
 
@@ -53,7 +77,7 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/Video2"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -70,4 +94,12 @@
 
     </GridLayout>
 
-</LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu" />
+
+</android.support.v4.widget.DrawerLayout>
