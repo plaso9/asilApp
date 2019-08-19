@@ -42,7 +42,6 @@ public class PatientDetailActivity extends AppCompatActivity {
         //Get User Clicked Id
         if (getIntent().getExtras() != null) {
             user_id = getIntent().getStringExtra("user_clicked");
-            Log.d("valore di user_id", String.valueOf(user_id));
         }
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(user_id);

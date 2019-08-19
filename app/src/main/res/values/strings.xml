@@ -114,4 +114,5 @@
     <string name="backHome">Go to Home</string>
     <string name="downloadSuccess">File downloaded</string>
     <string name="role">Role</string>
+    <string name="survey">Take this survey</string>
 </resources>

@@ -61,4 +61,12 @@ public class Acceptance {
     public void setId(String id) {
         this.id = id;
     }
+
+    public long getCity() {
+        return city;
+    }
+
+    public void setCity(long city) {
+        this.city = city;
+    }
 }

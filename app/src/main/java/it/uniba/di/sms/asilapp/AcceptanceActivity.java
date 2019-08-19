@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,17 +18,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import it.uniba.di.sms.asilapp.models.Acceptance;
+import it.uniba.di.sms.asilapp.models.City;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class AcceptanceActivity extends AppCompatActivity {
     //variable declaration
     private static final String TAG = "AcceptanceActivity";
     private TextView regulation;
     private String uId;
-    private String _acceptance;
+    private String acceptanceId;
+
 
     private TextView mName;
     private TextView mAddress;
+    private TextView mCity;
+    private TextView mListServices;
 
     private DatabaseReference mUserReference;
     private DatabaseReference mAcceptanceReference;
@@ -52,6 +60,8 @@ public class AcceptanceActivity extends AppCompatActivity {
 
         mName = findViewById(R.id.editTextCenterName);
         mAddress = findViewById(R.id.editTextCenterLocation);
+        mCity = findViewById(R.id.editTextCenterCity);
+        mListServices = findViewById(R.id.editTextCenterServices);
     }
 
     // Listener for the button
@@ -71,6 +81,10 @@ public class AcceptanceActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Acceptance acceptance = dataSnapshot.getValue(Acceptance.class);
+
+                findCityName(acceptance.getCity());
+                retrieveListOfServices(acceptance.id);
+
                 mName.setText(acceptance.name);
                 mAddress.setText(acceptance.address);
 
@@ -86,13 +100,65 @@ public class AcceptanceActivity extends AppCompatActivity {
         mAcceptanceReference.child(acceptanceId).addValueEventListener(cityListener);
     }
 
-    // function to get foreign key _acceptance from user table
-    public void getAcceptanceId() {
-        mUserReference.child("_acceptance").addListenerForSingleValueEvent(new ValueEventListener() {
+    private void retrieveListOfServices(String id) {
+        FirebaseDatabase.getInstance().getReference("acceptance").child(id).child("listOfServices").addValueEventListener(new ValueEventListener() {
+            ArrayList<String> stringArrayList = new ArrayList<>();
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                _acceptance = dataSnapshot.getValue().toString();
-                getAcceptanceInfo(_acceptance);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    stringArrayList.add(snapshot.getValue().toString());
+                }
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < stringArrayList.size(); i++){
+                    sb.append(stringArrayList.get(i));
+                    if (i==stringArrayList.size()-1){
+                        sb.append(".");
+                    } else {
+                        sb.append(", ");
+                    }
+                }
+
+                mListServices.setText(sb.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void findCityName(final long cityId) {
+        DatabaseReference mCityDB = FirebaseDatabase.getInstance().getReference("city");
+        ValueEventListener mListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    City city = snapshot.getValue(City.class);
+                    if (cityId == city.getId()) {
+                        mCity.setText(city.name);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        mCityDB.addValueEventListener(mListener);
+    }
+
+    // function to get foreign key _acceptance from user table
+    public void getAcceptanceId() {
+        mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                acceptanceId = dataSnapshot.getValue(User.class).getAcceptanceId();
+                getAcceptanceInfo(acceptanceId);
             }
 
             @Override
