@@ -72,14 +72,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewCenterName" />
 
 
-    <!--CENTER LOCATION-->
+    <!--ADDRESS-->
     <TextView
         android:id="@+id/textViewCenterLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/centerLocation"
+        android:text="@string/centerAddress"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
@@ -95,6 +95,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
+        <!-- CENTER CITY -->
+        <TextView
+            android:id="@+id/textViewCenterCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/centerLocation"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+        <TextView
+            android:id="@+id/editTextCenterCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCenterCity" />
+
     <!--CENTER REGULATION-->
     <TextView
         android:id="@+id/textViewCenterRegulation"
@@ -105,7 +128,7 @@
         android:text="@string/centerRegulation"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCenterCity" />
 
         <TextView
             android:id="@+id/editTextCenterRegulation"

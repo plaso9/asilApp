@@ -111,4 +111,12 @@ public class User {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    public String getAcceptanceId() {
+        return acceptanceId;
+    }
+
+    public void setAcceptanceId(String acceptanceId) {
+        this.acceptanceId = acceptanceId;
+    }
 }
