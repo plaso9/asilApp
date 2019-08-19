@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,25 +10,38 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import it.uniba.di.sms.asilapp.models.Questionnaires;
 
 public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "QuestionnairesActivity";
     private String uId;
+    private String URI="null";
     private String userClickedId;
     private DatabaseReference mUserReference;
     private DrawerLayout drawer;
+    private Button btnSf12;
+    private DatabaseReference mQuestionnaires;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaires);
 
+        btnSf12 =(Button) findViewById(R.id.btnSf12);
+        btnSf12.setOnClickListener(btnSf12_listener);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,7 +73,35 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
+
+
+        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("1");
+
+        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                URI = String.valueOf(questionnaires.uri);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
+    public View.OnClickListener btnSf12_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(URI));
+            startActivity(i);
+
+        }
+    };
 
 
     @Override
