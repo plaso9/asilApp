@@ -6,11 +6,17 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import it.uniba.di.sms.asilapp.models.City;
 
-public class CityInfoActivity extends AppCompatActivity {
+public class CityInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //variable declaration
     private static final String TAG = "CityInfoActivity";
 
@@ -48,12 +54,28 @@ public class CityInfoActivity extends AppCompatActivity {
             card_view_School,
             card_view_Pharmacy;
 
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cityinfo);
 
-        
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+
         card_view_Ambulatory = findViewById(R.id.card_ambulatory);
         card_view_Ambulatory.setOnClickListener(card_view_Ambulatory_listener);
         card_view_Municipality = findViewById(R.id.card_municipality);
@@ -79,6 +101,51 @@ public class CityInfoActivity extends AppCompatActivity {
 
         mDescription = findViewById(R.id.textViewCityDescription);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent sens;
+        switch (item.getItemId()){
+            case R.id.nav_info:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (CityInfoActivity.this, InformativeActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_medicalRecords:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (CityInfoActivity.this, MedicalRecordsActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_personalData:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (CityInfoActivity.this, PersonalDataActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_questionnaires:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (CityInfoActivity.this, QuestionnairesActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                FirebaseAuth.getInstance().signOut();
+                sens = new Intent(CityInfoActivity.this, MainActivity.class);
+                startActivity(sens);
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+    }
+
 
 
     //function to get city basically information
