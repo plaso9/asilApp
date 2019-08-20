@@ -28,7 +28,7 @@ import it.uniba.di.sms.asilapp.models.Questionnaires;
 public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "QuestionnairesActivity";
     private String uId;
-    private String URI="null";
+    private String URI1="null", URI2="null", URI3="null", URI4="null";
     private String userClickedId;
     private DatabaseReference mUserReference;
     private DrawerLayout drawer;
@@ -47,13 +47,13 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         btnSf12.setOnClickListener(btnSf12_listener);
 
         btnHabits =(Button) findViewById(R.id.btnHabits);
-        btnHabits.setOnClickListener(btnSf12_listener);
+        btnHabits.setOnClickListener(btnHabits_listener);
 
         btnDemo =(Button) findViewById(R.id.btnDemo);
-        btnDemo.setOnClickListener(btnSf12_listener);
+        btnDemo.setOnClickListener(btnDemo_listener);
 
         btnQuality =(Button) findViewById(R.id.btnQuality);
-        btnQuality.setOnClickListener(btnSf12_listener);
+        btnQuality.setOnClickListener(btnQuality_listener);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -88,12 +88,11 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
 
         mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("1");
-
         mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                URI = String.valueOf(questionnaires.uri);
+                URI1 = String.valueOf(questionnaires.uri);
             }
 
             @Override
@@ -102,6 +101,47 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             }
         });
 
+        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("2");
+        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                URI2 = String.valueOf(questionnaires.uri);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("3");
+        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                URI3 = String.valueOf(questionnaires.uri);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("4");
+        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                URI4 = String.valueOf(questionnaires.uri);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
     public View.OnClickListener btnSf12_listener = new View.OnClickListener() {
@@ -109,7 +149,40 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         public void onClick(View view) {
 
             Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(URI));
+            i.setData(Uri.parse(URI1));
+            startActivity(i);
+
+        }
+    };
+
+    public View.OnClickListener btnHabits_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(URI2));
+            startActivity(i);
+
+        }
+    };
+
+    public View.OnClickListener btnDemo_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(URI3));
+            startActivity(i);
+
+        }
+    };
+
+    public View.OnClickListener btnQuality_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(URI4));
             startActivity(i);
 
         }
