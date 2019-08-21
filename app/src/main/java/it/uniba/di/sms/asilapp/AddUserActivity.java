@@ -211,7 +211,8 @@ public class AddUserActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(AddUserActivity.this, "Registration success", Toast.LENGTH_LONG).show();
                                     } else {
-                                        //display a failure message
+                                        //failure message
+                                        Toast.makeText(AddUserActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
                                     }
 
                                 }
