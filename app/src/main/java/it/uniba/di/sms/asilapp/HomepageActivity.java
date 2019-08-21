@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     CardView card_view_Questionnaires;
     CardView card_view_MedicalRecords;
     FloatingActionButton chatButton;
+    ImageButton imgBtnLanguage;
 
     int REQUEST_CODE=0;
     ProgressDialog progressBar;
@@ -65,6 +67,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_Questionnaires = findViewById(R.id.card_questionnaires);
         card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
         chatButton = findViewById(R.id.chatBtn);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
 
         //set function to card
@@ -73,6 +76,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_Questionnaires.setOnClickListener(card_view_Questionnaries_listener);
         card_view_MedicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
         chatButton.setOnClickListener(chatButton_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
     }
 
@@ -120,6 +124,13 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
+            startActivity(languageIntent);
+        }
+    };
 
 
     public View.OnClickListener card_view_Informative_listener = new View.OnClickListener() {

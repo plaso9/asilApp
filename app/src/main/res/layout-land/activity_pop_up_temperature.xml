@@ -62,7 +62,7 @@
 
     <!-- SUBMIT BUTTON -->
     <Button
-        android:id="@+id/buttonSaveMeasurement"
+        android:id="@+id/buttonSaveLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

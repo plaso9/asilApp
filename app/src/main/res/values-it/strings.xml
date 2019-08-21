@@ -102,6 +102,9 @@
     <string name="role">Ruolo</string>
     <string name="centerAddress">Indirizzo</string>
     <string name="survey">Compila</string>
+    <string name="language">Cambia lingua</string>
+    <string name="it">Italiano</string>
+    <string name="eng">Inglese</string>
 </resources>
 
 

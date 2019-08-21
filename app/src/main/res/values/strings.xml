@@ -102,7 +102,7 @@
     <string name="discoverable">Make discoverable</string>
     <string name="on">ON</string>
     <string name="btnSend">send</string>
-    <string name="off" translatable="false">Bluetooth Off</string>
+    <string name="off">Bluetooth Off</string>
     <string name="pages">Pages</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation draw</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation draw</string>
@@ -115,4 +115,7 @@
     <string name="downloadSuccess">File downloaded</string>
     <string name="role">Role</string>
     <string name="survey">Take it</string>
+    <string name="language">Change language</string>
+    <string name="it">Italian</string>
+    <string name="eng">English</string>
 </resources>
