@@ -34,19 +34,19 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-
-</android.support.constraint.ConstraintLayout>
-    </ScrollView>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

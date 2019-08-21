@@ -34,303 +34,305 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-    <!--  PAGE TITLE -->
-        <TextView
-            android:id="@+id/pageTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/cityInfo"
-            android:textAllCaps="true"
-            android:textSize="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    <!--CITY NAME-->
-    <TextView
-        android:id="@+id/textViewCityDescription"
-        android:layout_width="253dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="16dp"
-        android:text=""
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pageTitle"
-            app:srcCompat="@drawable/cityinfo" />
-
-    <GridLayout
-        android:id="@+id/gridCityInfo"
-        android:layout_width="395dp"
-        android:layout_height="440dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="8"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
-        android:padding="14dp"
-        android:rowCount="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCityDescription">
-
-        <!-- ROW 1  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_ambulatory"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/image_ambulatory"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/ambulatory"
-                    android:src="@drawable/ambulatory" />
-
+                <!--  PAGE TITLE -->
                 <TextView
+                    android:id="@+id/pageTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/ambulatory"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 2  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_municipality"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/cityInfo"
+                    android:textAllCaps="true"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                <!--CITY NAME-->
+                <TextView
+                    android:id="@+id/textViewCityDescription"
+                    android:layout_width="253dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginEnd="16dp"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
 
                 <ImageView
-                    android:id="@+id/image_municipality"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/municipality"
-                    android:src="@drawable/municipality" />
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pageTitle"
+                    app:srcCompat="@drawable/cityinfo" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/municipality"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 3  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_postoffice"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+                <GridLayout
+                    android:id="@+id/gridCityInfo"
+                    android:layout_width="395dp"
+                    android:layout_height="440dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="8"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:padding="14dp"
+                    android:rowCount="3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewCityDescription">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                    <!-- ROW 1  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_ambulatory"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
 
-                <ImageView
-                    android:id="@+id/image_postoffice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/postoffice"
-                    android:src="@drawable/postoffice" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/postoffice"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 4  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_placesofworship"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+                            <ImageView
+                                android:id="@+id/image_ambulatory"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/ambulatory"
+                                android:src="@drawable/ambulatory" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/ambulatory"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- ROW 2  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_municipality"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
 
-                <ImageView
-                    android:id="@+id/image_placesofworship"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/placesofworship"
-                    android:src="@drawable/placesofworship" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/placesofworship"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 3  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_school"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+                            <ImageView
+                                android:id="@+id/image_municipality"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/municipality"
+                                android:src="@drawable/municipality" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/municipality"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- ROW 3  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_postoffice"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
 
-                <ImageView
-                    android:id="@+id/image_school"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/school"
-                    android:src="@drawable/school" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/school"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <!-- ROW 4  -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_pharmacy"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+                            <ImageView
+                                android:id="@+id/image_postoffice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/postoffice"
+                                android:src="@drawable/postoffice" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/postoffice"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- ROW 4  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_placesofworship"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
 
-                <ImageView
-                    android:id="@+id/image_pharmacy"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:contentDescription="@string/pharmacy"
-                    android:src="@drawable/pharmacy" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/pharmacy"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </GridLayout>
+                            <ImageView
+                                android:id="@+id/image_placesofworship"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/placesofworship"
+                                android:src="@drawable/placesofworship" />
 
-</android.support.constraint.ConstraintLayout>
-    </ScrollView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/placesofworship"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- ROW 3  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_school"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/image_school"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/school"
+                                android:src="@drawable/school" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/school"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- ROW 4  -->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_pharmacy"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/image_pharmacy"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:contentDescription="@string/pharmacy"
+                                android:src="@drawable/pharmacy" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/pharmacy"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </GridLayout>
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

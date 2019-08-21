@@ -105,6 +105,8 @@
     <string name="language">Cambia lingua</string>
     <string name="it">Italiano</string>
     <string name="eng">Inglese</string>
+    <string name="nation">Nazione</string>
+    <string name="nationality">Nazionalità</string>
 </resources>
 
 

@@ -42,13 +42,18 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextBirthPlace;
     private EditText editTextMail;
     private EditText editTextPassword;
-    private EditText editTextGender;
-    private EditText editTextRole;
+    //private EditText editTextGender;
+    //private EditText editTextRole;
+    private Spinner spinnerRole;
+    private Spinner spinnerGender;
+    private EditText editTextNation;
     private Spinner spinnerAcceptance;
     private Button submitButton;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private FirebaseAuth mAuth;
     private DatabaseReference acceptanceRef;
+    private String gender[] = {"M", "F"};
+    private String role[] = {"Admin", "User", "Doctor"};
 
 
     @Override
@@ -64,8 +69,9 @@ public class AddUserActivity extends AppCompatActivity {
         editTextBirthPlace = findViewById(R.id.editTextBirthPlace);
         editTextMail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        editTextGender = findViewById(R.id.editTextGender);
-        editTextRole = findViewById(R.id.editTextRole);
+        spinnerGender = findViewById(R.id.spinnerGender);
+        spinnerRole = findViewById(R.id.spinnerRole);
+        editTextNation = findViewById(R.id.editTextNation);
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
 
@@ -95,6 +101,18 @@ public class AddUserActivity extends AppCompatActivity {
                 editTextBirthday.setText(date);
             }
         };
+
+
+        //Spinner for gender
+        //ArrayAdapter is a BaseAdapter that is backed by an array of arbitrary objects
+        ArrayAdapter<String> spin_adapter = new ArrayAdapter<String>(AddUserActivity.this, android.R.layout.simple_list_item_1, gender);
+        // setting adapters to spinners
+        spinnerGender.setAdapter(spin_adapter);
+
+        //Spinner for role
+        //ArrayAdapter
+        ArrayAdapter<String> spinRole_adapter = new ArrayAdapter<String>(AddUserActivity.this, android.R.layout.simple_list_item_1, role);
+        spinnerRole.setAdapter(spinRole_adapter);
 
         //Initialize DB to get acceptance reference
         acceptanceRef = FirebaseDatabase.getInstance().getReference("acceptance");
@@ -148,8 +166,7 @@ public class AddUserActivity extends AppCompatActivity {
                     editTextBirthday.getText().toString().equals("") ||
                     editTextMail.getText().toString().equals("") ||
                     editTextPassword.getText().toString().equals("") ||
-                    editTextGender.getText().toString().equals("") ||
-                    editTextRole.getText().toString().equals("")
+                    editTextNation.getText().toString().equals("")
             ){
                 Toast.makeText(AddUserActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
             } else {
@@ -165,14 +182,15 @@ public class AddUserActivity extends AppCompatActivity {
         final String birthPlace = editTextBirthPlace.getText().toString().trim();
         final String eMail = editTextMail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        final String gender = editTextGender.getText().toString().trim();
+        final String gender = spinnerGender.getSelectedItem().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
-        final String role = editTextRole.getText().toString();
+        final String role = spinnerGender.getSelectedItem().toString().trim();
+        final String nation = editTextNation.getText().toString();
         final int int_role;
 
 
 
-        if (role.equalsIgnoreCase("dottore")){
+        if (role.equalsIgnoreCase("doctor")){
             int_role = 3;
         } else if (role.equalsIgnoreCase("admin")){
             int_role = 1;
@@ -195,7 +213,8 @@ public class AddUserActivity extends AppCompatActivity {
                                     gender,
                                     id,
                                     int_role,
-                                    eMail
+                                    eMail,
+                                    nation
                             );
 
                             FirebaseDatabase.getInstance().getReference("user")
@@ -205,6 +224,7 @@ public class AddUserActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(AddUserActivity.this, "Registration success", Toast.LENGTH_LONG).show();
+                                        finish();
                                     } else {
                                         //display a failure message
                                     }
