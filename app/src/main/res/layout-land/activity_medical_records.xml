@@ -29,16 +29,21 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
         <Button
             android:id="@+id/buttonAddPathology"
@@ -177,7 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:text="@string/medicalRecords"
             android:textAllCaps="true"
             android:textSize="24dp"
@@ -265,7 +270,7 @@
             android:id="@+id/textViewLastMeasurement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="138dp"
+            android:layout_marginStart="250dp"
             android:layout_marginTop="32dp"
             android:text="@string/lastMeasurement"
             android:textSize="20dp"
@@ -276,7 +281,7 @@
             android:id="@+id/buttonAddTemperature"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="182dp"
+            android:layout_marginTop="150dp"
             android:layout_marginEnd="15dp"
             android:text="@string/add"
             android:textColor="#FFFFFF"
@@ -288,14 +293,15 @@
             android:id="@+id/image_seeTemperatureStats"
             android:layout_width="34dp"
             android:layout_height="33dp"
-            android:layout_marginTop="185dp"
+            android:layout_marginTop="155dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/buttonAddTemperature"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/graphic" />
 
     </android.support.constraint.ConstraintLayout>
-
+    </ScrollView>
+    </LinearLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
