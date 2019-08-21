@@ -32,7 +32,6 @@
 
     </LinearLayout>
 
-
     <GridLayout
         android:id="@+id/gridHomeLayout"
         android:layout_width="match_parent"

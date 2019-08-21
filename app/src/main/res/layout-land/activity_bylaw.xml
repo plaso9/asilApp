@@ -29,7 +29,13 @@
 
     </LinearLayout>
 
-    <ScrollView android:id="@+id/scroll"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,15 +47,15 @@
             <!--    PAGE TITLE -->
             <TextView
                 android:id="@+id/pageTitle"
-                android:layout_marginTop="100dp"
-                android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textAllCaps="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
                 android:text="@string/bylaw"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textAllCaps="true"
+                android:textSize="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!--HEALTH STANDARDS-->
             <TextView
@@ -57,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="152dp"
+                android:layout_marginTop="120dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/healthStandards"
                 android:textSize="20dp"
@@ -70,15 +76,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="HEALTH STANDARDS STORED IN FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
         adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in
         culpa qui officia deserunt mollit anim id est laborum."
-                android:textSize="20dp"
                 android:textColor="#000000"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textHealthStandards" />
@@ -95,6 +101,7 @@
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
