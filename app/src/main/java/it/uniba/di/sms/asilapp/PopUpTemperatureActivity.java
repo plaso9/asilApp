@@ -52,7 +52,7 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         }
         //find R.id from xml
         editValueParameter = findViewById(R.id.editValueParameter);
-        submitMeasurement = findViewById(R.id.buttonSaveMeasurement);
+        submitMeasurement = findViewById(R.id.buttonSaveLanguage);
 
         //Set listener value variable
         submitMeasurement.setOnClickListener(submitMeasurement_listener);

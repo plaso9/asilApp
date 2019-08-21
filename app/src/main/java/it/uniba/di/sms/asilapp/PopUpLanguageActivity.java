@@ -1,0 +1,84 @@
+package it.uniba.di.sms.asilapp;
+
+import android.content.res.Configuration;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.Locale;
+
+public class PopUpLanguageActivity extends AppCompatActivity {
+
+    //TextView
+    private TextView textViewLangEng, textViewLangIt;
+    //Images
+    private ImageView imgEng, imgIt;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pop_up_language);
+
+        //find R.id from xml
+        textViewLangEng = findViewById(R.id.textViewLangEng);
+        textViewLangIt = findViewById(R.id.textViewLangIt);
+
+        imgEng = findViewById(R.id.imgEng);
+        imgIt = findViewById(R.id.imgIt);
+
+        //Set listener value variable
+        textViewLangEng.setOnClickListener(eng_listener);
+        imgEng.setOnClickListener(eng_listener);
+
+        textViewLangIt.setOnClickListener(it_listener);
+        imgIt.setOnClickListener(it_listener);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
+
+    }
+
+
+    //Set on click listener
+    public View.OnClickListener eng_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Configuration config = getBaseContext().getResources().getConfiguration();
+            if (!"".equals("en") && !config.locale.getLanguage().equals("en")) {
+
+                Locale locale = new Locale("en");
+                Locale.setDefault(locale);
+                Configuration conf = new Configuration(config);
+                conf.locale = locale;
+                getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
+            }
+
+        }
+    };
+
+    //Set on click listener
+    public View.OnClickListener it_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Configuration config = getBaseContext().getResources().getConfiguration();
+            if (!"".equals("it") && !config.locale.getLanguage().equals("it")) {
+
+                Locale locale = new Locale("it");
+                Locale.setDefault(locale);
+                Configuration conf = new Configuration(config);
+                conf.locale = locale;
+                getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
+            }
+
+        }
+    };
+
+}

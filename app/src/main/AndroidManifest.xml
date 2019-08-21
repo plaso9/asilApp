@@ -22,7 +22,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PathologyActivity"></activity>
+        <activity
+            android:name=".PopUpLanguageActivity"
+            android:theme="@style/PopupTheme" />
+        <activity android:name=".PathologyActivity" />
         <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".TestActivity" />
