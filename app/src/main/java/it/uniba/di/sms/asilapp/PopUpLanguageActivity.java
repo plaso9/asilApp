@@ -1,5 +1,8 @@
 package it.uniba.di.sms.asilapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,17 +13,19 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class PopUpLanguageActivity extends AppCompatActivity {
-
+    Configuration conf;
     //TextView
     private TextView textViewLangEng, textViewLangIt;
     //Images
     private ImageView imgEng, imgIt;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up_language);
+
 
         //find R.id from xml
         textViewLangEng = findViewById(R.id.textViewLangEng);
@@ -59,6 +64,19 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 Configuration conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
+
+
+                Bundle extras = getIntent().getExtras();
+                String classname=extras.getString("callingActivity");
+                Class<?> previousClass = null;
+                try {
+                    previousClass = Class.forName(classname);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Intent i = new Intent(PopUpLanguageActivity.this, previousClass);
+                startActivityForResult(i, 2); // 2 = italian
+                finish();
             }
 
         }
@@ -73,12 +91,28 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 Locale locale = new Locale("it");
                 Locale.setDefault(locale);
-                Configuration conf = new Configuration(config);
+                conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
+
+
+                Bundle extras = getIntent().getExtras();
+                String classname=extras.getString("callingActivity");
+                Class<?> previousClass = null;
+                try {
+                    previousClass = Class.forName(classname);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Intent i = new Intent(PopUpLanguageActivity.this, previousClass);
+                startActivityForResult(i, 2); // 2 = italian
+                finish();
+
             }
 
         }
     };
+
+
 
 }

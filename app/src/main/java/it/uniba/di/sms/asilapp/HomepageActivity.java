@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -16,10 +17,8 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridLayout gridLayout;
@@ -39,7 +38,6 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
@@ -108,12 +106,42 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
                 drawer.closeDrawer(GravityCompat.START);
                 FirebaseAuth.getInstance().signOut();
                 sens = new Intent(HomepageActivity.this, MainActivity.class);
-                startActivity(sens);
+                startActivityForResult(sens, 1);
                 finish();
                 break;
         }
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, HomepageActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, HomepageActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+    }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -128,6 +156,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         @Override
         public void onClick(View v) {
             Intent languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
             startActivity(languageIntent);
         }
     };
