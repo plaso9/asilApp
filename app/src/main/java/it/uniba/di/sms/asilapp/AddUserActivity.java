@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +34,8 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class AddUserActivity extends AppCompatActivity {
+    private static final String TAG = "AddUserActivity";
+
     private String id;
     private EditText editTextBirthday;
     private EditText editTextName;
@@ -149,7 +152,10 @@ public class AddUserActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Set toast message
+                // Getting acceptance failed
+                Log.w(TAG, "loadAcceptance:onCancelled", databaseError.toException());
+                Toast.makeText(AddUserActivity.this, "Failed to load acceptance.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

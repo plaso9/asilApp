@@ -154,6 +154,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting city failed
                 Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
                 Toast.makeText(CityInfoActivity.this, "Failed to load city",
                         Toast.LENGTH_SHORT).show();

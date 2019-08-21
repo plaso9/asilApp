@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,8 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
 public class AddAcceptanceActivity extends AppCompatActivity {
+    private static final String TAG = "AddAcceptanceActivity";
+
     private Button selectFile;
     private int PICK_PDF_CODE =0;
     private long idCity;
@@ -87,7 +90,10 @@ public class AddAcceptanceActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Set toast message
+                // Getting city failed
+                Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
+                Toast.makeText(AddAcceptanceActivity.this, "Failed to load city.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }

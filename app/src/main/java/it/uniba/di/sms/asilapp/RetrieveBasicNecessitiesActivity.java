@@ -163,6 +163,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting basic necessities failed
                 Log.w(TAG, "loadBasicNecessities:onCancelled", databaseError.toException());
                 Toast.makeText(RetrieveBasicNecessitiesActivity.this, "Failed to load basic necessities",
                         Toast.LENGTH_SHORT).show();

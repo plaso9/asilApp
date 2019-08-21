@@ -157,6 +157,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting acceptance failed
                 Log.w(TAG, "loadAcceptance:onCancelled", databaseError.toException());
                 Toast.makeText(AcceptanceActivity.this, "Failed to load acceptance",
                         Toast.LENGTH_SHORT).show();
@@ -190,7 +191,10 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Getting list of services failed
+                Log.w(TAG, "loadListService:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load list of services.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -211,7 +215,10 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Getting city failed
+                Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load city.",
+                        Toast.LENGTH_SHORT).show();
             }
         };
         mCityDB.addValueEventListener(mListener);
