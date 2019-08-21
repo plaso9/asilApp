@@ -118,6 +118,8 @@ public class AddAcceptanceActivity extends AppCompatActivity {
 
             } else {
                 addNewAcceptance(); //Method to add a new acceptance
+                Toast.makeText(AddAcceptanceActivity.this, "Added successfully", Toast.LENGTH_LONG).show();
+                finish();
             }
         }
     };
