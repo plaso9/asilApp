@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import it.uniba.di.sms.asilapp.models.MedicalRecord;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -47,6 +50,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     private String uId;
     private String userClickedId;
     private int mRole;
+    private ImageButton imgBtnLanguage;
 
     private DrawerLayout drawer;
 
@@ -103,6 +107,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         button_addSymptoms.setOnClickListener(button_addSymptoms_listener);
         button_addPathology.setOnClickListener(button_addPathology_listener);
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Initialize variable to get extra value from other intent
@@ -151,6 +158,45 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         }
         return true;
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, MedicalRecordsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, MedicalRecordsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (MedicalRecordsActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MedicalRecordsActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+
 
     @Override
     public void onBackPressed() {

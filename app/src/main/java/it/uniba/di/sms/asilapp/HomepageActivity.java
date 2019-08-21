@@ -140,7 +140,14 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
-
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
+            startActivity(languageIntent);
+        }
+    };
 
 
     @Override
@@ -151,15 +158,6 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
             super.onBackPressed();
         }
     }
-
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
-            startActivity(languageIntent);
-        }
-    };
 
 
     public View.OnClickListener card_view_Informative_listener = new View.OnClickListener() {

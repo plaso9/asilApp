@@ -20,7 +20,17 @@
             android:background="@drawable/gradient"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageButton
+                android:id="@+id/imgBtnLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:paddingRight="28dp"
+                app:srcCompat="@drawable/lang" />
+        </android.support.v7.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -228,11 +238,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:ems="10"
-                    android:inputType="text"
                     android:cursorVisible="false"
+                    android:ems="10"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
+                    android:inputType="text"
                     android:text=""
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
@@ -307,6 +317,7 @@
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
     </LinearLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

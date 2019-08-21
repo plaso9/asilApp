@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,9 +25,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import it.uniba.di.sms.asilapp.models.User;
 
@@ -44,6 +43,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     private EditText mNation;
     private DatabaseReference mUserReference;
     private Button mSavePersonalData;
+    private ImageButton imgBtnLanguage;
 
 
     private DrawerLayout drawer;
@@ -66,10 +66,6 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-
-
-
 
 
         // Initialize FirebaseUser
@@ -101,6 +97,8 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         mGender = findViewById(R.id.editTextGender);
         mNation = findViewById(R.id.editTextNation);
         mSavePersonalData = findViewById(R.id.buttonSavePersonalData);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         mSavePersonalData.setOnClickListener(save_data_listener);
 
         ValueEventListener userListener = new ValueEventListener() {
@@ -130,6 +128,41 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, PersonalDataActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, PersonalDataActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (PersonalDataActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PersonalDataActivity");
+            startActivity(languageIntent);
+        }
+    };
 
 
 
@@ -176,8 +209,6 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
             super.onBackPressed();
         }
     }
-
-
 
 
 
