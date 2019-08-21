@@ -224,6 +224,7 @@ public class AddUserActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(AddUserActivity.this, "Registration success", Toast.LENGTH_LONG).show();
+                                        finish();
                                     } else {
                                         //display a failure message
                                     }
