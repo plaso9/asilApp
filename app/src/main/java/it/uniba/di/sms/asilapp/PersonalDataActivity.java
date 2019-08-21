@@ -41,6 +41,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     private EditText mEmail;
     private EditText mCell;
     private EditText mGender;
+    private EditText mNation;
     private DatabaseReference mUserReference;
     private Button mSavePersonalData;
 
@@ -98,6 +99,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         //mEmail.setText(user.getEmail());
         mCell = findViewById(R.id.editTextCell);
         mGender = findViewById(R.id.editTextGender);
+        mNation = findViewById(R.id.editTextNation);
         mSavePersonalData = findViewById(R.id.buttonSavePersonalData);
         mSavePersonalData.setOnClickListener(save_data_listener);
 
@@ -113,6 +115,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
                 mCell.setText(user.cell);
                 mGender.setText(user.gender);
                 mEmail.setText(user.getMail());
+                mNation.setText(user.getNation());
             }
 
             @Override

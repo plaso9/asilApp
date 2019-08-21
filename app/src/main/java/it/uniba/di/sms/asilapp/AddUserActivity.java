@@ -44,6 +44,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextGender;
     private EditText editTextRole;
+    private EditText editTextNation;
     private Spinner spinnerAcceptance;
     private Button submitButton;
     private DatePickerDialog.OnDateSetListener dateSetListener;
@@ -66,6 +67,7 @@ public class AddUserActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextGender = findViewById(R.id.editTextGender);
         editTextRole = findViewById(R.id.editTextRole);
+        editTextNation = findViewById(R.id.editTextNation);
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
 
@@ -149,7 +151,8 @@ public class AddUserActivity extends AppCompatActivity {
                     editTextMail.getText().toString().equals("") ||
                     editTextPassword.getText().toString().equals("") ||
                     editTextGender.getText().toString().equals("") ||
-                    editTextRole.getText().toString().equals("")
+                    editTextRole.getText().toString().equals("")||
+                    editTextNation.getText().toString().equals("")
             ){
                 Toast.makeText(AddUserActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
             } else {
@@ -168,6 +171,7 @@ public class AddUserActivity extends AppCompatActivity {
         final String gender = editTextGender.getText().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
         final String role = editTextRole.getText().toString();
+        final String nation = editTextNation.getText().toString();
         final int int_role;
 
 
@@ -195,7 +199,8 @@ public class AddUserActivity extends AppCompatActivity {
                                     gender,
                                     id,
                                     int_role,
-                                    eMail
+                                    eMail,
+                                    nation
                             );
 
                             FirebaseDatabase.getInstance().getReference("user")

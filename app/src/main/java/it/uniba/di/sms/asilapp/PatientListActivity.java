@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,10 +32,14 @@ public class PatientListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private EditText searchText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_list);
+
+        searchText = findViewById(R.id.searchText);
 
         recyclerView = (RecyclerView)findViewById(R.id.userList);
         //Used to know size top avoid expensive layout operation
@@ -60,12 +67,32 @@ public class PatientListActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Clear ArrayList
                 mUserList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     // Get obj user
-                    User user = snapshot.getValue(User.class);
-                    if(user.getRole() == 2){
+                    final User user = snapshot.getValue(User.class);
+                    if (user.getRole() == 2) {
                         // Add obj to ArrayList
                         mUserList.add(user);
+
+                        searchText.addTextChangedListener(new TextWatcher() {
+                              @Override
+                              public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                              }
+
+                              @Override
+                              public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                              }
+
+                              @Override
+                              public void afterTextChanged(Editable editable) {
+                                  mUserList.clear();
+                                  if(editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())){
+                                      mUserList.add(user);
+                                  }
+                              }
+                        });
                     }
 
                     patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);

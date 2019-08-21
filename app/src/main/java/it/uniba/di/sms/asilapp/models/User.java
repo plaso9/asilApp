@@ -11,6 +11,7 @@ public class User {
     public int role;
     public String acceptanceId;
     public String mail;
+    public String nation;
 
     //empty constructor
     public User(){
@@ -18,7 +19,7 @@ public class User {
     }
 
     //constructor
-    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail) {
+    public User(String user_id, String name, String surname, String date_of_birth, String birth_place, String cell, String gender, String acceptanceName, int role, String mail, String nation) {
         this.user_id = user_id;
         this.name = name;
         this.surname = surname;
@@ -29,6 +30,7 @@ public class User {
         this.acceptanceId = acceptanceName;
         this.role = role;
         this.mail = mail;
+        this.nation = nation;
     }
 
     public String getUserId() {
@@ -118,5 +120,13 @@ public class User {
 
     public void setAcceptanceId(String acceptanceId) {
         this.acceptanceId = acceptanceId;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
     }
 }
