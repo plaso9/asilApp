@@ -15,7 +15,6 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class VideoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private VideoView firstVideo;

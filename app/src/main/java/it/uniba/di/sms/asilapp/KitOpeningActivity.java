@@ -1,7 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
