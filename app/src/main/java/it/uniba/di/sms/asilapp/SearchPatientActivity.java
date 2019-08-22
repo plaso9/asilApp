@@ -19,7 +19,6 @@ public class SearchPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_patient);
 
-        editTextCode = (EditText) findViewById(R.id.editTextCode);
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
         imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
 
@@ -35,8 +34,7 @@ public class SearchPatientActivity extends AppCompatActivity {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SearchPatientActivity.this, PatientDetailActivity.class);
-                intent.putExtra("user_clicked", editTextCode.getText().toString());
+                Intent intent = new Intent(SearchPatientActivity.this, PatientListActivity.class);
                 startActivity(intent);
             }
         });

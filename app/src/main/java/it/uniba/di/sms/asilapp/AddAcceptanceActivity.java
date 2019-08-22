@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,8 +48,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         spinnerCity = findViewById(R.id.spinnerCity);
         buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
 
-        selectFile = findViewById(R.id.btnCenterRegulation);
-        selectFile.setOnClickListener(selectFile_listener);
+      //  selectFile = findViewById(R.id.btnCenterRegulation);
 
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
 
@@ -98,18 +96,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         });
     }
 
-    //Open filePicker and choose a pdf-file
-    public View.OnClickListener selectFile_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String title= String.valueOf(R.string.chooseFile);
-            Intent intentPDF = new Intent(Intent.ACTION_GET_CONTENT);
-            intentPDF.setType("application/pdf");
-            intentPDF.addCategory(Intent.CATEGORY_OPENABLE);
-            startActivityForResult(Intent.createChooser(intentPDF ,  title), PICK_PDF_CODE);
 
-        }
-    };
 
     public View.OnClickListener btnSubmitAcceptance_listener = new View.OnClickListener() {
         @Override

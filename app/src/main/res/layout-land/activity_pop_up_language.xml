@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopUpLanguageActivity">
+
+    <!--    PAGE TITLE -->
+    <ImageView
+        android:id="@+id/imgEng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLangEng"
+        app:layout_constraintStart_toEndOf="@+id/textViewLangEng"
+        app:layout_constraintTop_toTopOf="@+id/textViewLangEng"
+        app:srcCompat="@drawable/language" />
+
+    <TextView
+        android:id="@+id/textViewTitlePopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:text="@string/language"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    FIRST LANGUAGE  -->
+    <TextView
+        android:id="@+id/textViewLangEng"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/eng"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitlePopup"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitlePopup" />
+
+    <!--    SECOND LANGUAGE  -->
+    <TextView
+        android:id="@+id/textViewLangIt"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/it"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/textViewLangEng"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLangEng" />
+
+
+    <ImageView
+        android:id="@+id/imgIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLangIt"
+        app:layout_constraintStart_toEndOf="@+id/textViewLangIt"
+        app:layout_constraintTop_toTopOf="@+id/textViewLangIt"
+        app:srcCompat="@drawable/italy" />
+</android.support.constraint.ConstraintLayout>

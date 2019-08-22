@@ -10,16 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
         <!--    PAGE TITLE -->
         <TextView
             android:id="@+id/pageTitle"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="65dp"
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginTop="120dp"
             android:text="@string/centerName"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/centerLocation"
+            android:text="@string/centerAddress"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
@@ -83,29 +79,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
-        <!--CENTER REGULATION-->
+        <!--CITY-->
         <TextView
-            android:id="@+id/textViewCenterRegulation"
+            android:id="@+id/textViewCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/centerRegulation"
+            android:text="@string/city"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
 
-        <Button
-            android:id="@+id/btnCenterRegulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="385dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/chooseFile"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
+            android:ems="10"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCenterServices"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterRegulation" />
+            app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
 
         <!--CENTER SERVICES-->
@@ -118,26 +113,24 @@
             android:text="@string/centerServices"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCenterRegulation" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
 
         <EditText
             android:id="@+id/editTextCenterServices"
-            android:layout_width="693dp"
-            android:layout_height="66dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="385dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:ems="100"
             android:inputType="text"
             android:text="List of services provided by the center"
             android:textColor="#000000"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCenterServices" />
 
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/btnSubmitAcceptance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

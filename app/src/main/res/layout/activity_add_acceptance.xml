@@ -79,30 +79,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
-        <!--CENTER REGULATION-->
-        <TextView
-            android:id="@+id/textViewCenterRegulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/centerRegulation"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
-
-        <Button
-            android:id="@+id/btnCenterRegulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/chooseFile"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCenterRegulation" />
-
         <!--CITY-->
         <TextView
             android:id="@+id/textViewCity"
@@ -123,7 +99,7 @@
             android:layout_marginTop="0dp"
             android:ems="10"
             android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewCenterRegulation"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCenterServices"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
@@ -138,7 +114,7 @@
             android:text="@string/centerServices"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCenterRegulation" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
 
         <EditText
             android:id="@+id/editTextCenterServices"

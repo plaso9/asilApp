@@ -62,6 +62,7 @@ public class ReadRatingsActivity extends AppCompatActivity {
                                 User user = dataSnapshot.getValue(User.class);
                                 viewHolder.setName(user.getName()+" "+user.getSurname());
                                 viewHolder.setAvgRating(roundTwoDecimals(model.getAvgRating()));
+                                viewHolder.setComment(model.getComment());
                             }
 
                             @Override
@@ -107,6 +108,11 @@ public class ReadRatingsActivity extends AppCompatActivity {
         public void setAvgRating(Float avgRating){
             TextView rating = mView.findViewById(R.id.userSurname);
             rating.setText(avgRating+"");
+        }
+
+        public void setComment(String comment) {
+            TextView userComment = mView.findViewById(R.id.userComment);
+            userComment.setText(comment);
         }
 
 

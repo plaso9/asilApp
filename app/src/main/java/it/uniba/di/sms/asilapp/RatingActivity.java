@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     private RatingBar mRatingCity;
     private RatingBar mRatingCenter;
     private RatingBar mRatingApp;
+    private EditText mComment;
     private Button mSubmitRating;
     private Float avgRating;
 
@@ -62,6 +64,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         mRatingCity = findViewById(R.id.ratingBarCity);
         mRatingCenter = findViewById(R.id.ratingBarCenter);
         mRatingApp = findViewById(R.id.ratingBarApp);
+        mComment = findViewById(R.id.editTextComment);
         mSubmitRating = findViewById(R.id.buttonSubmit);
 
         mSubmitRating.setOnClickListener(mSubmitRating_listener);
@@ -170,10 +173,13 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         //Set avg rating
         avgRating = (mRatingCity.getRating() + mRatingCenter.getRating() + mRatingApp.getRating()) / 3;
 
+        String comment = mComment.getText().toString();
+
         //New Constructor
         Rating acceptance = new Rating(
                 userId,
-                avgRating
+                avgRating,
+                comment
         );
 
         //Adding value to DB
