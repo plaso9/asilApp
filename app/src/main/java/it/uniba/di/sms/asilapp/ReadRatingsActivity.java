@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +24,8 @@ import it.uniba.di.sms.asilapp.models.Rating;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class ReadRatingsActivity extends AppCompatActivity {
-
     private static final String TAG = "ReadRatingsActivity";
+
     private RecyclerView recyclerView;
     private DatabaseReference mDatabaseRating;
 
@@ -64,7 +66,10 @@ public class ReadRatingsActivity extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                                // Getting user failed
+                                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                                Toast.makeText(ReadRatingsActivity.this, "Failed to load user.",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         });
 

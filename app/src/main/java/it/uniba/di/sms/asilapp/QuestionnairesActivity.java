@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ import it.uniba.di.sms.asilapp.models.Questionnaires;
 
 public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "QuestionnairesActivity";
+
     private String uId;
     private String URI1="null", URI2="null", URI3="null", URI4="null";
     private String userClickedId;
@@ -97,7 +99,10 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Getting questionnaires failed
+                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,7 +116,10 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Getting questionnaires failed
+                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -125,7 +133,10 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Getting questionnaires failed
+                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,7 +150,10 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Getting questionnaires failed
+                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
