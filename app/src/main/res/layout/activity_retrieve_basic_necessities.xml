@@ -78,17 +78,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textViewAskFor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/ask"
-                    android:textColor="#000000"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="@+id/textViewShow"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewShow" />
-
-                <TextView
                     android:id="@+id/textViewGoTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

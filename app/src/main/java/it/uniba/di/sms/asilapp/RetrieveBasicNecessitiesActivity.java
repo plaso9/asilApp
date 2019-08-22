@@ -26,7 +26,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.BasicNecessities;
+import it.uniba.di.sms.asilapp.models.City;
+import it.uniba.di.sms.asilapp.models.Necessities;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //variable declaration
@@ -34,12 +39,15 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     private String uId;
     private ImageView imageMapFood;
     private ImageView imageMapPharmacy;
-    private String _acceptance;
+
+    private String cityName;
+
     private TextView mAddressFood;
     private TextView mAddressPharmacy;
     private TextView userId;
     private TextView userId2;
 
+    private DatabaseReference mCityReference;
     private DatabaseReference mUserReference;
     private DatabaseReference mBasicNecessities;
     private ImageButton imgBtnLanguage;
@@ -78,6 +86,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(uId);
         mBasicNecessities = FirebaseDatabase.getInstance().getReference().child("basic_necessities");
+        mCityReference = FirebaseDatabase.getInstance().getReference("city");
 
         mAddressFood = findViewById(R.id.textViewFoodAddress);
         mAddressPharmacy = findViewById(R.id.textViewPharmacyAddress);
@@ -86,8 +95,10 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-
+        
     }
+
+
 
 
     @Override
@@ -177,7 +188,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText());
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText()+"%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -186,22 +197,28 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText());
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText()+"%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
     };
 
     //function to get basic necessities basically information
-    public void getBasicNecessitiesInfo(String acceptanceId) {
+    public void getBasicNecessitiesInfo(final long cityId) {
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                BasicNecessities basic_necessities = dataSnapshot.getValue(BasicNecessities.class);
-                mAddressFood.setText(basic_necessities.name);
-                mAddressPharmacy.setText(basic_necessities.name);
-                userId.setText(uId);
-                userId2.setText(uId);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Necessities basic_necessities = snapshot.getValue(Necessities.class);
+                    if (basic_necessities.city == cityId){
+                        mAddressFood.setText(basic_necessities.mall);
+                        mAddressPharmacy.setText(basic_necessities.pharmacy);
+                        userId.setText(uId);
+                        userId2.setText(uId);
+                        getCityName(cityId);
+                    }
+                }
+
 
             }
 
@@ -213,16 +230,16 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                         Toast.LENGTH_SHORT).show();
             }
         };
-        mBasicNecessities.child(acceptanceId).addValueEventListener(cityListener);
+        mBasicNecessities.addValueEventListener(cityListener);
     }
 
     // function to get foreign key _acceptance from basic necessities table
     public void getAcceptanceId() {
-        mUserReference.child("_acceptance").addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                _acceptance = dataSnapshot.getValue().toString();
-                getBasicNecessitiesInfo(_acceptance);
+                User user = dataSnapshot.getValue(User.class);
+                getCityId(user.getAcceptanceId());
             }
 
             @Override
@@ -231,6 +248,39 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                 Log.w(TAG, "loadAcceptanceId:onCancelled", databaseError.toException());
                 Toast.makeText(RetrieveBasicNecessitiesActivity.this, "Failed to load Acceptance Id",
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getCityName(final long cityC) {
+        mCityReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    City city = snapshot.getValue(City.class);
+                    if (cityC == city.id){
+                        cityName = city.name;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void getCityId(final String acceptanceId){
+        FirebaseDatabase.getInstance().getReference("acceptance").child(acceptanceId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Acceptance acceptance = dataSnapshot.getValue(Acceptance.class);
+                getBasicNecessitiesInfo(acceptance.getCity());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
