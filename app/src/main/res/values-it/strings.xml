@@ -107,6 +107,7 @@
     <string name="eng">Inglese</string>
     <string name="nation">Nazione</string>
     <string name="nationality">Nazionalità</string>
+    <string name="showPatient">Mostra la lista dei pazienti</string>
 </resources>
 
 
