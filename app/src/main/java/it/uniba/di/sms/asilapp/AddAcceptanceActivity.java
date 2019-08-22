@@ -48,7 +48,7 @@ public class AddAcceptanceActivity extends AppCompatActivity {
         spinnerCity = findViewById(R.id.spinnerCity);
         buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
 
-        selectFile = findViewById(R.id.btnCenterRegulation);
+      //  selectFile = findViewById(R.id.btnCenterRegulation);
 
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
 
