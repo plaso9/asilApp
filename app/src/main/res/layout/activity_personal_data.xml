@@ -48,7 +48,8 @@
         <ScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
 
 
             <android.support.constraint.ConstraintLayout
@@ -61,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/personalData"
                     android:textAllCaps="true"
                     android:textSize="24dp"
@@ -75,7 +76,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="90dp"
                     android:text="@string/name"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
