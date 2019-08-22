@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,8 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     private Button btnDemo;
     private Button btnQuality;
     private DatabaseReference mQuestionnaires;
+
+    private ImageButton imgBtnLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +161,50 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             }
         });
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, QuestionnairesActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, QuestionnairesActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (QuestionnairesActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.QuestionnairesActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+
+
     public View.OnClickListener btnSf12_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

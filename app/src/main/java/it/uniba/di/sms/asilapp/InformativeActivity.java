@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,6 +28,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
             card_view_UsefulNumbers,
             card_view_MyInfo;
 
+    private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
 
 
@@ -65,8 +68,47 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
         card_view_UsefulNumbers.setOnClickListener(card_view_UsefulNumbers_listener);
         card_view_MyInfo.setOnClickListener(card_view_MyInfo_listener);
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, InformativeActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, InformativeActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (InformativeActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InformativeActivity");
+            startActivity(languageIntent);
+        }
+    };
 
 
     @Override

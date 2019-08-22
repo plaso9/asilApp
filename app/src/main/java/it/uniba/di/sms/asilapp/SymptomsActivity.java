@@ -21,6 +21,7 @@ public class SymptomsActivity extends AppCompatActivity implements NavigationVie
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class SymptomsActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
 
 
 

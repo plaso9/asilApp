@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
             card_view_PlacesOfWorship,
             card_view_School,
             card_view_Pharmacy;
+    private ImageButton imgBtnLanguage;
 
     private DrawerLayout drawer;
 
@@ -94,8 +97,47 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         mCityReference = FirebaseDatabase.getInstance().getReference().child("city");
 
         mDescription = findViewById(R.id.textViewCityDescription);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
+
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, CityInfoActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, CityInfoActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (CityInfoActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.CityInfoActivity");
+            startActivity(languageIntent);
+        }
+    };
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
