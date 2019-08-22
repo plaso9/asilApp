@@ -38,4 +38,6 @@ public class Necessities {
     public void setPharmacy(String pharmacy) {
         this.pharmacy = pharmacy;
     }
+
+
 }
