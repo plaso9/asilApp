@@ -86,14 +86,14 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mAddress = findViewById(R.id.editTextCenterLocation);
         mCity = findViewById(R.id.editTextCenterCity);
         mListServices = findViewById(R.id.editTextCenterServices);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
 
     }
 
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) { // english
@@ -127,6 +127,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
             startActivity(languageIntent);
         }
     };
+    */
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
