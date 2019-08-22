@@ -4,24 +4,37 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import it.uniba.di.sms.asilapp.models.City;
 import it.uniba.di.sms.asilapp.models.Necessities;
 
 
 public class AddFoodActivity extends AppCompatActivity {
     private static final String TAG = "PopUpTempActivity";
     //Edit text for necessities value
-    private EditText mCity;
+    private Spinner mCitySpinner;
     private EditText mMall;
     private EditText mPharmacy;
+    private long idCity;
     //Button to submit necessities value
     private Button submitNecessities;
 
@@ -31,21 +44,62 @@ public class AddFoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_food);
 
         //find R.id from xml
-        mCity = findViewById(R.id.editTextCity);
+        mCitySpinner = findViewById(R.id.spinnerCityFood);
         mMall = findViewById(R.id.editTextMallLocation);
         mPharmacy = findViewById(R.id.editTextPharmacyLocation);
         submitNecessities = findViewById(R.id.btnSubmit);
 
         //Set listener value variable
         submitNecessities.setOnClickListener(submitNecessities_listener);
+
+        DatabaseReference cityRef = FirebaseDatabase.getInstance().getReference("city");
+        cityRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<City> cities = new ArrayList<>();
+                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
+                {
+                    cities.add(acceptanceSnapShot.getValue(City.class));
+                }
+                //Get all names of acceptance
+                final List<String> name_list = new ArrayList<>();
+                for(City city: cities){
+                    name_list.add(city.getName());
+                }
+                //Create adapter and set for spinner
+                ArrayAdapter<String> stringArrayAdapterCity;
+                stringArrayAdapterCity = new ArrayAdapter<>(AddFoodActivity.this, android.R.layout.simple_list_item_1, name_list);
+                mCitySpinner.setAdapter(stringArrayAdapterCity);
+
+                //Method to retrieve the id code of the item selected in the spinner
+                mCitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        idCity = cities.get(i).getId();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting city failed
+                Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
+                Toast.makeText(AddFoodActivity.this, "Failed to load city.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //Set on click listener submit button
     public View.OnClickListener submitNecessities_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (mCity.getText().toString().equals("") ||
-                mMall.getText().toString().equals("") ||
+            if (mMall.getText().toString().equals("") ||
                 mPharmacy.getText().toString().equals("")
                 ) {
                 Toast.makeText(AddFoodActivity.this, "No field should be empty", Toast.LENGTH_SHORT).show();
@@ -57,13 +111,13 @@ public class AddFoodActivity extends AppCompatActivity {
 
     public void addNewRetrieveNecessities(){
         //Get value to insert in DB
-        final String city = mCity.getText().toString();
+        final String city = mCitySpinner.getSelectedItem().toString();
         final String mall = mMall.getText().toString();
         final String pharmacy = mPharmacy.getText().toString();
 
         //New Constructor
         Necessities necessities = new Necessities(
-                city,
+                idCity,
                 mall,
                 pharmacy
         );
