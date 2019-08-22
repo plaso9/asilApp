@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,15 +15,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class BylawActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BylawActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textViewDownload;
     private DrawerLayout drawer;
+
+    private ImageButton imgBtnLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,30 +49,73 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         textViewDownload = findViewById(R.id.textViewDownload);
         textViewDownload.setOnClickListener(download_listener);
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, BylawActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, BylawActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (BylawActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.BylawActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (BylawActivity.this, InformativeActivity.class);
+                sens = new Intent(BylawActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (BylawActivity.this, MedicalRecordsActivity.class);
+                sens = new Intent(BylawActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (BylawActivity.this, PersonalDataActivity.class);
+                sens = new Intent(BylawActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (BylawActivity.this, QuestionnairesActivity.class);
+                sens = new Intent(BylawActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
@@ -84,9 +131,9 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -99,7 +146,8 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         }
 
     };
-    private long DownloadData (Uri uri, View v) {
+
+    private long DownloadData(Uri uri, View v) {
 
         long downloadReference;
 
@@ -118,8 +166,8 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
 
         //Set the local destination for the downloaded file to a path
         //within the application's external files directory
-            request.setDestinationInExternalFilesDir(BylawActivity.this,
-                    Environment.DIRECTORY_DOWNLOADS,"help.png");
+        request.setDestinationInExternalFilesDir(BylawActivity.this,
+                Environment.DIRECTORY_DOWNLOADS, "help.png");
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
