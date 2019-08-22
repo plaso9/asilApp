@@ -3,14 +3,16 @@ package it.uniba.di.sms.asilapp.models;
 public class Rating {
     public String user;
     public Float avgRating;
+    public String comment;
 
     //Empty construnctor
     public Rating() {}
 
     //Constructor with params
-    public Rating(String user, Float avgRating) {
+    public Rating(String user, Float avgRating, String comment) {
         this.user = user;
         this.avgRating = avgRating;
+        this.comment = comment;
     }
 
     public String getUser() {
@@ -27,5 +29,13 @@ public class Rating {
 
     public void setAvgRating(Float avgRating) {
         this.avgRating = avgRating;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
