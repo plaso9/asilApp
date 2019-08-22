@@ -1,7 +1,7 @@
 package it.uniba.di.sms.asilapp.models;
 
 public class Necessities {
-    public String city;
+    public long city;
     public String mall;
     public String pharmacy;
 
@@ -9,17 +9,17 @@ public class Necessities {
     public Necessities(){}
 
     //Constructor with params
-    public Necessities(String city, String mall, String pharmacy) {
+    public Necessities(long city, String mall, String pharmacy) {
         this.city = city;
         this.mall = mall;
         this.pharmacy = pharmacy;
     }
 
-    public String getCity() {
+    public long getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(long city) {
         this.city = city;
     }
 
