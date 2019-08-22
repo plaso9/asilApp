@@ -38,6 +38,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     private String _acceptance;
     private String _city;
     private String cityInfo;
+    private String cityName;
 
     private TextView mDescription;
 
@@ -193,7 +194,8 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     City city = snapshot.getValue(City.class);
                     if (city.id == cityId){
-                        cityInfo = city.name + " - " + city.description;
+                        cityName = city.name;
+                        cityInfo = cityName + " - " + city.description;
                         mDescription.setText(cityInfo);
                     }
                 }
@@ -260,7 +262,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Ambulatory_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -268,7 +270,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Municipality_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=municipio");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=municipio%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -276,7 +278,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Postoffice_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=ufficio+postale");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=ufficio+postale%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -284,7 +286,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_PlacesOfWorship_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=luoghi+di+culto");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=luoghi+di+culto%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -292,7 +294,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_School_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=scuola+di+italiano");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=scuola+di+italiano%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -300,7 +302,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=farmacia");
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=farmacia%2C+"+cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
