@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +27,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
     imageViewFireBrigade;
 
     private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,49 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         imageViewSeaEmergency.setOnClickListener(imageViewSeaEmergency_listener);
         imageViewFireBrigade.setOnClickListener(imageViewFireBrigade_listener);
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) { // english
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, UsefulNumbersActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+        if (requestCode == 2) { //italian
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, UsefulNumbersActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+
+
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent (UsefulNumbersActivity.this,PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.UsefulNumbersActivity");
+            startActivity(languageIntent);
+        }
+    };
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -97,6 +141,8 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         }
         return true;
     }
+
+
 
     @Override
     public void onBackPressed() {

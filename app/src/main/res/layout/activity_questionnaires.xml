@@ -20,7 +20,16 @@
                     android:background="@drawable/gradient"
                     android:elevation="4dp"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                    <ImageButton
+                        android:id="@+id/imgBtnLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@android:color/transparent"
+                        android:paddingRight="28dp"
+                        app:srcCompat="@drawable/lang" />
+                </android.support.v7.widget.Toolbar>
 
                 <FrameLayout
                     android:id="@+id/fragment_container"
