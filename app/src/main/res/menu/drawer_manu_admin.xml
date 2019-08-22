@@ -5,26 +5,26 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_personalData"
-            android:icon="@drawable/personal"
-            android:title="@string/personalData" />
+            android:id="@+id/nav_add_user"
+            android:icon="@drawable/adduser"
+            android:title="@string/addUser" />
 
         <item
-            android:id="@+id/nav_info"
-            android:icon="@drawable/information"
-            android:title="@string/informationSection" />
-
-
-        <item
-            android:id="@+id/nav_medicalRecords"
-            android:icon="@drawable/medical"
-            android:title="@string/medicalRecords" />
+            android:id="@+id/nav_add_new_acceptance"
+            android:icon="@drawable/addacceptance"
+            android:title="@string/addAcceptance" />
 
 
         <item
-            android:id="@+id/nav_questionnaires"
-            android:icon="@drawable/questionnaires"
-            android:title="@string/questionnaires" />
+            android:id="@+id/nav_add_retrive_necessities"
+            android:icon="@drawable/addfood"
+            android:title="@string/addFood" />
+
+
+        <item
+            android:id="@+id/nav_read_ratings"
+            android:icon="@drawable/readratings"
+            android:title="@string/readRatings" />
 
         <item
             android:id="@+id/nav_logout"
