@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
 public class CityInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -185,13 +186,18 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
 
 
     //function to get city basically information
-    public void getCityInformation(String cityId) {
+    public void getCityInformation(final long cityId) {
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                City city = dataSnapshot.getValue(City.class);
-                cityInfo = city.name + ", " + city.description;
-                mDescription.setText(cityInfo);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    City city = snapshot.getValue(City.class);
+                    if (city.id == cityId){
+                        cityInfo = city.name + " - " + city.description;
+                        mDescription.setText(cityInfo);
+                    }
+                }
+
             }
 
             @Override
@@ -202,16 +208,16 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
                         Toast.LENGTH_SHORT).show();
             }
         };
-        mCityReference.child(cityId).addValueEventListener(cityListener);
+        mCityReference.addValueEventListener(cityListener);
     }
 
     // function to get foreign key _city from acceptance table
     public void getCityId(String _acceptance) {
-        mAcceptanceReference.child(_acceptance).child("_city").addListenerForSingleValueEvent(new ValueEventListener() {
+        mAcceptanceReference.child(_acceptance).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                _city = dataSnapshot.getValue().toString();
-                getCityInformation(_city);
+                Acceptance acceptance = dataSnapshot.getValue(Acceptance.class);
+                getCityInformation(acceptance.getCity());
             }
 
             @Override
@@ -226,7 +232,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
 
     // function to get foreign key _acceptance from user table
     public void getAcceptanceId() {
-        mUserReference.child("_acceptance").addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserReference.child("acceptanceId").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 _acceptance = dataSnapshot.getValue().toString();
