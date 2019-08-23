@@ -75,13 +75,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_personalData"
                     android:layout_width="match_parent"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/personalData"
                     android:src="@drawable/personal" />
 
@@ -118,14 +118,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_information"
                     android:layout_width="match_parent"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/informationSection"
                     android:src="@drawable/information" />
 
@@ -160,14 +160,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_medicalRecords"
                     android:layout_width="wrap_content"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/medicalRecords"
                     android:src="@drawable/medical" />
 
@@ -203,14 +203,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/image_questionnaires"
                     android:layout_width="wrap_content"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/questionnaires"
                     android:src="@drawable/questionnaires" />
 
