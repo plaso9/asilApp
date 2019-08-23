@@ -56,139 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-                <Button
-                    android:id="@+id/buttonAddPathology"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddSymptoms" />
-
-                <ImageView
-                    android:id="@+id/image_SeePathologyStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddPathology"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeSymptomsStats"
-                    app:srcCompat="@drawable/graphic" />
-
-                <Button
-                    android:id="@+id/buttonAddSymptoms"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddECG" />
-
-                <ImageView
-                    android:id="@+id/image_seeSymptomsStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddSymptoms"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeECGStats"
-                    app:srcCompat="@drawable/graphic" />
-
-                <Button
-                    android:id="@+id/buttonAddECG"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddHeartbeat" />
-
-                <ImageView
-                    android:id="@+id/image_seeECGStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddECG"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeHeartbeatStats"
-                    app:srcCompat="@drawable/graphic" />
-
-                <Button
-                    android:id="@+id/buttonAddHeartbeat"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddGlycemia" />
-
-                <ImageView
-                    android:id="@+id/image_seeHeartbeatStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddHeartbeat"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeGlycemiaStats"
-                    app:srcCompat="@drawable/graphic" />
-
-                <Button
-                    android:id="@+id/buttonAddGlycemia"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddBloodPressure" />
-
-                <ImageView
-                    android:id="@+id/image_seeGlycemiaStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddGlycemia"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeBloodPressureStats"
-                    app:srcCompat="@drawable/graphic" />
-
-                <Button
-                    android:id="@+id/buttonAddBloodPressure"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="@string/add"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/buttonTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAddTemperature" />
-
-                <ImageView
-                    android:id="@+id/image_seeBloodPressureStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddBloodPressure"
-                    app:layout_constraintTop_toBottomOf="@+id/image_seeTemperatureStats"
-                    app:srcCompat="@drawable/graphic" />
-
                 <TextView
                     android:id="@+id/textViewTitle"
                     android:layout_width="wrap_content"
@@ -202,16 +69,51 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textViewTemperature"
+                    android:id="@+id/textViewLastMeasurement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="76dp"
-                    android:text="@string/temperature"
+                    android:layout_marginStart="138dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/lastMeasurement"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
+                <!-- TEMPERATURE -->
+                <TextView
+                    android:id="@+id/textViewTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/temperature"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewLastMeasurement" />
+
+                <ImageView
+                    android:id="@+id/image_seeTemperatureStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewTemperature"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewTemperature"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddTemperature"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewTemperature"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewTemperature" />
+
+                <!-- PRESSURE -->
                 <TextView
                     android:id="@+id/textViewPressure"
                     android:layout_width="wrap_content"
@@ -223,6 +125,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
 
+                <ImageView
+                    android:id="@+id/image_seeBloodPressureStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPressure"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPressure"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddBloodPressure"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPressure"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPressure"/>
+
+                <!-- GLYCEMIA -->
                 <TextView
                     android:id="@+id/textViewGlycemia"
                     android:layout_width="wrap_content"
@@ -234,6 +159,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewPressure" />
 
+                <ImageView
+                    android:id="@+id/image_seeGlycemiaStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewGlycemia"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewGlycemia"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddGlycemia"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewGlycemia"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewGlycemia" />
+
+                <!-- HEARTBEAT -->
                 <TextView
                     android:id="@+id/textViewHeartbeat"
                     android:layout_width="wrap_content"
@@ -245,6 +193,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGlycemia" />
 
+                <ImageView
+                    android:id="@+id/image_seeHeartbeatStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewHeartbeat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewHeartbeat"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddHeartbeat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewHeartbeat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewHeartbeat" />
+
+                <!-- ECG -->
                 <TextView
                     android:id="@+id/textViewECG"
                     android:layout_width="wrap_content"
@@ -256,6 +227,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewHeartbeat" />
 
+                <ImageView
+                    android:id="@+id/image_seeECGStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewECG"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewECG"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddECG"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewECG"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewECG"/>
+
+                <!-- SYMPTOMS -->
                 <TextView
                     android:id="@+id/textViewSymptoms"
                     android:layout_width="wrap_content"
@@ -267,6 +261,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewECG" />
 
+                <ImageView
+                    android:id="@+id/image_seeSymptomsStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewSymptoms"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewSymptoms"
+                    app:srcCompat="@drawable/graphic" />
+
+                <Button
+                    android:id="@+id/buttonAddSymptoms"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/add"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewSymptoms"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewSymptoms"/>
+
+                <!-- PATHOLOGY -->
                 <TextView
                     android:id="@+id/textViewPathology"
                     android:layout_width="wrap_content"
@@ -278,38 +295,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewSymptoms" />
 
-                <TextView
-                    android:id="@+id/textViewLastMeasurement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="138dp"
-                    android:layout_marginTop="32dp"
-                    android:text="@string/lastMeasurement"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+                <ImageView
+                    android:id="@+id/image_SeePathologyStats"
+                    android:layout_width="34dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="65dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPathology"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPathology"
+                    app:srcCompat="@drawable/graphic" />
 
                 <Button
-                    android:id="@+id/buttonAddTemperature"
+                    android:id="@+id/buttonAddPathology"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="182dp"
                     android:layout_marginEnd="15dp"
                     android:text="@string/add"
                     android:textColor="#FFFFFF"
                     android:textSize="@dimen/buttonTextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPathology"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/image_seeTemperatureStats"
-                    android:layout_width="34dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="185dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAddTemperature"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/graphic" />
+                    app:layout_constraintTop_toTopOf="@+id/textViewPathology"/>
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

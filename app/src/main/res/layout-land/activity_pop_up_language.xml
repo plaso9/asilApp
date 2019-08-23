@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".PopUpLanguageActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <!--    PAGE TITLE -->
     <ImageView
         android:id="@+id/imgEng"
@@ -62,4 +74,7 @@
         app:layout_constraintStart_toEndOf="@+id/textViewLangIt"
         app:layout_constraintTop_toTopOf="@+id/textViewLangIt"
         app:srcCompat="@drawable/italy" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
