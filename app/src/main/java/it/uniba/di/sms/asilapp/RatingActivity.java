@@ -176,14 +176,14 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         String comment = mComment.getText().toString();
 
         //New Constructor
-        Rating acceptance = new Rating(
+        Rating rating = new Rating(
                 userId,
                 avgRating,
                 comment
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("rating").push().setValue(acceptance).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("rating").push().setValue(rating).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
