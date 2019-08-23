@@ -54,7 +54,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         holder.show_message.setText(message.getMessage());
         holder.time_message.setText(message.getDate());
-        holder.from_message.setText(message.getUser_id());
+        holder.from_message.setText(message.getName_sender()+" "+message.getSurname_sender());
     }
 
     //Get number of messages

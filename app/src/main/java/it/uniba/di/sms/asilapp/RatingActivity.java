@@ -48,7 +48,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        
+
         mRatingCity = findViewById(R.id.ratingBarCity);
         mRatingCenter = findViewById(R.id.ratingBarCenter);
         mRatingApp = findViewById(R.id.ratingBarApp);
