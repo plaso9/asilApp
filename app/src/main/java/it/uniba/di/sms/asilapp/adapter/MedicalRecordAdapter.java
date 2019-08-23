@@ -46,7 +46,7 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdap
             @Override
             public void onClick(View view) {
                 //Get id of parameter and condition
-                if (medicalRecord.get_parameter().equals("7") && medicalRecord.getPathology() != "") {
+                if (medicalRecord.get_parameter().equals("7") && !medicalRecord.getPathology().equals("")) {
                     //Get id of pathology clicked for that user
                     String pathology_id = medicalRecord.getPathology();
                     //Create new intent
