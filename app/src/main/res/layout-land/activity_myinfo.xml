@@ -50,7 +50,7 @@
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:alignmentMode="alignMargins"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="0dp"
         android:columnOrderPreserved="false">
 
         <!-- ROW 1  -->
@@ -62,6 +62,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/gradient"
@@ -69,7 +70,7 @@
             app:cardElevation="8dp">
 
             <RelativeLayout
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -79,7 +80,7 @@
                     android:id="@+id/image_pathology"
                     android:src="@drawable/pathology"
                     android:layout_width="match_parent"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/pathology"/>
 
                 <TextView
@@ -104,6 +105,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
@@ -111,7 +113,7 @@
 
             <RelativeLayout
                 android:background="#FFFFFF"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -120,7 +122,7 @@
                 <ImageView
                     android:id="@+id/image_retrieveBasicNecessities"
                     android:layout_width="match_parent"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/necessities"
                     android:contentDescription="@string/retrieveBasicNecessities"/>
 
@@ -153,7 +155,7 @@
 
             <RelativeLayout
                 android:background="#FFFFFF"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -162,7 +164,7 @@
                 <ImageView
                     android:id="@+id/image_appDetails"
                     android:layout_width="wrap_content"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/app"
                     android:contentDescription="@string/appDetails"/>
 
@@ -196,7 +198,7 @@
 
             <RelativeLayout
                 android:background="#FFFFFF"
-                android:layout_margin="16dp"
+                android:layout_margin="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -205,7 +207,7 @@
                 <ImageView
                     android:id="@+id/image_rating"
                     android:layout_width="wrap_content"
-                    android:layout_height="168dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/rating"
                     android:contentDescription="@string/rating"/>
 
