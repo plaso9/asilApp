@@ -16,6 +16,7 @@ public class City {
         this.id = id;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

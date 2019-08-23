@@ -4,7 +4,7 @@ public class Questionnaires {
     public String name;
     public String uri;
 
-    //Empty construnctor
+    //Empty constructor
     public Questionnaires() {
     }
 
@@ -14,6 +14,7 @@ public class Questionnaires {
         this.uri = uri;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

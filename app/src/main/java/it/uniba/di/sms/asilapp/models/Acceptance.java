@@ -22,6 +22,7 @@ public class Acceptance {
         this.city = city;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

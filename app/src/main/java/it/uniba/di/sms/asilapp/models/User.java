@@ -33,6 +33,7 @@ public class User {
         this.nation = nation;
     }
 
+    //Getter and Setter methods
     public String getUserId() {
         return user_id;
     }
@@ -96,15 +97,6 @@ public class User {
     public void setRole(int role) {
         this.role = role;
     }
-
-   /* public int get_acceptance() {
-        return _acceptance;
-    }
-
-    public void set_acceptance(int _acceptance) {
-        this._acceptance = _acceptance;
-    }
-    */
 
     public String getMail() {
         return mail;
