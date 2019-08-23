@@ -31,7 +31,7 @@ public class PatientDetailActivity extends AppCompatActivity {
     CardView card_view_medicalRecords;
     CardView card_view_questionnaires;
 
-    int REQUEST_CODE=0;
+    int PROGRESS_BAR_STATUS=0;
     ProgressDialog progressBar;
 
     @Override
@@ -113,9 +113,9 @@ public class PatientDetailActivity extends AppCompatActivity {
 
 
     public void afterExecution(){
-        if (REQUEST_CODE == 1){
+        if (PROGRESS_BAR_STATUS == 1){
             progressBar.dismiss();
-            REQUEST_CODE=0;
+            PROGRESS_BAR_STATUS=0;
         }
     }
 }
