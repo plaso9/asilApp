@@ -188,7 +188,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText()+"%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText()+"%2C+"+cityName); //Query, will search for "INDIRIZZO_SUPERMERCATO, NOME_CIITA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -197,14 +197,14 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText()+"%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText()+"%2C+"+cityName); //Query, will search for "INDIRIZZO_FARMACIA, NOME_CITTA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
     };
 
     //function to get basic necessities basically information
-    public void getBasicNecessitiesInfo(final long cityId) {
+    public void getBasicNecessitiesInfo(final long cityId) { //Method used to display the infos usefull for retrieving basic necessities
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -215,7 +215,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                         mAddressPharmacy.setText(basic_necessities.pharmacy);
                         userId.setText(uId);
                         userId2.setText(uId);
-                        getCityName(cityId);
+                        getCityName(cityId); //Method to retain the city name
                     }
                 }
 
@@ -239,7 +239,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                getCityId(user.getAcceptanceId());
+                getCityId(user.getAcceptanceId()); //Method to retain the cityId given the Acceptance Id
             }
 
             @Override
@@ -256,10 +256,10 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         mCityReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){ //Loop that iterates over the children of City in the database
                     City city = snapshot.getValue(City.class);
-                    if (cityC == city.id){
-                        cityName = city.name;
+                    if (cityC == city.id){ //If finds the cityId given
+                        cityName = city.name; //Save the name of the city in the variable cityName. It will be added in the search query displayed in Google Maps
                     }
                 }
             }
@@ -270,7 +270,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
             }
         });
     }
-    public void getCityId(final String acceptanceId){
+    public void getCityId(final String acceptanceId){ //Method to get the cityId given the Acceptance Id
         FirebaseDatabase.getInstance().getReference("acceptance").child(acceptanceId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
