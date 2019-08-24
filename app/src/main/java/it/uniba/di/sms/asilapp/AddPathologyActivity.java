@@ -92,7 +92,7 @@ public class AddPathologyActivity extends AppCompatActivity {
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

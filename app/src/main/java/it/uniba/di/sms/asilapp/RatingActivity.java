@@ -177,7 +177,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("rating").push().setValue(rating).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("rating").push().setValue(rating).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

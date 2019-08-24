@@ -123,7 +123,7 @@ public class AddFoodActivity extends AppCompatActivity {
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("basic_necessities").push().setValue(necessities).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("basic_necessities").push().setValue(necessities).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

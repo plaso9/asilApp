@@ -72,8 +72,8 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         super.onStart();
 
         // Initialize Database Reference
-        mParameterReference = FirebaseDatabase.getInstance().getReference()
-                .child("parameter").child(parameter_clicked_id);
+        mParameterReference = FirebaseDatabase.getInstance().getReference("parameter")
+                .child(parameter_clicked_id);
 
         // Defined parameter variable
         mName = findViewById(R.id.nameParameter);
@@ -128,7 +128,7 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
