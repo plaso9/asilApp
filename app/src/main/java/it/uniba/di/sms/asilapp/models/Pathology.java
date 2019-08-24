@@ -20,6 +20,7 @@ public class Pathology {
         this.medicine = medicine;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

@@ -9,51 +9,52 @@ import android.view.View;
 import android.widget.GridLayout;
 
 public class AdminActivity extends AppCompatActivity {
-    GridLayout gridLayout;
-    CardView card_view_addUser;
-    CardView card_view_addAcceptance;
+    //Variables declaration
     CardView card_view_addFood;
+    CardView card_view_addUser;
     CardView card_view_readRatings;
+    CardView card_view_addAcceptance;
     FloatingActionButton chatButton;
+    GridLayout gridLayout;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_admin);
-        //defined gridlayout variable
-        gridLayout=findViewById(R.id.gridAdminLayout);
-        //defined card variable
-        card_view_addUser = findViewById(R.id.card_addUser);
-        card_view_addAcceptance = findViewById(R.id.card_addAcceptance);
+
+        //Defined variable
         card_view_addFood = findViewById(R.id.card_addFood);
+        card_view_addUser = findViewById(R.id.card_addUser);
         card_view_readRatings = findViewById(R.id.card_readRatings);
+        card_view_addAcceptance = findViewById(R.id.card_addAcceptance);
         chatButton = findViewById(R.id.chatBtn);
+        gridLayout=findViewById(R.id.gridAdminLayout);
 
-
-        //set function to card
+        //Set a click listener on the card objects
         card_view_addAcceptance.setOnClickListener(card_view_addAcceptance_listener);
         card_view_addUser.setOnClickListener(card_view_addUser_listener);
         card_view_addFood.setOnClickListener(card_view_addFood_listener);
         card_view_readRatings.setOnClickListener(card_view_readRatings_listener);
+        //Set a click listener on the FloatingActionButton object
         chatButton.setOnClickListener(chatButton_listener);
-
     }
 
+    //Interface definition for a callback to be invoked when a view is clicked.
     public View.OnClickListener card_view_addAcceptance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (AdminActivity.this, AddAcceptanceActivity.class);
-            startActivity(sens);
-
+            Intent add_acceptanceIntent = new Intent (AdminActivity.this, AddAcceptanceActivity.class);
+            startActivity(add_acceptanceIntent);
         }
     };
 
     public View.OnClickListener card_view_addUser_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (AdminActivity.this,AddUserActivity.class);
-            startActivity(sens);
+            Intent add_userIntent = new Intent (AdminActivity.this,AddUserActivity.class);
+            startActivity(add_userIntent);
 
         }
     };
@@ -61,16 +62,16 @@ public class AdminActivity extends AppCompatActivity {
     public View.OnClickListener card_view_addFood_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(AdminActivity.this, AddFoodActivity.class);
-            startActivity(i);
+            Intent add_foodIntent = new Intent(AdminActivity.this, AddFoodActivity.class);
+            startActivity(add_foodIntent);
         }
     };
 
     public  View.OnClickListener card_view_readRatings_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
-            startActivity(intent);
+            Intent read_ratingsIntent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
+            startActivity(read_ratingsIntent);
         }
     };
 

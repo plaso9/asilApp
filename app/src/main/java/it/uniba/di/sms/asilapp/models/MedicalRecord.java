@@ -7,9 +7,11 @@ public class MedicalRecord {
     public String data_measurement;
     public String pathology;
 
+    //Empty Constructor
     public MedicalRecord() {
     }
 
+    //Constructor
     public MedicalRecord(String value, String _user, String _parameter, String data_measurement, String pathology) {
         this.value = value;
         this._user = _user;
@@ -18,6 +20,7 @@ public class MedicalRecord {
         this.pathology = pathology;
     }
 
+    //Getter and Setter methods
     public String getValue() {
         return value;
     }

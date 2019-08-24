@@ -28,9 +28,7 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-    <ScrollView android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -41,7 +39,7 @@
         android:layout_marginTop="55dp"
         android:scrollbars="vertical" />
     </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

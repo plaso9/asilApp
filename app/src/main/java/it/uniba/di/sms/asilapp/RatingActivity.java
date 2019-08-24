@@ -45,21 +45,9 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_rating);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-
-
 
         mRatingCity = findViewById(R.id.ratingBarCity);
         mRatingCenter = findViewById(R.id.ratingBarCenter);
@@ -67,11 +55,17 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         mComment = findViewById(R.id.editTextComment);
         mSubmitRating = findViewById(R.id.buttonSubmit);
 
-        mSubmitRating.setOnClickListener(mSubmitRating_listener);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        setSupportActionBar(toolbar);
+        navigationView.setNavigationItemSelectedListener(this);
+        mSubmitRating.setOnClickListener(mSubmitRating_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
 
@@ -176,14 +170,14 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         String comment = mComment.getText().toString();
 
         //New Constructor
-        Rating acceptance = new Rating(
+        Rating rating = new Rating(
                 userId,
                 avgRating,
                 comment
         );
 
         //Adding value to DB
-        FirebaseDatabase.getInstance().getReference().child("rating").push().setValue(acceptance).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("rating").push().setValue(rating).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

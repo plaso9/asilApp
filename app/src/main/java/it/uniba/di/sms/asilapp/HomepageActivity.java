@@ -2,6 +2,8 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -29,7 +31,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     FloatingActionButton chatButton;
     ImageButton imgBtnLanguage;
 
-    int REQUEST_CODE=0;
+    int PROGRESS_BAR_STATUS=0;
     ProgressDialog progressBar;
 
 
@@ -172,8 +174,14 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent personalDataIntent = new Intent (HomepageActivity.this,PersonalDataActivity.class);
-            startActivity(personalDataIntent);
+            progressBar = new ProgressDialog(HomepageActivity.this);
+            progressBar.setIndeterminate(true);
+            progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressBar.show();
+            Intent sens = new Intent (HomepageActivity.this,PersonalDataActivity.class);
+            startActivity(sens);
+
+            PROGRESS_BAR_STATUS=1;
 
         }
     };
@@ -211,9 +219,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
 
 
    public void afterExecution(){
-       if (REQUEST_CODE == 1){
+       if (PROGRESS_BAR_STATUS == 1){
            progressBar.dismiss();
-           REQUEST_CODE=0;
+           PROGRESS_BAR_STATUS=0;
        }
    }
 

@@ -39,6 +39,7 @@ import java.util.List;
 
 import it.uniba.di.sms.asilapp.adapter.MessageAdapter;
 import it.uniba.di.sms.asilapp.models.Message;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class ChatActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "ChatActivity";
@@ -164,14 +165,14 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)){
+//            drawer.closeDrawer(GravityCompat.START);
+//        }else{
+//            super.onBackPressed();
+//        }
+//    }
 
 
 
@@ -196,32 +197,49 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId Logged
-        String userId = user.getUid();
+        final String userId = user.getUid();
 
-        String message = mMessage.getText().toString();
+        final String message = mMessage.getText().toString();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
-        String current_data = formatter.format(date);
+        final String current_data = formatter.format(date);
 
-        Message messageObj = new Message(
-                userId,
-                message,
-                current_data
-        );
-
-        FirebaseDatabase.getInstance().getReference().child("chat").push().setValue(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("user").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    //Success message
-                    //Toast.makeText(ChatActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                    mMessage.setText("");
-                } else {
-                    //Failure message
-                    Toast.makeText(ChatActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
-                }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user_data = dataSnapshot.getValue(User.class);
+                Message messageObj = new Message(
+                        user_data.name,
+                        user_data.surname,
+                        message,
+                        current_data,
+                        userId
+                );
+
+                FirebaseDatabase.getInstance().getReference().child("chat").push().setValue(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            //Success message
+                            //Toast.makeText(ChatActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
+                            mMessage.setText("");
+                        } else {
+                            //Failure message
+                            Toast.makeText(ChatActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
+
     }
 
     private void readMessages(){

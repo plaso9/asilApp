@@ -11,6 +11,7 @@ public class Parameter {
         this.name = name;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

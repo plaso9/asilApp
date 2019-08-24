@@ -2,6 +2,8 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +33,7 @@ public class PatientDetailActivity extends AppCompatActivity {
     CardView card_view_medicalRecords;
     CardView card_view_questionnaires;
 
-    int REQUEST_CODE=0;
+    int PROGRESS_BAR_STATUS=0;
     ProgressDialog progressBar;
 
     @Override
@@ -81,9 +83,15 @@ public class PatientDetailActivity extends AppCompatActivity {
     public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            progressBar = new ProgressDialog(PatientDetailActivity.this);
+            progressBar.setIndeterminate(true);
+            progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressBar.show();
             Intent personalDataIntent = new Intent (PatientDetailActivity.this,PersonalDataActivity.class);
             personalDataIntent.putExtra("user_clicked", user_id);
             startActivity(personalDataIntent);
+
+            PROGRESS_BAR_STATUS=1;
         }
     };
     //Open Questionnaires Intent
@@ -113,9 +121,9 @@ public class PatientDetailActivity extends AppCompatActivity {
 
 
     public void afterExecution(){
-        if (REQUEST_CODE == 1){
+        if (PROGRESS_BAR_STATUS == 1){
             progressBar.dismiss();
-            REQUEST_CODE=0;
+            PROGRESS_BAR_STATUS=0;
         }
     }
 }

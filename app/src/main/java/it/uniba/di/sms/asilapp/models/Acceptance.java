@@ -6,20 +6,12 @@ public class Acceptance {
     public String id;
     public String name;
     public String address;
-    public String regulation;
     public ArrayList<String> listOfServices;
     public long city;
 
     //empty constructor
     public Acceptance(){
 
-    }
-
-    //constructor
-    public Acceptance(String name, String address, String regulation){
-        this.name = name;
-        this.address = address;
-        this.regulation = regulation;
     }
     //constructor
     public Acceptance(String name, String address, ArrayList<String> listOfServices, String id, long city){
@@ -30,6 +22,7 @@ public class Acceptance {
         this.city = city;
     }
 
+    //Getter and Setter methods
     public String getName() {
         return name;
     }
@@ -44,14 +37,6 @@ public class Acceptance {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getRegulation() {
-        return regulation;
-    }
-
-    public void setRegulation(String regulation) {
-        this.regulation = regulation;
     }
 
     public String getId() {

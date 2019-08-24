@@ -5,7 +5,7 @@ public class Rating {
     public Float avgRating;
     public String comment;
 
-    //Empty construnctor
+    //Empty constructor
     public Rating() {}
 
     //Constructor with params
@@ -15,6 +15,7 @@ public class Rating {
         this.comment = comment;
     }
 
+    //Getter and Setter methods
     public String getUser() {
         return user;
     }

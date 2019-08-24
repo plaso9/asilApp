@@ -15,6 +15,7 @@ public class Necessities {
         this.pharmacy = pharmacy;
     }
 
+    //Getter and Setter methods
     public long getCity() {
         return city;
     }
