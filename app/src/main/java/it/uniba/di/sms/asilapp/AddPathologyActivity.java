@@ -98,17 +98,12 @@ public class AddPathologyActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //success message
                     Toast.makeText(AddPathologyActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                    goToPreviousIntent();
+                    finish();
                 } else {
                     //failure message
                     Toast.makeText(AddPathologyActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
-
-    public void goToPreviousIntent(){
-        Intent medicalRecordsIntent = new Intent (AddPathologyActivity.this, MedicalRecord.class);
-        startActivity(medicalRecordsIntent);
     }
 }

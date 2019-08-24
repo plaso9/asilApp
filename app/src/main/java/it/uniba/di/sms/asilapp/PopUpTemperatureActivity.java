@@ -134,18 +134,12 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //success message
                     Toast.makeText(PopUpTemperatureActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                    goToPreviousIntent();
+                    finish();
                 } else {
                     //failure message
                     Toast.makeText(PopUpTemperatureActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
-
-    public void goToPreviousIntent(){
-        Intent medicalRecordsIntent = new Intent (PopUpTemperatureActivity.this,MedicalRecordsActivity.class);
-        medicalRecordsIntent.putExtra("user_clicked", user_clicked_id);
-        startActivity(medicalRecordsIntent);
     }
 }

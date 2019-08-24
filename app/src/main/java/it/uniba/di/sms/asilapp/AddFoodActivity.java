@@ -129,17 +129,12 @@ public class AddFoodActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //success message
                     Toast.makeText(AddFoodActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                    goToPreviousIntent();
+                    finish();
                 } else {
                     //failure message
                     Toast.makeText(AddFoodActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
-
-    public void goToPreviousIntent(){
-        Intent medicalRecordsIntent = new Intent (AddFoodActivity.this,AdminActivity.class);
-        startActivity(medicalRecordsIntent);
     }
 }

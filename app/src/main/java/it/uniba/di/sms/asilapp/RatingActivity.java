@@ -189,7 +189,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
                 if (task.isSuccessful()){
                     //success message
                     Toast.makeText(RatingActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
-                    goToPreviousIntent();
+                    finish();
                 } else {
                     //failure message
                     Toast.makeText(RatingActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
@@ -197,10 +197,4 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
             }
         });
     }
-
-    public void goToPreviousIntent(){
-        Intent homepageIntent = new Intent (RatingActivity.this,HomepageActivity.class);
-        startActivity(homepageIntent);
-    }
-
 }
