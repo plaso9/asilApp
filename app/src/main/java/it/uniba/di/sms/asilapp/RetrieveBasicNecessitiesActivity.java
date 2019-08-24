@@ -83,8 +83,8 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         uId = user.getUid();
 
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(uId);
-        mBasicNecessities = FirebaseDatabase.getInstance().getReference().child("basic_necessities");
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
+        mBasicNecessities = FirebaseDatabase.getInstance().getReference("basic_necessities");
         mCityReference = FirebaseDatabase.getInstance().getReference("city");
 
         mAddressFood = findViewById(R.id.textViewFoodAddress);

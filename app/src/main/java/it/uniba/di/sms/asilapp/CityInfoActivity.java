@@ -94,9 +94,9 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         // Get userId
         uId = user.getUid();
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(uId);
-        mAcceptanceReference = FirebaseDatabase.getInstance().getReference().child("acceptance");
-        mCityReference = FirebaseDatabase.getInstance().getReference().child("city");
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
+        mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
+        mCityReference = FirebaseDatabase.getInstance().getReference("city");
 
         mDescription = findViewById(R.id.textViewCityDescription);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
@@ -257,7 +257,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         getAcceptanceId();
     }
 
-    //Open Google Maps with especific view (ambulatory, postoffice...)
+    //Open Google Maps with specific view (ambulatory, postoffice...)
 
     public View.OnClickListener card_view_Ambulatory_listener = new View.OnClickListener() {
         @Override

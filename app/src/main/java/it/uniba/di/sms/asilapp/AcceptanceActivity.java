@@ -79,8 +79,8 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         // Get userId
         uId = user.getUid();
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference().child("user").child(uId);
-        mAcceptanceReference = FirebaseDatabase.getInstance().getReference().child("acceptance");
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
+        mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
 
         mName = findViewById(R.id.editTextCenterName);
         mAddress = findViewById(R.id.editTextCenterLocation);

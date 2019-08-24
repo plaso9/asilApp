@@ -27,8 +27,6 @@ import it.uniba.di.sms.asilapp.models.City;
 public class AddAcceptanceActivity extends AppCompatActivity {
     private static final String TAG = "AddAcceptanceActivity";
 
-    private Button selectFile;
-    private int PICK_PDF_CODE =0;
     private long idCity;
     private EditText eTcenterName;
     private EditText eTcenterLocation;

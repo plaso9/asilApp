@@ -82,8 +82,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
             uId = user.getUid();
         }
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
 
         // Defined personal data variable

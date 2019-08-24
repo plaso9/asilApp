@@ -216,7 +216,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                         userId
                 );
 
-                FirebaseDatabase.getInstance().getReference().child("chat").push().setValue(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                FirebaseDatabase.getInstance().getReference("chat").push().setValue(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
