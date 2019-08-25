@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".HomepageActivity">
+    tools:context=".ReadMedicalRecordsActivity">
 
     <GridLayout
         android:id="@+id/gridHomeLayout"
