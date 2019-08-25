@@ -110,9 +110,9 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (AcceptanceActivity.this,PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AcceptanceActivity");
-            startActivity(languageIntent);
+            Intent change_languageIntent = new Intent (AcceptanceActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AcceptanceActivity");
+            startActivity(change_languageIntent);
         }
     };
     */

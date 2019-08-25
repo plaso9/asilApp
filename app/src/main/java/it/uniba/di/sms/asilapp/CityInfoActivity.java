@@ -57,6 +57,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_cityinfo);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -128,9 +129,9 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (CityInfoActivity.this,PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.CityInfoActivity");
-            startActivity(languageIntent);
+            Intent change_languageIntent = new Intent (CityInfoActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.CityInfoActivity");
+            startActivity(change_languageIntent);
         }
     };
     @Override
