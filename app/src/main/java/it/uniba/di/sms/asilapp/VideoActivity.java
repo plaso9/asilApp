@@ -2,7 +2,11 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +30,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
-
+    private TextView textViewFirstVideo, textViewSecondVideo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,10 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textViewFirstVideo = findViewById(R.id.textViewFirstVideo);
+        textViewSecondVideo = findViewById(R.id.textViewSecondVideo);
+
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
@@ -52,15 +61,18 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         mediaController.setAnchorView(firstVideo);
         firstVideo = findViewById(R.id.videoViewFirstVideo);
         firstVideo.setMediaController(mediaController);
+
         //String video URL
-        String string = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Countdown%20-%202637.mp4?alt=media&token=25ec316a-385a-430f-871e-a10ae4ea4c10";
-        Uri uri = Uri.parse(string);
+        String video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/pesocorporeo.mp4?alt=media&token=04e2a7cc-9f9d-412c-aa01-ebb4cd0b2129";
+        Uri uri = Uri.parse(video);
 
+
+
+        //Setting video and textview
+        textViewFirstVideo.setText(R.string.bodyweight);
         firstVideo.setVideoURI(uri);
+        firstVideo.seekTo( 1 );
         firstVideo.requestFocus();
-        firstVideo.start();
-
-
     }
 
 

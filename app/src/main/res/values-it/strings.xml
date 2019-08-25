@@ -109,6 +109,7 @@
     <string name="nationality">Nazionalità</string>
     <string name="showPatient">Mostra la lista dei pazienti</string>
     <string name="showMore">Mostra altro</string>
+    <string name="bodyweight">Peso corporeo</string>
 </resources>
 
 

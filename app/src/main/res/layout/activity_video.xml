@@ -74,7 +74,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:clickable="true" />
 
         <!-- ROW 2  -->
 
@@ -100,7 +101,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:clickable="true" />
 
 
     </GridLayout>
