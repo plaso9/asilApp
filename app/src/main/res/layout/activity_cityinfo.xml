@@ -70,8 +70,8 @@
                 <!--CITY NAME-->
                 <TextView
                     android:id="@+id/textViewCityDescription"
-                    android:layout_width="260dp"
-                    android:layout_height="72dp"
+                    android:layout_width="217dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="12dp"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -330,12 +330,15 @@
                     android:id="@+id/btnShowMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:text="@string/showMore"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewCityDescription"
-                    app:layout_constraintStart_toEndOf="@+id/textViewCityDescription"
-                    app:layout_constraintTop_toTopOf="@+id/textViewCityDescription" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewCityDescription"
+                    app:layout_constraintVertical_bias="0.533" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     private CardView card_view_Municipality;
     private CardView card_view_PlacesOfWorship;
     private ImageButton imgBtnLanguage;
-
+    private Button btnShowMore;
     private DrawerLayout drawer;
 
     @Override
@@ -83,6 +84,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         card_view_Pharmacy = findViewById(R.id.card_pharmacy);
         mDescription = findViewById(R.id.textViewCityDescription);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        btnShowMore = findViewById(R.id.btnShowMore);
 
 
         // Initialize FirebaseUser
@@ -96,6 +98,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
 
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        btnShowMore.setOnClickListener(btnShowMore_listener);
         //Set a click listener on the card objects
         card_view_School.setOnClickListener(card_view_School_listener);
         card_view_Pharmacy.setOnClickListener(card_view_Pharmacy_listener);
@@ -132,6 +135,14 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
             Intent change_languageIntent = new Intent (CityInfoActivity.this,PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.CityInfoActivity");
             startActivity(change_languageIntent);
+        }
+    };
+
+    public View.OnClickListener btnShowMore_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent show_moreIntent = new Intent (CityInfoActivity.this,PopUpShowMoreActivity.class);
+            startActivity(show_moreIntent);
         }
     };
     @Override

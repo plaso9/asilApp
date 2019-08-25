@@ -22,9 +22,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity
             android:name=".PopUpLanguageActivity"
             android:theme="@style/PopupTheme" />
+        <activity
+            android:name=".PopUpShowMoreActivity"
+            android:theme="@style/PopupTheme" />
+
+        <activity
+            android:name=".PopUpTemperatureActivity"
+            android:theme="@style/PopupTheme" />
+
         <activity android:name=".PathologyActivity" />
         <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />
@@ -44,18 +54,8 @@
         <activity android:name=".AddPathologyActivity" />
         <activity android:name=".SearchPatientActivity" />
         <activity android:name=".DoctorActivity" />
-        <activity
-            android:name=".PopUpTemperatureActivity"
-            android:theme="@style/PopupTheme" />
         <activity android:name=".MedicalRecordsActivity" />
         <activity android:name=".PersonalDataActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".InformativeActivity" />
         <activity android:name=".VideoActivity" />
         <activity android:name=".AcceptanceActivity" />
@@ -68,6 +68,15 @@
         <activity android:name=".HomepageActivity" />
         <activity android:name=".SymptomsActivity" />
         <activity android:name=".AddUserActivity" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
