@@ -120,4 +120,7 @@
     <string name="eng">English</string>
     <string name="nationality">Nationality</string>
     <string name="showPatient">Show Patient List</string>
+    <string name="showMore">Show more</string>
+    <string name="nation">Nation</string>
+    <string name="bodyweight">Body weight</string>
 </resources>

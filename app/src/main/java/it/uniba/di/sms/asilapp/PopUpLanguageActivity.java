@@ -26,7 +26,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
 
         //find R.id from xml
-        textViewLangEng = findViewById(R.id.textViewLangEng);
+        textViewLangEng = findViewById(R.id.textViewDescription);
         textViewLangIt = findViewById(R.id.textViewLangIt);
 
         imgEng = findViewById(R.id.imgEng);

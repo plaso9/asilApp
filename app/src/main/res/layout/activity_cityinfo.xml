@@ -70,34 +70,20 @@
                 <!--CITY NAME-->
                 <TextView
                     android:id="@+id/textViewCityDescription"
-                    android:layout_width="253dp"
+                    android:layout_width="217dp"
                     android:layout_height="70dp"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginEnd="16dp"
-                    android:text=""
+                    android:layout_marginTop="12dp"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pageTitle"
-                    app:srcCompat="@drawable/cityinfo" />
+                    app:layout_constraintStart_toStartOf="@+id/pageTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
 
                 <GridLayout
                     android:id="@+id/gridCityInfo"
                     android:layout_width="395dp"
                     android:layout_height="440dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="8"
                     android:alignmentMode="alignMargins"
@@ -339,6 +325,20 @@
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
                 </GridLayout>
+
+                <Button
+                    android:id="@+id/btnShowMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/showMore"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewCityDescription"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewCityDescription"
+                    app:layout_constraintVertical_bias="0.533" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
