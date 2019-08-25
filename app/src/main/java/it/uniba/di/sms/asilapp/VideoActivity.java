@@ -229,8 +229,8 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             firstVideo.setVideoURI(uri);
             firstVideo.seekTo(1);
             firstVideo.requestFocus();
-            secondVideo.setVisibility(View.GONE);
-            textViewSecondVideo.setVisibility(View.GONE);
+            secondVideo.setVisibility(View.INVISIBLE);
+            textViewSecondVideo.setVisibility(View.INVISIBLE);
 
 
 

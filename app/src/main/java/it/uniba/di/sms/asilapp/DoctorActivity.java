@@ -13,6 +13,7 @@ public class DoctorActivity extends AppCompatActivity {
     CardView card_view_kitOpening;
     CardView card_view_patientList;
     CardView card_view_searchPatient;
+    CardView card_view_video;
     FloatingActionButton chatButton;
     GridLayout gridLayout;
 
@@ -29,6 +30,7 @@ public class DoctorActivity extends AppCompatActivity {
         card_view_kitOpening = findViewById(R.id.card_kitOpening);
         card_view_patientList = findViewById(R.id.card_patientList);
         card_view_searchPatient = findViewById(R.id.card_searchPatient);
+        card_view_video = findViewById(R.id.card_Video);
         //Defined FloatingActionButton
         chatButton = findViewById(R.id.chatBtn);
 
@@ -36,6 +38,7 @@ public class DoctorActivity extends AppCompatActivity {
         card_view_searchPatient.setOnClickListener(card_view_searchPatient_listener);
         card_view_kitOpening.setOnClickListener(card_view_kitOpening_listener);
         card_view_patientList.setOnClickListener(card_view_patientList_listener);
+        card_view_video.setOnClickListener(card_view_video_listener);
         //Set a click listener on the FloatingActionButton object
         chatButton.setOnClickListener(chatButton_listener);
     }
@@ -48,6 +51,16 @@ public class DoctorActivity extends AppCompatActivity {
 
         }
     };
+
+    public View.OnClickListener card_view_video_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent search_patientIntent = new Intent (DoctorActivity.this,VideoActivity.class);
+            startActivity(search_patientIntent);
+
+        }
+    };
+
     public View.OnClickListener card_view_kitOpening_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
