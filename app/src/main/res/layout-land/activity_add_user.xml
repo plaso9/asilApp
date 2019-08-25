@@ -1,335 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddUserActivity">
-    <android.support.constraint.ConstraintLayout
+    android:fitsSystemWindows="true"
+    tools:context=".PersonalDataActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageButton
+                android:id="@+id/imgBtnLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:paddingRight="28dp"
+                app:srcCompat="@drawable/lang" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--    PAGE TITLE -->
+                <TextView
+                    android:id="@+id/pageTitle"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="24dp"
+                    android:textAllCaps="true"
+                    android:text="@string/addUser"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!--    TEXT LINE COLUMN  -->
+                <!--NAME-->
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="60dp"
+                    android:text="@string/name"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
+                <!--SURNAME-->
+                <TextView
+                    android:id="@+id/textViewSurname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/surname"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+                <!--BIRTHDAY-->
+                <TextView
+                    android:id="@+id/textViewBirthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/date_of_birth"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewSurname" />
+                <!--BIRTH PLACE-->
+                <TextView
+                    android:id="@+id/textViewBirthPlace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/birth_place"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBirthday" />
+                <!--EMAIL-->
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/email"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
+                <!--PASSWORD-->
+                <TextView
+                    android:id="@+id/textViewPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/password"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+                <!--CELL-->
+                <TextView
+                    android:id="@+id/textViewCell"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/cell"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
+                <!--GENDER-->
+                <TextView
+                    android:id="@+id/textViewGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/gender"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
+
+                <!--ROLE-->
+                <TextView
+                    android:id="@+id/textViewRole"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/role"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+
+                <!--ACCEPTANCE-->
+                <TextView
+                    android:id="@+id/textViewAcceptance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/acceptance"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewRole" />
+
+                <!--NATION-->
+                <TextView
+                    android:id="@+id/textViewNation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/nationality"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewAcceptance" />
 
 
-        <!--    PAGE TITLE -->
-        <TextView
-            android:id="@+id/pageTitle"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textAllCaps="true"
-            android:text="@string/addUser"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
-        <!--    TEXT LINE COLUMN  -->
-        <!--NAME-->
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="152dp"
-            android:text="@string/name"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!--SURNAME-->
-        <TextView
-            android:id="@+id/textViewSurname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/surname"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
-        <!--BIRTHDAY-->
-        <TextView
-            android:id="@+id/textViewBirthday"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/date_of_birth"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSurname" />
-        <!--BIRTH PLACE-->
-        <TextView
-            android:id="@+id/textViewBirthPlace"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/birth_place"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBirthday" />
-        <!--EMAIL-->
-        <TextView
-            android:id="@+id/textViewEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/email"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
-        <!--PASSWORD-->
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/password"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
-        <!--CELL-->
-        <TextView
-            android:id="@+id/textViewCell"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/cell"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
-        <!--GENDER-->
-        <TextView
-            android:id="@+id/textViewGender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/gender"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
+                <!--    EDIT LINE COLUMN  -->
 
-        <!--ROLE-->
-        <TextView
-            android:id="@+id/textViewRole"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/role"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+                <!--NAME-->
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewName"
+                    tools:text="asilApp" />
+                <!--SURNAME-->
+                <EditText
+                    android:id="@+id/editTextSurname"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewSurname"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewSurname"
+                    tools:text="asilApp" />
+                <!--BIRTHDAY-->
+                <EditText
+                    android:id="@+id/editTextBirthday"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:text=""
+                    android:textSize="20dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewBirthday"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewBirthday"
+                    tools:text="asilApp" />
+                <!--BIRTH PLACE-->
+                <EditText
+                    android:id="@+id/editTextBirthPlace"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewBirthPlace"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewBirthPlace"
+                    tools:text="asilApp" />
+                <!--EMAIL-->
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewEmail"
+                    tools:text="asilApp" />
+                <!--EMAIL-->
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPassword"
+                    tools:text="asilApp" />
+                <!--CELL-->
+                <EditText
+                    android:id="@+id/editTextCell"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewCell"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewCell"
+                    tools:text="asilApp" />
+                <!--GENDER-->
+                <EditText
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewGender"
+                    android:id="@+id/editTextGender"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    tools:text="asilApp" >
+                </EditText>
 
-        <!--ACCEPTANCE-->
-        <TextView
-            android:id="@+id/textViewAcceptance"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/acceptance"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRole" />
+                <!--ROLE-->
+                <EditText
+                    android:id="@+id/editTextRole"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRole"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRole"
+                    tools:text="asilApp"></EditText>
 
-        <!--NATION-->
-        <TextView
-            android:id="@+id/textViewNation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/nationality"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAcceptance" />
+                <!--NATION-->
+                <EditText
+                    android:id="@+id/editTextNation"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewNation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewNation"
+                    tools:text="asilApp"></EditText>
 
+                <!--SUBMIT BUTTON-->
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/submit"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextNation"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextNation" />
 
+                <Spinner
+                    android:id="@+id/spinnerAcceptnace"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewAcceptance" />
 
-        <!--    EDIT LINE COLUMN  -->
-
-        <!--NAME-->
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewName"
-            tools:text="asilApp" />
-        <!--SURNAME-->
-        <EditText
-            android:id="@+id/editTextSurname"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewSurname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewSurname"
-            tools:text="asilApp" />
-        <!--BIRTHDAY-->
-        <EditText
-            android:id="@+id/editTextBirthday"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text=""
-            android:textSize="20dp"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:cursorVisible="false"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewBirthday"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewBirthday"
-            tools:text="asilApp" />
-        <!--BIRTH PLACE-->
-        <EditText
-            android:id="@+id/editTextBirthPlace"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewBirthPlace"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewBirthPlace"
-            tools:text="asilApp" />
-        <!--EMAIL-->
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail"
-            tools:text="asilApp" />
-        <!--EMAIL-->
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewPassword"
-            tools:text="asilApp" />
-        <!--CELL-->
-        <EditText
-            android:id="@+id/editTextCell"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="number"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewCell"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewCell"
-            tools:text="asilApp" />
-        <!--GENDER-->
-        <EditText
-            app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewGender"
-            android:id="@+id/editTextGender"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            tools:text="asilApp" >
-        </EditText>
-
-        <!--ROLE-->
-        <EditText
-            android:id="@+id/editTextRole"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewRole"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewRole"
-            tools:text="asilApp"></EditText>
-
-        <!--NATION-->
-        <EditText
-            android:id="@+id/editTextNation"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text=""
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewNation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewNation"
-            tools:text="asilApp"></EditText>
-
-        <!--SUBMIT BUTTON-->
-        <Button
-            android:id="@+id/buttonSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/submit"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/editTextNation"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNation" />
-
-        <Spinner
-            android:id="@+id/spinnerAcceptnace"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAcceptance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewAcceptance" />
-
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
