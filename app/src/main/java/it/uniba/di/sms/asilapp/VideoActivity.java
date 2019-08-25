@@ -217,11 +217,20 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             textViewSecondVideo.setText(R.string.welcoming);
             secondVideo.setVideoURI(uri);
             secondVideo.seekTo(2350);
-            firstVideo.requestFocus();
+            secondVideo.requestFocus();
 
 
         } else if (role_id == 3) {
-            //Doctor Role
+            // Doctor role
+            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/doctorvideo.mp4?alt=media&token=f1158309-b1f2-459f-8033-6b9491ffed9d";
+            uri = Uri.parse(video);
+            //Setting video and textview
+            textViewFirstVideo.setText(R.string.mas);
+            firstVideo.setVideoURI(uri);
+            firstVideo.seekTo(1);
+            firstVideo.requestFocus();
+            secondVideo.setVisibility(View.GONE);
+            textViewSecondVideo.setVisibility(View.GONE);
 
 
 
