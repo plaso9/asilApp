@@ -13,55 +13,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import it.uniba.di.sms.asilapp.models.User;
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    MenuItem nav_personalData;
+    //Variable declaration
+    CardView card_view_Informative;
+    CardView card_view_PersonalData;
+    CardView card_view_MedicalRecords;
+    CardView card_view_Questionnaires;
+
+    FloatingActionButton chatButton;
+    GridLayout gridLayout;
+    ImageButton imgBtnLanguage;
+
     MenuItem nav_info;
+    MenuItem nav_logout;
+    MenuItem nav_addUser;
+    MenuItem nav_kitOpening;
+    MenuItem nav_readRatings;
+    MenuItem nav_personalData;
+    MenuItem nav_addAcceptance;
+    MenuItem nav_searchPatient;
     MenuItem nav_medicalRecords;
     MenuItem nav_questionnaires;
-    MenuItem nav_searchPatient;
-    MenuItem nav_kitOpening;
     MenuItem nav_visitedPatient;
-    MenuItem nav_addUser;
-    MenuItem nav_addAcceptance;
     MenuItem nav_addRetrieveNecessities;
-    MenuItem nav_readRatings;
-    MenuItem nav_logout;
 
-
-
-    GridLayout gridLayout;
-    CardView card_view_PersonalData;
-    CardView card_view_Informative;
-    CardView card_view_Questionnaires;
-    CardView card_view_MedicalRecords;
-    FloatingActionButton chatButton;
-    ImageButton imgBtnLanguage;
-    int PROGRESS_BAR_STATUS=0;
     ProgressDialog progressBar;
+    int PROGRESS_BAR_STATUS=0;
+
     private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_homepage);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -102,16 +97,19 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
         chatButton = findViewById(R.id.chatBtn);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-        //set function to card
+
+        //Set a click listener on the card objects
         card_view_Informative.setOnClickListener(card_view_Informative_listener);
         card_view_PersonalData.setOnClickListener(card_view_Personaldata_listener);
         card_view_Questionnaires.setOnClickListener(card_view_Questionnaries_listener);
         card_view_MedicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
+        //Set a click listener on the FloatingActionButton object
         chatButton.setOnClickListener(chatButton_listener);
+        //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
         switch (item.getItemId()){
             case R.id.nav_info:
@@ -166,9 +164,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
-            startActivity(languageIntent);
+            Intent change_languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
+            startActivity(change_languageIntent);
         }
     };
     @Override
@@ -224,10 +222,12 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         super.onStart();
         afterExecution();
     }
+
+    //Method used to dismiss the progressBar
     public void afterExecution(){
         if (PROGRESS_BAR_STATUS == 1){
             progressBar.dismiss();
-            PROGRESS_BAR_STATUS=0;
+            PROGRESS_BAR_STATUS=0;//Everytime is called, the methods sets this variable to 0 to show the progressBar again
         }
     }
 }
