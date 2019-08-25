@@ -14,15 +14,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.app.ProgressDialog;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import it.uniba.di.sms.asilapp.models.User;
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    MenuItem nav_personalData;
+    MenuItem nav_info;
+    MenuItem nav_medicalRecords;
+    MenuItem nav_questionnaires;
+    MenuItem nav_searchPatient;
+    MenuItem nav_kitOpening;
+    MenuItem nav_visitedPatient;
+    MenuItem nav_addUser;
+    MenuItem nav_addAcceptance;
+    MenuItem nav_addRetrieveNecessities;
+    MenuItem nav_readRatings;
+    MenuItem nav_logout;
+
+
+
     GridLayout gridLayout;
     CardView card_view_PersonalData;
     CardView card_view_Informative;
@@ -51,6 +77,26 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+
+        // find MenuItem you want to change
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
+        //Set item visibility
+        nav_addUser.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
