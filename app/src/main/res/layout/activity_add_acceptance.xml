@@ -128,23 +128,20 @@
                     android:id="@+id/textViewCity"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/city"
                     android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/editTextCenterLocation"
                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
 
                 <Spinner
                     android:id="@+id/spinnerCity"
-                    android:layout_width="385dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
                     android:ems="10"
                     android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewCenterServices"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textViewCity"
                     app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
 
@@ -164,16 +161,13 @@
                     android:id="@+id/editTextCenterServices"
                     android:layout_width="385dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
                     android:ems="100"
+                    android:hint="@string/services"
                     android:inputType="text"
-                    android:hint="List of services provided by the center"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textViewCenterServices"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterServices" />
 
                 <Button

@@ -80,19 +80,16 @@
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <Spinner
                     android:id="@+id/spinnerCityFood"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:ems="10"
                     android:spinnerMode="dropdown"
-                    app:layout_constraintTop_toBottomOf="@id/textViewCity"
-                    app:layout_constraintStart_toStartOf="@id/textViewCity"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="@+id/textViewCity"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCity" />
 
 
                 <!--MALL DISCOUNTED-->

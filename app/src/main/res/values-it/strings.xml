@@ -114,6 +114,7 @@
     <string name="mas">Servizio Asistenza Medica</string>
     <string name="detected">Rilevati</string>
     <string name="paired">Accoppiati</string>
+    <string name="services">Lista di servizi forniti dal centro</string>
 </resources>
 
 
