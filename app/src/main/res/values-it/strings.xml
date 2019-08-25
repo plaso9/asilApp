@@ -115,6 +115,7 @@
     <string name="detected">Rilevati</string>
     <string name="paired">Accoppiati</string>
     <string name="services">Lista di servizi forniti dal centro</string>
+    <string name="readAnswers">Leggi le risposte</string>
 </resources>
 
 

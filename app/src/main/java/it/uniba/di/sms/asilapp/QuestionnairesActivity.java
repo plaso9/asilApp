@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import it.uniba.di.sms.asilapp.models.Questionnaires;
+import it.uniba.di.sms.asilapp.models.User;
 
 public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "QuestionnairesActivity";
@@ -42,7 +43,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     private Button btnDemo;
     private Button btnQuality;
     private DatabaseReference mQuestionnaires;
-
+    private int mRole;
     private ImageButton imgBtnLanguage;
 
     private MenuItem nav_addUser;
@@ -120,7 +121,25 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
 
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object
+                User user = dataSnapshot.getValue(User.class);
+                mRole = user.getRole();
+                getRoleActivity(mRole);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting User Role failed, log a message
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                Toast.makeText(QuestionnairesActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        mUserReference.addValueEventListener(userListener);
         mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("1");
         mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -319,6 +338,38 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             drawer.closeDrawer(GravityCompat.START);
         }else{
             super.onBackPressed();
+        }
+    }
+
+
+
+    public void getRoleActivity(int role_id) {
+        if (role_id == 1) {
+            //Admin Role
+
+
+
+        } else if (role_id == 2) {
+            //User Role
+
+
+
+
+        } else if (role_id == 3) {
+            btnSf12.setText(R.string.readAnswers);
+            btnHabits.setText(R.string.readAnswers);
+            btnQuality.setText(R.string.readAnswers);
+            btnDemo.setText(R.string.readAnswers);
+            URI1 = "https://docs.google.com/forms/d/1wqZ8QBlmsvdBhkEgpl0RTJ8rtlG_is7EISbfPTn7MqY/edit#responses";
+            URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
+            URI3 ="https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
+            URI4 = "https://docs.google.com/forms/d/1x7PXgG_dvIDqGFIquZF3s_rZY-RmCNoOoLcnr2yqZIM/edit#responses";
+
+
+
+
+
+
         }
     }
 }

@@ -128,4 +128,5 @@
     <string name="paired">Paired</string>
     <string name="detected">Detected</string>
     <string name="services">List of services provided by the center</string>
+    <string name="readAnswers">Read answers</string>
 </resources>
