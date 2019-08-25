@@ -89,16 +89,22 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp"
-                    android:text="NORMS PROVIDED BY THE CENTER, STORED INTO FIREBASE, NOT A STRING. Lorem ipsum dolor sit amet, consectetur
-        adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit
-        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum."
+                    android:text="@string/normsDescription"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textCenterRegulation" />
+
+                <TextView
+                    android:id="@+id/textViewDownload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="44dp"
+                    android:text="InternalRegulation.pdf"
+                    app:layout_constraintStart_toStartOf="@+id/textNorms"
+                    app:layout_constraintTop_toBottomOf="@+id/textNorms" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

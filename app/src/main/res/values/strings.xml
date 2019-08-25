@@ -129,4 +129,7 @@
     <string name="detected">Detected</string>
     <string name="services">List of services provided by the center</string>
     <string name="readAnswers">Read answers</string>
+    <string name="bylawDescription">Registration to the national health service (ssn). Download this PDF to read the legislative decree on the obligation to register with the national health system</string>
+    <string name="normsDescription">Internal regulations of the agreements for
+reception of migrants for application of international protection. Download this PDF to read your rights and duties </string>
 </resources>
