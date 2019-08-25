@@ -34,26 +34,25 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class AddUserActivity extends AppCompatActivity {
+    //Variable declaration
     private static final String TAG = "AddUserActivity";
 
-    private String id;
-    private EditText editTextBirthday;
-    private EditText editTextName;
-    private EditText editTextSurname;
+    private Button submitButton;
+    private DatabaseReference acceptanceRef;
+    private DatePickerDialog.OnDateSetListener dateSetListener;
     private EditText editTextCell;
-    private EditText editTextBirthPlace;
     private EditText editTextMail;
+    private EditText editTextName;
+    private EditText editTextNation;
+    private EditText editTextSurname;
+    private EditText editTextBirthday;
     private EditText editTextPassword;
-    //private EditText editTextGender;
-    //private EditText editTextRole;
+    private EditText editTextBirthPlace;
+    private FirebaseAuth mAuth;
     private Spinner spinnerRole;
     private Spinner spinnerGender;
-    private EditText editTextNation;
     private Spinner spinnerAcceptance;
-    private Button submitButton;
-    private DatePickerDialog.OnDateSetListener dateSetListener;
-    private FirebaseAuth mAuth;
-    private DatabaseReference acceptanceRef;
+    private String id;
     private String gender[] = {"M", "F"};
     private String role[] = {"Admin", "User", "Doctor"};
 
@@ -61,25 +60,28 @@ public class AddUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_add_user);
 
-        mAuth = FirebaseAuth.getInstance();
-
+        //Defined variable
         editTextName = findViewById(R.id.editTextName);
-        editTextSurname = findViewById(R.id.editTextSurname);
         editTextCell = findViewById(R.id.editTextCell);
-        editTextBirthPlace = findViewById(R.id.editTextBirthPlace);
         editTextMail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        spinnerGender = findViewById(R.id.spinnerGender);
-        spinnerRole = findViewById(R.id.spinnerRole);
         editTextNation = findViewById(R.id.editTextNation);
+        editTextSurname = findViewById(R.id.editTextSurname);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextBirthday = findViewById(R.id.editTextBirthday);
+        editTextBirthPlace = findViewById(R.id.editTextBirthPlace);
+        spinnerRole = findViewById(R.id.spinnerRole);
+        spinnerGender = findViewById(R.id.spinnerGender);
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
 
-        submitButton.setOnClickListener(submitButton_listener);
+        mAuth = FirebaseAuth.getInstance();
 
-        editTextBirthday = findViewById(R.id.editTextBirthday);
+        //Set a click listener on the button object
+        submitButton.setOnClickListener(submitButton_listener);
+        //Set a click listener on the editText object
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,10 +144,8 @@ public class AddUserActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         id = acceptances.get(i).getId();
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
-
                     }
                 });
             }
@@ -180,6 +180,7 @@ public class AddUserActivity extends AppCompatActivity {
         }
     };
 
+    //Methods that let the admin to register a new user
     private void registerUser(){
         final String name = editTextName.getText().toString().trim();
         final String surname = editTextSurname.getText().toString().trim();
@@ -193,8 +194,6 @@ public class AddUserActivity extends AppCompatActivity {
         final String nation = editTextNation.getText().toString();
         final int int_role;
 
-
-
         if (role.equalsIgnoreCase("doctor")){
             int_role = 3;
         } else if (role.equalsIgnoreCase("admin")){
@@ -202,6 +201,7 @@ public class AddUserActivity extends AppCompatActivity {
         } else
             int_role = 2;
 
+        //Method provided by Firebase to create a new user with username and password
         mAuth.createUserWithEmailAndPassword(eMail,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -222,6 +222,7 @@ public class AddUserActivity extends AppCompatActivity {
                                     nation
                             );
 
+                            //The object user is entered in the DB
                             FirebaseDatabase.getInstance().getReference("user")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -234,7 +235,6 @@ public class AddUserActivity extends AppCompatActivity {
                                         //failure message
                                         Toast.makeText(AddUserActivity.this, "Addedd failed", Toast.LENGTH_LONG).show();
                                     }
-
                                 }
                             });
                         } else {
@@ -243,5 +243,4 @@ public class AddUserActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }
