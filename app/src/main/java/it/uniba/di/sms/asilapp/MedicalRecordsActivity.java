@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,17 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
 
     private DrawerLayout drawer;
 
+    private MenuItem nav_info;
+    private MenuItem nav_addUser;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_personalData;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_medicalRecords;
+    private MenuItem nav_questionnaires;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +85,8 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        //Get user role to hide some menu item
+        getUserRole();
 
 
         image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
@@ -370,4 +384,82 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             startActivity(see_pathologyIntent);
         }
     };
+
+
+    public void removeItemDoctor(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+        // find MenuItem you want to change
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        //Set item visibility
+        nav_kitOpening.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+    }
+
+    public void removeItemUser(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+        // find MenuItem you want to change
+        nav_info = menu.findItem(R.id.nav_info);
+        nav_personalData = menu.findItem(R.id.nav_personalData);
+        nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
+        nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
+        //Set item visibility
+        nav_info.setVisible(false);
+        nav_personalData.setVisible(false);
+        nav_medicalRecords.setVisible(false);
+        nav_questionnaires.setVisible(false);
+    }
+
+    public void removeItemAdmin(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+        // find MenuItem you want to change
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+        //Set item visibility
+        nav_addUser.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
+    }
+
+    public void getUserRole(){
+        // Initialize FirebaseUser
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object and use the values to update the UI
+                User user = dataSnapshot.getValue(User.class);
+                int role = user.getRole();
+                if (role == 2) {    //role 2 = User
+                    removeItemAdmin();
+                    removeItemDoctor();
+                } else if (role == 3) { //role 3 = Doctor
+                    removeItemAdmin();
+                    removeItemUser();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting User failed, log a message
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                Toast.makeText(MedicalRecordsActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        mUserReference.addListenerForSingleValueEvent(userListener);
+    }
 }
