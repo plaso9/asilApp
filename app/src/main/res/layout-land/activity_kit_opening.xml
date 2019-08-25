@@ -9,22 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/buttonOn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="68dp"
             android:text="@string/on"
             android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/include" />
+            app:layout_constraintTop_toTopOf="@+id/include"
+            tools:layout_editor_absoluteX="8dp" />
 
         <Button
             android:id="@+id/buttonDesc"
@@ -61,8 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/buttonOff"
-            tools:layout_editor_absoluteX="35dp">
+            app:layout_constraintTop_toBottomOf="@+id/textViewPaired"
+            tools:layout_editor_absoluteX="0dp">
 
         </ListView>
 
@@ -70,9 +64,30 @@
             android:id="@+id/listViewDetected"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="472dp">
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetected"
+            tools:layout_editor_absoluteX="0dp">
 
         </ListView>
+
+        <TextView
+            android:id="@+id/textViewDetected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/detected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listViewPaired" />
+
+        <TextView
+            android:id="@+id/textViewPaired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/paired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonOff" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
