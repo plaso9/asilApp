@@ -112,6 +112,8 @@
     <string name="bodyweight">Peso corporeo</string>
     <string name="welcoming">Centro di accoglienza</string>
     <string name="mas">Servizio Asistenza Medica</string>
+    <string name="detected">Rilevati</string>
+    <string name="paired">Accoppiati</string>
 </resources>
 
 

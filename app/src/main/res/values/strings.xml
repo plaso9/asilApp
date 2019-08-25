@@ -125,4 +125,6 @@
     <string name="welcoming">Welcoming Reception</string>
     <string name="bodyweight">Body weight</string>
     <string name="mas">Medical Assistance Service</string>
+    <string name="paired">Paired</string>
+    <string name="detected">Detected</string>
 </resources>
