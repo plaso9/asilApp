@@ -61,8 +61,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:textSize="24dp"
+                    android:layout_marginTop="20dp"
                     android:textAllCaps="true"
                     android:text="@string/addUser"
                     app:layout_constraintTop_toTopOf="parent"
@@ -75,9 +75,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="60dp"
                     android:text="@string/name"
                     android:textSize="20dp"
+                    android:layout_marginTop="60dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
@@ -307,36 +307,33 @@
                     app:layout_constraintTop_toTopOf="@+id/textViewCell"
                     tools:text="asilApp" />
                 <!--GENDER-->
-                <EditText
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewGender"
-                    android:id="@+id/editTextGender"
+                <Spinner
+                    android:id="@+id/spinnerGender"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="20dp"
-                    tools:text="asilApp" >
-                </EditText>
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewGender" />
+
 
                 <!--ROLE-->
-                <EditText
-                    android:id="@+id/editTextRole"
+                <Spinner
+                    android:id="@+id/spinnerRole"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="20dp"
+                    android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewRole"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewRole"
-                    tools:text="asilApp"></EditText>
+                    app:layout_constraintTop_toTopOf="@+id/textViewRole" />
 
                 <!--NATION-->
                 <EditText
