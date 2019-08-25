@@ -35,22 +35,21 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     private static final String TAG = "CityInfoActivity";
 
     private String uId;
-    private String _acceptance;
-    private String _city;
     private String cityInfo;
     private String cityName;
+    private String _acceptance;
 
     private TextView mDescription;
 
     private DatabaseReference mUserReference;
-    private DatabaseReference mAcceptanceReference;
     private DatabaseReference mCityReference;
-    private CardView card_view_Ambulatory,
-            card_view_Municipality,
-            card_view_Postoffice,
-            card_view_PlacesOfWorship,
-            card_view_School,
-            card_view_Pharmacy;
+    private DatabaseReference mAcceptanceReference;
+    private CardView card_view_School;
+    private CardView card_view_Pharmacy;
+    private CardView card_view_Ambulatory;
+    private CardView card_view_Postoffice;
+    private CardView card_view_Municipality;
+    private CardView card_view_PlacesOfWorship;
     private ImageButton imgBtnLanguage;
 
     private DrawerLayout drawer;
@@ -74,19 +73,15 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
 
 
-
+        //Defined variables
         card_view_Ambulatory = findViewById(R.id.card_ambulatory);
-        card_view_Ambulatory.setOnClickListener(card_view_Ambulatory_listener);
         card_view_Municipality = findViewById(R.id.card_municipality);
-        card_view_Municipality.setOnClickListener(card_view_Municipality_listener);
         card_view_Postoffice = findViewById(R.id.card_postoffice);
-        card_view_Postoffice.setOnClickListener(card_view_Postoffice_listener);
         card_view_PlacesOfWorship = findViewById(R.id.card_placesofworship);
-        card_view_PlacesOfWorship.setOnClickListener(card_view_PlacesOfWorship_listener);
         card_view_School = findViewById(R.id.card_school);
-        card_view_School.setOnClickListener(card_view_School_listener);
         card_view_Pharmacy = findViewById(R.id.card_pharmacy);
-        card_view_Pharmacy.setOnClickListener(card_view_Pharmacy_listener);
+        mDescription = findViewById(R.id.textViewCityDescription);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
 
         // Initialize FirebaseUser
@@ -98,37 +93,35 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
         mCityReference = FirebaseDatabase.getInstance().getReference("city");
 
-        mDescription = findViewById(R.id.textViewCityDescription);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-
+        //Set a click listener on the card objects
+        card_view_School.setOnClickListener(card_view_School_listener);
+        card_view_Pharmacy.setOnClickListener(card_view_Pharmacy_listener);
+        card_view_Ambulatory.setOnClickListener(card_view_Ambulatory_listener);
+        card_view_Postoffice.setOnClickListener(card_view_Postoffice_listener);
+        card_view_Municipality.setOnClickListener(card_view_Municipality_listener);
+        card_view_PlacesOfWorship.setOnClickListener(card_view_PlacesOfWorship_listener);
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, CityInfoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, CityInfoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
         }
     }
 
@@ -141,7 +134,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         }
     };
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
         switch (item.getItemId()){
             case R.id.nav_info:
@@ -184,9 +177,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
-
-
-    //function to get city basically information
+    //Method that retrieves from the Firebase Database the infos of the city given the iD of the city and sets the text of the TextView
     public void getCityInformation(final long cityId) {
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
@@ -213,7 +204,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         mCityReference.addValueEventListener(cityListener);
     }
 
-    // function to get foreign key _city from acceptance table
+    //Method that retrieves from the Firebase Database the iD of the city given the iD of the acceptance
     public void getCityId(String _acceptance) {
         mAcceptanceReference.child(_acceptance).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -232,7 +223,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         });
     }
 
-    // function to get foreign key _acceptance from user table
+    //Method that retrieves the acceptanceId in which the user is hosted from the Firebase Database
     public void getAcceptanceId() {
         mUserReference.child("acceptanceId").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -258,11 +249,10 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     }
 
     //Open Google Maps with specific view (ambulatory, postoffice...)
-
     public View.OnClickListener card_view_Ambulatory_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso%2C+"+cityName);  //Search on Google "pronto soccorso, cityName"
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }

@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -34,44 +33,42 @@ import it.uniba.di.sms.asilapp.models.User;
 public class AcceptanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //variable declaration
     private static final String TAG = "AcceptanceActivity";
-    private TextView regulation;
-    private String uId;
-    private String acceptanceId;
-
-    private ImageButton imgBtnLanguage;
-
-
-    private TextView mName;
-    private TextView mAddress;
-    private TextView mCity;
-    private TextView mListServices;
-
     private DatabaseReference mUserReference;
     private DatabaseReference mAcceptanceReference;
+    private ImageButton imgBtnLanguage;
+    private String uId;
+    private String acceptanceId;
+    private TextView mName;
+    private TextView mCity;
+    private TextView mAddress;
+    private TextView regulation;
+    private TextView mListServices;
 
     private DrawerLayout drawer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_acceptance);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variable
         drawer = findViewById(R.id.drawer_layout);
+        mName = findViewById(R.id.editTextCenterName);
+        mCity = findViewById(R.id.editTextCenterCity);
+        mAddress = findViewById(R.id.editTextCenterLocation);
+        mListServices = findViewById(R.id.editTextCenterServices);
+        regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
+        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        //Button for norms
-        regulation = findViewById(R.id.editTextCenterRegulation);
-        regulation.setOnClickListener(editTextCenterRegulation_listener);
 
 
         // Initialize FirebaseUser
@@ -82,40 +79,31 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
         mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
 
-        mName = findViewById(R.id.editTextCenterName);
-        mAddress = findViewById(R.id.editTextCenterLocation);
-        mCity = findViewById(R.id.editTextCenterCity);
-        mListServices = findViewById(R.id.editTextCenterServices);
-        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        setSupportActionBar(toolbar);   //Set a Toolbar to act as the ActionBar for this Activity window.
+        navigationView.setNavigationItemSelectedListener(this); //Set a listener that will be notified when a menu item is selected.
+        regulation.setOnClickListener(editTextCenterRegulation_listener);   //Set a click listener on the button object
         //imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
 
     }
 
 
     /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, AcceptanceActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, AcceptanceActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
         }
     }
 
@@ -130,7 +118,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     */
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
         switch (item.getItemId()){
             case R.id.nav_info:
@@ -177,14 +165,12 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     public View.OnClickListener editTextCenterRegulation_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (AcceptanceActivity.this,InternalRegulationActivity.class);
-            startActivity(sens);
-
+            Intent open_RegulationIntent = new Intent (AcceptanceActivity.this,InternalRegulationActivity.class);
+            startActivity(open_RegulationIntent);
         }
     };
 
-
-    //function to get city basically information
+    //Method that retrieves from the Firebase Database the info about the acceptance given the iD acceptance and sets the TextViews
     public void getAcceptanceInfo(String acceptanceId) {
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
@@ -210,6 +196,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mAcceptanceReference.child(acceptanceId).addValueEventListener(cityListener);
     }
 
+    //Method that retrieves from the Firebase Database the list of services offered from a specific acceptance and sets the text of the TextView
     private void retrieveListOfServices(String id) {
         FirebaseDatabase.getInstance().getReference("acceptance").child(id).child("listOfServices").addValueEventListener(new ValueEventListener() {
             ArrayList<String> stringArrayList = new ArrayList<>();
@@ -243,6 +230,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         });
     }
 
+    //Method that retrieves from the Firebase Database the name of the city given the iD and sets the text of the TextView
     public void findCityName(final long cityId) {
         DatabaseReference mCityDB = FirebaseDatabase.getInstance().getReference("city");
         ValueEventListener mListener = new ValueEventListener() {
@@ -268,7 +256,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mCityDB.addValueEventListener(mListener);
     }
 
-    // function to get foreign key _acceptance from user table
+    //Method that retrieves the acceptanceId in which the user is hosted from the Firebase Database
     public void getAcceptanceId() {
         mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -287,8 +275,9 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         });
     }
 
+
     @Override
-    protected void onStart() {
+    protected void onStart() {  //Method called when the activity is started
         super.onStart();
         getAcceptanceId();
     }
