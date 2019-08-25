@@ -2,11 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,22 +11,39 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class VideoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private VideoView firstVideo;
-    private MediaController mediaController;
+import it.uniba.di.sms.asilapp.models.User;
 
+public class VideoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private VideoView firstVideo, secondVideo;
+    private MediaController mediaController, mediaController1;
+    private String uId;
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
+    private DatabaseReference mUserReference;
+    private int mRole;
     private TextView textViewFirstVideo, textViewSecondVideo;
+    private String video;
+    private Uri uri;
+
+    private static final String TAG = "VideoActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,22 +70,43 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
 
-        mediaController= new MediaController(this);
+        mediaController = new MediaController(this);
+        mediaController1 = new MediaController(this);
+
         mediaController.setAnchorView(firstVideo);
         firstVideo = findViewById(R.id.videoViewFirstVideo);
         firstVideo.setMediaController(mediaController);
 
-        //String video URL
-        String video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/pesocorporeo.mp4?alt=media&token=04e2a7cc-9f9d-412c-aa01-ebb4cd0b2129";
-        Uri uri = Uri.parse(video);
+        mediaController1.setAnchorView(secondVideo);
+        secondVideo = findViewById(R.id.videoViewSecondVideo);
+        secondVideo.setMediaController(mediaController1);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Get userId
+        uId = user.getUid();
+        mUserReference = FirebaseDatabase.getInstance().getReference()
+                .child("user").child(uId);
 
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object
+                User user = dataSnapshot.getValue(User.class);
+                mRole = user.getRole();
+                getRoleActivity(mRole);
+            }
 
-        //Setting video and textview
-        textViewFirstVideo.setText(R.string.bodyweight);
-        firstVideo.setVideoURI(uri);
-        firstVideo.seekTo( 1 );
-        firstVideo.requestFocus();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting User Role failed, log a message
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                Toast.makeText(VideoActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        };
+        mUserReference.addValueEventListener(userListener);
+
     }
 
 
@@ -106,7 +140,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (VideoActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(VideoActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.VideoActivity");
             startActivity(languageIntent);
         }
@@ -116,25 +150,25 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (VideoActivity.this, InformativeActivity.class);
+                sens = new Intent(VideoActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (VideoActivity.this, MedicalRecordsActivity.class);
+                sens = new Intent(VideoActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (VideoActivity.this, PersonalDataActivity.class);
+                sens = new Intent(VideoActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (VideoActivity.this, QuestionnairesActivity.class);
+                sens = new Intent(VideoActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
@@ -150,10 +184,48 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
+        }
+    }
+
+
+    public void getRoleActivity(int role_id) {
+        if (role_id == 1) {
+            //Admin Role
+
+
+
+        } else if (role_id == 2) {
+            //User Role
+
+            //String video URL
+            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/pesocorporeo.mp4?alt=media&token=04e2a7cc-9f9d-412c-aa01-ebb4cd0b2129";
+            uri = Uri.parse(video);
+            //Setting video and textview
+            textViewFirstVideo.setText(R.string.bodyweight);
+            firstVideo.setVideoURI(uri);
+            firstVideo.seekTo(1);
+            firstVideo.requestFocus();
+
+            //String video URL
+            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/welcoming.mp4?alt=media&token=006fe9e3-48b8-4f81-8c29-0bcc9af6f0b0";
+            uri = Uri.parse(video);
+            //Setting video and textview
+            textViewSecondVideo.setText(R.string.welcoming);
+            secondVideo.setVideoURI(uri);
+            secondVideo.seekTo(2350);
+            firstVideo.requestFocus();
+
+
+        } else if (role_id == 3) {
+            //Doctor Role
+
+
+
+
         }
     }
 }

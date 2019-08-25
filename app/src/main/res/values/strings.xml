@@ -122,5 +122,6 @@
     <string name="showPatient">Show Patient List</string>
     <string name="showMore">Show more</string>
     <string name="nation">Nation</string>
+    <string name="welcoming">Welcoming Reception</string>
     <string name="bodyweight">Body weight</string>
 </resources>
