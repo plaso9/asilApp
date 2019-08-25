@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".HomepageActivity">
+    tools:context=".ReadRatingsActivity">
 
     <GridLayout
         android:id="@+id/gridHomeLayout"
@@ -56,6 +56,12 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/userComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
 
 
             </LinearLayout>
