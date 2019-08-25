@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,14 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
     private ImageButton imgBtnLanguage;
 
+    private MenuItem nav_addUser;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +76,26 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
 
+        // find MenuItem you want to change
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
+        //Set item visibility
+        nav_addUser.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
