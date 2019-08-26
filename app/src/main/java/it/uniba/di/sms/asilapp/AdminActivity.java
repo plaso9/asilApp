@@ -30,6 +30,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
     MenuItem nav_home;
     MenuItem nav_info;
+    MenuItem nav_video;
     MenuItem nav_homeDoctor;
     MenuItem nav_kitOpening;
     MenuItem nav_personalData;
@@ -56,6 +57,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
         nav_info = menu.findItem(R.id.nav_info);
+        nav_video = menu.findItem(R.id.nav_video);
         nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_personalData = menu.findItem(R.id.nav_personalData);
@@ -67,6 +69,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         //Set item visibility
         nav_home.setVisible(false);
         nav_info.setVisible(false);
+        nav_video.setVisible(false);
         nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_personalData.setVisible(false);
@@ -146,8 +149,8 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (AdminActivity.this, AdminActivity.class);
-                startActivity(nav_homeDoctorIntent);
+                Intent nav_homeAdminIntent = new Intent (AdminActivity.this, AdminActivity.class);
+                startActivity(nav_homeAdminIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);

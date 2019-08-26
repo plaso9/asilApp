@@ -31,6 +31,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
 
+    private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
@@ -60,6 +61,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
+        nav_video = menu.findItem(R.id.nav_video);
         nav_addUser = menu.findItem(R.id.nav_add_user);
         nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
         nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
@@ -71,6 +73,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
+        nav_video.setVisible(false);
         nav_addUser.setVisible(false);
         nav_homeAdmin.setVisible(false);
         nav_homeDoctor.setVisible(false);

@@ -33,18 +33,14 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     private GridLayout gridLayout;
     private ImageButton imgBtnLanguage;
 
-    private MenuItem nav_info;
-    private MenuItem nav_logout;
+    private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
-    private MenuItem nav_personalData;
     private MenuItem nav_addAcceptance;
     private MenuItem nav_searchPatient;
-    private MenuItem nav_medicalRecords;
-    private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
 
@@ -69,6 +65,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
+        nav_video = menu.findItem(R.id.nav_video);
         nav_addUser = menu.findItem(R.id.nav_add_user);
         nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
         nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
@@ -80,6 +77,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
+        nav_video.setVisible(false);
         nav_addUser.setVisible(false);
         nav_homeAdmin.setVisible(false);
         nav_homeDoctor.setVisible(false);
@@ -116,38 +114,44 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        Intent sens;
         switch (item.getItemId()){
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 Intent nav_homeIntent = new Intent (HomepageActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (HomepageActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (HomepageActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (HomepageActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordIntent = new Intent (HomepageActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (HomepageActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent= new Intent (HomepageActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (HomepageActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (HomepageActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(HomepageActivity.this, MainActivity.class);
-                startActivityForResult(sens, 1);
+                //Create new Intent
+                Intent nav_logoutIntent= new Intent(HomepageActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }

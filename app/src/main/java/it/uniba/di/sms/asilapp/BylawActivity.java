@@ -28,6 +28,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
     //variable declaration
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
+    private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
@@ -77,6 +78,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
+        nav_video = menu.findItem(R.id.nav_video);
         nav_addUser = menu.findItem(R.id.nav_add_user);
         nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
         nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
@@ -88,6 +90,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
+        nav_video.setVisible(false);
         nav_addUser.setVisible(false);
         nav_homeAdmin.setVisible(false);
         nav_homeDoctor.setVisible(false);

@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -45,9 +46,9 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     private TextView regulation;
     private TextView mListServices;
 
-    private DrawerLayout drawer;
-
+    private MenuItem nav_video;
     private MenuItem nav_addUser;
+    private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
@@ -56,32 +57,30 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
 
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_acceptance);
 
-        //Defined variable
-        mName = findViewById(R.id.editTextCenterName);
-        mCity = findViewById(R.id.editTextCenterCity);
-        mAddress = findViewById(R.id.editTextCenterLocation);
-        mListServices = findViewById(R.id.editTextCenterServices);
-        regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
-        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
-        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
+        nav_video = menu.findItem(R.id.nav_video);
         nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_readRatings = menu.findItem(R.id.nav_read_ratings);
         nav_searchPatient = menu.findItem(R.id.nav_search_patient);
@@ -90,8 +89,10 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
-        nav_homeDoctor.setVisible(false);
+        nav_video.setVisible(false);
         nav_addUser.setVisible(false);
+        nav_homeAdmin.setVisible(false);
+        nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_readRatings.setVisible(false);
         nav_searchPatient.setVisible(false);
@@ -105,6 +106,18 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
 
+
+
+        //Defined variable
+        mName = findViewById(R.id.editTextCenterName);
+        mCity = findViewById(R.id.editTextCenterCity);
+        mAddress = findViewById(R.id.editTextCenterLocation);
+        mListServices = findViewById(R.id.editTextCenterServices);
+        regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
+        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+
+
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId
@@ -113,8 +126,6 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
         mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
 
-        setSupportActionBar(toolbar);   //Set a Toolbar to act as the ActionBar for this Activity window.
-        navigationView.setNavigationItemSelectedListener(this); //Set a listener that will be notified when a menu item is selected.
         regulation.setOnClickListener(editTextCenterRegulation_listener);   //Set a click listener on the button object
         //imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
@@ -151,61 +162,9 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     };
     */
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        Intent sens;
-        switch (item.getItemId()){
-            case R.id.nav_home:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_homeIntent = new Intent (AcceptanceActivity.this, HomepageActivity.class);
-                startActivity(nav_homeIntent);
-                break;
-            case R.id.nav_info:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                sens = new Intent (AcceptanceActivity.this, InformativeActivity.class);
-                startActivity(sens);
-                break;
-            case R.id.nav_medicalRecords:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                sens = new Intent (AcceptanceActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
-                break;
-            case R.id.nav_personalData:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                sens = new Intent (AcceptanceActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
-                break;
-            case R.id.nav_questionnaires:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                sens = new Intent (AcceptanceActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
-                break;
-            case R.id.nav_logout:
-                drawer.closeDrawer(GravityCompat.START);
-                //Sign out function
-                FirebaseAuth.getInstance().signOut();
-                //Create new Intent
-                sens = new Intent(AcceptanceActivity.this, MainActivity.class);
-                startActivity(sens);
-                finish();
-                break;
-        }
-        return true;
-    }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-    }
+
+
 
     // Listener for the button
     public View.OnClickListener editTextCenterRegulation_listener = new View.OnClickListener() {
@@ -321,10 +280,64 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onStart() {  //Method called when the activity is started
         super.onStart();
         getAcceptanceId();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (AcceptanceActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
+            case R.id.nav_info:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (AcceptanceActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
+                break;
+            case R.id.nav_medicalRecords:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_medicalRecordIntent = new Intent (AcceptanceActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordIntent);
+                break;
+            case R.id.nav_personalData:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_personalDataIntent= new Intent (AcceptanceActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
+                break;
+            case R.id.nav_questionnaires:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (AcceptanceActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
+                FirebaseAuth.getInstance().signOut();
+                //Create new Intent
+                Intent nav_logoutIntent= new Intent(AcceptanceActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
+                finish();
+                break;
+        }
+        return true;
     }
 }

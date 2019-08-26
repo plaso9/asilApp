@@ -46,6 +46,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
 
     private MenuItem nav_home;
     private MenuItem nav_info;
+    private MenuItem nav_video;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_personalData;
@@ -71,6 +72,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
         nav_info = menu.findItem(R.id.nav_info);
+        nav_video = menu.findItem(R.id.nav_video);
         nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_personalData = menu.findItem(R.id.nav_personalData);
@@ -80,6 +82,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
 
         //Set item visibility
+        nav_video.setVisible(false);
         nav_home.setVisible(false);
         nav_info.setVisible(false);
         nav_homeDoctor.setVisible(false);
