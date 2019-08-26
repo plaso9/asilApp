@@ -139,20 +139,6 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
-
-                        //Set a click listener on the item of ViewHolder objects
-                        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View view){
-                                //Get id of user clicked
-                                String user_clicked = getRef(position).getKey();
-                                //Create new Intent
-                                Intent patientDetailIntent = new Intent(ReadRatingsActivity.this, PatientDetailActivity.class);
-                                //Pass data between intents
-                                patientDetailIntent.putExtra("user_clicked", user_clicked);
-                                startActivity(patientDetailIntent);
-                            }
-                        });
                     }
                 };
         //Called to associate adapter with the list
