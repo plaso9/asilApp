@@ -23,10 +23,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class BylawActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private TextView textViewDownload;
+    //variable declaration
     private DrawerLayout drawer;
-
     private ImageButton imgBtnLanguage;
     private MenuItem nav_addUser;
     private MenuItem nav_homeDoctor;
@@ -36,17 +34,26 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
+    private NavigationView navigationView;
+    private TextView textViewDownload;
+    private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_bylaw);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        textViewDownload = findViewById(R.id.textViewDownload);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -71,23 +78,23 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        textViewDownload = findViewById(R.id.textViewDownload);
+        //Set a click listener on the TextView objects
         textViewDownload.setOnClickListener(download_listener);
-
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //Set a click listener on the ImageButton objects
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
     }
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
@@ -105,11 +112,13 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
             }
         }
     }
-
+    //Set on click listener
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent languageIntent = new Intent (BylawActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.BylawActivity");
             startActivity(languageIntent);
         }
@@ -165,7 +174,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -173,6 +182,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         }
     }
 
+    //Set on click listener
     public View.OnClickListener download_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -183,9 +193,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
     };
 
     private long DownloadData(Uri uri, View v) {
-
         long downloadReference;
-
         // Create request for android download manager
         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
