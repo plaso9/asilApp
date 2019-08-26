@@ -38,7 +38,6 @@
         <activity android:name=".PathologyActivity" />
         <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".TestActivity" />
         <activity android:name=".ReadRatingsActivity" />
         <activity android:name=".AddFoodActivity" />
         <activity android:name=".AddAcceptanceActivity" />
@@ -66,7 +65,6 @@
         <activity android:name=".QuestionnairesActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomepageActivity" />
-        <activity android:name=".SymptomsActivity" />
         <activity android:name=".AddUserActivity" />
 
         <activity android:name=".MainActivity">

@@ -304,7 +304,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addSymptoms_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent add_symptomsIntent = new Intent(MedicalRecordsActivity.this, SymptomsActivity.class);
+            Intent add_symptomsIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
             add_symptomsIntent.putExtra("user_clicked", userClickedId);
             add_symptomsIntent.putExtra("_parameter", "6");
             startActivity(add_symptomsIntent);
