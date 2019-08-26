@@ -96,52 +96,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textCenterRegulation" />
 
-                <Spinner
-                    android:id="@+id/spinnerLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@id/textNorms"
-                    app:layout_constraintTop_toBottomOf="@+id/textNorms"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:ems="10"
-                    android:spinnerMode="dropdown"
-                    />
-
                 <TextView
-                    android:id="@+id/textViewDownloadIntroductionToItaly"
+                    android:id="@+id/textViewDownloadRegulation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="44dp"
-                    android:text="IntroductionToItaly.pdf"
+                    android:text="internalRegulation.pdf"
                     app:layout_constraintStart_toStartOf="@+id/textNorms"
-                    app:layout_constraintTop_toBottomOf="@+id/spinnerLanguage" />
-                <TextView
-                    android:id="@+id/textViewDownloadGoodLiving"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="44dp"
-                    android:text="HandbookOfGoodLiving.pdf"
-                    app:layout_constraintStart_toStartOf="@+id/textViewDownloadIntroductionToItaly"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewDownloadIntroductionToItaly" />
-                <TextView
-                    android:id="@+id/textViewDownloadItalianConstitution"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="44dp"
-                    android:text="ItalianConstitution.pdf"
-                    app:layout_constraintStart_toStartOf="@+id/textViewDownloadGoodLiving"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewDownloadGoodLiving" />
-
-                <TextView
-                    android:id="@+id/textViewDownloadNHS"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="44dp"
-                    android:text="NHS.pdf"
-                    app:layout_constraintStart_toStartOf="@+id/textViewDownloadItalianConstitution"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewDownloadItalianConstitution" />
+                    app:layout_constraintTop_toBottomOf="@+id/textNorms" />
 
 
             </android.support.constraint.ConstraintLayout>
