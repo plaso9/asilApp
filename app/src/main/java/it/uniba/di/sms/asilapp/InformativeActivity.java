@@ -142,6 +142,11 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                Intent nav_homeIntent = new Intent (InformativeActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 sens = new Intent (InformativeActivity.this, InformativeActivity.class);

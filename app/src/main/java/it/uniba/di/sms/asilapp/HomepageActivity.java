@@ -112,6 +112,11 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                Intent nav_homeIntent = new Intent (HomepageActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 sens = new Intent (HomepageActivity.this, InformativeActivity.class);
