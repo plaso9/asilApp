@@ -49,6 +49,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_addUser;
+    private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
@@ -420,11 +421,13 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         Menu menu = navigationView.getMenu();
         // find MenuItem you want to change
         nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
         nav_readRatings = menu.findItem(R.id.nav_read_ratings);
         nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
         //Set item visibility
         nav_addUser.setVisible(false);
+        nav_homeAdmin.setVisible(false);
         nav_readRatings.setVisible(false);
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);

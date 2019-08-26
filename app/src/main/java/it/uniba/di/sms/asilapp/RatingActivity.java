@@ -36,6 +36,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     private Float avgRating;
     private ImageButton imgBtnLanguage;
     private MenuItem nav_addUser;
+    private MenuItem nav_homeAdmin;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
@@ -75,8 +76,9 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
-        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_readRatings = menu.findItem(R.id.nav_read_ratings);
         nav_searchPatient = menu.findItem(R.id.nav_search_patient);
@@ -85,8 +87,9 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
-        nav_homeDoctor.setVisible(false);
         nav_addUser.setVisible(false);
+        nav_homeAdmin.setVisible(false);
+        nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_readRatings.setVisible(false);
         nav_searchPatient.setVisible(false);

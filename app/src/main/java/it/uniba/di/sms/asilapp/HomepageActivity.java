@@ -24,30 +24,31 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //Variable declaration
-    CardView card_view_Informative;
-    CardView card_view_PersonalData;
-    CardView card_view_MedicalRecords;
-    CardView card_view_Questionnaires;
+    private CardView card_view_Informative;
+    private CardView card_view_PersonalData;
+    private CardView card_view_MedicalRecords;
+    private CardView card_view_Questionnaires;
 
-    FloatingActionButton chatButton;
-    GridLayout gridLayout;
-    ImageButton imgBtnLanguage;
+    private FloatingActionButton chatButton;
+    private GridLayout gridLayout;
+    private ImageButton imgBtnLanguage;
 
-    MenuItem nav_info;
-    MenuItem nav_logout;
-    MenuItem nav_addUser;
-    MenuItem nav_homeDoctor;
-    MenuItem nav_kitOpening;
-    MenuItem nav_readRatings;
-    MenuItem nav_personalData;
-    MenuItem nav_addAcceptance;
-    MenuItem nav_searchPatient;
-    MenuItem nav_medicalRecords;
-    MenuItem nav_questionnaires;
-    MenuItem nav_visitedPatient;
-    MenuItem nav_addRetrieveNecessities;
+    private MenuItem nav_info;
+    private MenuItem nav_logout;
+    private MenuItem nav_addUser;
+    private MenuItem nav_homeAdmin;
+    private MenuItem nav_homeDoctor;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_personalData;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_medicalRecords;
+    private MenuItem nav_questionnaires;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
 
-    ProgressDialog progressBar;
+    private ProgressDialog progressBar;
     int PROGRESS_BAR_STATUS=0;
 
     private DrawerLayout drawer;
@@ -68,8 +69,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
-        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_homeAdmin = menu.findItem(R.id.nav_homeAdmin);
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_readRatings = menu.findItem(R.id.nav_read_ratings);
         nav_searchPatient = menu.findItem(R.id.nav_search_patient);
@@ -78,8 +80,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
-        nav_homeDoctor.setVisible(false);
         nav_addUser.setVisible(false);
+        nav_homeAdmin.setVisible(false);
+        nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_readRatings.setVisible(false);
         nav_searchPatient.setVisible(false);
