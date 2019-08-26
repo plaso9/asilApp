@@ -36,6 +36,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     MenuItem nav_info;
     MenuItem nav_logout;
     MenuItem nav_addUser;
+    MenuItem nav_homeDoctor;
     MenuItem nav_kitOpening;
     MenuItem nav_readRatings;
     MenuItem nav_personalData;
@@ -67,6 +68,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_addUser = menu.findItem(R.id.nav_add_user);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_readRatings = menu.findItem(R.id.nav_read_ratings);
@@ -76,6 +78,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
 
         //Set item visibility
+        nav_homeDoctor.setVisible(false);
         nav_addUser.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_readRatings.setVisible(false);

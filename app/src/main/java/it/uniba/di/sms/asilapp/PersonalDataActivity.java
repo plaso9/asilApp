@@ -46,8 +46,10 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     private EditText mDateOfBirth;
     private ImageButton imgBtnLanguage;
 
+    private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_addUser;
+    private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
     private MenuItem nav_personalData;
@@ -144,28 +146,21 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, PersonalDataActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, PersonalDataActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
     }
 
@@ -184,6 +179,16 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_homeDoctor:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (PersonalDataActivity.this, DoctorActivity.class);
+                startActivity(sens);
+                break;
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                sens = new Intent (PersonalDataActivity.this, HomepageActivity.class);
+                startActivity(sens);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 sens = new Intent (PersonalDataActivity.this, InformativeActivity.class);
@@ -244,10 +249,12 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
         // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_searchPatient = menu.findItem(R.id.nav_search_patient);
         nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
         //Set item visibility
+        nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_searchPatient.setVisible(false);
         nav_visitedPatient.setVisible(false);
@@ -258,11 +265,13 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
         // find MenuItem you want to change
+        nav_home = menu.findItem(R.id.nav_home);
         nav_info = menu.findItem(R.id.nav_info);
         nav_personalData = menu.findItem(R.id.nav_personalData);
         nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         //Set item visibility
+        nav_home.setVisible(false);
         nav_info.setVisible(false);
         nav_personalData.setVisible(false);
         nav_medicalRecords.setVisible(false);
