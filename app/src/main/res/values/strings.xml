@@ -132,4 +132,7 @@
     <string name="bylawDescription">Registration to the national health service (ssn). Download this PDF to read the legislative decree on the obligation to register with the national health system</string>
     <string name="normsDescription">Internal regulations of the agreements for
 reception of migrants for application of international protection. Download this PDF to read your rights and duties. Before the download choose your language</string>
+    <string name="learn">Learn how to use this application by watching this video</string>
+
+
 </resources>

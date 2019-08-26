@@ -53,7 +53,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <VideoView
+                    android:id="@+id/videoViewTutorial"
+                    android:layout_width="380dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="68dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView7" />
 
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="331dp"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/learn"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/videoViewTutorial"
+                    app:layout_constraintStart_toStartOf="@+id/videoViewTutorial"
+                    app:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
 
         </ScrollView>
