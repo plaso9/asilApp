@@ -54,6 +54,11 @@
             android:title="@string/patientList" />
 
         <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/video"
+            android:title="@string/video" />
+
+        <item
             android:id="@+id/nav_add_user"
             android:icon="@drawable/adduser"
             android:title="@string/addUser" />
