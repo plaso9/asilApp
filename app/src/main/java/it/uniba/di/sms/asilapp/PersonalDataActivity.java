@@ -177,43 +177,68 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent sens;
         switch (item.getItemId()){
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, DoctorActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_homeDoctorIntent = new Intent (PersonalDataActivity.this, DoctorActivity.class);
+                startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, HomepageActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (PersonalDataActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (PersonalDataActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordsIntent = new Intent (PersonalDataActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent  = new Intent (PersonalDataActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (PersonalDataActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (PersonalDataActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
+                break;
+            case R.id.nav_search_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_searchPatientIntent = new Intent (PersonalDataActivity.this, SearchPatientActivity.class);
+                startActivity(nav_searchPatientIntent);
+                break;
+            case R.id.nav_kit_opening:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_kitOpeningIntent = new Intent (PersonalDataActivity.this, KitOpeningActivity.class);
+                startActivity(nav_kitOpeningIntent);
+                break;
+            case R.id.nav_visited_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_visitedPatientIntent = new Intent (PersonalDataActivity.this, PatientListActivity.class);
+                startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(PersonalDataActivity.this, MainActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_logoutIntent = new Intent(PersonalDataActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }

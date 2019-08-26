@@ -55,8 +55,10 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
 
     private DrawerLayout drawer;
 
+    private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_addUser;
+    private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
     private MenuItem nav_readRatings;
     private MenuItem nav_personalData;
@@ -140,33 +142,68 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_homeDoctor:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeDoctorIntent = new Intent (MedicalRecordsActivity.this, DoctorActivity.class);
+                startActivity(nav_homeDoctorIntent);
+                break;
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (MedicalRecordsActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MedicalRecordsActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (MedicalRecordsActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MedicalRecordsActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordsIntent = new Intent (MedicalRecordsActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MedicalRecordsActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent  = new Intent (MedicalRecordsActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MedicalRecordsActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (MedicalRecordsActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
+                break;
+            case R.id.nav_search_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_searchPatientIntent = new Intent (MedicalRecordsActivity.this, SearchPatientActivity.class);
+                startActivity(nav_searchPatientIntent);
+                break;
+            case R.id.nav_kit_opening:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_kitOpeningIntent = new Intent (MedicalRecordsActivity.this, KitOpeningActivity.class);
+                startActivity(nav_kitOpeningIntent);
+                break;
+            case R.id.nav_visited_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_visitedPatientIntent = new Intent (MedicalRecordsActivity.this, PatientListActivity.class);
+                startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(MedicalRecordsActivity.this, MainActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_logoutIntent = new Intent(MedicalRecordsActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }
@@ -391,10 +428,12 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
         // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
         nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
         nav_searchPatient = menu.findItem(R.id.nav_search_patient);
         nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
         //Set item visibility
+        nav_homeDoctor.setVisible(false);
         nav_kitOpening.setVisible(false);
         nav_searchPatient.setVisible(false);
         nav_visitedPatient.setVisible(false);
@@ -405,11 +444,13 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
         // find MenuItem you want to change
+        nav_home = menu.findItem(R.id.nav_home);
         nav_info = menu.findItem(R.id.nav_info);
         nav_personalData = menu.findItem(R.id.nav_personalData);
         nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         //Set item visibility
+        nav_home.setVisible(false);
         nav_info.setVisible(false);
         nav_personalData.setVisible(false);
         nav_medicalRecords.setVisible(false);
