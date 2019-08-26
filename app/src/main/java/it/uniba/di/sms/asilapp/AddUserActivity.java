@@ -1,12 +1,20 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,7 +41,7 @@ import java.util.List;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class AddUserActivity extends AppCompatActivity {
+public class AddUserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //Variable declaration
     private static final String TAG = "AddUserActivity";
 
@@ -56,12 +64,61 @@ public class AddUserActivity extends AppCompatActivity {
     private String gender[] = {"M", "F"};
     private String role[] = {"Admin", "User", "Doctor"};
 
+    private DrawerLayout drawer;
+
+    private MenuItem nav_home;
+    private MenuItem nav_info;
+    private MenuItem nav_homeDoctor;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_personalData;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_medicalRecords;
+    private MenuItem nav_questionnaires;
+    private MenuItem nav_visitedPatient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_add_user);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+
+        // find MenuItem you want to change
+        nav_home = menu.findItem(R.id.nav_home);
+        nav_info = menu.findItem(R.id.nav_info);
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_personalData = menu.findItem(R.id.nav_personalData);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
+        nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+
+        //Set item visibility
+        nav_home.setVisible(false);
+        nav_info.setVisible(false);
+        nav_homeDoctor.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_personalData.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_medicalRecords.setVisible(false);
+        nav_questionnaires.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         //Defined variable
         editTextName = findViewById(R.id.editTextName);
@@ -242,5 +299,51 @@ public class AddUserActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_homeAdmin:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeDoctorIntent = new Intent (AddUserActivity.this, AdminActivity.class);
+                startActivity(nav_homeDoctorIntent);
+                break;
+            case R.id.nav_add_user:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_addUserIntent = new Intent (AddUserActivity.this, AddUserActivity.class);
+                startActivity(nav_addUserIntent);
+                break;
+            case R.id.nav_add_new_acceptance:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_addAcceptanceIntent = new Intent (AddUserActivity.this, AddAcceptanceActivity.class);
+                startActivity(nav_addAcceptanceIntent);
+                break;
+            case R.id.nav_add_retrive_necessities:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_addFoodIntent = new Intent (AddUserActivity.this, AddFoodActivity.class);
+                startActivity(nav_addFoodIntent);
+                break;
+            case R.id.nav_read_ratings:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_readRatingIntent = new Intent (AddUserActivity.this, ReadRatingsActivity.class);
+                startActivity(nav_readRatingIntent);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
+                FirebaseAuth.getInstance().signOut();
+                //Create new Intent
+                Intent nav_logoutIntent = new Intent(AddUserActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
+                finish();
+                break;
+        }
+        return true;
     }
 }
