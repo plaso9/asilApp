@@ -18,10 +18,9 @@ import android.widget.ImageButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AppDetailsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
+    //variable declaration
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
-
     private MenuItem nav_addUser;
     private MenuItem nav_homeDoctor;
     private MenuItem nav_kitOpening;
@@ -30,18 +29,25 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_app_details);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -66,17 +72,16 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //Set a click listener on the imageButton objects
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
     }
 
 
@@ -84,7 +89,9 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.lang);
+                //Create new Intent
                 Intent refresh = new Intent(this, AppDetailsActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -92,7 +99,9 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.italy);
+                //Create new Intent
                 Intent refresh = new Intent(this, AppDetailsActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -100,17 +109,20 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         }
     }
 
+    //Set a click listener
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent languageIntent = new Intent (AppDetailsActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AppDetailsActivity");
             startActivity(languageIntent);
         }
     };
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()){
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
@@ -156,7 +168,7 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
