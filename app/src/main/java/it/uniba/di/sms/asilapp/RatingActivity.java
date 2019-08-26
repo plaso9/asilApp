@@ -27,79 +27,87 @@ import com.google.firebase.database.FirebaseDatabase;
 import it.uniba.di.sms.asilapp.models.Rating;
 
 public class RatingActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    //variable declaration
     private static final String TAG = "RatingActivity";
+    private Button mSubmitRating;
+    private DrawerLayout drawer;
+    private EditText mComment;
+    private Float avgRating;
+    private ImageButton imgBtnLanguage;
+    private NavigationView navigationView;
+    private RatingBar mRatingApp;
     private RatingBar mRatingCity;
     private RatingBar mRatingCenter;
-    private RatingBar mRatingApp;
-    private EditText mComment;
-    private Button mSubmitRating;
-    private Float avgRating;
-
-    private ImageButton imgBtnLanguage;
-
-    private DrawerLayout drawer;
+    private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_rating);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        mComment = findViewById(R.id.editTextComment);
+        mRatingApp = findViewById(R.id.ratingBarApp);
         mRatingCity = findViewById(R.id.ratingBarCity);
         mRatingCenter = findViewById(R.id.ratingBarCenter);
-        mRatingApp = findViewById(R.id.ratingBarApp);
-        mComment = findViewById(R.id.editTextComment);
         mSubmitRating = findViewById(R.id.buttonSubmit);
 
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
+        //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Set a click listener on the button objects
         mSubmitRating.setOnClickListener(mSubmitRating_listener);
+        //Set a click listener on the imageButton objects
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
+        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
     }
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.lang);
+                //Create new Intent
                 Intent refresh = new Intent(this, RatingActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.italy);
+                //Create new Intent
                 Intent refresh = new Intent(this, RatingActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
     }
 
+    //Set a click listener
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent languageIntent = new Intent (RatingActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.RatingActivity");
             startActivity(languageIntent);
         }
@@ -107,34 +115,39 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent sens;
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()){
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (RatingActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (RatingActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (RatingActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordIntent = new Intent (RatingActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (RatingActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent= new Intent (RatingActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (RatingActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (RatingActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(RatingActivity.this, MainActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_logoutIntent= new Intent(RatingActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }
@@ -142,7 +155,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
@@ -150,7 +163,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-
+    //Set on click listener
     public View.OnClickListener mSubmitRating_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
