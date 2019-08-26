@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
@@ -20,20 +21,31 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MyInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    GridLayout gridLayout;
-    CardView card_view_Pathology,
-            card_view_RetrieveBasicNecessities,
-            card_view_AppDetails,
-            card_view_Rating;
+    //variable declaration
+    private GridLayout gridLayout;
+    private CardView card_view_Pathology;
+    private CardView card_view_RetrieveBasicNecessities;
+    private CardView card_view_AppDetails;
+    private CardView card_view_Rating;
 
     private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
 
+    private MenuItem nav_addUser;
+    private MenuItem nav_homeDoctor;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
+
     String user_clicked;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_myinfo);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -43,6 +55,28 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+
+        // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
+        //Set item visibility
+        nav_homeDoctor.setVisible(false);
+        nav_addUser.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -78,68 +112,80 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.lang);
+                //Create new Intent
                 Intent refresh = new Intent(this, MyInfoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
+                //Set image
                 imgBtnLanguage.setImageResource(R.drawable.italy);
+                //Create new Intent
                 Intent refresh = new Intent(this, MyInfoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
         }
     }
 
+    //Set a click listener
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent languageIntent = new Intent (MyInfoActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MyInfoActivity");
             startActivity(languageIntent);
         }
     };
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (MyInfoActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MyInfoActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (MyInfoActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MyInfoActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordIntent = new Intent (MyInfoActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MyInfoActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent= new Intent (MyInfoActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (MyInfoActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (MyInfoActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(MyInfoActivity.this, MainActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_logoutIntent= new Intent(MyInfoActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }
@@ -147,7 +193,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
