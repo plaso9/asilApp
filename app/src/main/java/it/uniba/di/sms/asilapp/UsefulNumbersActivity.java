@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -28,6 +29,14 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
 
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
+    private MenuItem nav_addUser;
+    private MenuItem nav_homeDoctor;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +49,28 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
 
+        // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
+        //Set item visibility
+        nav_homeDoctor.setVisible(false);
+        nav_addUser.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -72,28 +102,21 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, UsefulNumbersActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, UsefulNumbersActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
     }
 
@@ -108,32 +131,44 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
         switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (UsefulNumbersActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 sens = new Intent (UsefulNumbersActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 sens = new Intent (UsefulNumbersActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 sens = new Intent (UsefulNumbersActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 sens = new Intent (UsefulNumbersActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
+                //Create new Intent
                 sens = new Intent(UsefulNumbersActivity.this, MainActivity.class);
                 startActivity(sens);
                 finish();

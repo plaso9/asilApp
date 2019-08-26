@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -34,11 +35,20 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     private EditText mComment;
     private Float avgRating;
     private ImageButton imgBtnLanguage;
+    private MenuItem nav_addUser;
+    private MenuItem nav_homeDoctor;
+    private MenuItem nav_kitOpening;
+    private MenuItem nav_readRatings;
+    private MenuItem nav_addAcceptance;
+    private MenuItem nav_searchPatient;
+    private MenuItem nav_visitedPatient;
+    private MenuItem nav_addRetrieveNecessities;
     private NavigationView navigationView;
     private RatingBar mRatingApp;
     private RatingBar mRatingCity;
     private RatingBar mRatingCenter;
     private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
@@ -61,6 +71,28 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         setSupportActionBar(toolbar);
         //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
+
+        // find MenuItem you want to change
+        nav_homeDoctor = menu.findItem(R.id.nav_homeDoctor);
+        nav_addUser = menu.findItem(R.id.nav_add_user);
+        nav_kitOpening = menu.findItem(R.id.nav_kit_opening);
+        nav_readRatings = menu.findItem(R.id.nav_read_ratings);
+        nav_searchPatient = menu.findItem(R.id.nav_search_patient);
+        nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+        nav_addAcceptance = menu.findItem(R.id.nav_add_new_acceptance);
+        nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
+        //Set item visibility
+        nav_homeDoctor.setVisible(false);
+        nav_addUser.setVisible(false);
+        nav_kitOpening.setVisible(false);
+        nav_readRatings.setVisible(false);
+        nav_searchPatient.setVisible(false);
+        nav_visitedPatient.setVisible(false);
+        nav_addAcceptance.setVisible(false);
+        nav_addRetrieveNecessities.setVisible(false);
 
         //Set a click listener on the button objects
         mSubmitRating.setOnClickListener(mSubmitRating_listener);
@@ -117,6 +149,12 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()){
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent (RatingActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
