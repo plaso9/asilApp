@@ -332,6 +332,12 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                 Intent nav_visitedPatientIntent = new Intent (ChatActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
+            case R.id.nav_video:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_videoIntent = new Intent(ChatActivity.this, VideoActivity.class);
+                startActivity(nav_videoIntent);
+                break;
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent

@@ -177,30 +177,65 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
         switch (item.getItemId()) {
+            case R.id.nav_homeDoctor:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeDoctorIntent = new Intent (VideoActivity.this, DoctorActivity.class);
+                startActivity(nav_homeDoctorIntent);
+                break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
                 Intent nav_homeIntent = new Intent (VideoActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent(VideoActivity.this, InformativeActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent (VideoActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent(VideoActivity.this, MedicalRecordsActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_medicalRecordsIntent = new Intent (VideoActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent(VideoActivity.this, PersonalDataActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_personalDataIntent  = new Intent (VideoActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent(VideoActivity.this, QuestionnairesActivity.class);
-                startActivity(sens);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent (VideoActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
+                break;
+            case R.id.nav_search_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_searchPatientIntent = new Intent (VideoActivity.this, SearchPatientActivity.class);
+                startActivity(nav_searchPatientIntent);
+                break;
+            case R.id.nav_kit_opening:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_kitOpeningIntent = new Intent (VideoActivity.this, KitOpeningActivity.class);
+                startActivity(nav_kitOpeningIntent);
+                break;
+            case R.id.nav_visited_patient:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_visitedPatientIntent = new Intent (VideoActivity.this, PatientListActivity.class);
+                startActivity(nav_visitedPatientIntent);
+                break;
+            case R.id.nav_video:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_videoIntent = new Intent (VideoActivity.this, VideoActivity.class);
+                startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);

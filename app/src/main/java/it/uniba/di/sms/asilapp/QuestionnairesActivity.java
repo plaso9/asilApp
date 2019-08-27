@@ -265,6 +265,12 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                 Intent nav_visitedPatientIntent = new Intent (QuestionnairesActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
+            case R.id.nav_video:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_videoIntent = new Intent (QuestionnairesActivity.this, VideoActivity.class);
+                startActivity(nav_videoIntent);
+                break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
                 //Sign out function

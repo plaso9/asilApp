@@ -192,6 +192,12 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
                 Intent nav_visitedPatientIntent = new Intent(ReadMedicalRecordsActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
+            case R.id.nav_video:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_videoIntent = new Intent (ReadMedicalRecordsActivity.this, VideoActivity.class);
+                startActivity(nav_videoIntent);
+                break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
                 //Sign out function
