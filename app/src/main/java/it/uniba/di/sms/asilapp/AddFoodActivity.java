@@ -37,14 +37,14 @@ import it.uniba.di.sms.asilapp.models.Necessities;
 
 
 public class AddFoodActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    //Variable declaration
     private static final String TAG = "PopUpTempActivity";
-    //Edit text for necessities value
-    private Spinner mCitySpinner;
+
+    private Button submitNecessities;
     private EditText mMall;
     private EditText mPharmacy;
     private long idCity;
-    //Button to submit necessities value
-    private Button submitNecessities;
+    private Spinner mCitySpinner;
 
     private DrawerLayout drawer;
 
@@ -59,17 +59,22 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
     private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
 
+    private Toolbar toolbar;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_add_food);
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variables
+        mMall = findViewById(R.id.editTextMallLocation);
+        mPharmacy = findViewById(R.id.editTextPharmacyLocation);
+        mCitySpinner = findViewById(R.id.spinnerCityFood);
+        submitNecessities = findViewById(R.id.btnSubmit);
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -98,21 +103,24 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         nav_questionnaires.setVisible(false);
         nav_visitedPatient.setVisible(false);
 
+        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
 
-        //find R.id from xml
-        mCitySpinner = findViewById(R.id.spinnerCityFood);
-        mMall = findViewById(R.id.editTextMallLocation);
-        mPharmacy = findViewById(R.id.editTextPharmacyLocation);
-        submitNecessities = findViewById(R.id.btnSubmit);
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
         //Set listener value variable
         submitNecessities.setOnClickListener(submitNecessities_listener);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
 
+        // Initialize Database Reference
         DatabaseReference cityRef = FirebaseDatabase.getInstance().getReference("city");
         cityRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -172,7 +180,6 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
 
     public void addNewRetrieveNecessities(){
         //Get value to insert in DB
-        final String city = mCitySpinner.getSelectedItem().toString();
         final String mall = mMall.getText().toString();
         final String pharmacy = mPharmacy.getText().toString();
 

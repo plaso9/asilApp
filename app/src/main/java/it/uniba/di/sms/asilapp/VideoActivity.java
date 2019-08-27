@@ -32,15 +32,18 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class VideoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //Variable declaration
+    private static final String TAG = "VideoActivity";
+
+    private DatabaseReference mUserReference;
+    private DrawerLayout drawer;
     private VideoView firstVideo, secondVideo;
+    private ImageButton imgBtnLanguage;
+    private int mRole;
     private MediaController mediaController, mediaController1;
     private String uId;
-    private DrawerLayout drawer;
-    private ImageButton imgBtnLanguage;
-    private DatabaseReference mUserReference;
-    private int mRole;
-    private TextView textViewFirstVideo, textViewSecondVideo;
     private String video;
+    private TextView textViewFirstVideo, textViewSecondVideo;
     private Uri uri;
 
     private MenuItem nav_home;
@@ -59,47 +62,39 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
 
-    private static final String TAG = "VideoActivity";
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_video);
 
-
+        //Defined variables
         textViewFirstVideo = findViewById(R.id.textViewFirstVideo);
         textViewSecondVideo = findViewById(R.id.textViewSecondVideo);
-
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        firstVideo = findViewById(R.id.videoViewFirstVideo);
+        secondVideo = findViewById(R.id.videoViewSecondVideo);
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        //Get user role to hide some menu item
-        getUserRole();
-
 
         mediaController = new MediaController(this);
         mediaController1 = new MediaController(this);
 
-        mediaController.setAnchorView(firstVideo);
-        firstVideo = findViewById(R.id.videoViewFirstVideo);
-        firstVideo.setMediaController(mediaController);
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
-        mediaController1.setAnchorView(secondVideo);
-        secondVideo = findViewById(R.id.videoViewSecondVideo);
-        secondVideo.setMediaController(mediaController1);
+        //Get user role to hide some menu item
+        getUserRole();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Get userId
@@ -123,37 +118,41 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
                 Toast.makeText(VideoActivity.this, "Failed to load user.",
                         Toast.LENGTH_SHORT).show();
             }
-
         };
         mUserReference.addValueEventListener(userListener);
 
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set the view that acts as the anchor for the control view.
+        mediaController.setAnchorView(firstVideo);
+        mediaController1.setAnchorView(secondVideo);
+        //setMediaController() tell the VideoView that the MediaController will be used to control it
+        firstVideo.setMediaController(mediaController);
+        secondVideo.setMediaController(mediaController1);
+        //Set a click listener on the button object
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) { // english
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, VideoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
         if (requestCode == 2) { //italian
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, VideoActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-
-
         }
     }
 
