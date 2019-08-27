@@ -2,80 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+    android:layout_height="250dp"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".ReadRatingsActivity">
 
-    <GridLayout
-        android:id="@+id/gridHomeLayout"
-        android:columnCount="1"
-        android:padding="14dp"
-        android:layout_weight="8"
-        android:layout_height="0dp"
+    <!-- ROW -->
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:alignmentMode="alignMargins"
-        android:layout_marginTop="30dp"
-        android:columnOrderPreserved="false">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/item_rounded"
+        android:orientation="vertical">
 
-        <!-- ROW -->
-        <LinearLayout
-            android:padding="10dp"
-            android:layout_margin="16dp"
+        <TextView
+            android:id="@+id/textViewName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/item_rounded"
-            android:orientation="vertical">
+            android:text="@string/name"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/text_userNameClicked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewName"/>
 
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/text_userNameClicked"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textViewName"/>
+        <TextView
+            android:id="@+id/textViewAvg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/avg"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewName" />
 
-            <TextView
-                android:id="@+id/textViewAvg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/avg"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewName" />
+        <TextView
+            android:id="@+id/userSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAvg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewAvg"/>
 
-            <TextView
-                android:id="@+id/userSurname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewAvg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textViewAvg"/>
-
-            <TextView
-                android:id="@+id/userComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""/>
+        <TextView
+            android:id="@+id/userComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
 
 
-        </LinearLayout>
-    </GridLayout>
-
+    </LinearLayout>
 </LinearLayout>
