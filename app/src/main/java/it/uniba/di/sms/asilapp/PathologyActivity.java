@@ -209,6 +209,12 @@ public class PathologyActivity extends AppCompatActivity implements NavigationVi
                 Intent nav_visitedPatientIntent = new Intent (PathologyActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
+            case R.id.nav_video:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_videoIntent = new Intent (PathologyActivity.this, VideoActivity.class);
+                startActivity(nav_videoIntent);
+                break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
                 //Sign out function
