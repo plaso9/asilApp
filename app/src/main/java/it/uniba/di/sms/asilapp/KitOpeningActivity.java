@@ -13,8 +13,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class KitOpeningActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
+public class KitOpeningActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageButton imgBtnLanguage;
     // ArrayList type String of paired devices
@@ -77,7 +77,7 @@ public class KitOpeningActivity extends Activity implements NavigationView.OnNav
         setContentView(R.layout.activity_kit_opening);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
