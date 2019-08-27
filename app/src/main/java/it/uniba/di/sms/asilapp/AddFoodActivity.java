@@ -80,6 +80,8 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -118,8 +120,6 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
 
 
 
-        //Set a Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
         //Set listener value variable
         submitNecessities.setOnClickListener(submitNecessities_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
