@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import it.uniba.di.sms.asilapp.models.Rating;
 import it.uniba.di.sms.asilapp.models.User;
@@ -258,7 +260,13 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
 
     //Function to round avg rating
     public float roundTwoDecimals(float d) {
-        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        DecimalFormat twoDForm = new DecimalFormat("#,##");
+
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+             twoDForm = new DecimalFormat("#.##");
+        }
+
         return Float.valueOf(twoDForm.format(d));
     }
 }
