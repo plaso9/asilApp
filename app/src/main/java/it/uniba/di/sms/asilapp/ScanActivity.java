@@ -18,35 +18,44 @@ import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+
+    //Define a ZXingScannerView object
     private ZXingScannerView mScannerView;
 
+    // Assign an arbitrary value to PERMISSION_REQUEST_CODE
     private static final int PERMISSION_REQUEST_CODE = 200;
 
+
     @Override
-    public void onCreate(Bundle state) {
+    public void onCreate(Bundle state) {    //Called when the activity is starting.
         super.onCreate(state);
-        // Programmatically initialize the scanner view
+
+        // Initialize the ZxingScannerView
         mScannerView = new ZXingScannerView(this);
-        // Set the scanner view as the content view
 
+        // Call checkPermission() or request the permission if missing
         if (checkPermission()) {
+            // Set the ZxingScannerView as the content view
             setContentView(mScannerView);
-
         } else {
             requestPermission();
         }
     }
 
     private boolean checkPermission() {
+        //Checks if the app has the CAMERA permission from the Manifest
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
             return false;
         }
+        //Permission is granted
         return true;
     }
-    private void requestPermission() {
 
+    private void requestPermission() {
+        /* Requests CAMERA permission to be granted to the app. PERMISSION_REQUEST_CODE is used
+        to identify the request */
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.CAMERA},
                 PERMISSION_REQUEST_CODE);
@@ -54,23 +63,37 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
 
     @Override
+    //This interface is the contract for receiving the results for permission requests.
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
+
+                /* We are checking for CAMERA permission. if it's granted make a "Permission Granted" toast
+                and start the activity SearchPatientActivity */
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ScanActivity.this,SearchPatientActivity.class);
+                    Intent intent = new Intent(ScanActivity.this, SearchPatientActivity.class);
                     startActivity(intent);
 
-                    // main logic
+                    // If it's not granted, make a "Permission Denied" toast
                 } else {
                     Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+                    // Check if the SDK Version is equal or higher than Marshmallow
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                        //Checks if the app has the CAMERA permission from the Manifest
                         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                                 != PackageManager.PERMISSION_GRANTED) {
+
+                            // If not granted, call showMessageOKCancel with this message
                             showMessageOKCancel("You need to allow access permissions",
+
+                                    // This method will be invoked when a button in the dialog is clicked
                                     new DialogInterface.OnClickListener() {
                                         @Override
+
+                                        /* if the SDK Version is equal or higher than Marshmallow,
+                                        request permission will be called on click */
                                         public void onClick(DialogInterface dialog, int which) {
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                                 requestPermission();
@@ -84,6 +107,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         }
     }
 
+    // This method will open an Alert Dialog with a message and 2 buttons, Ok anc Cancel
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(ScanActivity.this)
                 .setMessage(message)
@@ -111,10 +135,9 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     }
 
     @Override
+    // This method will handle the result provided by the scanning
     public void handleResult(Result rawResult) {
-
-        //If you would like to resume scanning, call this method below:
-        //mScannerView.resumeCameraPreview(this);
+        // We will set editTextCode with the result provided
         Intent intent = new Intent();
         SearchPatientActivity.editTextCode.setText(rawResult.toString());
         onBackPressed();
