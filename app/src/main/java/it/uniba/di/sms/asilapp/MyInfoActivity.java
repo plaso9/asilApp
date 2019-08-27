@@ -23,15 +23,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MyInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //variable declaration
-    private GridLayout gridLayout;
     private CardView card_view_Pathology;
     private CardView card_view_RetrieveBasicNecessities;
     private CardView card_view_AppDetails;
     private CardView card_view_Rating;
-
-    private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
-
+    private GridLayout gridLayout;
+    private ImageButton imgBtnLanguage;
     private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -42,8 +40,10 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
-    String user_clicked;
+    private String user_clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
@@ -51,13 +51,21 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_myinfo);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        gridLayout=findViewById(R.id.gridInformativeLayout);
+        card_view_Rating = findViewById(R.id.card_rating);
+        card_view_Pathology = findViewById(R.id.card_pathology);
+        card_view_AppDetails = findViewById(R.id.card_appDetails);
+        card_view_RetrieveBasicNecessities = findViewById(R.id.card_retrieveBasicNecessities);
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -85,43 +93,34 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-
-
-        //defined gridlayout variable
-        gridLayout=findViewById(R.id.gridInformativeLayout);
-
-        //defined card variable
-        card_view_Pathology = findViewById(R.id.card_pathology);
-        card_view_RetrieveBasicNecessities = findViewById(R.id.card_retrieveBasicNecessities);
-        card_view_AppDetails = findViewById(R.id.card_appDetails);
-        card_view_Rating = findViewById(R.id.card_rating);
-
+        //Set a click listener on the cards objects
         card_view_Pathology.setOnClickListener(card_view_Pathology_listener);
         card_view_RetrieveBasicNecessities.setOnClickListener( card_view_RetrieveBasicNecessities_listener);
         card_view_AppDetails.setOnClickListener(card_view_AppDetais_listener);
         card_view_Rating.setOnClickListener(card_view_Rating_listener);
+        //Set a click listener on the imageButton objects
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
+        //Set image resource
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            //Set image
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId Logged
         user_clicked = user.getUid();
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
-        imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
-            imgBtnLanguage.setImageResource(R.drawable.lang);
-        }
-
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-
     }
 
 
@@ -149,19 +148,8 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-    //Set a click listener
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //Create new Intent
-            Intent languageIntent = new Intent (MyInfoActivity.this,PopUpLanguageActivity.class);
-            //Pass data between intents
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MyInfoActivity");
-            startActivity(languageIntent);
-        }
-    };
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()){
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
@@ -215,24 +203,25 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-
-
-
+    //Set on click listener
     public View.OnClickListener card_view_Pathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,ReadMedicalRecordsActivity.class);
-            sens.putExtra("user_clicked", user_clicked);
-            sens.putExtra("_parameter", "7");
-            startActivity(sens);
+            //Create new Intent
+            Intent readMedRecordIntent = new Intent (MyInfoActivity.this,ReadMedicalRecordsActivity.class);
+            //Pass data between intents
+            readMedRecordIntent.putExtra("user_clicked", user_clicked);
+            readMedRecordIntent.putExtra("_parameter", "7");
+            startActivity(readMedRecordIntent);
 
         }
     };
     public View.OnClickListener card_view_RetrieveBasicNecessities_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this,RetrieveBasicNecessitiesActivity.class);
-            startActivity(sens);
+            //Create new Intent
+            Intent retrieveIntent = new Intent (MyInfoActivity.this,RetrieveBasicNecessitiesActivity.class);
+            startActivity(retrieveIntent);
 
         }
     };
@@ -240,8 +229,9 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     public View.OnClickListener card_view_AppDetais_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this, AppDetailsActivity.class);
-            startActivity(sens);
+            //Create new Intent
+            Intent appDetailIntent = new Intent (MyInfoActivity.this, AppDetailsActivity.class);
+            startActivity(appDetailIntent);
 
         }
     };
@@ -249,9 +239,21 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     public View.OnClickListener card_view_Rating_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (MyInfoActivity.this, RatingActivity.class);
-            startActivity(sens);
+            //Create new Intent
+            Intent ratingIntent = new Intent (MyInfoActivity.this, RatingActivity.class);
+            startActivity(ratingIntent);
 
+        }
+    };
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent (MyInfoActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MyInfoActivity");
+            startActivity(languageIntent);
         }
     };
 }
