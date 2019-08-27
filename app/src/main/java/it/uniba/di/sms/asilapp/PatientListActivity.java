@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,7 +17,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +35,7 @@ import java.util.List;
 import it.uniba.di.sms.asilapp.adapter.PatientAdapter;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class PatientListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class PatientListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "PatientListActivity";
 
     private DatabaseReference mUserReference;
@@ -43,6 +46,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
 
     private EditText searchText;
     private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
 
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -98,8 +102,10 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         toggle.syncState();
 
         searchText = findViewById(R.id.searchText);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-        recyclerView = (RecyclerView)findViewById(R.id.userList);
+        recyclerView = (RecyclerView) findViewById(R.id.userList);
         //Used to know size top avoid expensive layout operation
         recyclerView.setHasFixedSize(true);
         //Create layout manager, it is responsible for measuring and positioning item views within a RecyclerView
@@ -107,12 +113,41 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    protected void onStart(){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, PatientListActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, PatientListActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(PatientListActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientListActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+    @Override
+    protected void onStart() {
         super.onStart();
         readUserList();
     }
 
-    public void readUserList(){
+    public void readUserList() {
         //ArrayList variable
         mUserList = new ArrayList<>();
         //Initialize Database Reference
@@ -133,23 +168,23 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
                         mUserList.add(user);
 
                         searchText.addTextChangedListener(new TextWatcher() {
-                              @Override
-                              public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                              }
+                            }
 
-                              @Override
-                              public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                              }
+                            }
 
-                              @Override
-                              public void afterTextChanged(Editable editable) {
-                                  mUserList.clear();
-                                  if(editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())){
-                                      mUserList.add(user);
-                                  }
-                              }
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                mUserList.clear();
+                                if (editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())) {
+                                    mUserList.add(user);
+                                }
+                            }
                         });
                     }
 
@@ -157,6 +192,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
                     recyclerView.setAdapter(patientAdapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting user failed
@@ -169,35 +205,35 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (PatientListActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(PatientListActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (PatientListActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(PatientListActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (PatientListActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(PatientListActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (PatientListActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(PatientListActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (PatientListActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(PatientListActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:

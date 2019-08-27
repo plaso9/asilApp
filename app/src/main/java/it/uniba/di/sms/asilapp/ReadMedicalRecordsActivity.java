@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +34,7 @@ import it.uniba.di.sms.asilapp.adapter.MedicalRecordAdapter;
 import it.uniba.di.sms.asilapp.models.MedicalRecord;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class ReadMedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ReadMedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "ReadMedRecordsActivity";
     private DatabaseReference mUserReference;
     private String uId;
@@ -40,6 +43,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
 
     private RecyclerView recyclerView;
     private DatabaseReference mMedicalRecordReference;
+    private ImageButton imgBtnLanguage;
 
     private MedicalRecordAdapter medicalRecordAdapter;
     private List<MedicalRecord> mMedicalRecordsList;
@@ -84,6 +88,9 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
 
 
         recyclerView = findViewById(R.id.medicalRecordsList);
+
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Used to know size top avoid expensive layout operation
         recyclerView.setHasFixedSize(true);
 
@@ -94,60 +101,89 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(ReadMedicalRecordsActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadMedicalRecordsActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (ReadMedicalRecordsActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(ReadMedicalRecordsActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (ReadMedicalRecordsActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(ReadMedicalRecordsActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (ReadMedicalRecordsActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(ReadMedicalRecordsActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordsIntent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordsIntent = new Intent(ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent  = new Intent (ReadMedicalRecordsActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(ReadMedicalRecordsActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (ReadMedicalRecordsActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(ReadMedicalRecordsActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (ReadMedicalRecordsActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(ReadMedicalRecordsActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (ReadMedicalRecordsActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(ReadMedicalRecordsActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (ReadMedicalRecordsActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(ReadMedicalRecordsActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_logout:
@@ -165,16 +201,16 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
 
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
 
         // Initialize FirebaseUser
@@ -196,7 +232,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         readMedicalRecords(uId, parameter);
     }
 
-    public void readMedicalRecords(final String userId, final String parameter){
+    public void readMedicalRecords(final String userId, final String parameter) {
         //ArrayList variable
         mMedicalRecordsList = new ArrayList<>();
         //Initialize Database Reference
@@ -209,10 +245,10 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Clear ArrayList
                 mMedicalRecordsList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     // Get obj medicalRecord
                     MedicalRecord medicalRecord = snapshot.getValue(MedicalRecord.class);
-                    if(medicalRecord.get_user().equals(userId) && medicalRecord.get_parameter().equals(parameter)){
+                    if (medicalRecord.get_user().equals(userId) && medicalRecord.get_parameter().equals(parameter)) {
                         // Add obj to ArrayList
                         mMedicalRecordsList.add(medicalRecord);
                     }
@@ -221,6 +257,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
                     recyclerView.setAdapter(medicalRecordAdapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting Medical Record failed
@@ -231,7 +268,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         });
     }
 
-    public void removeItemDoctor(){
+    public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -249,7 +286,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         nav_visitedPatient.setVisible(false);
     }
 
-    public void removeItemUser(){
+    public void removeItemUser() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -267,7 +304,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         nav_questionnaires.setVisible(false);
     }
 
-    public void removeItemAdmin(){
+    public void removeItemAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -285,7 +322,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         nav_addRetrieveNecessities.setVisible(false);
     }
 
-    public void getUserRole(){
+    public void getUserRole() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());

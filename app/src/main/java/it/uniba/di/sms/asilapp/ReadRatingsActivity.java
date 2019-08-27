@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +33,13 @@ import java.text.DecimalFormat;
 import it.uniba.di.sms.asilapp.models.Rating;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class ReadRatingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ReadRatingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private static final String TAG = "ReadRatingsActivity";
     private DatabaseReference mDatabaseRating;
     private RecyclerView recyclerView;
     private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
 
     private MenuItem nav_home;
     private MenuItem nav_info;
@@ -95,6 +98,8 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
 
         //Defined variable
         recyclerView = findViewById(R.id.ratingList);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         //Initialize Database Reference
         mDatabaseRating = FirebaseDatabase.getInstance().getReference("rating");
@@ -108,7 +113,36 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    protected void onStart(){   //Called when the activity had been stopped,
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, ReadRatingsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, ReadRatingsActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(ReadRatingsActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadRatingsActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+    @Override
+    protected void onStart() {   //Called when the activity had been stopped,
         super.onStart();
         //Let's create new ViewHolder
         FirebaseRecyclerAdapter<Rating, RatingViewHolder> firebaseRecyclerAdapter = new
@@ -128,7 +162,7 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
                                 //Get Value
                                 User user = dataSnapshot.getValue(User.class);
                                 //Set Value
-                                viewHolder.setName(user.getName()+" "+user.getSurname());
+                                viewHolder.setName(user.getName() + " " + user.getSurname());
                                 viewHolder.setAvgRating(roundTwoDecimals(model.getAvgRating()));
                                 viewHolder.setComment(model.getComment());
                             }
@@ -150,35 +184,35 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (ReadRatingsActivity.this, AdminActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(ReadRatingsActivity.this, AdminActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (ReadRatingsActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(ReadRatingsActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (ReadRatingsActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(ReadRatingsActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (ReadRatingsActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(ReadRatingsActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (ReadRatingsActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(ReadRatingsActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:
@@ -195,23 +229,23 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     }
 
     //Created ViewHolder Class
-    public static class RatingViewHolder extends RecyclerView.ViewHolder{
+    public static class RatingViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
-        public RatingViewHolder(View itemView){
+        public RatingViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
         }
 
         //Set functions
-        public void setName(String name){
+        public void setName(String name) {
             TextView userName = mView.findViewById(R.id.text_userNameClicked);
             userName.setText(name);
         }
 
-        public void setAvgRating(Float avgRating){
+        public void setAvgRating(Float avgRating) {
             TextView rating = mView.findViewById(R.id.userSurname);
-            rating.setText(avgRating+"");
+            rating.setText(avgRating + "");
         }
 
         public void setComment(String comment) {

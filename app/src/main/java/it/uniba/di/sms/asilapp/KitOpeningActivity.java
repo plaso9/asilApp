@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import java.util.Set;
 
 public class KitOpeningActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ImageButton imgBtnLanguage;
     // ArrayList type String of paired devices
     ArrayList<String> arrayListpaired;
     // ArrayAdapter returns a view for each object in a collection of data objects
@@ -82,6 +84,9 @@ public class KitOpeningActivity extends Activity implements NavigationView.OnNav
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
+
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
@@ -138,6 +143,34 @@ public class KitOpeningActivity extends Activity implements NavigationView.OnNav
         listViewPaired.setAdapter(adapter);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, KitOpeningActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, KitOpeningActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(KitOpeningActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.KitOpeningActivity");
+            startActivity(languageIntent);
+        }
+    };
     @Override
     protected void onStart() {
         super.onStart();

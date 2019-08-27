@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,13 +37,15 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
     private String user_id;
     private TextView mName;
     private DatabaseReference mUserReference;
+    private ImageButton imgBtnLanguage;
+
 
     //Define cards
     CardView card_view_personalData;
     CardView card_view_medicalRecords;
     CardView card_view_questionnaires;
 
-    int PROGRESS_BAR_STATUS=0;
+    int PROGRESS_BAR_STATUS = 0;
     ProgressDialog progressBar;
     private DrawerLayout drawer;
 
@@ -110,12 +114,14 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         card_view_personalData = findViewById(R.id.card_personalData);
         card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
         card_view_questionnaires = findViewById(R.id.card_questionnaires);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
 
         //set function to card
         card_view_personalData.setOnClickListener(card_view_Personaldata_listener);
         card_view_medicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
         card_view_questionnaires.setOnClickListener(card_view_Questionnaries_listener);
-
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
@@ -136,6 +142,36 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         mUserReference.addValueEventListener(userListener);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, PatientDetailActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, PatientDetailActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(PatientDetailActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientDetailActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+
     //Open Personal Data Intent
     public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
         @Override
@@ -144,11 +180,11 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
             progressBar.setIndeterminate(true);
             progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             progressBar.show();
-            Intent personalDataIntent = new Intent (PatientDetailActivity.this,PersonalDataActivity.class);
+            Intent personalDataIntent = new Intent(PatientDetailActivity.this, PersonalDataActivity.class);
             personalDataIntent.putExtra("user_clicked", user_id);
             startActivity(personalDataIntent);
 
-            PROGRESS_BAR_STATUS=1;
+            PROGRESS_BAR_STATUS = 1;
         }
     };
     //Open Questionnaires Intent
@@ -161,60 +197,60 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         }
     };
     //Open Medical Records Intent
-    public  View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
+    public View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent medicalRecordsIntent = new Intent(PatientDetailActivity.this, MedicalRecordsActivity.class);
-            medicalRecordsIntent .putExtra("user_clicked", user_id);
-            startActivity(medicalRecordsIntent );
+            medicalRecordsIntent.putExtra("user_clicked", user_id);
+            startActivity(medicalRecordsIntent);
         }
     };
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         afterExecution();
     }
 
 
-    public void afterExecution(){
-        if (PROGRESS_BAR_STATUS == 1){
+    public void afterExecution() {
+        if (PROGRESS_BAR_STATUS == 1) {
             progressBar.dismiss();
-            PROGRESS_BAR_STATUS=0;
+            PROGRESS_BAR_STATUS = 0;
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (PatientDetailActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(PatientDetailActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (PatientDetailActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(PatientDetailActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (PatientDetailActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(PatientDetailActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (PatientDetailActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(PatientDetailActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (PatientDetailActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(PatientDetailActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:
