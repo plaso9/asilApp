@@ -117,7 +117,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                 // Get User object
                 User user = dataSnapshot.getValue(User.class);
                 mRole = user.getRole();
-                getRoleActivity(mRole);
             }
 
             @Override
@@ -353,18 +352,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
 
     public void getRoleActivity(int role_id) {
-        if (role_id == 1) {
-            //Admin Role
-
-
-
-        } else if (role_id == 2) {
-            //User Role
-
-
-
-
-        } else if (role_id == 3) {
+        if (role_id == 3) { //role 3 = Doctor
             btnSf12.setText(R.string.readAnswers);
             btnHabits.setText(R.string.readAnswers);
             btnQuality.setText(R.string.readAnswers);
@@ -373,12 +361,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
             URI3 ="https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
             URI4 = "https://docs.google.com/forms/d/1x7PXgG_dvIDqGFIquZF3s_rZY-RmCNoOoLcnr2yqZIM/edit#responses";
-
-
-
-
-
-
         }
     }
 
@@ -447,6 +429,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                 // Get User object and use the values to update the UI
                 User user = dataSnapshot.getValue(User.class);
                 int role = user.getRole();
+                getRoleActivity(role);
                 if (role == 2) {    //role 2 = User
                     removeItemAdmin();
                     removeItemDoctor();
