@@ -34,6 +34,7 @@ import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
 public class AddAcceptanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    //Variable declaration
     private static final String TAG = "AddAcceptanceActivity";
 
     private long idCity;
@@ -55,16 +56,22 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
     private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_add_acceptance);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variable
+        eTcenterName = findViewById(R.id.editTextCenterName);
+        eTcenterLocation = findViewById(R.id.editTextCenterLocation);
+        eTcenterServices = findViewById(R.id.editTextCenterServices);
+        spinnerCity = findViewById(R.id.spinnerCity);
+        buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -98,14 +105,11 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        eTcenterName = findViewById(R.id.editTextCenterName);
-        eTcenterLocation = findViewById(R.id.editTextCenterLocation);
-        eTcenterServices = findViewById(R.id.editTextCenterServices);
-        spinnerCity = findViewById(R.id.spinnerCity);
-        buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
-
-      //  selectFile = findViewById(R.id.btnCenterRegulation);
-
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a click listener on the button object
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
 
         //Initialize DB to get acceptance reference
@@ -176,11 +180,12 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         final String centerServices = eTcenterServices.getText().toString();
         String[] services = centerServices.split(","); //Split string every comma
         ArrayList<String> listOfServices = new ArrayList<>();
+        //For loop to populate the list of services of the acceptance
         for (int i = 0; i < services.length; i++){
-            listOfServices.add(services[i]);//add string_service to the list
+            listOfServices.add(services[i].trim());//add string_service to the list
         }
 
-        String id = FirebaseDatabase.getInstance().getReference("acceptance").push().getKey();
+        String id = FirebaseDatabase.getInstance().getReference("acceptance").push().getKey(); //push method enters the object in the db
         Acceptance acceptance = new Acceptance(
                 nameCenter,
                 locationCenter,
@@ -190,19 +195,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         );
 
         FirebaseDatabase.getInstance().getReference("acceptance").child(id).setValue(acceptance);
-        /*FirebaseDatabase.getInstance().getReference().child("acceptance").push().setValue(acceptance).addOnCompleteListener(new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            if (task.isSuccessful()){
-                Toast.makeText(AddAcceptanceActivity.this, "Added successfully", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(AddAcceptanceActivity.this, "Error, can't add the acceptance", Toast.LENGTH_LONG).show();
-            }
-        }
-        */
-
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
