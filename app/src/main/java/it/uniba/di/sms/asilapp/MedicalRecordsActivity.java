@@ -227,7 +227,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         if (requestCode == 1) { // english
 
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, MedicalRecordsActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -238,7 +237,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         if (requestCode == 2) { //italian
 
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, MedicalRecordsActivity.class);
                 startActivity(refresh);
                 this.finish();

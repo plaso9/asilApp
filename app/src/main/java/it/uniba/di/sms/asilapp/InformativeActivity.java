@@ -125,7 +125,6 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
         if (requestCode == 1) { // english
 
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, InformativeActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -136,7 +135,6 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
         if (requestCode == 2) { //italian
 
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, InformativeActivity.class);
                 startActivity(refresh);
                 this.finish();

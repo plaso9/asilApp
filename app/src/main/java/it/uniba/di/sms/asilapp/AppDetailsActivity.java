@@ -102,8 +102,6 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Set image
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 //Create new Intent
                 Intent refresh = new Intent(this, AppDetailsActivity.class);
                 startActivity(refresh);
@@ -112,8 +110,6 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Set image
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 //Create new Intent
                 Intent refresh = new Intent(this, AppDetailsActivity.class);
                 startActivity(refresh);

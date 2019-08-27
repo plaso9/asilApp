@@ -127,8 +127,6 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Set image
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 //Create new Intent
                 Intent refresh = new Intent(this, RatingActivity.class);
                 startActivity(refresh);
@@ -137,8 +135,6 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Set image
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 //Create new Intent
                 Intent refresh = new Intent(this, RatingActivity.class);
                 startActivity(refresh);
