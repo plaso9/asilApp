@@ -101,6 +101,14 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         //Defined variable
         recyclerView = findViewById(R.id.ratingList);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
+
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         //Initialize Database Reference

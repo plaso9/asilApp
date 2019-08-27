@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -46,6 +47,12 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);

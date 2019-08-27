@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -115,6 +116,12 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
         card_view_questionnaires = findViewById(R.id.card_questionnaires);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
 
         //set function to card

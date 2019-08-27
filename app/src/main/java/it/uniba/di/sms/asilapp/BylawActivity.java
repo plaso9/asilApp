@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -69,6 +70,12 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         textViewDownloadIntroduction = findViewById(R.id.textViewDownloadIntroductionToItaly);
         spinnerSelectLanguage = findViewById(R.id.spinnerLanguage);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);

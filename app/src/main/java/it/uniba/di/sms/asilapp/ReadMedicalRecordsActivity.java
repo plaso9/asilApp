@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -90,6 +91,13 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         recyclerView = findViewById(R.id.medicalRecordsList);
 
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Used to know size top avoid expensive layout operation
         recyclerView.setHasFixedSize(true);

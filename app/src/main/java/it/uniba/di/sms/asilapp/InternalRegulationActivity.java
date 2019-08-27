@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -84,6 +85,13 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
 
         textViewDownloadRegulation = findViewById(R.id.textViewDownloadRegulation);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the textView object

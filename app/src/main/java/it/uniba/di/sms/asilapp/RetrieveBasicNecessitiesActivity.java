@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -129,6 +130,13 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         userId = findViewById(R.id.textViewUserId);
         userId2 = findViewById(R.id.textViewUserId2);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         

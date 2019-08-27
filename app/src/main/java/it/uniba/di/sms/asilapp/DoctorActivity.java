@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -86,6 +87,12 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         toggle.syncState();
 
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         //defined gridlayout variable
         gridLayout=findViewById(R.id.gridDoctorLayout);
         //defined card variable

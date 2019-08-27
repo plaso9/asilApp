@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -116,6 +117,13 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         mNation = findViewById(R.id.editTextNation);
         mSavePersonalData = findViewById(R.id.buttonSavePersonalData);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         mSavePersonalData.setOnClickListener(save_data_listener);
 
