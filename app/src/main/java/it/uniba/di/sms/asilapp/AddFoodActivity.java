@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,7 +47,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
     private EditText mPharmacy;
     private long idCity;
     private Spinner mCitySpinner;
-
+    private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
 
     private MenuItem nav_home;
@@ -75,6 +77,8 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -90,6 +94,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
+
 
         //Set item visibility
         nav_home.setVisible(false);
@@ -117,6 +122,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         setSupportActionBar(toolbar);
         //Set listener value variable
         submitNecessities.setOnClickListener(submitNecessities_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -163,6 +169,35 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, AddFoodActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, AddFoodActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (AddFoodActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddFoodActivity");
+            startActivity(change_languageIntent);
+        }
+    };
 
     //Set on click listener submit button
     public View.OnClickListener submitNecessities_listener = new View.OnClickListener() {

@@ -109,7 +109,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView.setLayoutManager(linearLayoutManager);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-//        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
 
     }

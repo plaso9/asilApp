@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -15,11 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //Variables declaration
+    private ImageButton imgBtnLanguage;
     CardView card_view_addFood;
     CardView card_view_addUser;
     CardView card_view_readRatings;
@@ -66,6 +69,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         nav_visitedPatient = menu.findItem(R.id.nav_visited_patient);
 
+
         //Set item visibility
         nav_home.setVisible(false);
         nav_info.setVisible(false);
@@ -90,7 +94,9 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         card_view_addAcceptance = findViewById(R.id.card_addAcceptance);
         chatButton = findViewById(R.id.chatBtn);
         gridLayout=findViewById(R.id.gridAdminLayout);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the card objects
         card_view_addAcceptance.setOnClickListener(card_view_addAcceptance_listener);
         card_view_addUser.setOnClickListener(card_view_addUser_listener);
@@ -99,6 +105,37 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         //Set a click listener on the FloatingActionButton object
         chatButton.setOnClickListener(chatButton_listener);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, AdminActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, AdminActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (AdminActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AdminActivity");
+            startActivity(change_languageIntent);
+        }
+    };
+
 
     //Interface definition for a callback to be invoked when a view is clicked.
     public View.OnClickListener card_view_addAcceptance_listener = new View.OnClickListener() {

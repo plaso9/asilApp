@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,11 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SearchPatientActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class SearchPatientActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     public static EditText editTextCode;
     private Button buttonSearch;
@@ -34,6 +36,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     private MenuItem nav_personalData;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
+    private ImageButton imgBtnLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
         //Set item visibility
         nav_home.setVisible(false);
         nav_info.setVisible(false);
@@ -81,7 +85,9 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         //Defined variables
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
         imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the imageView objects
         imageViewScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,36 +109,65 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, SearchPatientActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, SearchPatientActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent languageIntent = new Intent(SearchPatientActivity.this, PopUpLanguageActivity.class);
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.SearchPatientActivity");
+            startActivity(languageIntent);
+        }
+    };
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (SearchPatientActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(SearchPatientActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (SearchPatientActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(SearchPatientActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (SearchPatientActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(SearchPatientActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (SearchPatientActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(SearchPatientActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (SearchPatientActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(SearchPatientActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:

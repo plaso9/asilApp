@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,6 +51,7 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
     private MenuItem nav_personalData;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
+    private ImageButton imgBtnLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +101,41 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
         mLifestyle = findViewById(R.id.edit_lifestyle_pathology);
         mMedicines = findViewById(R.id.edit_medicines_pathology);
         submitButton = findViewById(R.id.buttonSavePathology);
-
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         submitButton.setOnClickListener(submitButton_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, AddPathologyActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, AddPathologyActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (AddPathologyActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddPathologyActivity");
+            startActivity(change_languageIntent);
+        }
+    };
+
+
 
     public View.OnClickListener submitButton_listener = new View.OnClickListener() {
         @Override

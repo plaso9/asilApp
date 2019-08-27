@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,6 +28,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
     CardView card_view_video;
     FloatingActionButton chatButton;
     GridLayout gridLayout;
+    private ImageButton imgBtnLanguage;
     private DrawerLayout drawer;
 
     private MenuItem nav_addUser;
@@ -82,6 +85,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         //defined gridlayout variable
         gridLayout=findViewById(R.id.gridDoctorLayout);
         //defined card variable
@@ -92,6 +96,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         //Defined FloatingActionButton
         chatButton = findViewById(R.id.chatBtn);
 
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the card objects
         card_view_searchPatient.setOnClickListener(card_view_searchPatient_listener);
         card_view_kitOpening.setOnClickListener(card_view_kitOpening_listener);
@@ -100,6 +105,35 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         //Set a click listener on the FloatingActionButton object
         chatButton.setOnClickListener(chatButton_listener);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, DoctorActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, DoctorActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (DoctorActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.DoctorActivity");
+            startActivity(change_languageIntent);
+        }
+    };
 
     public View.OnClickListener card_view_searchPatient_listener = new View.OnClickListener() {
         @Override

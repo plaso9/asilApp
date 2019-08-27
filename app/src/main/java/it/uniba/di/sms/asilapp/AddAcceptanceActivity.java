@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -44,7 +46,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
     private Spinner spinnerCity;
     private Button buttonSubmitAcceptance;
     private DrawerLayout drawer;
-
+    private ImageButton imgBtnLanguage;
     private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_video;
@@ -72,6 +74,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -111,6 +114,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         setSupportActionBar(toolbar);
         //Set a click listener on the button object
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         //Initialize DB to get acceptance reference
         DatabaseReference cityRef = FirebaseDatabase.getInstance().getReference("city");
@@ -155,6 +159,39 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, AddAcceptanceActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, AddAcceptanceActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (AddAcceptanceActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddAcceptanceActivity");
+            startActivity(change_languageIntent);
+        }
+    };
+
+
+
+
 
 
 

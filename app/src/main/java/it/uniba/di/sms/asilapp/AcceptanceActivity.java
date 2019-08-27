@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -114,7 +115,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mAddress = findViewById(R.id.editTextCenterLocation);
         mListServices = findViewById(R.id.editTextCenterServices);
         regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
-        //imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
 
 
@@ -126,13 +127,14 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
         mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
 
-        regulation.setOnClickListener(editTextCenterRegulation_listener);   //Set a click listener on the button object
-        //imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        regulation.setOnClickListener(editTextCenterRegulation_listener);
+        //Set a click listener on the button object
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
     }
 
 
-    /*@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -160,7 +162,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
             startActivity(change_languageIntent);
         }
     };
-    */
+
 
 
 

@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,6 +47,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
     //Variable declaration
     private static final String TAG = "AddUserActivity";
 
+    private ImageButton imgBtnLanguage;
     private Button submitButton;
     private DatabaseReference acceptanceRef;
     private DatePickerDialog.OnDateSetListener dateSetListener;
@@ -136,11 +139,14 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         spinnerGender = findViewById(R.id.spinnerGender);
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         mAuth = FirebaseAuth.getInstance();
 
         //Set a click listener on the button object
         submitButton.setOnClickListener(submitButton_listener);
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
         //Set a click listener on the editText object
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,6 +226,35 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         });
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { // english
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
+                Intent refresh = new Intent(this, AddUserActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+        if (requestCode == 2) { //italian
+            if (resultCode == Activity.RESULT_CANCELED) {
+                imgBtnLanguage.setImageResource(R.drawable.italy);
+                Intent refresh = new Intent(this, AddUserActivity.class);
+                startActivity(refresh);
+                this.finish();
+            }
+        }
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent change_languageIntent = new Intent (AddUserActivity.this,PopUpLanguageActivity.class);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddUserActivity");
+            startActivity(change_languageIntent);
+        }
+    };
 
     public View.OnClickListener submitButton_listener = new View.OnClickListener() {
         @Override
