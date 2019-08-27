@@ -47,32 +47,38 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-    public void onLoadCurrentUserRole(){
+    public void onLoadCurrentUserRole() {
         //Get Current User
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Get userId
-        uId = user.getUid();
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
+        if (user == null) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            uId = user.getUid();
+            mUserReference = FirebaseDatabase.getInstance().getReference()
+                    .child("user").child(uId);
 
-        ValueEventListener userListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get User object
-                User user = dataSnapshot.getValue(User.class);
-                mRole = user.getRole();
-                getRoleActivity(mRole);
-            }
+            ValueEventListener userListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get User object
+                    User user = dataSnapshot.getValue(User.class);
+                    mRole = user.getRole();
+                    getRoleActivity(mRole);
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting User Role failed, log a message
-                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
-                Toast.makeText(MainActivity.this, "Failed to load user.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-        mUserReference.addValueEventListener(userListener);
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting User Role failed, log a message
+                    Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                    Toast.makeText(MainActivity.this, "Failed to load user.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            };
+            mUserReference.addValueEventListener(userListener);
+        }
     }
 
     public void getRoleActivity(int role_id) {

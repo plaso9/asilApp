@@ -67,21 +67,27 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage("Authenticating...");
                 progressDialog.show();
 
-                //Tries to sign in a user with the given email address and password
-                mAuth.signInWithEmailAndPassword(email, psw).
-                        addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>(){
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task){
-                        if (task.isSuccessful()) {
-                            onLoginSuccess();
-                            progressDialog.dismiss();
-                        } else {
-                            onLoginFailed();
-                            progressDialog.dismiss();
-                            return;
-                        }
-                    }
-                });
+                if(email.isEmpty() || psw.isEmpty()){
+                    Toast.makeText(getBaseContext(), "Login Failed, empty fields", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                    return;
+                } else {
+                    //Tries to sign in a user with the given email address and password
+                    mAuth.signInWithEmailAndPassword(email, psw).
+                            addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        onLoginSuccess();
+                                        progressDialog.dismiss();
+                                    } else {
+                                        onLoginFailed();
+                                        progressDialog.dismiss();
+                                        return;
+                                    }
+                                }
+                            });
+                }
             }
         });
     }
