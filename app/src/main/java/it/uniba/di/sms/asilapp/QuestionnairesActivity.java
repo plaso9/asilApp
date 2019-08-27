@@ -129,74 +129,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         };
 
         mUserReference.addValueEventListener(userListener);
-        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("1");
-        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                URI1 = String.valueOf(questionnaires.uri);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting questionnaires failed
-                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
-                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("2");
-        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                URI2 = String.valueOf(questionnaires.uri);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting questionnaires failed
-                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
-                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("3");
-        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                URI3 = String.valueOf(questionnaires.uri);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting questionnaires failed
-                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
-                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("4");
-        mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                URI4 = String.valueOf(questionnaires.uri);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting questionnaires failed
-                Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
-                Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
@@ -357,10 +289,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             btnHabits.setText(R.string.readAnswers);
             btnQuality.setText(R.string.readAnswers);
             btnDemo.setText(R.string.readAnswers);
-            URI1 = "https://docs.google.com/forms/d/1wqZ8QBlmsvdBhkEgpl0RTJ8rtlG_is7EISbfPTn7MqY/edit#responses";
-            URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
-            URI3 ="https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
-            URI4 = "https://docs.google.com/forms/d/1x7PXgG_dvIDqGFIquZF3s_rZY-RmCNoOoLcnr2yqZIM/edit#responses";
+
         }
     }
 
@@ -431,9 +360,87 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                 int role = user.getRole();
                 getRoleActivity(role);
                 if (role == 2) {    //role 2 = User
+                    mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("1");
+                    mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                             URI1 = String.valueOf(questionnaires.uri);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting questionnaires failed
+                            Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                            Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    });
+                    mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("2");
+                    mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                            URI2 = String.valueOf(questionnaires.uri);
+                            User user = dataSnapshot.getValue(User.class);
+                            int role = user.getRole();
+                            getRoleActivity(role);
+                            if(role == 3){
+                                URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting questionnaires failed
+                            Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                            Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("3");
+                    mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                            URI3 = String.valueOf(questionnaires.uri);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting questionnaires failed
+                            Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                            Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    mQuestionnaires = FirebaseDatabase.getInstance().getReference("questionnaires").child("4");
+                    mQuestionnaires.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
+                            URI4 = String.valueOf(questionnaires.uri);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting questionnaires failed
+                            Log.w(TAG, "loadQuestionnaires:onCancelled", databaseError.toException());
+                            Toast.makeText(QuestionnairesActivity.this, "Failed to load questionnaires.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     removeItemAdmin();
                     removeItemDoctor();
                 } else if (role == 3) { //role 3 = Doctor
+                    URI1 = "https://docs.google.com/forms/d/1wqZ8QBlmsvdBhkEgpl0RTJ8rtlG_is7EISbfPTn7MqY/edit#responses";
+                    URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
+                    URI3 ="https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
+                    URI4 = "https://docs.google.com/forms/d/1x7PXgG_dvIDqGFIquZF3s_rZY-RmCNoOoLcnr2yqZIM/edit#responses";
                     removeItemAdmin();
                     removeItemUser();
                 }
