@@ -81,10 +81,14 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
 
         mediaController = new MediaController(this);
         mediaController1 = new MediaController(this);
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
         //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -121,10 +125,6 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         };
         mUserReference.addValueEventListener(userListener);
 
-        //Set a listener that will be notified when a menu item is selected.
-        navigationView.setNavigationItemSelectedListener(this);
-        //Set a Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
         //Set the view that acts as the anchor for the control view.
         mediaController.setAnchorView(firstVideo);
         mediaController1.setAnchorView(secondVideo);
