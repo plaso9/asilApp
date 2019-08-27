@@ -106,23 +106,27 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         linearLayoutManager.setStackFromEnd(true);
 
         recyclerView.setLayoutManager(linearLayoutManager);
+        if (getIntent().getExtras() != null) {
+            userClickedId = getIntent().getExtras().getString("user_clicked");
+            parameter = getIntent().getExtras().getString("_parameter");
+        }
+        readMedicalRecords(userClickedId, parameter);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) { // english
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
-        }
-        if (requestCode == 2) { //italian
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
+
+        if (resultCode == Activity.RESULT_CANCELED) {
+            Bundle extras = getIntent().getExtras();
+            String userClickedId = extras.getString("user_clicked");
+            String parameter = extras.getString("_parameter");
+            Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
+            refresh.putExtra("user_clicked", userClickedId);
+            refresh.putExtra("_parameter", parameter);
+            startActivity(refresh);
+            this.finish();
+
+
         }
     }
 
@@ -131,6 +135,8 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         public void onClick(View v) {
             Intent languageIntent = new Intent(ReadMedicalRecordsActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadMedicalRecordsActivity");
+            languageIntent.putExtra("user_clicked", uId);
+            languageIntent.putExtra("_parameter", "7");
             startActivity(languageIntent);
         }
     };

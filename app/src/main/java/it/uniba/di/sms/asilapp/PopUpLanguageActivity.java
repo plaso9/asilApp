@@ -66,6 +66,8 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 Bundle extras = getIntent().getExtras();
                 String classname=extras.getString("callingActivity");
+                String userClickedId = extras.getString("user_clicked");
+                String parameter = extras.getString("_parameter");
                 Class<?> previousClass = null;
                 try {
                     previousClass = Class.forName(classname);
@@ -73,6 +75,9 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent i = new Intent(PopUpLanguageActivity.this, previousClass);
+
+                i.putExtra("user_clicked", userClickedId);
+                i.putExtra("_parameter", parameter);
                 startActivityForResult(i, 2); // 2 = italian
                 finish();
             }
@@ -95,7 +100,10 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
 
                 Bundle extras = getIntent().getExtras();
+
                 String classname=extras.getString("callingActivity");
+                String userClickedId = extras.getString("user_clicked");
+                String parameter = extras.getString("_parameter");
                 Class<?> previousClass = null;
                 try {
                     previousClass = Class.forName(classname);
@@ -103,6 +111,9 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent i = new Intent(PopUpLanguageActivity.this, previousClass);
+
+                i.putExtra("user_clicked", userClickedId);
+                i.putExtra("_parameter", parameter);
                 startActivityForResult(i, 2); // 2 = italian
                 finish();
 
