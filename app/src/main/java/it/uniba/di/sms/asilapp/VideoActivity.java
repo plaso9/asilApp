@@ -81,7 +81,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         if (config.locale.getLanguage().equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
-        
+
         firstVideo = findViewById(R.id.videoViewFirstVideo);
         secondVideo = findViewById(R.id.videoViewSecondVideo);
 
@@ -148,7 +148,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
+
                 Intent refresh = new Intent(this, VideoActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -156,7 +156,6 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, VideoActivity.class);
                 startActivity(refresh);
                 this.finish();

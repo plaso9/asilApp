@@ -155,7 +155,6 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, KitOpeningActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -163,7 +162,6 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, KitOpeningActivity.class);
                 startActivity(refresh);
                 this.finish();

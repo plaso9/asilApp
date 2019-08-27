@@ -146,7 +146,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
                 Intent refresh = new Intent(this, QuestionnairesActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -154,7 +153,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, QuestionnairesActivity.class);
                 startActivity(refresh);
                 this.finish();
