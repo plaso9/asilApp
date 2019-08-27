@@ -78,6 +78,8 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
 
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
@@ -110,8 +112,6 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
 
         //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
-        //Set a Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
         //Set a click listener on the button object
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
