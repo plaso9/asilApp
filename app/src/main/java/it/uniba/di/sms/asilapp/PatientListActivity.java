@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,10 +61,14 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
 
+    private TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_list);
+
+        title = findViewById(R.id.patientListTitle);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -151,6 +156,9 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     protected void onStart() {
         super.onStart();
         readUserList();
+        int number_patient = mUserList.size();
+        title.setText(getResources().getQuantityString(R.plurals.visitedPatient, number_patient, number_patient));
+
     }
 
     public void readUserList() {

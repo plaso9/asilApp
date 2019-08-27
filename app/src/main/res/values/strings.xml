@@ -135,5 +135,10 @@ reception of migrants for application of international protection. Download this
     <string name="learn">Learn how to use this application by watching this video</string>
     <string name="avg">Avg</string>
 
+    <plurals name="visitedPatient">
+        <item quantity="one">Visited Patient</item>
+        <item quantity="other">Visited Patients</item>
+    </plurals>
+
 
 </resources>
