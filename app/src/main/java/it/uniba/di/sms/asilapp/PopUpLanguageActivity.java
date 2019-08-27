@@ -100,6 +100,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
 
                 Bundle extras = getIntent().getExtras();
+
                 String classname=extras.getString("callingActivity");
                 String userClickedId = extras.getString("user_clicked");
                 String parameter = extras.getString("_parameter");

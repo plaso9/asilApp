@@ -125,22 +125,13 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
-        if (requestCode == 1) { // english
+
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Create new Intent
                 Intent refresh = new Intent(this, RatingActivity.class);
                 startActivity(refresh);
                 this.finish();
             }
-        }
-        if (requestCode == 2) { //italian
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Create new Intent
-                Intent refresh = new Intent(this, RatingActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
-        }
     }
 
     //Set a click listener

@@ -116,19 +116,12 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) { // english
+
             if (resultCode == Activity.RESULT_CANCELED) {
                 Intent refresh = new Intent(this, UsefulNumbersActivity.class);
                 startActivity(refresh);
                 this.finish();
-            }
-        }
-        if (requestCode == 2) { //italian
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, UsefulNumbersActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
+
         }
     }
 
