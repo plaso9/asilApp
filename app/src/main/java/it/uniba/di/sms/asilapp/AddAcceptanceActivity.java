@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -75,6 +76,11 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();

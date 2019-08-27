@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -66,8 +67,6 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_acceptance);
 
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -117,7 +116,11 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
-
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -138,7 +141,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.lang);
+
                 Intent refresh = new Intent(this, AcceptanceActivity.class);
                 startActivity(refresh);
                 this.finish();
@@ -146,7 +149,6 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         }
         if (requestCode == 2) { //italian
             if (resultCode == Activity.RESULT_CANCELED) {
-                imgBtnLanguage.setImageResource(R.drawable.italy);
                 Intent refresh = new Intent(this, AcceptanceActivity.class);
                 startActivity(refresh);
                 this.finish();

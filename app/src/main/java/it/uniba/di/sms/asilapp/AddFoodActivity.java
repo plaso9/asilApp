@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -78,6 +79,11 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
@@ -175,6 +181,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         if (requestCode == 1) { // english
             if (resultCode == Activity.RESULT_CANCELED) {
                 imgBtnLanguage.setImageResource(R.drawable.lang);
+
                 Intent refresh = new Intent(this, AddFoodActivity.class);
                 startActivity(refresh);
                 this.finish();

@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -140,6 +141,12 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         spinnerAcceptance = findViewById(R.id.spinnerAcceptnace);
         submitButton = findViewById(R.id.buttonSubmit);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         mAuth = FirebaseAuth.getInstance();
 
