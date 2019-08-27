@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -86,6 +87,12 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
         imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the imageView objects

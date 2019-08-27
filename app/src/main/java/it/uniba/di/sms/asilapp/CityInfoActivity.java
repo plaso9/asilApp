@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -120,6 +121,13 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         card_view_Pharmacy = findViewById(R.id.card_pharmacy);
         mDescription = findViewById(R.id.textViewCityDescription);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
         btnShowMore = findViewById(R.id.btnShowMore);
 
 

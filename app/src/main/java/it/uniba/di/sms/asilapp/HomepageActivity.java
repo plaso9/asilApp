@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -101,6 +102,12 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
         chatButton = findViewById(R.id.chatBtn);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
 
         //Set a click listener on the card objects
         card_view_Informative.setOnClickListener(card_view_Informative_listener);
