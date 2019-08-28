@@ -44,6 +44,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/patientListTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:text="TextView"
+            android:textSize="@dimen/titleTextSize"
+            app:layout_constraintStart_toStartOf="@+id/searchText"
+            app:layout_constraintTop_toTopOf="parent" />
+        
         <EditText
             android:id="@+id/searchText"
             android:layout_width="match_parent"
