@@ -306,7 +306,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
             }
         });
     }
-    
+
     public void getCityId(final String acceptanceId){ //Method to get the cityId given the Acceptance Id
         FirebaseDatabase.getInstance().getReference("acceptance").child(acceptanceId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
