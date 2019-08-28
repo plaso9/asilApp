@@ -21,12 +21,13 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UsefulNumbersActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    ImageView imageViewAmbulance,
-    imageViewPolice,
-    imageViewMilitaryPolice,
-    imageViewFinanceGuard,
-    imageViewSeaEmergency,
-    imageViewFireBrigade;
+    //Variable declaration
+    ImageView imageViewPolice;
+    ImageView imageViewAmbulance;
+    ImageView imageViewFireBrigade;
+    ImageView imageViewFinanceGuard;
+    ImageView imageViewSeaEmergency;
+    ImageView imageViewMilitaryPolice;
 
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
@@ -44,13 +45,16 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_usefulnumbers);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -79,13 +83,15 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
+        //Create new ActionBarDrawerToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
-
-
+        //Defined variables
         imageViewAmbulance = findViewById(R.id.imageViewAmbulance);
         imageViewPolice = findViewById(R.id.imageViewPolice);
         imageViewMilitaryPolice = findViewById(R.id.imageViewMilitaryPolice);
@@ -93,6 +99,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         imageViewSeaEmergency = findViewById(R.id.imageViewSeaEmergency);
         imageViewFireBrigade = findViewById(R.id.imageViewFireBrigade);
 
+        //Set a click listener on the imageview objects
         imageViewAmbulance.setOnClickListener(imageViewAmbulance_listener);
         imageViewPolice.setOnClickListener(imageViewPolice_listener);
         imageViewMilitaryPolice.setOnClickListener(imageViewMilitaryPolice_listener);
@@ -108,9 +115,8 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
+        //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-
     }
 
 
@@ -128,12 +134,11 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (UsefulNumbersActivity.this,PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.UsefulNumbersActivity");
-            startActivity(languageIntent);
+            Intent change_LanguageIntent = new Intent (UsefulNumbersActivity.this,PopUpLanguageActivity.class);
+            change_LanguageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.UsefulNumbersActivity");
+            startActivity(change_LanguageIntent);
         }
     };
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
@@ -181,8 +186,6 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         }
         return true;
     }
-
-
 
     @Override
     public void onBackPressed() {
