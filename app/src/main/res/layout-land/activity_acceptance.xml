@@ -20,7 +20,16 @@
                     android:background="@drawable/gradient"
                     android:elevation="4dp"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                        <ImageButton
+                            android:id="@+id/imgBtnLanguage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:background="@android:color/transparent"
+                            android:paddingRight="28dp"
+                            app:srcCompat="@drawable/lang" />
+                </android.support.v7.widget.Toolbar>
 
                 <FrameLayout
                     android:id="@+id/fragment_container"
@@ -28,6 +37,8 @@
                     android:layout_height="match_parent" />
 
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -84,14 +95,14 @@
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterName" />
 
 
-                                <!--CENTER LOCATION-->
+                                <!--ADDRESS-->
                                 <TextView
                                     android:id="@+id/textViewCenterLocation"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
-                                    android:text="@string/centerLocation"
+                                    android:text="@string/centerAddress"
                                     android:textSize="20dp"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
@@ -108,6 +119,30 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
+                                <!-- CENTER CITY -->
+                                <TextView
+                                    android:id="@+id/textViewCenterCity"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="@string/centerLocation"
+                                    android:textSize="20dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+
+                                <TextView
+                                    android:id="@+id/editTextCenterCity"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text=""
+                                    android:textColor="#000000"
+                                    android:textSize="20dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textViewCenterCity" />
+
                                 <!--CENTER REGULATION-->
                                 <TextView
                                     android:id="@+id/textViewCenterRegulation"
@@ -118,7 +153,7 @@
                                     android:text="@string/centerRegulation"
                                     android:textSize="20dp"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
+                                    app:layout_constraintTop_toBottomOf="@+id/editTextCenterCity" />
 
                                 <TextView
                                     android:id="@+id/editTextCenterRegulation"
@@ -159,7 +194,6 @@
                         </android.support.constraint.ConstraintLayout>
                 </ScrollView>
         </LinearLayout>
-
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="wrap_content"
