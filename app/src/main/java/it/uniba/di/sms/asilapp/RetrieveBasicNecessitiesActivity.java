@@ -37,22 +37,17 @@ import it.uniba.di.sms.asilapp.models.User;
 public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //variable declaration
     private static final String TAG = "RBasicNecesActivity"; //tag too long
-    private String uId;
-    private ImageView imageMapFood;
-    private ImageView imageMapPharmacy;
-
-    private String cityName;
-
-    private TextView mAddressFood;
-    private TextView mAddressPharmacy;
-    private TextView userId;
-    private TextView userId2;
-
     private DatabaseReference mCityReference;
     private DatabaseReference mUserReference;
     private DatabaseReference mBasicNecessities;
-    private ImageButton imgBtnLanguage;
+
     private DrawerLayout drawer;
+
+    private ImageButton imgBtnLanguage;
+
+    private ImageView imageMapFood;
+    private ImageView imageMapPharmacy;
+
     private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -64,16 +59,27 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
 
+    private String uId;
+    private String cityName;
+
+    private TextView userId;
+    private TextView userId2;
+    private TextView mAddressFood;
+    private TextView mAddressPharmacy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_retrieve_basic_necessities);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -103,17 +109,25 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         nav_addRetrieveNecessities.setVisible(false);
 
 
+        //Create new ActionBarDrawerToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
-
-
+        //Defined variables
         imageMapFood = findViewById(R.id.imageMapFood);
         imageMapFood.setOnClickListener(image_Map_Food_listener);
         imageMapPharmacy = findViewById(R.id.imageMapPharmacy);
         imageMapPharmacy.setOnClickListener(image_Map_Pharmacy_listener);
+
+        mAddressFood = findViewById(R.id.textViewFoodAddress);
+        mAddressPharmacy = findViewById(R.id.textViewPharmacyAddress);
+        userId = findViewById(R.id.textViewUserId);
+        userId2 = findViewById(R.id.textViewUserId2);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -125,34 +139,21 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         mBasicNecessities = FirebaseDatabase.getInstance().getReference("basic_necessities");
         mCityReference = FirebaseDatabase.getInstance().getReference("city");
 
-        mAddressFood = findViewById(R.id.textViewFoodAddress);
-        mAddressPharmacy = findViewById(R.id.textViewPharmacyAddress);
-        userId = findViewById(R.id.textViewUserId);
-        userId2 = findViewById(R.id.textViewUserId2);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
-
+        //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-        
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
             if (resultCode == Activity.RESULT_CANCELED) {
                 Intent refresh = new Intent(this, RetrieveBasicNecessitiesActivity.class);
                 startActivity(refresh);
                 this.finish();
-
         }
     }
 
@@ -221,8 +222,6 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         }
     }
 
-
-
     //Intent on image Map
     public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
         @Override
@@ -257,8 +256,6 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                         getCityName(cityId); //Method to retain the city name
                     }
                 }
-
-
             }
 
             @Override
@@ -309,6 +306,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
             }
         });
     }
+    
     public void getCityId(final String acceptanceId){ //Method to get the cityId given the Acceptance Id
         FirebaseDatabase.getInstance().getReference("acceptance").child(acceptanceId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
