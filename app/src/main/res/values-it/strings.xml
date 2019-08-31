@@ -120,6 +120,7 @@
     <string name="bylawDescription">Iscrizione al servizio sanitario nazionale (ssn). Scarica questo PDF per leggere il decreto legislativo in materia di obbligo di iscrizione al sistema sanitario nazionale</string>
     <string name="learn">Impara ad usare questa applicazione guardando questo video</string>
     <string name="avg">Media</string>
+    <string name="signout">Disconnetti</string>
 </resources>
 
 

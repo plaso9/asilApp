@@ -6,82 +6,82 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_homeAdmin"
-            android:icon="@drawable/asilapp"
+            android:icon="@drawable/ic_home"
             android:title="@string/backHome" />
         <item
             android:id="@+id/nav_homeDoctor"
-            android:icon="@drawable/asilapp"
+            android:icon="@drawable/ic_home"
             android:title="@string/backHome" />
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/asilapp"
+            android:icon="@drawable/ic_home"
             android:title="@string/backHome" />
 
         <item
             android:id="@+id/nav_personalData"
-            android:icon="@drawable/personal"
+            android:icon="@drawable/ic_personal"
             android:title="@string/personalData" />
 
         <item
             android:id="@+id/nav_info"
-            android:icon="@drawable/information"
+            android:icon="@drawable/ic_info"
             android:title="@string/informationSection" />
 
         <item
             android:id="@+id/nav_medicalRecords"
-            android:icon="@drawable/medical"
+            android:icon="@drawable/ic_medical"
             android:title="@string/medicalRecords" />
 
         <item
             android:id="@+id/nav_questionnaires"
-            android:icon="@drawable/questionnaires"
+            android:icon="@drawable/ic_questionnaires"
             android:title="@string/questionnaires" />
 
         <item
             android:id="@+id/nav_search_patient"
-            android:icon="@drawable/searchpatient"
+            android:icon="@drawable/ic_searchpatient"
             android:title="@string/searchPatient" />
 
         <item
             android:id="@+id/nav_kit_opening"
-            android:icon="@drawable/kitopening"
+            android:icon="@drawable/ic_kitopening"
             android:title="@string/kitOpening" />
 
         <item
             android:id="@+id/nav_visited_patient"
-            android:icon="@drawable/patientlist"
+            android:icon="@drawable/ic_patientlist"
             android:title="@string/patientList" />
 
         <item
             android:id="@+id/nav_video"
-            android:icon="@drawable/video"
+            android:icon="@drawable/ic_video"
             android:title="@string/video" />
 
         <item
             android:id="@+id/nav_add_user"
-            android:icon="@drawable/adduser"
+            android:icon="@drawable/ic_adduser"
             android:title="@string/addUser" />
 
         <item
             android:id="@+id/nav_add_new_acceptance"
-            android:icon="@drawable/addacceptance"
+            android:icon="@drawable/ic_addacceptance"
             android:title="@string/addAcceptance" />
 
         <item
             android:id="@+id/nav_add_retrive_necessities"
-            android:icon="@drawable/addfood"
+            android:icon="@drawable/ic_addfood"
             android:title="@string/addFood" />
 
         <item
             android:id="@+id/nav_read_ratings"
-            android:icon="@drawable/readratings"
+            android:icon="@drawable/ic_readratings"
             android:title="@string/readRatings" />
 
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/app"
-            android:title="Sign Out" />
+            android:icon="@drawable/ic_logout"
+            android:title="@string/signout" />
 
     </group>
 </menu>
