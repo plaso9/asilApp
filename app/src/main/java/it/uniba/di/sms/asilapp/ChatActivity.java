@@ -137,12 +137,10 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
-        if (resultCode == Activity.RESULT_CANCELED) {
             //Create new Intent
             Intent refresh = new Intent(this, ChatActivity.class);
             startActivity(refresh);
             this.finish();
-        }
     }
 
     @Override
@@ -453,7 +451,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
             Intent languageIntent = new Intent (ChatActivity.this,PopUpLanguageActivity.class);
             //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ChatActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
