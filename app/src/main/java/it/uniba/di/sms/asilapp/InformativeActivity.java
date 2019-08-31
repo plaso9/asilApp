@@ -20,7 +20,7 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class InformativeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class InformativeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private GridLayout gridLayout;
 
     private CardView card_view_Video;
@@ -88,7 +88,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
         toggle.syncState();
 
         //defined gridlayout variable
-        gridLayout=findViewById(R.id.gridInformativeLayout);
+        gridLayout = findViewById(R.id.gridInformativeLayout);
 
         //defined card variable
         card_view_Video = findViewById(R.id.card_video);
@@ -122,19 +122,17 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, InformativeActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
+        Intent refresh = new Intent(this, InformativeActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (InformativeActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(InformativeActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InformativeActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -142,30 +140,30 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent sens;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
-                Intent nav_homeIntent = new Intent (InformativeActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(InformativeActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (InformativeActivity.this, InformativeActivity.class);
+                sens = new Intent(InformativeActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (InformativeActivity.this, MedicalRecordsActivity.class);
+                sens = new Intent(InformativeActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (InformativeActivity.this, PersonalDataActivity.class);
+                sens = new Intent(InformativeActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (InformativeActivity.this, QuestionnairesActivity.class);
+                sens = new Intent(InformativeActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
@@ -181,19 +179,18 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
 
 
-
     public View.OnClickListener card_view_Video_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,VideoActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, VideoActivity.class);
             startActivity(sens);
 
         }
@@ -201,7 +198,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public View.OnClickListener card_view_Acceptance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,AcceptanceActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, AcceptanceActivity.class);
             startActivity(sens);
 
         }
@@ -210,7 +207,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public View.OnClickListener card_view_CityInfo_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,CityInfoActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, CityInfoActivity.class);
             startActivity(sens);
 
         }
@@ -219,7 +216,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public View.OnClickListener card_view_Bylaw_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,BylawActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, BylawActivity.class);
             startActivity(sens);
 
         }
@@ -228,7 +225,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public View.OnClickListener card_view_UsefulNumbers_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,UsefulNumbersActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, UsefulNumbersActivity.class);
             startActivity(sens);
 
         }
@@ -237,7 +234,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     public View.OnClickListener card_view_MyInfo_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent sens = new Intent (InformativeActivity.this,MyInfoActivity.class);
+            Intent sens = new Intent(InformativeActivity.this, MyInfoActivity.class);
             startActivity(sens);
 
         }

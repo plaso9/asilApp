@@ -116,18 +116,15 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode == Activity.RESULT_CANCELED) {
-            Bundle extras = getIntent().getExtras();
-            String userClickedId = extras.getString("user_clicked");
-            String parameter = extras.getString("_parameter");
-            Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
-            refresh.putExtra("user_clicked", userClickedId);
-            refresh.putExtra("_parameter", parameter);
-            startActivity(refresh);
-            this.finish();
+        Bundle extras = getIntent().getExtras();
+        String userClickedId = extras.getString("user_clicked");
+        String parameter = extras.getString("_parameter");
+        Intent refresh = new Intent(this, ReadMedicalRecordsActivity.class);
+        refresh.putExtra("user_clicked", userClickedId);
+        refresh.putExtra("_parameter", parameter);
+        startActivity(refresh);
+        this.finish();
 
-
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -137,7 +134,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadMedicalRecordsActivity");
             languageIntent.putExtra("user_clicked", uId);
             languageIntent.putExtra("_parameter", "7");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -201,7 +198,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (ReadMedicalRecordsActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(ReadMedicalRecordsActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:

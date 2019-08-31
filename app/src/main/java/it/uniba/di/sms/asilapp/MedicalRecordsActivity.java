@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.MedicalRecord;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MedicalRecordsActivity";
     ImageView image_seeTemperatureStats;
@@ -152,65 +152,65 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (MedicalRecordsActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(MedicalRecordsActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (MedicalRecordsActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(MedicalRecordsActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (MedicalRecordsActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(MedicalRecordsActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordsIntent = new Intent (MedicalRecordsActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordsIntent = new Intent(MedicalRecordsActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent  = new Intent (MedicalRecordsActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(MedicalRecordsActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (MedicalRecordsActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(MedicalRecordsActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (MedicalRecordsActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(MedicalRecordsActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (MedicalRecordsActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(MedicalRecordsActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (MedicalRecordsActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(MedicalRecordsActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (MedicalRecordsActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(MedicalRecordsActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:
@@ -230,29 +230,26 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, MedicalRecordsActivity.class);
-                startActivity(refresh);
-                this.finish();
-        }
+        Intent refresh = new Intent(this, MedicalRecordsActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (MedicalRecordsActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(MedicalRecordsActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MedicalRecordsActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
 
-
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -268,7 +265,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
                 User user = dataSnapshot.getValue(User.class);
                 mRole = user.getRole();
 
-                if (mRole != 3){
+                if (mRole != 3) {
                     button_addTemperature.setVisibility(View.INVISIBLE);
                     button_addBloodPressure.setVisibility(View.INVISIBLE);
                     button_addGlycemia.setVisibility(View.INVISIBLE);
@@ -422,7 +419,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     };
 
 
-    public void removeItemDoctor(){
+    public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -440,7 +437,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         nav_visitedPatient.setVisible(false);
     }
 
-    public void removeItemUser(){
+    public void removeItemUser() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -458,7 +455,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         nav_questionnaires.setVisible(false);
     }
 
-    public void removeItemAdmin(){
+    public void removeItemAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -476,7 +473,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         nav_addRetrieveNecessities.setVisible(false);
     }
 
-    public void getUserRole(){
+    public void getUserRole() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());

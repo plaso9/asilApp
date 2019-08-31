@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.Locale;
 
 public class PopUpLanguageActivity extends AppCompatActivity {
@@ -16,7 +17,6 @@ public class PopUpLanguageActivity extends AppCompatActivity {
     private TextView textViewLangEng, textViewLangIt;
     //Images
     private ImageView imgEng, imgIt;
-
 
 
     @Override
@@ -65,7 +65,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
 
                 Bundle extras = getIntent().getExtras();
-                String classname=extras.getString("callingActivity");
+                String classname = extras.getString("callingActivity");
                 String userClickedId = extras.getString("user_clicked");
                 String parameter = extras.getString("_parameter");
                 Class<?> previousClass = null;
@@ -78,7 +78,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 i.putExtra("user_clicked", userClickedId);
                 i.putExtra("_parameter", parameter);
-                startActivityForResult(i, 2); // 2 = italian
+                setResult(1, i);
                 finish();
             }
 
@@ -101,7 +101,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 Bundle extras = getIntent().getExtras();
 
-                String classname=extras.getString("callingActivity");
+                String classname = extras.getString("callingActivity");
                 String userClickedId = extras.getString("user_clicked");
                 String parameter = extras.getString("_parameter");
                 Class<?> previousClass = null;
@@ -114,14 +114,13 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 i.putExtra("user_clicked", userClickedId);
                 i.putExtra("_parameter", parameter);
-                startActivityForResult(i, 2); // 2 = italian
+                setResult(1, i);
                 finish();
 
             }
 
         }
     };
-
 
 
 }

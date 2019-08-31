@@ -21,7 +21,7 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class DoctorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class DoctorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     CardView card_view_kitOpening;
     CardView card_view_patientList;
@@ -94,7 +94,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         }
 
         //defined gridlayout variable
-        gridLayout=findViewById(R.id.gridDoctorLayout);
+        gridLayout = findViewById(R.id.gridDoctorLayout);
         //defined card variable
         card_view_kitOpening = findViewById(R.id.card_kitOpening);
         card_view_patientList = findViewById(R.id.card_patientList);
@@ -116,27 +116,25 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, DoctorActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, DoctorActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (DoctorActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(DoctorActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.DoctorActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
     public View.OnClickListener card_view_searchPatient_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent search_patientIntent = new Intent (DoctorActivity.this,SearchPatientActivity.class);
+            Intent search_patientIntent = new Intent(DoctorActivity.this, SearchPatientActivity.class);
             startActivity(search_patientIntent);
 
         }
@@ -145,7 +143,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
     public View.OnClickListener card_view_video_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent search_patientIntent = new Intent (DoctorActivity.this,VideoActivity.class);
+            Intent search_patientIntent = new Intent(DoctorActivity.this, VideoActivity.class);
             startActivity(search_patientIntent);
 
         }
@@ -154,7 +152,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
     public View.OnClickListener card_view_kitOpening_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent open_kitIntent = new Intent (DoctorActivity.this,KitOpeningActivity.class);
+            Intent open_kitIntent = new Intent(DoctorActivity.this, KitOpeningActivity.class);
             startActivity(open_kitIntent);
 
         }
@@ -163,7 +161,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
     public View.OnClickListener card_view_patientList_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent open_PatientListIntent = new Intent (DoctorActivity.this,PatientListActivity.class);
+            Intent open_PatientListIntent = new Intent(DoctorActivity.this, PatientListActivity.class);
             startActivity(open_PatientListIntent);
 
         }
@@ -179,35 +177,35 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (DoctorActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(DoctorActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (DoctorActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(DoctorActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (DoctorActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(DoctorActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (DoctorActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(DoctorActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (DoctorActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(DoctorActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:

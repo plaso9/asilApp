@@ -21,7 +21,7 @@ import android.widget.ImageButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MyInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MyInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private CardView card_view_Pathology;
     private CardView card_view_RetrieveBasicNecessities;
@@ -56,7 +56,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-        gridLayout=findViewById(R.id.gridInformativeLayout);
+        gridLayout = findViewById(R.id.gridInformativeLayout);
         card_view_Rating = findViewById(R.id.card_rating);
         card_view_Pathology = findViewById(R.id.card_pathology);
         card_view_AppDetails = findViewById(R.id.card_appDetails);
@@ -95,7 +95,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
 
         //Set a click listener on the cards objects
         card_view_Pathology.setOnClickListener(card_view_Pathology_listener);
-        card_view_RetrieveBasicNecessities.setOnClickListener( card_view_RetrieveBasicNecessities_listener);
+        card_view_RetrieveBasicNecessities.setOnClickListener(card_view_RetrieveBasicNecessities_listener);
         card_view_AppDetails.setOnClickListener(card_view_AppDetais_listener);
         card_view_Rating.setOnClickListener(card_view_Rating_listener);
         //Set a click listener on the imageButton objects
@@ -127,45 +127,42 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Create new Intent
-                Intent refresh = new Intent(this, MyInfoActivity.class);
-                startActivity(refresh);
-                this.finish();
-        }
+        Intent refresh = new Intent(this, MyInfoActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (MyInfoActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(MyInfoActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (MyInfoActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(MyInfoActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (MyInfoActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(MyInfoActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (MyInfoActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(MyInfoActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (MyInfoActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(MyInfoActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -173,7 +170,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(MyInfoActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(MyInfoActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
@@ -183,9 +180,9 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -195,7 +192,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View view) {
             //Create new Intent
-            Intent readMedRecordIntent = new Intent (MyInfoActivity.this,ReadMedicalRecordsActivity.class);
+            Intent readMedRecordIntent = new Intent(MyInfoActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
             readMedRecordIntent.putExtra("user_clicked", user_clicked);
             readMedRecordIntent.putExtra("_parameter", "7");
@@ -207,7 +204,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View view) {
             //Create new Intent
-            Intent retrieveIntent = new Intent (MyInfoActivity.this,RetrieveBasicNecessitiesActivity.class);
+            Intent retrieveIntent = new Intent(MyInfoActivity.this, RetrieveBasicNecessitiesActivity.class);
             startActivity(retrieveIntent);
 
         }
@@ -217,7 +214,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View view) {
             //Create new Intent
-            Intent appDetailIntent = new Intent (MyInfoActivity.this, AppDetailsActivity.class);
+            Intent appDetailIntent = new Intent(MyInfoActivity.this, AppDetailsActivity.class);
             startActivity(appDetailIntent);
 
         }
@@ -227,7 +224,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View view) {
             //Create new Intent
-            Intent ratingIntent = new Intent (MyInfoActivity.this, RatingActivity.class);
+            Intent ratingIntent = new Intent(MyInfoActivity.this, RatingActivity.class);
             startActivity(ratingIntent);
 
         }
@@ -237,10 +234,10 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View v) {
             //Create new Intent
-            Intent languageIntent = new Intent (MyInfoActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(MyInfoActivity.this, PopUpLanguageActivity.class);
             //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MyInfoActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 }

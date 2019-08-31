@@ -127,13 +127,10 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Intent refresh = new Intent(this, PatientListActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, PatientListActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -141,7 +138,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         public void onClick(View v) {
             Intent languageIntent = new Intent(PatientListActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientListActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 

@@ -139,13 +139,11 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (resultCode == Activity.RESULT_CANCELED) {
             Intent refresh = new Intent(this, AcceptanceActivity.class);
             startActivity(refresh);
             this.finish();
 
-        }
+
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -153,7 +151,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         public void onClick(View v) {
             Intent change_languageIntent = new Intent (AcceptanceActivity.this,PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AcceptanceActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 

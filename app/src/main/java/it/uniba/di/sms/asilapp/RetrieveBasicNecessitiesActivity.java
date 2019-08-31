@@ -34,7 +34,7 @@ import it.uniba.di.sms.asilapp.models.City;
 import it.uniba.di.sms.asilapp.models.Necessities;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private static final String TAG = "RBasicNecesActivity"; //tag too long
     private DatabaseReference mCityReference;
@@ -150,54 +150,52 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, RetrieveBasicNecessitiesActivity.class);
-                startActivity(refresh);
-                this.finish();
-        }
+        Intent refresh = new Intent(this, RetrieveBasicNecessitiesActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (RetrieveBasicNecessitiesActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(RetrieveBasicNecessitiesActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.RetrieveBasicNecessitiesActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (RetrieveBasicNecessitiesActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(RetrieveBasicNecessitiesActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (RetrieveBasicNecessitiesActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(RetrieveBasicNecessitiesActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (RetrieveBasicNecessitiesActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(RetrieveBasicNecessitiesActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (RetrieveBasicNecessitiesActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(RetrieveBasicNecessitiesActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (RetrieveBasicNecessitiesActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(RetrieveBasicNecessitiesActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -205,7 +203,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(RetrieveBasicNecessitiesActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(RetrieveBasicNecessitiesActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
@@ -215,9 +213,9 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -226,7 +224,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressFood.getText()+"%2C+"+cityName); //Query, will search for "INDIRIZZO_SUPERMERCATO, NOME_CIITA' " on Google Maps
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressFood.getText() + "%2C+" + cityName); //Query, will search for "INDIRIZZO_SUPERMERCATO, NOME_CIITA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -235,7 +233,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query="+mAddressPharmacy.getText()+"%2C+"+cityName); //Query, will search for "INDIRIZZO_FARMACIA, NOME_CITTA' " on Google Maps
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressPharmacy.getText() + "%2C+" + cityName); //Query, will search for "INDIRIZZO_FARMACIA, NOME_CITTA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -248,7 +246,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Necessities basic_necessities = snapshot.getValue(Necessities.class);
-                    if (basic_necessities.city == cityId){
+                    if (basic_necessities.city == cityId) {
                         mAddressFood.setText(basic_necessities.mall);
                         mAddressPharmacy.setText(basic_necessities.pharmacy);
                         userId.setText(uId);
@@ -292,9 +290,9 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         mCityReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){ //Loop that iterates over the children of City in the database
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { //Loop that iterates over the children of City in the database
                     City city = snapshot.getValue(City.class);
-                    if (cityC == city.id){ //If finds the cityId given
+                    if (cityC == city.id) { //If finds the cityId given
                         cityName = city.name; //Save the name of the city in the variable cityName. It will be added in the search query displayed in Google Maps
                     }
                 }
@@ -307,7 +305,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         });
     }
 
-    public void getCityId(final String acceptanceId){ //Method to get the cityId given the Acceptance Id
+    public void getCityId(final String acceptanceId) { //Method to get the cityId given the Acceptance Id
         FirebaseDatabase.getInstance().getReference("acceptance").child(acceptanceId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

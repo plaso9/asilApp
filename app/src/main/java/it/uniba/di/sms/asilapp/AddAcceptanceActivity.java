@@ -36,7 +36,7 @@ import java.util.List;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
-public class AddAcceptanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AddAcceptanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private static final String TAG = "AddAcceptanceActivity";
 
@@ -60,6 +60,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
     private MenuItem nav_visitedPatient;
 
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,13 +129,12 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<City> cities = new ArrayList<>();
-                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
-                {
+                for (DataSnapshot acceptanceSnapShot : dataSnapshot.getChildren()) {
                     cities.add(acceptanceSnapShot.getValue(City.class));
                 }
                 //Get all names of acceptance
                 final List<String> name_list = new ArrayList<>();
-                for(City city: cities){
+                for (City city : cities) {
                     name_list.add(city.getName());
                 }
                 //Create adapter and set for spinner
@@ -168,28 +168,20 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Intent refresh = new Intent(this, AddAcceptanceActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, AddAcceptanceActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AddAcceptanceActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AddAcceptanceActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddAcceptanceActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
-
-
-
-
-
 
 
     public View.OnClickListener btnSubmitAcceptance_listener = new View.OnClickListener() {
@@ -197,7 +189,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         public void onClick(View view) {
             if (eTcenterName.getText().toString().equals("") ||
                     eTcenterLocation.getText().toString().equals("") ||
-                    eTcenterServices.getText().toString().equals("")){ //Check if all the fields are not empty
+                    eTcenterServices.getText().toString().equals("")) { //Check if all the fields are not empty
                 Toast.makeText(AddAcceptanceActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
 
             } else {
@@ -215,7 +207,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         String[] services = centerServices.split(","); //Split string every comma
         ArrayList<String> listOfServices = new ArrayList<>();
         //For loop to populate the list of services of the acceptance
-        for (int i = 0; i < services.length; i++){
+        for (int i = 0; i < services.length; i++) {
             listOfServices.add(services[i].trim());//add string_service to the list
         }
 
@@ -233,35 +225,35 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (AddAcceptanceActivity.this, AdminActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(AddAcceptanceActivity.this, AdminActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (AddAcceptanceActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(AddAcceptanceActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (AddAcceptanceActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(AddAcceptanceActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (AddAcceptanceActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(AddAcceptanceActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (AddAcceptanceActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(AddAcceptanceActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:

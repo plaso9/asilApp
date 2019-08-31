@@ -154,12 +154,9 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, KitOpeningActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, KitOpeningActivity.class);
+        startActivity(refresh);
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -167,9 +164,10 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
         public void onClick(View v) {
             Intent languageIntent = new Intent(KitOpeningActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.KitOpeningActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -358,8 +356,7 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
                 // Check if the size of bluetooth device array is 0
-                if (arrayListBluetoothDevices.size() < 1)
-                {
+                if (arrayListBluetoothDevices.size() < 1) {
                     // Get the name and address of the devices and add it to the arrays
                     detectedAdapter.add(device.getName() + "\n" + device.getAddress());
                     arrayListBluetoothDevices.add(device);

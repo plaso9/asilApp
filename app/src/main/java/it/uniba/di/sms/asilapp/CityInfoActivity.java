@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
-public class CityInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class CityInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private static final String TAG = "CityInfoActivity";
 
@@ -156,57 +156,55 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, CityInfoActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
+        Intent refresh = new Intent(this, CityInfoActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (CityInfoActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(CityInfoActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.CityInfoActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
     public View.OnClickListener btnShowMore_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent show_moreIntent = new Intent (CityInfoActivity.this,PopUpShowMoreActivity.class);
+            Intent show_moreIntent = new Intent(CityInfoActivity.this, PopUpShowMoreActivity.class);
             startActivity(show_moreIntent);
         }
     };
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
-                Intent nav_homeIntent = new Intent (CityInfoActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(CityInfoActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (CityInfoActivity.this, InformativeActivity.class);
+                sens = new Intent(CityInfoActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (CityInfoActivity.this, MedicalRecordsActivity.class);
+                sens = new Intent(CityInfoActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (CityInfoActivity.this, PersonalDataActivity.class);
+                sens = new Intent(CityInfoActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
-                sens = new Intent (CityInfoActivity.this, QuestionnairesActivity.class);
+                sens = new Intent(CityInfoActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
@@ -222,9 +220,9 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -236,7 +234,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     City city = snapshot.getValue(City.class);
-                    if (city.id == cityId){
+                    if (city.id == cityId) {
                         cityName = city.name;
                         cityInfo = cityName + " - " + city.description;
                         mDescription.setText(cityInfo);
@@ -304,7 +302,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Ambulatory_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso%2C+"+cityName);  //Search on Google "pronto soccorso, cityName"
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=pronto+soccorso%2C+" + cityName);  //Search on Google "pronto soccorso, cityName"
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -312,7 +310,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Municipality_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=municipio%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=municipio%2C+" + cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -320,7 +318,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Postoffice_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=ufficio+postale%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=ufficio+postale%2C+" + cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -328,7 +326,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_PlacesOfWorship_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=luoghi+di+culto%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=luoghi+di+culto%2C+" + cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -336,7 +334,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_School_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=scuola+di+italiano%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=scuola+di+italiano%2C+" + cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -344,10 +342,10 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
     public View.OnClickListener card_view_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=farmacia%2C+"+cityName);
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=farmacia%2C+" + cityName);
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
     };
-    
+
 }

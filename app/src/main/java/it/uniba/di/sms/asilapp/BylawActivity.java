@@ -131,25 +131,22 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, BylawActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
+        Intent refresh = new Intent(this, BylawActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
+
     //Set on click listener
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //Create new Intent
-            Intent languageIntent = new Intent (BylawActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(BylawActivity.this, PopUpLanguageActivity.class);
             //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.BylawActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
-
 
 
     @Override
@@ -159,7 +156,7 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (BylawActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(BylawActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
@@ -213,10 +210,10 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         public void onClick(View view) {
             String lang = spinnerSelectLanguage.getSelectedItem().toString();
             index = 0;
-            if (lang.equals("English")){
+            if (lang.equals("English")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/OIM%20inglese.pdf?alt=media&token=18ce6031-f204-4801-a75a-9318a24a3c32");
                 DownloadData(pdf, view, index);
-            } else if (lang.equals("Arabic")){
+            } else if (lang.equals("Arabic")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/OIM%20Arabo%20ok.pdf?alt=media&token=08ce2143-90b2-4f8d-ba4a-ff6e9cf18a47");
                 DownloadData(pdf, view, index);
             } else {
@@ -231,10 +228,10 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         public void onClick(View view) {
             String lang = spinnerSelectLanguage.getSelectedItem().toString();
             index = 2;
-            if (lang.equals("English")){
+            if (lang.equals("English")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Costituzione%20Italiana_lingua%20inglese_2013.pdf?alt=media&token=806a1214-ac8f-4692-a687-5e2a9e8b014f");
                 DownloadData(pdf, view, index);
-            } else if (lang.equals("Arabic")){
+            } else if (lang.equals("Arabic")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Costituzione%20Italiana_lingua%20araba_2013.pdf?alt=media&token=8af9178d-4bb7-4d11-bf1b-eb89692af53d");
                 DownloadData(pdf, view, index);
             } else {
@@ -244,15 +241,15 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         }
     };
 
-    public  View.OnClickListener downloadNHS_listener = new View.OnClickListener() {
+    public View.OnClickListener downloadNHS_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             String lang = spinnerSelectLanguage.getSelectedItem().toString();
             index = 3;
-            if (lang.equals("English")){
+            if (lang.equals("English")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/informaSaluteInglese.pdf?alt=media&token=58106d2d-d6f6-409c-ae87-d632fc6504b7");
                 DownloadData(pdf, view, index);
-            } else if (lang.equals("Arabic")){
+            } else if (lang.equals("Arabic")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/InformaSaluteArabo.pdf?alt=media&token=d38b58a1-978b-4459-8626-c8f27bfe0c1f");
                 DownloadData(pdf, view, index);
             } else {
@@ -267,10 +264,10 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
         public void onClick(View view) {
             String lang = spinnerSelectLanguage.getSelectedItem().toString();
             index = 1;
-            if (lang.equals("English")){
+            if (lang.equals("English")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Prontuario_EN%20abitare.pdf?alt=media&token=bb25289d-eb48-4454-96e4-3005c657f0eb");
                 DownloadData(pdf, view, index);
-            } else if (lang.equals("Arabic")){
+            } else if (lang.equals("Arabic")) {
                 Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Prontuario_AR%20abitare.pdf?alt=media&token=7262c0dd-7189-4308-9199-625a54985d1d");
                 DownloadData(pdf, view, index);
             } else {

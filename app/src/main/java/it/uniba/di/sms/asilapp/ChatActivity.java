@@ -43,7 +43,7 @@ import it.uniba.di.sms.asilapp.adapter.MessageAdapter;
 import it.uniba.di.sms.asilapp.models.Message;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class ChatActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ChatActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "ChatActivity";
 
     private EditText mMessage;
@@ -95,7 +95,6 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         getUserRole();
 
 
-
         mMessage = findViewById(R.id.message);
         mSend = findViewById(R.id.sendMessage);
         recyclerView = findViewById(R.id.chatList);
@@ -126,25 +125,23 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, ChatActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, ChatActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (ChatActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(ChatActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ChatActivity");
             startActivity(languageIntent);
         }
     };
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         readMessages();
     }
@@ -152,7 +149,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
     public View.OnClickListener mSend_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (mMessage.getText().toString().equals("")){
+            if (mMessage.getText().toString().equals("")) {
                 Toast.makeText(ChatActivity.this, "Can't send empty message", Toast.LENGTH_SHORT).show();
             } else {
                 sendMessage();
@@ -160,7 +157,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-    public void sendMessage(){
+    public void sendMessage() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId Logged
@@ -186,7 +183,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                 FirebaseDatabase.getInstance().getReference("chat").push().setValue(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             //Success message
                             //Toast.makeText(ChatActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                             mMessage.setText("");
@@ -206,19 +203,18 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-
     }
 
-    private void readMessages(){
-    // Function to read messages
+    private void readMessages() {
+        // Function to read messages
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String getCurrentTime = sdf.format(c.getTime());
-        String time_start ="10:00";
-        String time_end ="20:00";
+        String time_start = "10:00";
+        String time_end = "20:00";
 
-        if (getCurrentTime .compareTo(time_end) > 0 || getCurrentTime .compareTo(time_start) < 0  ) {
+        if (getCurrentTime.compareTo(time_end) > 0 || getCurrentTime.compareTo(time_start) < 0) {
             canSendMessage();
         }
 
@@ -232,7 +228,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Clear ArrayList
                 mMessagesList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     // Get Obj message
                     Message message = snapshot.getValue(Message.class);
                     // Add obj to ArrayList
@@ -242,6 +238,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting Messages failed
@@ -252,7 +249,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    public void canSendMessage(){
+    public void canSendMessage() {
         mSend.setEnabled(false);
 
         final Toast toast = Toast.makeText(getApplicationContext(), "Chat closed, it's open from 10 am to 8 pm, retry later", Toast.LENGTH_LONG);
@@ -270,59 +267,59 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (ChatActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(ChatActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (ChatActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(ChatActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (ChatActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(ChatActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordsIntent = new Intent (ChatActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordsIntent = new Intent(ChatActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent  = new Intent (ChatActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(ChatActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (ChatActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(ChatActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (ChatActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(ChatActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (ChatActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(ChatActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (ChatActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(ChatActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
@@ -334,31 +331,31 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeAdminIntent = new Intent (ChatActivity.this, AdminActivity.class);
+                Intent nav_homeAdminIntent = new Intent(ChatActivity.this, AdminActivity.class);
                 startActivity(nav_homeAdminIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (ChatActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(ChatActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (ChatActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(ChatActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (ChatActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(ChatActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (ChatActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(ChatActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:
@@ -375,7 +372,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public void removeItemDoctor(){
+    public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -393,7 +390,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         nav_visitedPatient.setVisible(false);
     }
 
-    public void removeItemUser(){
+    public void removeItemUser() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -411,7 +408,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         nav_questionnaires.setVisible(false);
     }
 
-    public void removeItemAdmin(){
+    public void removeItemAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -429,7 +426,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         nav_addRetrieveNecessities.setVisible(false);
     }
 
-    public void getUserRole(){
+    public void getUserRole() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
@@ -443,7 +440,7 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                 if (role == 1) {    //role 1 = Admin
                     removeItemUser();
                     removeItemDoctor();
-                }else if (role == 2) {    //role 2 = User
+                } else if (role == 2) {    //role 2 = User
                     removeItemAdmin();
                     removeItemDoctor();
                 } else if (role == 3) { //role 3 = Doctor

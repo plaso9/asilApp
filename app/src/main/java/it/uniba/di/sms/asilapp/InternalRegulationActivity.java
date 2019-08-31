@@ -41,6 +41,7 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
     private MenuItem nav_addRetrieveNecessities;
 
     private ImageButton imgBtnLanguage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,20 +103,17 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, InternalRegulationActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
+        Intent refresh = new Intent(this, InternalRegulationActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (InternalRegulationActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(InternalRegulationActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InternalRegulationActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -163,35 +161,35 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (InternalRegulationActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(InternalRegulationActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (InternalRegulationActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(InternalRegulationActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (InternalRegulationActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(InternalRegulationActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (InternalRegulationActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(InternalRegulationActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (InternalRegulationActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(InternalRegulationActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -199,7 +197,7 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(InternalRegulationActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(InternalRegulationActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;

@@ -20,7 +20,7 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class UsefulNumbersActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UsefulNumbersActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     ImageView imageViewPolice;
     ImageView imageViewAmbulance;
@@ -123,55 +123,53 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, UsefulNumbersActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, UsefulNumbersActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_LanguageIntent = new Intent (UsefulNumbersActivity.this,PopUpLanguageActivity.class);
+            Intent change_LanguageIntent = new Intent(UsefulNumbersActivity.this, PopUpLanguageActivity.class);
             change_LanguageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.UsefulNumbersActivity");
-            startActivity(change_LanguageIntent);
+            startActivityForResult(change_LanguageIntent, 1);
         }
     };
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         Intent sens;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (UsefulNumbersActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(UsefulNumbersActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                sens = new Intent (UsefulNumbersActivity.this, InformativeActivity.class);
+                sens = new Intent(UsefulNumbersActivity.this, InformativeActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                sens = new Intent (UsefulNumbersActivity.this, MedicalRecordsActivity.class);
+                sens = new Intent(UsefulNumbersActivity.this, MedicalRecordsActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                sens = new Intent (UsefulNumbersActivity.this, PersonalDataActivity.class);
+                sens = new Intent(UsefulNumbersActivity.this, PersonalDataActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                sens = new Intent (UsefulNumbersActivity.this, QuestionnairesActivity.class);
+                sens = new Intent(UsefulNumbersActivity.this, QuestionnairesActivity.class);
                 startActivity(sens);
                 break;
             case R.id.nav_logout:
@@ -189,9 +187,9 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }

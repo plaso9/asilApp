@@ -109,7 +109,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 Intent searchIntent = new Intent(SearchPatientActivity.this, PatientListActivity.class);
-                startActivity(searchIntent);
+                startActivityForResult(searchIntent, 1);
             }
         });
 
@@ -118,11 +118,9 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, SearchPatientActivity.class);
-                startActivity(refresh);
-                this.finish();
-        }
+        Intent refresh = new Intent(this, SearchPatientActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -130,7 +128,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         public void onClick(View v) {
             Intent languageIntent = new Intent(SearchPatientActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.SearchPatientActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
