@@ -121,6 +121,10 @@
     <string name="learn">Impara ad usare questa applicazione guardando questo video</string>
     <string name="avg">Media</string>
     <string name="signout">Disconnetti</string>
+    <plurals name="visitedPatient">
+        <item quantity="one">Paziente visitato</item>
+        <item quantity="other">Pazienti visitati</item>
+    </plurals>
 </resources>
 
 

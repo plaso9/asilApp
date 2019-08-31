@@ -138,8 +138,8 @@ reception of migrants for application of international protection. Download this
     <string name="signout">Logout</string>
 
     <plurals name="visitedPatient">
-        <item quantity="one">Visited Patient</item>
-        <item quantity="other">Visited Patients</item>
+        <item quantity="one">Visited patient</item>
+        <item quantity="other">Visited patients</item>
     </plurals>
 
 
