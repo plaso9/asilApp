@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,9 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class InternalRegulationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
-    private TextView textViewDownloadRegulation;
     private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
     private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -39,19 +36,27 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
-
-    private ImageButton imgBtnLanguage;
+    private TextView textViewDownloadRegulation;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_internal_regulation);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        textViewDownloadRegulation = findViewById(R.id.textViewDownloadRegulation);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -79,26 +84,27 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        textViewDownloadRegulation = findViewById(R.id.textViewDownloadRegulation);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
-        imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
-            imgBtnLanguage.setImageResource(R.drawable.lang);
-        }
-
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the textView object
         textViewDownloadRegulation.setOnClickListener(download_listener);
-    }
 
+        //Set image resource
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            //Set image
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -108,59 +114,8 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
         this.finish();
     }
 
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(InternalRegulationActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InternalRegulationActivity");
-            startActivityForResult(languageIntent, 1);
-        }
-    };
-
-
-    //Set on click listener
-    public View.OnClickListener download_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Regolamento%20strutture%20di%20accoglienza%20convenzionate.pdf?alt=media&token=85697a3e-ed4f-473c-b8d3-37e5b0005d1d");
-            DownloadData(pdf, view);
-        }
-
-    };
-
-
-    private long DownloadData(Uri uri, View v) {
-
-        long downloadReference;
-
-        // Create request for android download manager
-        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-
-        //Setting title of request
-        request.setTitle("Regolamento interno centro di accoglienza");
-
-        //Setting description of request
-        request.setDescription("AsilApp");
-
-        //Setting visibility
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
-        //Set the local destination for the downloaded file to a path
-        //within the application's external files directory
-        request.setDestinationInExternalFilesDir(InternalRegulationActivity.this,
-                Environment.DIRECTORY_DOWNLOADS, "help.png");
-
-        //Enqueue download and save into referenceId
-        downloadReference = downloadManager.enqueue(request);
-
-        Toast.makeText(this, getResources().getString(R.string.downloadSuccess),
-                Toast.LENGTH_LONG).show();
-        return downloadReference;
-    }
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
@@ -204,4 +159,56 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
         }
         return true;
     }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent(InternalRegulationActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InternalRegulationActivity");
+            startActivityForResult(languageIntent, 1);
+        }
+    };
+
+
+    //Set on click listener
+    public View.OnClickListener download_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri pdf = Uri.parse("https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/Regolamento%20strutture%20di%20accoglienza%20convenzionate.pdf?alt=media&token=85697a3e-ed4f-473c-b8d3-37e5b0005d1d");
+            DownloadData(pdf, view);
+        }
+
+    };
+
+
+    private long DownloadData(Uri uri, View v) {
+        long downloadReference;
+        // Create request for android download manager
+        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+
+        //Setting title of request
+        request.setTitle("Regolamento interno centro di accoglienza");
+
+        //Setting description of request
+        request.setDescription("AsilApp");
+
+        //Setting visibility
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+        //Set the local destination for the downloaded file to a path
+        //within the application's external files directory
+        request.setDestinationInExternalFilesDir(InternalRegulationActivity.this,
+                Environment.DIRECTORY_DOWNLOADS, "help.png");
+
+        //Enqueue download and save into referenceId
+        downloadReference = downloadManager.enqueue(request);
+
+        Toast.makeText(this, getResources().getString(R.string.downloadSuccess),
+                Toast.LENGTH_LONG).show();
+        return downloadReference;
+    }
+
 }
