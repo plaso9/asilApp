@@ -59,7 +59,7 @@
                 <TextView
                     android:id="@+id/pageTitle"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="24dp"
@@ -74,8 +74,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
+                    android:layout_marginStart="@dimen/marginEnd"
                     android:text="@string/showPatient"
                     android:textColor="#FFFFFF"
 
@@ -100,7 +100,7 @@
                     android:id="@+id/textViewScanCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="68dp"
                     android:textSize="@dimen/textSize"
                     android:text="@string/scan"

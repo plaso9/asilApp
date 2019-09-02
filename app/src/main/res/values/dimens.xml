@@ -6,4 +6,6 @@
     <dimen name="textSize">20dp</dimen>
     <dimen name="iconHeightSize">100dp</dimen>
     <dimen name="iconLandHeightSize">80dp</dimen>
+    <dimen name="marginStart">16dp</dimen>
+    <dimen name="marginEnd">16dp</dimen>
 </resources>

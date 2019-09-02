@@ -86,7 +86,7 @@
                 <ImageView
                     android:id="@+id/image_personalData"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="@dimen/iconLandHeightSize"
                     android:contentDescription="@string/personalData"
                     android:src="@drawable/personal" />
 
@@ -130,7 +130,7 @@
                 <ImageView
                     android:id="@+id/image_information"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="@dimen/iconLandHeightSize"
                     android:contentDescription="@string/medicalRecords"
                     android:src="@drawable/medical" />
 
@@ -171,8 +171,8 @@
 
                 <ImageView
                     android:id="@+id/image_questionnaires"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/iconLandHeightSize"
                     android:contentDescription="@string/questionnaires"
                     android:src="@drawable/questionnaires" />
 
