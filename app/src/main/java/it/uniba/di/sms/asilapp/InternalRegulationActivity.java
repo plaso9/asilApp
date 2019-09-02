@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,9 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class InternalRegulationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
-    private TextView textViewDownloadRegulation;
     private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
     private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -39,18 +36,27 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
+    private TextView textViewDownloadRegulation;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
-    private ImageButton imgBtnLanguage;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_internal_regulation);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        textViewDownloadRegulation = findViewById(R.id.textViewDownloadRegulation);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -78,44 +84,90 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        textViewDownloadRegulation = findViewById(R.id.textViewDownloadRegulation);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
-        imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
-            imgBtnLanguage.setImageResource(R.drawable.lang);
-        }
-
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the textView object
         textViewDownloadRegulation.setOnClickListener(download_listener);
-    }
 
+        //Set image resource
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
+            //Set image
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, InternalRegulationActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, InternalRegulationActivity.class);
+        startActivity(refresh);
+        this.finish();
+    }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_homeIntent = new Intent(InternalRegulationActivity.this, HomepageActivity.class);
+                startActivity(nav_homeIntent);
+                break;
+            case R.id.nav_info:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_infoIntent = new Intent(InternalRegulationActivity.this, InformativeActivity.class);
+                startActivity(nav_infoIntent);
+                break;
+            case R.id.nav_medicalRecords:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_medicalRecordIntent = new Intent(InternalRegulationActivity.this, MedicalRecordsActivity.class);
+                startActivity(nav_medicalRecordIntent);
+                break;
+            case R.id.nav_personalData:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_personalDataIntent = new Intent(InternalRegulationActivity.this, PersonalDataActivity.class);
+                startActivity(nav_personalDataIntent);
+                break;
+            case R.id.nav_questionnaires:
+                drawer.closeDrawer(GravityCompat.START);
+                //Create new Intent
+                Intent nav_questionnairesIntent = new Intent(InternalRegulationActivity.this, QuestionnairesActivity.class);
+                startActivity(nav_questionnairesIntent);
+                break;
+            case R.id.nav_logout:
+                drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
+                FirebaseAuth.getInstance().signOut();
+                //Create new Intent
+                Intent nav_logoutIntent = new Intent(InternalRegulationActivity.this, MainActivity.class);
+                startActivity(nav_logoutIntent);
+                finish();
+                break;
         }
+        return true;
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (InternalRegulationActivity.this,PopUpLanguageActivity.class);
+            //Create new Intent
+            Intent languageIntent = new Intent(InternalRegulationActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.InternalRegulationActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -132,9 +184,7 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
 
 
     private long DownloadData(Uri uri, View v) {
-
         long downloadReference;
-
         // Create request for android download manager
         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
@@ -161,49 +211,4 @@ public class InternalRegulationActivity extends AppCompatActivity implements Nav
         return downloadReference;
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_home:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_homeIntent = new Intent (InternalRegulationActivity.this, HomepageActivity.class);
-                startActivity(nav_homeIntent);
-                break;
-            case R.id.nav_info:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_infoIntent = new Intent (InternalRegulationActivity.this, InformativeActivity.class);
-                startActivity(nav_infoIntent);
-                break;
-            case R.id.nav_medicalRecords:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (InternalRegulationActivity.this, MedicalRecordsActivity.class);
-                startActivity(nav_medicalRecordIntent);
-                break;
-            case R.id.nav_personalData:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_personalDataIntent= new Intent (InternalRegulationActivity.this, PersonalDataActivity.class);
-                startActivity(nav_personalDataIntent);
-                break;
-            case R.id.nav_questionnaires:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (InternalRegulationActivity.this, QuestionnairesActivity.class);
-                startActivity(nav_questionnairesIntent);
-                break;
-            case R.id.nav_logout:
-                drawer.closeDrawer(GravityCompat.START);
-                //Sign out function
-                FirebaseAuth.getInstance().signOut();
-                //Create new Intent
-                Intent nav_logoutIntent= new Intent(InternalRegulationActivity.this, MainActivity.class);
-                startActivity(nav_logoutIntent);
-                finish();
-                break;
-        }
-        return true;
-    }
 }

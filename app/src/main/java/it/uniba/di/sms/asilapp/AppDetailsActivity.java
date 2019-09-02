@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AppDetailsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AppDetailsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
@@ -101,13 +101,10 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Create new Intent
-                Intent refresh = new Intent(this, AppDetailsActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, AppDetailsActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     //Set a click listener
@@ -115,44 +112,44 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
         @Override
         public void onClick(View v) {
             //Create new Intent
-            Intent languageIntent = new Intent (AppDetailsActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AppDetailsActivity.this, PopUpLanguageActivity.class);
             //Pass data between intents
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AppDetailsActivity");
-            startActivity(languageIntent);
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AppDetailsActivity");
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (AppDetailsActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(AppDetailsActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (AppDetailsActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(AppDetailsActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (AppDetailsActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(AppDetailsActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (AppDetailsActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(AppDetailsActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (AppDetailsActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(AppDetailsActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -160,7 +157,7 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(AppDetailsActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(AppDetailsActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
@@ -170,9 +167,9 @@ public class AppDetailsActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }

@@ -21,7 +21,7 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variables declaration
     private ImageButton imgBtnLanguage;
     CardView card_view_addFood;
@@ -94,7 +94,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         card_view_readRatings = findViewById(R.id.card_readRatings);
         card_view_addAcceptance = findViewById(R.id.card_addAcceptance);
         chatButton = findViewById(R.id.chatBtn);
-        gridLayout=findViewById(R.id.gridAdminLayout);
+        gridLayout = findViewById(R.id.gridAdminLayout);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         imgBtnLanguage.setImageResource(R.drawable.italy);
@@ -117,20 +117,17 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, AdminActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
+        Intent refresh = new Intent(this, AdminActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AdminActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AdminActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AdminActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
@@ -139,7 +136,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     public View.OnClickListener card_view_addAcceptance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent add_acceptanceIntent = new Intent (AdminActivity.this, AddAcceptanceActivity.class);
+            Intent add_acceptanceIntent = new Intent(AdminActivity.this, AddAcceptanceActivity.class);
             startActivity(add_acceptanceIntent);
         }
     };
@@ -147,7 +144,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     public View.OnClickListener card_view_addUser_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent add_userIntent = new Intent (AdminActivity.this,AddUserActivity.class);
+            Intent add_userIntent = new Intent(AdminActivity.this, AddUserActivity.class);
             startActivity(add_userIntent);
 
         }
@@ -161,7 +158,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         }
     };
 
-    public  View.OnClickListener card_view_readRatings_listener = new View.OnClickListener() {
+    public View.OnClickListener card_view_readRatings_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent read_ratingsIntent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
@@ -180,35 +177,35 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeAdminIntent = new Intent (AdminActivity.this, AdminActivity.class);
+                Intent nav_homeAdminIntent = new Intent(AdminActivity.this, AdminActivity.class);
                 startActivity(nav_homeAdminIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (AdminActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(AdminActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (AdminActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(AdminActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (AdminActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(AdminActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (AdminActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(AdminActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:

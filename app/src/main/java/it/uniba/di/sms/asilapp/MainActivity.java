@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import it.uniba.di.sms.asilapp.models.User;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private TextView goHome;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void getRoleActivity(int role_id) {
-        if(role_id == 1){
+        if (role_id == 1) {
             //Admin Role
             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);

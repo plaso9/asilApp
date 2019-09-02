@@ -79,10 +79,10 @@
 
                 <ImageView
                     android:id="@+id/image_newUser"
-                    android:src="@drawable/adduser"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:contentDescription="@string/addUser"/>
+                    android:layout_height="@dimen/iconLandHeightSize"
+                    android:contentDescription="@string/addUser"
+                    android:src="@drawable/adduser" />
 
                 <TextView
                     android:text="@string/addUser"
@@ -123,9 +123,9 @@
                 <ImageView
                     android:id="@+id/image_addAcceptance"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/addacceptance"
-                    android:contentDescription="@string/addAcceptance"/>
+                    android:layout_height="@dimen/iconLandHeightSize"
+                    android:contentDescription="@string/addAcceptance"
+                    android:src="@drawable/addacceptance" />
 
                 <TextView
                     android:text="@string/addAcceptance"
@@ -164,10 +164,10 @@
 
                 <ImageView
                     android:id="@+id/image_addFood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/addfood"
-                    android:contentDescription="@string/addFood"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/iconLandHeightSize"
+                    android:contentDescription="@string/addFood"
+                    android:src="@drawable/addfood" />
 
                 <TextView
                     android:text="@string/addFood"
@@ -207,10 +207,10 @@
 
                 <ImageView
                     android:id="@+id/image_readRatings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/readratings"
-                    android:contentDescription="@string/readRatings"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/iconLandHeightSize"
+                    android:contentDescription="@string/readRatings"
+                    android:src="@drawable/readratings" />
 
                 <TextView
                     android:text="@string/readRatings"

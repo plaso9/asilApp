@@ -63,12 +63,12 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.8), (int)(height*0.6));
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
 
         // Initialize Database Reference
@@ -101,7 +101,7 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
     public View.OnClickListener submitMeasurement_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (editValueParameter.getText().toString().equals("")){
+            if (editValueParameter.getText().toString().equals("")) {
                 Toast.makeText(PopUpTemperatureActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
             } else {
                 addNewMeasurement();
@@ -120,18 +120,18 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
 
         //New Constructor
         MedicalRecord medicalRecord = new MedicalRecord(
-            value,
-            user_clicked_id,
-            parameter_clicked_id,
-            current_data,
-            pathology
+                value,
+                user_clicked_id,
+                parameter_clicked_id,
+                current_data,
+                pathology
         );
 
         //Adding value to DB
         FirebaseDatabase.getInstance().getReference("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //success message
                     Toast.makeText(PopUpTemperatureActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                     finish();

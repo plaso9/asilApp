@@ -72,7 +72,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="90dp"
                     android:text="@string/sf12Questionnaires"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="112dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="@dimen/marginEnd"
                     android:text="@string/survey"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"
@@ -96,7 +96,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/habitsQuestionnaires"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -119,7 +119,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/demographicQuestionnaires"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -141,7 +141,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/qualityOfLifeQuestionnaires"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 

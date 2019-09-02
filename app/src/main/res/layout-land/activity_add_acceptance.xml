@@ -59,7 +59,7 @@
                 <TextView
                     android:id="@+id/pageTitle"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="24dp"
@@ -74,10 +74,10 @@
                     android:id="@+id/textViewCenterName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="60dp"
                     android:text="@string/centerName"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
@@ -85,14 +85,14 @@
                     android:id="@+id/editTextCenterName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:inputType="text"
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterName" />
 
@@ -102,24 +102,24 @@
                     android:id="@+id/textViewCenterLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     android:text="@string/centerAddress"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
                 <EditText
                     android:id="@+id/editTextCenterLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:inputType="text"
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/city"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/editTextCenterLocation"
                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
 
@@ -150,10 +150,10 @@
                     android:id="@+id/textViewCenterServices"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     android:text="@string/centerServices"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
 
@@ -166,7 +166,7 @@
                     android:hint="@string/services"
                     android:inputType="text"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/textViewCenterServices"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterServices" />
 

@@ -61,7 +61,7 @@
                     android:id="@+id/text_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="20dp"
                     android:text="@string/pathology"
                     android:textSize="24dp"

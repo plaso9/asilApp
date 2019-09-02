@@ -44,7 +44,7 @@ import java.util.List;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class AddUserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AddUserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private static final String TAG = "AddUserActivity";
 
@@ -164,7 +164,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(AddUserActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, dateSetListener, year
-                        ,month,day);
+                        , month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 dialog.show();
             }
@@ -197,13 +197,12 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<Acceptance> acceptances = new ArrayList<>();
-                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
-                {
+                for (DataSnapshot acceptanceSnapShot : dataSnapshot.getChildren()) {
                     acceptances.add(acceptanceSnapShot.getValue(Acceptance.class));
                 }
                 //Get all names of acceptance
                 final List<String> name_list = new ArrayList<>();
-                for(Acceptance acceptance: acceptances){
+                for (Acceptance acceptance : acceptances) {
                     name_list.add(acceptance.getName());
                 }
                 //Create adapter and set for spinner
@@ -217,6 +216,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         id = acceptances.get(i).getId();
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                     }
@@ -236,21 +236,18 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Intent refresh = new Intent(this, AddUserActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, AddUserActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AddUserActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AddUserActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddUserActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
@@ -265,7 +262,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
                     editTextMail.getText().toString().equals("") ||
                     editTextPassword.getText().toString().equals("") ||
                     editTextNation.getText().toString().equals("")
-            ){
+            ) {
                 Toast.makeText(AddUserActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
             } else {
                 registerUser();
@@ -274,10 +271,10 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
     };
 
     //Methods that let the admin to register a new user
-    private void registerUser(){
+    private void registerUser() {
         final String name = editTextName.getText().toString().trim();
         final String surname = editTextSurname.getText().toString().trim();
-        final String cell =  editTextCell.getText().toString().trim();
+        final String cell = editTextCell.getText().toString().trim();
         final String birthPlace = editTextBirthPlace.getText().toString().trim();
         final String eMail = editTextMail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -287,20 +284,20 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         final String nation = editTextNation.getText().toString();
         final int int_role;
 
-        if (role.equalsIgnoreCase("doctor")){
+        if (role.equalsIgnoreCase("doctor")) {
             int_role = 3;
-        } else if (role.equalsIgnoreCase("admin")){
+        } else if (role.equalsIgnoreCase("admin")) {
             int_role = 1;
         } else
             int_role = 2;
 
         //Method provided by Firebase to create a new user with username and password
-        mAuth.createUserWithEmailAndPassword(eMail,password)
+        mAuth.createUserWithEmailAndPassword(eMail, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             User user = new User(
                                     mAuth.getUid(),
                                     name,
@@ -339,35 +336,35 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (AddUserActivity.this, AdminActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(AddUserActivity.this, AdminActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (AddUserActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(AddUserActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (AddUserActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(AddUserActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (AddUserActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(AddUserActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (AddUserActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(AddUserActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:

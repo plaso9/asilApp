@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage("Authenticating...");
                 progressDialog.show();
 
-                if(email.isEmpty() || psw.isEmpty()){
+                if (email.isEmpty() || psw.isEmpty()) {
                     Toast.makeText(getBaseContext(), "Login Failed, empty fields", Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                     return;
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void getRoleActivity(int role_id) {
-        if(role_id == 1){
+        if (role_id == 1) {
             //Admin Role
             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
             startActivity(intent);

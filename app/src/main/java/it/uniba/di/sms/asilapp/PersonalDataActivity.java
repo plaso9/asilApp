@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.User;
 
 
-public class PersonalDataActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class PersonalDataActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "PersonalDataActivity";
     private Button mSavePersonalData;
     private DatabaseReference mUserReference;
@@ -154,83 +154,82 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
 
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, PersonalDataActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, PersonalDataActivity.class);
+        refresh.putExtra("user_clicked", userClickedId);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (PersonalDataActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(PersonalDataActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PersonalDataActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (PersonalDataActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(PersonalDataActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (PersonalDataActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(PersonalDataActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (PersonalDataActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(PersonalDataActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordsIntent = new Intent (PersonalDataActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordsIntent = new Intent(PersonalDataActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent  = new Intent (PersonalDataActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(PersonalDataActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (PersonalDataActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(PersonalDataActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (PersonalDataActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(PersonalDataActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (PersonalDataActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(PersonalDataActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (PersonalDataActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(PersonalDataActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_logout:
@@ -248,20 +247,19 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
-
 
 
     public View.OnClickListener save_data_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             String newCell = mCell.getText().toString();
-            if (!newCell.equals("") && newCell.length()>5){
+            if (!newCell.equals("") && newCell.length() > 5) {
                 mUserReference.child("cell").setValue(newCell);
             } else {
                 Toast.makeText(PersonalDataActivity.this, "You need to insert at least 6 numbers!",
@@ -270,7 +268,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         }
     };
 
-    public void removeItemDoctor(){
+    public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -288,7 +286,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         nav_visitedPatient.setVisible(false);
     }
 
-    public void removeItemUser(){
+    public void removeItemUser() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -306,7 +304,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         nav_questionnaires.setVisible(false);
     }
 
-    public void removeItemAdmin(){
+    public void removeItemAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -324,7 +322,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         nav_addRetrieveNecessities.setVisible(false);
     }
 
-    public void getUserRole(){
+    public void getUserRole() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());

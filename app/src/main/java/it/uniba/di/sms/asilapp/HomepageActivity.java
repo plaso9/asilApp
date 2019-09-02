@@ -1,4 +1,5 @@
 package it.uniba.di.sms.asilapp;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,7 +24,7 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private CardView card_view_Informative;
     private CardView card_view_PersonalData;
@@ -46,7 +47,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
     private MenuItem nav_addRetrieveNecessities;
 
     private ProgressDialog progressBar;
-    int PROGRESS_BAR_STATUS=0;
+    int PROGRESS_BAR_STATUS = 0;
 
     private DrawerLayout drawer;
 
@@ -94,7 +95,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         //defined gridlayout variable
-        gridLayout=findViewById(R.id.gridHomeLayout);
+        gridLayout = findViewById(R.id.gridHomeLayout);
         //defined card variable
         card_view_PersonalData = findViewById(R.id.card_personalData);
         card_view_Informative = findViewById(R.id.card_informationSection);
@@ -119,37 +120,38 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (HomepageActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(HomepageActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (HomepageActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(HomepageActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (HomepageActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (HomepageActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(HomepageActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (HomepageActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(HomepageActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -157,43 +159,45 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(HomepageActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(HomepageActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
         }
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, HomepageActivity.class);
-                startActivity(refresh);
-                this.finish();
 
-        }
+        Intent refresh = new Intent(this, HomepageActivity.class);
+        startActivity(refresh);
+
     }
+
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (HomepageActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(HomepageActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.HomepageActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
+
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
+
     public View.OnClickListener card_view_Informative_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent informativeIntent = new Intent (HomepageActivity.this,InformativeActivity.class);
+            Intent informativeIntent = new Intent(HomepageActivity.this, InformativeActivity.class);
             startActivity(informativeIntent);
         }
     };
@@ -204,9 +208,9 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
             progressBar.setIndeterminate(true);
             progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             progressBar.show();
-            Intent sens = new Intent (HomepageActivity.this,PersonalDataActivity.class);
+            Intent sens = new Intent(HomepageActivity.this, PersonalDataActivity.class);
             startActivity(sens);
-            PROGRESS_BAR_STATUS=1;
+            PROGRESS_BAR_STATUS = 1;
         }
     };
     public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
@@ -216,7 +220,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
             startActivity(questionnairesIntent);
         }
     };
-    public  View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
+    public View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent medicalRecordsIntent = new Intent(HomepageActivity.this, MedicalRecordsActivity.class);
@@ -230,17 +234,18 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
             startActivity(chatIntent);
         }
     };
+
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         afterExecution();
     }
 
     //Method used to dismiss the progressBar
-    public void afterExecution(){
-        if (PROGRESS_BAR_STATUS == 1){
+    public void afterExecution() {
+        if (PROGRESS_BAR_STATUS == 1) {
             progressBar.dismiss();
-            PROGRESS_BAR_STATUS=0;//Everytime is called, the methods sets this variable to 0 to show the progressBar again
+            PROGRESS_BAR_STATUS = 0;//Everytime is called, the methods sets this variable to 0 to show the progressBar again
         }
     }
 }

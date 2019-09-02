@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import it.uniba.di.sms.asilapp.models.Rating;
 
-public class RatingActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class RatingActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private static final String TAG = "RatingActivity";
     private Button mSubmitRating;
@@ -126,12 +126,9 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Create new Intent
-                Intent refresh = new Intent(this, RatingActivity.class);
-                startActivity(refresh);
-                this.finish();
-            }
+        Intent refresh = new Intent(this, RatingActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     //Set a click listener
@@ -139,45 +136,45 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View v) {
             //Create new Intent
-            Intent languageIntent = new Intent (RatingActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(RatingActivity.this, PopUpLanguageActivity.class);
             //Pass data between intents
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.RatingActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (RatingActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(RatingActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (RatingActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(RatingActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordIntent = new Intent (RatingActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordIntent = new Intent(RatingActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent= new Intent (RatingActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(RatingActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (RatingActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(RatingActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_logout:
@@ -185,7 +182,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                Intent nav_logoutIntent= new Intent(RatingActivity.this, MainActivity.class);
+                Intent nav_logoutIntent = new Intent(RatingActivity.this, MainActivity.class);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
@@ -195,9 +192,9 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -232,7 +229,7 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
         FirebaseDatabase.getInstance().getReference("rating").push().setValue(rating).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //success message
                     Toast.makeText(RatingActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                     finish();

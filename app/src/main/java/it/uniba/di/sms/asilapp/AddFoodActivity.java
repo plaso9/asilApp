@@ -39,7 +39,7 @@ import it.uniba.di.sms.asilapp.models.City;
 import it.uniba.di.sms.asilapp.models.Necessities;
 
 
-public class AddFoodActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AddFoodActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private static final String TAG = "PopUpTempActivity";
 
@@ -64,6 +64,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
 
     private Toolbar toolbar;
     private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +126,6 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
 
 
-
         //Set listener value variable
         submitNecessities.setOnClickListener(submitNecessities_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
@@ -138,13 +138,12 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<City> cities = new ArrayList<>();
-                for(DataSnapshot acceptanceSnapShot:dataSnapshot.getChildren())
-                {
+                for (DataSnapshot acceptanceSnapShot : dataSnapshot.getChildren()) {
                     cities.add(acceptanceSnapShot.getValue(City.class));
                 }
                 //Get all names of acceptance
                 final List<String> name_list = new ArrayList<>();
-                for(City city: cities){
+                for (City city : cities) {
                     name_list.add(city.getName());
                 }
                 //Create adapter and set for spinner
@@ -179,20 +178,18 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, AddFoodActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, AddFoodActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AddFoodActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AddFoodActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddFoodActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
 
@@ -201,8 +198,8 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         @Override
         public void onClick(View view) {
             if (mMall.getText().toString().equals("") ||
-                mPharmacy.getText().toString().equals("")
-                ) {
+                    mPharmacy.getText().toString().equals("")
+            ) {
                 Toast.makeText(AddFoodActivity.this, "No field should be empty", Toast.LENGTH_SHORT).show();
             } else {
                 addNewRetrieveNecessities();
@@ -210,7 +207,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         }
     };
 
-    public void addNewRetrieveNecessities(){
+    public void addNewRetrieveNecessities() {
         //Get value to insert in DB
         final String mall = mMall.getText().toString();
         final String pharmacy = mPharmacy.getText().toString();
@@ -226,7 +223,7 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
         FirebaseDatabase.getInstance().getReference("basic_necessities").push().setValue(necessities).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //success message
                     Toast.makeText(AddFoodActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                     finish();
@@ -240,35 +237,35 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (AddFoodActivity.this, AdminActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(AddFoodActivity.this, AdminActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_add_user:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addUserIntent = new Intent (AddFoodActivity.this, AddUserActivity.class);
+                Intent nav_addUserIntent = new Intent(AddFoodActivity.this, AddUserActivity.class);
                 startActivity(nav_addUserIntent);
                 break;
             case R.id.nav_add_new_acceptance:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addAcceptanceIntent = new Intent (AddFoodActivity.this, AddAcceptanceActivity.class);
+                Intent nav_addAcceptanceIntent = new Intent(AddFoodActivity.this, AddAcceptanceActivity.class);
                 startActivity(nav_addAcceptanceIntent);
                 break;
             case R.id.nav_add_retrive_necessities:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_addFoodIntent = new Intent (AddFoodActivity.this, AddFoodActivity.class);
+                Intent nav_addFoodIntent = new Intent(AddFoodActivity.this, AddFoodActivity.class);
                 startActivity(nav_addFoodIntent);
                 break;
             case R.id.nav_read_ratings:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_readRatingIntent = new Intent (AddFoodActivity.this, ReadRatingsActivity.class);
+                Intent nav_readRatingIntent = new Intent(AddFoodActivity.this, ReadRatingsActivity.class);
                 startActivity(nav_readRatingIntent);
                 break;
             case R.id.nav_logout:

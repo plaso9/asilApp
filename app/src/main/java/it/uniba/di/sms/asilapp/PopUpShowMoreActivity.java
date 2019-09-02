@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
-public class PopUpShowMoreActivity extends AppCompatActivity{
+public class PopUpShowMoreActivity extends AppCompatActivity {
     //variable declaration
     private static final String TAG = "CityInfoActivity";
 
@@ -64,7 +64,6 @@ public class PopUpShowMoreActivity extends AppCompatActivity{
     }
 
 
-
     //Method that retrieves from the Firebase Database the infos of the city given the iD of the city and sets the text of the TextView
     public void getCityInformation(final long cityId) {
         ValueEventListener cityListener = new ValueEventListener() {
@@ -72,7 +71,7 @@ public class PopUpShowMoreActivity extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     City city = snapshot.getValue(City.class);
-                    if (city.id == cityId){
+                    if (city.id == cityId) {
                         cityName = city.name;
                         cityInfo = cityName + " - " + city.description;
                         mDescription.setText(cityInfo);

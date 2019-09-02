@@ -60,7 +60,7 @@
                     android:id="@+id/pageTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="20dp"
                     android:text="@string/rating"
                     android:textAllCaps="true"
@@ -73,10 +73,10 @@
                     android:id="@+id/textViewCityRating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="90dp"
                     android:text="@string/cityRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +84,7 @@
                     android:id="@+id/ratingBarCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCityRating" />
@@ -94,10 +94,10 @@
                     android:id="@+id/textViewCenterRating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="32dp"
                     android:text="@string/centerRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarCity" />
 
@@ -105,7 +105,7 @@
                     android:id="@+id/ratingBarCenter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterRating" />
@@ -115,10 +115,10 @@
                     android:id="@+id/textViewAppRating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="32dp"
                     android:text="@string/appRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarCenter" />
 
@@ -126,7 +126,7 @@
                     android:id="@+id/ratingBarApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewAppRating" />
@@ -136,10 +136,10 @@
                     android:id="@+id/textViewComment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="32dp"
                     android:text="@string/comment"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarApp" />
 
@@ -147,14 +147,14 @@
                     android:id="@+id/editTextComment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:inputType="text"
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
 

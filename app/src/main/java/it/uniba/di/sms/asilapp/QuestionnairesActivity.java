@@ -31,11 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.Questionnaires;
 import it.uniba.di.sms.asilapp.models.User;
 
-public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "QuestionnairesActivity";
 
     private String uId;
-    private String URI1="null", URI2="null", URI3="null", URI4="null";
+    private String URI1 = "null", URI2 = "null", URI3 = "null", URI4 = "null";
     private String userClickedId;
     private DatabaseReference mUserReference;
     private DrawerLayout drawer;
@@ -68,16 +68,16 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaires);
 
-        btnSf12 =(Button) findViewById(R.id.btnSf12);
+        btnSf12 = (Button) findViewById(R.id.btnSf12);
         btnSf12.setOnClickListener(btnSf12_listener);
 
-        btnHabits =(Button) findViewById(R.id.btnHabits);
+        btnHabits = (Button) findViewById(R.id.btnHabits);
         btnHabits.setOnClickListener(btnHabits_listener);
 
-        btnDemo =(Button) findViewById(R.id.btnDemo);
+        btnDemo = (Button) findViewById(R.id.btnDemo);
         btnDemo.setOnClickListener(btnDemo_listener);
 
-        btnQuality =(Button) findViewById(R.id.btnQuality);
+        btnQuality = (Button) findViewById(R.id.btnQuality);
         btnQuality.setOnClickListener(btnQuality_listener);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -145,20 +145,18 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, QuestionnairesActivity.class);
-                startActivity(refresh);
-                this.finish();
+        Intent refresh = new Intent(this, QuestionnairesActivity.class);
+        startActivity(refresh);
+        this.finish();
 
-        }
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent languageIntent = new Intent (QuestionnairesActivity.this,PopUpLanguageActivity.class);
+            Intent languageIntent = new Intent(QuestionnairesActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.QuestionnairesActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -203,65 +201,65 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (QuestionnairesActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(QuestionnairesActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeIntent = new Intent (QuestionnairesActivity.this, HomepageActivity.class);
+                Intent nav_homeIntent = new Intent(QuestionnairesActivity.this, HomepageActivity.class);
                 startActivity(nav_homeIntent);
                 break;
             case R.id.nav_info:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_infoIntent = new Intent (QuestionnairesActivity.this, InformativeActivity.class);
+                Intent nav_infoIntent = new Intent(QuestionnairesActivity.this, InformativeActivity.class);
                 startActivity(nav_infoIntent);
                 break;
             case R.id.nav_medicalRecords:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_medicalRecordsIntent = new Intent (QuestionnairesActivity.this, MedicalRecordsActivity.class);
+                Intent nav_medicalRecordsIntent = new Intent(QuestionnairesActivity.this, MedicalRecordsActivity.class);
                 startActivity(nav_medicalRecordsIntent);
                 break;
             case R.id.nav_personalData:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_personalDataIntent  = new Intent (QuestionnairesActivity.this, PersonalDataActivity.class);
+                Intent nav_personalDataIntent = new Intent(QuestionnairesActivity.this, PersonalDataActivity.class);
                 startActivity(nav_personalDataIntent);
                 break;
             case R.id.nav_questionnaires:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_questionnairesIntent = new Intent (QuestionnairesActivity.this, QuestionnairesActivity.class);
+                Intent nav_questionnairesIntent = new Intent(QuestionnairesActivity.this, QuestionnairesActivity.class);
                 startActivity(nav_questionnairesIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (QuestionnairesActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(QuestionnairesActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (QuestionnairesActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(QuestionnairesActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (QuestionnairesActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(QuestionnairesActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (QuestionnairesActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(QuestionnairesActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:
@@ -279,13 +277,12 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
-
 
 
     public void getRoleActivity(int role_id) {
@@ -298,7 +295,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         }
     }
 
-    public void removeItemDoctor(){
+    public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -316,7 +313,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         nav_visitedPatient.setVisible(false);
     }
 
-    public void removeItemUser(){
+    public void removeItemUser() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -334,7 +331,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         nav_questionnaires.setVisible(false);
     }
 
-    public void removeItemAdmin(){
+    public void removeItemAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -352,7 +349,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         nav_addRetrieveNecessities.setVisible(false);
     }
 
-    public void getUserRole(){
+    public void getUserRole() {
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
@@ -370,7 +367,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             Questionnaires questionnaires = dataSnapshot.getValue(Questionnaires.class);
-                             URI1 = String.valueOf(questionnaires.uri);
+                            URI1 = String.valueOf(questionnaires.uri);
                         }
 
                         @Override
@@ -392,7 +389,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                             User user = dataSnapshot.getValue(User.class);
                             int role = user.getRole();
                             getRoleActivity(role);
-                            if(role == 3){
+                            if (role == 3) {
                                 URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
                             }
                         }
@@ -444,7 +441,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
                 } else if (role == 3) { //role 3 = Doctor
                     URI1 = "https://docs.google.com/forms/d/1wqZ8QBlmsvdBhkEgpl0RTJ8rtlG_is7EISbfPTn7MqY/edit#responses";
                     URI2 = "https://docs.google.com/forms/d/1F-6byb6dDpGzT2wq5s2vPKflw6pq1u7PCKn4nf5lD_I/edit#responses";
-                    URI3 ="https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
+                    URI3 = "https://docs.google.com/forms/d/1_yNp6zPo-7ipKg1q2UIg7TP6fuwQD4rchTDJqa7FfQI/edit#responses";
                     URI4 = "https://docs.google.com/forms/d/1x7PXgG_dvIDqGFIquZF3s_rZY-RmCNoOoLcnr2yqZIM/edit#responses";
                     removeItemAdmin();
                     removeItemUser();

@@ -125,11 +125,9 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, ReadRatingsActivity.class);
-                startActivity(refresh);
-                this.finish();
-        }
+        Intent refresh = new Intent(this, ReadRatingsActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
@@ -137,7 +135,7 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         public void onClick(View v) {
             Intent languageIntent = new Intent(ReadRatingsActivity.this, PopUpLanguageActivity.class);
             languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadRatingsActivity");
-            startActivity(languageIntent);
+            startActivityForResult(languageIntent, 1);
         }
     };
 
@@ -262,7 +260,7 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
 
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
-             twoDForm = new DecimalFormat("#.##");
+            twoDForm = new DecimalFormat("#.##");
         }
 
         return Float.valueOf(twoDForm.format(d));

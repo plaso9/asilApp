@@ -30,8 +30,8 @@ import java.util.Date;
 import it.uniba.di.sms.asilapp.models.MedicalRecord;
 import it.uniba.di.sms.asilapp.models.Pathology;
 
-public class AddPathologyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private static final String TAG  = "AddPathologyActivity";
+public class AddPathologyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "AddPathologyActivity";
 
     private EditText mName;
     private EditText mDescription;
@@ -116,24 +116,19 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Intent refresh = new Intent(this, AddPathologyActivity.class);
-                startActivity(refresh);
-                this.finish();
-
-        }
+        Intent refresh = new Intent(this, AddPathologyActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AddPathologyActivity.this,PopUpLanguageActivity.class);
+            Intent change_languageIntent = new Intent(AddPathologyActivity.this, PopUpLanguageActivity.class);
             change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddPathologyActivity");
-            startActivity(change_languageIntent);
+            startActivityForResult(change_languageIntent, 1);
         }
     };
-
 
 
     public View.OnClickListener submitButton_listener = new View.OnClickListener() {
@@ -143,7 +138,7 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
         }
     };
 
-    public void addPathology(){
+    public void addPathology() {
         user_clicked = getIntent().getExtras().getString("user_clicked");
         parameter_clicked = getIntent().getExtras().getString("_parameter");
 
@@ -184,7 +179,7 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
         FirebaseDatabase.getInstance().getReference("medical_records").push().setValue(medicalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //success message
                     Toast.makeText(AddPathologyActivity.this, "Addedd successfully", Toast.LENGTH_LONG).show();
                     finish();
@@ -198,35 +193,35 @@ public class AddPathologyActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent (AddPathologyActivity.this, DoctorActivity.class);
+                Intent nav_homeDoctorIntent = new Intent(AddPathologyActivity.this, DoctorActivity.class);
                 startActivity(nav_homeDoctorIntent);
                 break;
             case R.id.nav_search_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_searchPatientIntent = new Intent (AddPathologyActivity.this, SearchPatientActivity.class);
+                Intent nav_searchPatientIntent = new Intent(AddPathologyActivity.this, SearchPatientActivity.class);
                 startActivity(nav_searchPatientIntent);
                 break;
             case R.id.nav_kit_opening:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent (AddPathologyActivity.this, KitOpeningActivity.class);
+                Intent nav_kitOpeningIntent = new Intent(AddPathologyActivity.this, KitOpeningActivity.class);
                 startActivity(nav_kitOpeningIntent);
                 break;
             case R.id.nav_visited_patient:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent (AddPathologyActivity.this, PatientListActivity.class);
+                Intent nav_visitedPatientIntent = new Intent(AddPathologyActivity.this, PatientListActivity.class);
                 startActivity(nav_visitedPatientIntent);
                 break;
             case R.id.nav_video:
                 drawer.closeDrawer(GravityCompat.START);
                 //Create new Intent
-                Intent nav_videoIntent = new Intent (AddPathologyActivity.this, VideoActivity.class);
+                Intent nav_videoIntent = new Intent(AddPathologyActivity.this, VideoActivity.class);
                 startActivity(nav_videoIntent);
                 break;
             case R.id.nav_logout:
