@@ -151,7 +151,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         readUserList();
         int number_patient = mUserList.size();
         title.setText(getResources().getQuantityString(R.plurals.visitedPatient, number_patient, number_patient));
-
+        
     }
 
     public void readUserList() {
