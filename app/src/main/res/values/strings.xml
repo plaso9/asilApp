@@ -134,13 +134,14 @@
 reception of migrants for application of international protection. Download this PDF to read your rights and duties. Before the download choose your language</string>
     <string name="learn">Learn how to use this application by watching this video</string>
     <string name="avg">Avg</string>
-
+    <string name="celsius" translatable="false">°C</string>
     <string name="signout">Logout</string>
 
     <plurals name="visitedPatient">
         <item quantity="one">Visited patient</item>
         <item quantity="other">Visited patients</item>
     </plurals>
+    <string name="notSupported">N</string>
 
 
 </resources>

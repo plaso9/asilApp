@@ -125,6 +125,7 @@
         <item quantity="one">Paziente visitato</item>
         <item quantity="other">Pazienti visitati</item>
     </plurals>
+    <string name="notSupported">Temperatura non disponibile</string>
 </resources>
 
 

@@ -119,7 +119,7 @@
                             <ImageView
                                 android:id="@+id/image_ambulatory"
                                 android:layout_width="match_parent"
-                                android:layout_height="58dp"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/ambulatory"
                                 android:src="@drawable/ambulatory" />
 
@@ -157,7 +157,7 @@
                             <ImageView
                                 android:id="@+id/image_municipality"
                                 android:layout_width="match_parent"
-                                android:layout_height="58dp"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/municipality"
                                 android:src="@drawable/municipality" />
 
@@ -194,8 +194,8 @@
 
                             <ImageView
                                 android:id="@+id/image_postoffice"
-                                android:layout_width="wrap_content"
-                                android:layout_height="58dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/postoffice"
                                 android:src="@drawable/postoffice" />
 
@@ -233,7 +233,7 @@
                             <ImageView
                                 android:id="@+id/image_placesofworship"
                                 android:layout_width="match_parent"
-                                android:layout_height="58dp"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/placesofworship"
                                 android:src="@drawable/placesofworship" />
 
@@ -271,7 +271,7 @@
                             <ImageView
                                 android:id="@+id/image_school"
                                 android:layout_width="match_parent"
-                                android:layout_height="58dp"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/school"
                                 android:src="@drawable/school" />
 
@@ -309,7 +309,7 @@
                             <ImageView
                                 android:id="@+id/image_pharmacy"
                                 android:layout_width="match_parent"
-                                android:layout_height="58dp"
+                                android:layout_height="@dimen/iconCityHeightSize"
                                 android:contentDescription="@string/pharmacy"
                                 android:src="@drawable/pharmacy" />
 
@@ -339,6 +339,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewCityDescription"
                     app:layout_constraintVertical_bias="0.533" />
+
+                <TextView
+                    android:id="@+id/textViewTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/pageTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/pageTitle"
+                    app:layout_constraintTop_toTopOf="@+id/pageTitle" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

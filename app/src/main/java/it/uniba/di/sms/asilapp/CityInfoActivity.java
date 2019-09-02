@@ -1,9 +1,13 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -33,15 +37,18 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
-public class CityInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CityInfoActivity extends AppCompatActivity implements SensorEventListener, NavigationView.OnNavigationItemSelectedListener {
     //variable declaration
     private static final String TAG = "CityInfoActivity";
+    private SensorManager mSensorManager;
+    private Sensor mTemperature;
 
     private String uId;
     private String cityInfo;
     private String cityName;
     private String _acceptance;
-
+    private TextView pageTitle;
+    private TextView textViewTemp;
     private TextView mDescription;
 
     private DatabaseReference mUserReference;
@@ -121,6 +128,8 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         card_view_Pharmacy = findViewById(R.id.card_pharmacy);
         mDescription = findViewById(R.id.textViewCityDescription);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        pageTitle = findViewById(R.id.pageTitle);
+        textViewTemp = findViewById(R.id.textViewTemp);
 
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
@@ -150,6 +159,17 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
         card_view_Postoffice.setOnClickListener(card_view_Postoffice_listener);
         card_view_Municipality.setOnClickListener(card_view_Municipality_listener);
         card_view_PlacesOfWorship.setOnClickListener(card_view_PlacesOfWorship_listener);
+
+
+        //Check if the device has Ambient Temperature Sensor
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+            mTemperature= mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE); // requires API level 14.
+        }
+        if (mTemperature == null) {
+            textViewTemp.setText(R.string.notSupported);
+        }
+
     }
 
 
@@ -238,6 +258,7 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
                         cityName = city.name;
                         cityInfo = cityName + " - " + city.description;
                         mDescription.setText(cityInfo);
+                        pageTitle.setText(cityName);
                     }
                 }
 
@@ -347,5 +368,26 @@ public class CityInfoActivity extends AppCompatActivity implements NavigationVie
             startActivity(mapIntent);
         }
     };
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(this, mTemperature, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        float ambient_temperature = event.values[0];
+        textViewTemp.setText(String.valueOf(ambient_temperature) + getResources().getString(R.string.celsius));
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Do something here if sensor accuracy changes.
+    }
 
 }

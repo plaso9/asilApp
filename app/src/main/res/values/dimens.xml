@@ -8,4 +8,5 @@
     <dimen name="iconLandHeightSize">80dp</dimen>
     <dimen name="marginStart">16dp</dimen>
     <dimen name="marginEnd">16dp</dimen>
+    <dimen name="iconCityHeightSize">58dp</dimen>
 </resources>
