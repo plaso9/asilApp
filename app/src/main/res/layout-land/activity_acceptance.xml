@@ -78,7 +78,7 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="90dp"
                                     android:text="@string/centerName"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,7 @@
                                     android:layout_marginTop="16dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterName" />
 
@@ -103,7 +103,7 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
                                     android:text="@string/centerAddress"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterName" />
 
@@ -115,7 +115,7 @@
                                     android:layout_marginTop="16dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterLocation" />
 
@@ -127,7 +127,7 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
                                     android:text="@string/centerLocation"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterLocation" />
 
@@ -139,7 +139,7 @@
                                     android:layout_marginTop="16dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterCity" />
 
@@ -151,7 +151,7 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
                                     android:text="@string/centerRegulation"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterCity" />
 
@@ -163,7 +163,7 @@
                                     android:layout_marginTop="16dp"
                                     android:text="@string/readNorms"
                                     android:textColor="#000000"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterRegulation" />
 
@@ -175,7 +175,7 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
                                     android:text="@string/centerServices"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editTextCenterRegulation" />
 
@@ -187,7 +187,7 @@
                                     android:layout_marginTop="16dp"
                                     android:text="List of services provided by the center"
                                     android:textColor="#000000"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/textSize"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textViewCenterServices" />
 

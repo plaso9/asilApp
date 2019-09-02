@@ -76,7 +76,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="90dp"
                     android:text="@string/cityRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +97,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/centerRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarCity" />
 
@@ -118,7 +118,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/appRating"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarCenter" />
 
@@ -139,7 +139,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/comment"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBarApp" />
 
@@ -154,7 +154,7 @@
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
 

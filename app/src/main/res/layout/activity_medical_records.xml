@@ -72,10 +72,12 @@
                     android:id="@+id/textViewLastMeasurement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="138dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
                     android:text="@string/lastMeasurement"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -87,7 +89,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/temperature"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewLastMeasurement" />
 
@@ -121,7 +123,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/pressure"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
 
@@ -155,7 +157,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/glycemia"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewPressure" />
 
@@ -189,7 +191,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/heartbeat"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGlycemia" />
 
@@ -223,7 +225,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/ecg"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewHeartbeat" />
 
@@ -257,7 +259,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/symptoms"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewECG" />
 
@@ -291,7 +293,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/pathology"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewSymptoms" />
 

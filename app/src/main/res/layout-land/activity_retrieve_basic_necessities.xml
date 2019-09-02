@@ -75,7 +75,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="90dp"
                     android:text="@string/food"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +87,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/go"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/textViewMedicine"
                     app:layout_constraintTop_toBottomOf="@+id/textViewMedicine" />
 
@@ -98,7 +98,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/show"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/textViewGoTo"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGoTo" />
 
@@ -111,7 +111,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/medicines"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewShow2" />
 
@@ -123,7 +123,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/go"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/textViewFood"
                     app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
 
@@ -134,7 +134,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/show"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="@+id/textViewGo2"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGo2" />
 
@@ -145,7 +145,7 @@
                     android:layout_marginStart="8dp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGo2"
                     app:layout_constraintStart_toEndOf="@+id/textViewGo2"
                     app:layout_constraintTop_toTopOf="@+id/textViewGo2"
@@ -183,7 +183,7 @@
                     android:layout_marginStart="8dp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGoTo"
                     app:layout_constraintStart_toEndOf="@+id/textViewGoTo"
                     app:layout_constraintTop_toTopOf="@+id/textViewGoTo"

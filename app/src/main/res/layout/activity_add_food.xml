@@ -77,7 +77,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="60dp"
                     android:text="@string/city"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +99,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/mallLocation"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spinnerCityFood" />
                 <EditText
@@ -113,7 +113,7 @@
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textMallLocation" />
 
@@ -125,7 +125,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/pharmacyLocation"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextMallLocation" />
 
@@ -140,7 +140,7 @@
                     tools:text="asilApp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewPharmacyLocation" />
 

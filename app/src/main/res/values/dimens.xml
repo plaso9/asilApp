@@ -4,4 +4,6 @@
     <dimen name="buttonTextSize">15dp</dimen>
     <dimen name="titleTextSize">24dp</dimen>
     <dimen name="textSize">20dp</dimen>
+    <dimen name="iconHeightSize">100dp</dimen>
+    <dimen name="iconLandHeightSize">80dp</dimen>
 </resources>

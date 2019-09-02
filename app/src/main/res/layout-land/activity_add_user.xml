@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/name"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     android:layout_marginTop="60dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -89,7 +89,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/surname"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewName" />
                 <!--BIRTHDAY-->
@@ -100,7 +100,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/date_of_birth"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewSurname" />
                 <!--BIRTH PLACE-->
@@ -111,7 +111,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/birth_place"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBirthday" />
                 <!--EMAIL-->
@@ -122,7 +122,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/email"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
                 <!--PASSWORD-->
@@ -133,7 +133,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/password"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
                 <!--CELL-->
@@ -144,7 +144,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/cell"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
                 <!--GENDER-->
@@ -155,7 +155,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/gender"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
 
@@ -167,7 +167,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/role"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
 
@@ -179,7 +179,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/acceptance"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewRole" />
 
@@ -191,7 +191,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/nationality"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewAcceptance" />
 
@@ -208,7 +208,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewName"
@@ -223,7 +223,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewSurname"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewSurname"
@@ -238,7 +238,7 @@
                     android:ems="10"
                     android:inputType="date"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:cursorVisible="false"
@@ -256,7 +256,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewBirthPlace"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewBirthPlace"
@@ -271,7 +271,7 @@
                     android:ems="10"
                     android:inputType="textEmailAddress"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewEmail"
@@ -286,7 +286,7 @@
                     android:ems="10"
                     android:inputType="textPassword"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewPassword"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewPassword"
@@ -301,7 +301,7 @@
                     android:ems="10"
                     android:inputType="number"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewCell"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewCell"
@@ -344,7 +344,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewNation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewNation"

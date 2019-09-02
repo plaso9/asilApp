@@ -78,7 +78,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="90dp"
                     android:text="@string/name"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <!--SURNAME-->
@@ -89,7 +89,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/surname"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewName" />
                 <!--BIRTHDAY-->
@@ -100,7 +100,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/date_of_birth"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewSurname" />
                 <!--BIRTH PLACE-->
@@ -111,7 +111,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/birth_place"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBirthday" />
                 <!--EMAIL-->
@@ -122,7 +122,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/email"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBirthPlace" />
                 <!--CELL-->
@@ -133,7 +133,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/cell"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
                 <!--GENDER-->
@@ -144,7 +144,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/gender"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCell" />
 
@@ -156,7 +156,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/nationality"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
 
@@ -174,7 +174,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewName"
@@ -192,7 +192,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewSurname"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewSurname"
@@ -210,7 +210,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewBirthday"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewBirthday"
@@ -228,7 +228,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewBirthPlace"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewBirthPlace"
@@ -246,7 +246,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewEmail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewEmail"
@@ -261,7 +261,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewCell"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewCell"
@@ -278,7 +278,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="text"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewGender"
@@ -295,7 +295,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="text"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewNation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewNation"
@@ -305,14 +305,13 @@
                     android:id="@+id/buttonSavePersonalData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="307dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/save"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewNation"
                     app:layout_constraintVertical_bias="1.0" />
 

@@ -41,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="152dp"
         android:text="asilApp"
-        android:textSize="20dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
         android:ems="10"
         android:inputType="text"
         android:text=""
-        android:textSize="20dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/nameParameter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nameParameter"
