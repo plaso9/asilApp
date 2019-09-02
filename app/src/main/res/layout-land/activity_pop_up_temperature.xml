@@ -50,7 +50,7 @@
         android:id="@+id/editValueParameter"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginEnd"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:cursorVisible="false"
         android:ems="10"
         android:inputType="text"

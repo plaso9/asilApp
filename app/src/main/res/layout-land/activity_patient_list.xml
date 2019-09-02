@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginTop="130dp"
-            android:layout_marginStart="@dimen/marginEnd"
+            android:layout_marginEnd="@dimen/marginEnd"
             android:hint="@string/searchPatient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/marginStart"
                     android:layout_marginTop="32dp"
-                    android:layout_marginStart="@dimen/marginEnd"
+                    android:layout_marginEnd="@dimen/marginEnd"
                     android:text="@string/lastMeasurement"
                     android:textSize="@dimen/textSize"
                     app:layout_constraintEnd_toEndOf="parent"

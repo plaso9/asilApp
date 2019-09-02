@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="112dp"
-                    android:layout_marginStart="@dimen/marginEnd"
+                    android:layout_marginEnd="@dimen/marginEnd"
                     android:text="@string/survey"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"
