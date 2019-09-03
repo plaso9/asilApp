@@ -37,44 +37,48 @@ import it.uniba.di.sms.asilapp.adapter.PatientAdapter;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class PatientListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //variable declaration
     private static final String TAG = "PatientListActivity";
-
     private DatabaseReference mUserReference;
-    private PatientAdapter patientAdapter;
-    private List<User> mUserList;
-
-    private RecyclerView recyclerView;
-
-    private EditText searchText;
     private DrawerLayout drawer;
+    private EditText searchText;
     private ImageButton imgBtnLanguage;
-
+    private List<User> mUserList;
+    private MenuItem nav_home;
+    private MenuItem nav_info;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_readRatings;
-    private MenuItem nav_addAcceptance;
-    private MenuItem nav_addRetrieveNecessities;
-    private MenuItem nav_home;
-    private MenuItem nav_info;
     private MenuItem nav_personalData;
+    private MenuItem nav_addAcceptance;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
-
+    private MenuItem nav_addRetrieveNecessities;
+    private NavigationView navigationView;
+    private PatientAdapter patientAdapter;
+    private RecyclerView recyclerView;
     private TextView title;
+    private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_patient_list);
 
-        title = findViewById(R.id.patientListTitle);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        title = findViewById(R.id.patientListTitle);
+        recyclerView = (RecyclerView) findViewById(R.id.userList);
+        searchText = findViewById(R.id.searchText);
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -89,6 +93,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         nav_medicalRecords = menu.findItem(R.id.nav_medicalRecords);
         nav_questionnaires = menu.findItem(R.id.nav_questionnaires);
         nav_addRetrieveNecessities = menu.findItem(R.id.nav_add_retrive_necessities);
+
         //Set item visibility
         nav_home.setVisible(false);
         nav_info.setVisible(false);
@@ -101,23 +106,25 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         nav_questionnaires.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //Set a click listener on the imageButton objects
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-        searchText = findViewById(R.id.searchText);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
+            //Set image
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
-        recyclerView = (RecyclerView) findViewById(R.id.userList);
         //Used to know size top avoid expensive layout operation
         recyclerView.setHasFixedSize(true);
         //Create layout manager, it is responsible for measuring and positioning item views within a RecyclerView
@@ -125,89 +132,23 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
+        //Create new Intent
         Intent refresh = new Intent(this, PatientListActivity.class);
         startActivity(refresh);
         this.finish();
-
     }
 
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(PatientListActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientListActivity");
-            startActivityForResult(languageIntent, 1);
-        }
-    };
-
     @Override
-    protected void onStart() {
+    protected void onStart() {   //Called when the activity had been stopped.
         super.onStart();
         readUserList();
         int number_patient = mUserList.size();
         title.setText(getResources().getQuantityString(R.plurals.visitedPatient, number_patient, number_patient));
-        
-    }
-
-    public void readUserList() {
-        //ArrayList variable
-        mUserList = new ArrayList<>();
-        //Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference("user");
-        //Used to synchronize data
-        mUserReference.keepSynced(true);
-        //Add value
-        mUserReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Clear ArrayList
-                mUserList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    // Get obj user
-                    final User user = snapshot.getValue(User.class);
-                    if (user.getRole() == 2) {
-                        // Add obj to ArrayList
-                        mUserList.add(user);
-
-                        searchText.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-                                mUserList.clear();
-                                if (editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())) {
-                                    mUserList.add(user);
-                                }
-                            }
-                        });
-                    }
-
-                    patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
-                    recyclerView.setAdapter(patientAdapter);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting user failed
-                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
-                Toast.makeText(PatientListActivity.this, "Failed to load user.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
@@ -251,4 +192,68 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         }
         return true;
     }
+
+    public void readUserList() {
+        //ArrayList variable
+        mUserList = new ArrayList<>();
+        //Initialize Database Reference
+        mUserReference = FirebaseDatabase.getInstance().getReference("user");
+        //Used to synchronize data
+        mUserReference.keepSynced(true);
+        //Add value
+        mUserReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Clear ArrayList
+                mUserList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // Get obj user
+                    final User user = snapshot.getValue(User.class);
+                    if (user.getRole() == 2) {
+                        // Add obj to ArrayList
+                        mUserList.add(user);
+                        searchText.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            //Called to notify you that, within charSequence, the count characters beginning at start are about to be replaced by new text with length after.
+                            }
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            //Called to notify you that, within charSequence, the count characters beginning at start have just replaced old text that had length before
+                            }
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                            //Called to notify you that, somewhere within editable, the text has been changed.
+                                mUserList.clear();
+                                if (editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())) {
+                                    mUserList.add(user);
+                                }
+                            }
+                        });
+                    }
+                    patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
+                    recyclerView.setAdapter(patientAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting user failed
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                Toast.makeText(PatientListActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent(PatientListActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientListActivity");
+            startActivityForResult(languageIntent, 1);
+        }
+    };
 }
