@@ -1,6 +1,8 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -131,9 +133,11 @@ public class CityInfoActivity extends AppCompatActivity implements SensorEventLi
         pageTitle = findViewById(R.id.pageTitle);
         textViewTemp = findViewById(R.id.textViewTemp);
 
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 

@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -142,9 +143,11 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         submitButton = findViewById(R.id.buttonSubmit);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 

@@ -2,6 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -104,9 +105,11 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         chatButton = findViewById(R.id.chatBtn);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 

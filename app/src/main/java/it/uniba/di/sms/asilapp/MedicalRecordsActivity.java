@@ -1,6 +1,8 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -129,10 +131,11 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         //Set image resource
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
-            //Set image
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 

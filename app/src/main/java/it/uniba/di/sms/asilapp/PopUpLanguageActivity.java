@@ -1,10 +1,11 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,14 +20,17 @@ public class PopUpLanguageActivity extends AppCompatActivity {
     //Images
     private ImageView imgEng, imgIt;
 
-    SharedPreferences.Editor editor = getSharedPreferences("Preferences", MODE_PRIVATE).edit();
+
+    private String langPref = "Language";
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up_language);
 
-
+        prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         //find R.id from xml
         textViewLangEng = findViewById(R.id.textViewDescription);
         textViewLangIt = findViewById(R.id.textViewLangIt);
@@ -56,6 +60,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
     public View.OnClickListener eng_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
             Configuration config = getBaseContext().getResources().getConfiguration();
             if (!"".equals("en") && !config.locale.getLanguage().equals("en")) {
 
@@ -64,8 +69,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 Configuration conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
-                editor.putString("language", "en");
-                editor.apply();
+
 
                 Bundle extras = getIntent().getExtras();
                 String classname = extras.getString("callingActivity");
@@ -82,6 +86,14 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 i.putExtra("user_clicked", userClickedId);
                 i.putExtra("_parameter", parameter);
                 setResult(1, i);
+
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(langPref, "en");
+                editor.commit();
+
+
+                finish();
+            }else{
                 finish();
             }
 
@@ -100,8 +112,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
-                editor.putString("language", "it");
-                editor.apply();
+
 
                 Bundle extras = getIntent().getExtras();
 
@@ -119,8 +130,15 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 i.putExtra("user_clicked", userClickedId);
                 i.putExtra("_parameter", parameter);
                 setResult(1, i);
+
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(langPref, "it");
+                editor.commit();
+
                 finish();
 
+            }else{
+                finish();
             }
 
         }

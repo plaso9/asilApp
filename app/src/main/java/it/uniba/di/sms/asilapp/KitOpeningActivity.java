@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -88,9 +89,11 @@ public class KitOpeningActivity extends AppCompatActivity implements NavigationV
 
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        if (config.locale.getLanguage().equals("en")) {
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
