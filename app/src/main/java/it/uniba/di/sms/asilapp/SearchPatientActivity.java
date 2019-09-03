@@ -25,8 +25,9 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     //Variable declaration
     public static EditText editTextCode;
     private Button buttonSearch;
-    private ImageView imageViewScanCode;
     private DrawerLayout drawer;
+    private ImageView imageViewScanCode;
+    private ImageButton imgBtnLanguage;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_readRatings;
@@ -37,7 +38,8 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     private MenuItem nav_personalData;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
-    private ImageButton imgBtnLanguage;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,16 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_search_patient);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        buttonSearch = (Button) findViewById(R.id.buttonSearch);
+        imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
+
         navigationView.setNavigationItemSelectedListener(this);
+        setSupportActionBar(toolbar);
 
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -78,27 +85,21 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         nav_questionnaires.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        //Defined variables
-        buttonSearch = (Button) findViewById(R.id.buttonSearch);
-        imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
+        //Set a click listener on the imageButton objects
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
+            //Set image
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
         //Set a click listener on the imageView objects
         imageViewScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Create new Intent
                 Intent scanCodeIntent = new Intent(SearchPatientActivity.this, ScanActivity.class);
                 startActivity(scanCodeIntent);
             }
@@ -108,32 +109,31 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Create new Intent
                 Intent searchIntent = new Intent(SearchPatientActivity.this, PatientListActivity.class);
                 startActivityForResult(searchIntent, 1);
             }
         });
 
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
+        //Create new Intent
         Intent refresh = new Intent(this, SearchPatientActivity.class);
         startActivity(refresh);
         this.finish();
     }
 
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(SearchPatientActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.SearchPatientActivity");
-            startActivityForResult(languageIntent, 1);
-        }
-    };
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
@@ -177,4 +177,15 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         }
         return true;
     }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent(SearchPatientActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.SearchPatientActivity");
+            startActivityForResult(languageIntent, 1);
+        }
+    };
 }

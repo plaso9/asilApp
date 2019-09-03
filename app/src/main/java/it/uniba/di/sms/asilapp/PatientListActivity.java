@@ -203,6 +203,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         //Add value
         mUserReference.addValueEventListener(new ValueEventListener() {
             @Override
+            //called with a snapshot of the data at this location
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Clear ArrayList
                 mUserList.clear();
@@ -237,6 +238,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
             }
 
             @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting user failed
                 Log.w(TAG, "loadUser:onCancelled", databaseError.toException());

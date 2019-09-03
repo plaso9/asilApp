@@ -42,7 +42,6 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     private RecyclerView recyclerView;
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
-
     private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_video;
@@ -53,6 +52,8 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
@@ -60,10 +61,14 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_read_ratings);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        recyclerView = findViewById(R.id.ratingList);
+
+        setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(this);
 
         // get menu from navigationView
@@ -93,23 +98,24 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         nav_questionnaires.setVisible(false);
         nav_visitedPatient.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //Set a click listener on the imageButton objects
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-        //Defined variable
-        recyclerView = findViewById(R.id.ratingList);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
+            //Set image
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
-
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         //Initialize Database Reference
         mDatabaseRating = FirebaseDatabase.getInstance().getReference("rating");
@@ -123,21 +129,12 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
+        //Create new Intent
         Intent refresh = new Intent(this, ReadRatingsActivity.class);
         startActivity(refresh);
         this.finish();
     }
-
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(ReadRatingsActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadRatingsActivity");
-            startActivityForResult(languageIntent, 1);
-        }
-    };
 
     @Override
     protected void onStart() {   //Called when the activity had been stopped,
@@ -181,7 +178,7 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
@@ -229,40 +226,43 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
     //Created ViewHolder Class
     public static class RatingViewHolder extends RecyclerView.ViewHolder {
         View mView;
-
         public RatingViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
         }
-
         //Set functions
         public void setName(String name) {
             TextView userName = mView.findViewById(R.id.text_userNameClicked);
             userName.setText(name);
         }
-
         public void setAvgRating(Float avgRating) {
             TextView rating = mView.findViewById(R.id.userSurname);
             rating.setText(avgRating + "");
         }
-
         public void setComment(String comment) {
             TextView userComment = mView.findViewById(R.id.userComment);
             userComment.setText(comment);
         }
-
-
     }
 
     //Function to round avg rating
     public float roundTwoDecimals(float d) {
         DecimalFormat twoDForm = new DecimalFormat("#,##");
-
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
             twoDForm = new DecimalFormat("#.##");
         }
-
         return Float.valueOf(twoDForm.format(d));
     }
+
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent(ReadRatingsActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.ReadRatingsActivity");
+            startActivityForResult(languageIntent, 1);
+        }
+    };
 }
