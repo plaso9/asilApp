@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class PopUpLanguageActivity extends AppCompatActivity {
     //Images
     private ImageView imgEng, imgIt;
 
+    SharedPreferences.Editor editor = getSharedPreferences("Preferences", MODE_PRIVATE).edit();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,8 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 Configuration conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
-
+                editor.putString("language", "en");
+                editor.apply();
 
                 Bundle extras = getIntent().getExtras();
                 String classname = extras.getString("callingActivity");
@@ -97,7 +100,8 @@ public class PopUpLanguageActivity extends AppCompatActivity {
                 conf = new Configuration(config);
                 conf.locale = locale;
                 getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
-
+                editor.putString("language", "it");
+                editor.apply();
 
                 Bundle extras = getIntent().getExtras();
 
