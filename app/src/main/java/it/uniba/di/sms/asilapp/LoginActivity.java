@@ -25,34 +25,33 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class LoginActivity extends AppCompatActivity {
+    //Variable declaration
     private static final String TAG = "LoginActivity";
-
+    private Button loginButton;
+    private DatabaseReference mUserReference;
     private EditText mEmailView;
     private EditText mPasswordView;
-    private Button loginButton;
     private FirebaseAuth mAuth;
-
-    private DatabaseReference mUserReference;
     private String uId;
     private int mRole;
-    private int role_id;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_login);
 
+        //Defined variable
         mEmailView = (EditText) findViewById(R.id.input_email);
         mPasswordView = (EditText) findViewById(R.id.input_password);
         loginButton = (Button) findViewById(R.id.btn_login);
 
         //Returns an instance of this class corresponding to the default FirebaseApp instance.
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() {   //Called when the activity had been stopped.
         super.onStart();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = mEmailView.getText().toString();
                 final String psw = mPasswordView.getText().toString();
-
                 final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                         R.style.AppTheme_Dark_Dialog);
                 progressDialog.setIndeterminate(true);
@@ -92,21 +90,22 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Get role id to load correct homepage
     public void getRoleActivity(int role_id) {
-        if (role_id == 1) {
-            //Admin Role
-            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
-            startActivity(intent);
+        if (role_id == 1) { //Admin Role
+            //Create new Intent
+            Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+            startActivity(adminIntent);
             finish();
-        } else if (role_id == 2) {
-            //User Role
-            Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-            startActivity(intent);
+        } else if (role_id == 2) {  //User Role
+            //Create new Intent
+            Intent userIntent = new Intent(LoginActivity.this, HomepageActivity.class);
+            startActivity(userIntent);
             finish();
-        } else if (role_id == 3) {
-            //Doctor Role
-            Intent intent = new Intent(LoginActivity.this, DoctorActivity.class);
-            startActivity(intent);
+        } else if (role_id == 3) {  //Doctor Role
+            //Create new Intent
+            Intent doctorIntent= new Intent(LoginActivity.this, DoctorActivity.class);
+            startActivity(doctorIntent);
             finish();
         }
     }
@@ -116,19 +115,21 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Get userId
         uId = user.getUid();
+        //Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
+            //called with a snapshot of the data at this location
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object
                 User user = dataSnapshot.getValue(User.class);
                 mRole = user.getRole();
                 getRoleActivity(mRole);
             }
-
             @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
             public void onCancelled(DatabaseError databaseError) {
                 // Getting User Role failed, log a message
                 Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
@@ -141,6 +142,5 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login Failed", Toast.LENGTH_LONG).show();
-
     }
 }

@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -42,7 +41,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_search_patient);

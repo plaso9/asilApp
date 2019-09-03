@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -28,34 +27,28 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import it.uniba.di.sms.asilapp.models.MedicalRecord;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MedicalRecordsActivity";
-    ImageView image_seeTemperatureStats;
-    ImageView image_seeBloodPressureStats;
-    ImageView image_seeGlycemiaStats;
-    ImageView image_seeHeartbeatStats;
-    ImageView image_seeECGStats;
-    ImageView image_seeSymptomsStats;
-    ImageView image_seePathologyStats;
-    Button button_addTemperature;
-    Button button_addBloodPressure;
-    Button button_addGlycemia;
-    Button button_addHeartbeat;
-    Button button_addECG;
-    Button button_addSymptoms;
-    Button button_addPathology;
-    private DatabaseReference mUserReference;
-    private String uId;
-    private String userClickedId;
-    private int mRole;
-    private ImageButton imgBtnLanguage;
-
+    private Button button_addECG;
+    private Button button_addGlycemia;
+    private Button button_addSymptoms;
+    private Button button_addHeartbeat;
+    private Button button_addPathology;
+    private Button button_addTemperature;
+    private Button button_addBloodPressure;
     private DrawerLayout drawer;
-
+    private DatabaseReference mUserReference;
+    private ImageButton imgBtnLanguage;
+    private ImageView image_seeECGStats;
+    private ImageView image_seeGlycemiaStats;
+    private ImageView image_seeSymptomsStats;
+    private ImageView image_seeHeartbeatStats;
+    private ImageView image_seePathologyStats;
+    private ImageView image_seeTemperatureStats;
+    private ImageView image_seeBloodPressureStats;
     private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_video;
@@ -71,70 +64,85 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+
+    private String uId;
+    private String userClickedId;
+    private int mRole;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_medical_records);
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        image_seeECGStats = findViewById(R.id.image_seeECGStats);
+        image_seeGlycemiaStats = findViewById(R.id.image_seeGlycemiaStats);
+        image_seeSymptomsStats = findViewById(R.id.image_seeSymptomsStats);
+        image_seeHeartbeatStats = findViewById(R.id.image_seeHeartbeatStats);
+        image_seePathologyStats = findViewById(R.id.image_SeePathologyStats);
+        image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
+        image_seeBloodPressureStats = findViewById(R.id.image_seeBloodPressureStats);
+
+        button_addECG = findViewById(R.id.buttonAddECG);
+        button_addGlycemia = findViewById(R.id.buttonAddGlycemia);
+        button_addSymptoms = findViewById(R.id.buttonAddSymptoms);
+        button_addHeartbeat = findViewById(R.id.buttonAddHeartbeat);
+        button_addPathology = findViewById(R.id.buttonAddPathology);
+        button_addTemperature = findViewById(R.id.buttonAddTemperature);
+        button_addBloodPressure = findViewById(R.id.buttonAddBloodPressure);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
         //Get user role to hide some menu item
         getUserRole();
 
-
-        image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
-        image_seeBloodPressureStats = findViewById(R.id.image_seeBloodPressureStats);
-        image_seeGlycemiaStats = findViewById(R.id.image_seeGlycemiaStats);
-        image_seeHeartbeatStats = findViewById(R.id.image_seeHeartbeatStats);
-        image_seeECGStats = findViewById(R.id.image_seeECGStats);
-        image_seeSymptomsStats = findViewById(R.id.image_seeSymptomsStats);
-        image_seePathologyStats = findViewById(R.id.image_SeePathologyStats);
-
-        button_addTemperature = findViewById(R.id.buttonAddTemperature);
-        button_addBloodPressure = findViewById(R.id.buttonAddBloodPressure);
-        button_addGlycemia = findViewById(R.id.buttonAddGlycemia);
-        button_addHeartbeat = findViewById(R.id.buttonAddHeartbeat);
-        button_addECG = findViewById(R.id.buttonAddECG);
-        button_addSymptoms = findViewById(R.id.buttonAddSymptoms);
-        button_addPathology = findViewById(R.id.buttonAddPathology);
-
+        //Set a click listener on the imageButton objects
+        image_seeECGStats.setOnClickListener(image_seeECGStats_listener);
+        image_seeGlycemiaStats.setOnClickListener(image_seeGlycemiaStats_listener);
+        image_seeSymptomsStats.setOnClickListener(image_seeSymptomsStats_listener);
+        image_seeHeartbeatStats.setOnClickListener(image_seeHeartbeatStats_listener);
+        image_seePathologyStats.setOnClickListener(image_seePathologyStats_listener);
         image_seeTemperatureStats.setOnClickListener(image_seeTemperatureStats_listener);
         image_seeBloodPressureStats.setOnClickListener(image_seeBloodPressureStats_listener);
-        image_seeGlycemiaStats.setOnClickListener(image_seeGlycemiaStats_listener);
-        image_seeHeartbeatStats.setOnClickListener(image_seeHeartbeatStats_listener);
-        image_seeECGStats.setOnClickListener(image_seeECGStats_listener);
-        image_seeSymptomsStats.setOnClickListener(image_seeSymptomsStats_listener);
-        image_seePathologyStats.setOnClickListener(image_seePathologyStats_listener);
 
+        //Set a click listener on the Button objects
+        button_addECG.setOnClickListener(button_addECG_listener);
+        button_addGlycemia.setOnClickListener(button_addGlycemia_listener);
+        button_addSymptoms.setOnClickListener(button_addSymptoms_listener);
+        button_addHeartbeat.setOnClickListener(button_addHeartbeat_listener);
+        button_addPathology.setOnClickListener(button_addPathology_listener);
         button_addTemperature.setOnClickListener(button_addTemperature_listener);
         button_addBloodPressure.setOnClickListener(button_addBloodPressure_listener);
-        button_addGlycemia.setOnClickListener(button_addGlycemia_listener);
-        button_addHeartbeat.setOnClickListener(button_addHeartbeat_listener);
-        button_addECG.setOnClickListener(button_addECG_listener);
-        button_addSymptoms.setOnClickListener(button_addSymptoms_listener);
-        button_addPathology.setOnClickListener(button_addPathology_listener);
 
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //Set a click listener on the imageButton objects
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
+            //Set image
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -144,14 +152,13 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         }
         // Get userId Logged
         uId = user.getUid();
-
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("user").child(uId);
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_homeDoctor:
                 drawer.closeDrawer(GravityCompat.START);
@@ -226,7 +233,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         return true;
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -235,18 +241,8 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         this.finish();
     }
 
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(MedicalRecordsActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MedicalRecordsActivity");
-            startActivityForResult(languageIntent, 1);
-        }
-    };
-
-
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -254,17 +250,16 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         }
     }
 
-
     @Override
-    protected void onStart() {
+    protected void onStart() {   //Called when the activity had been stopped.
         super.onStart();
         ValueEventListener userListener = new ValueEventListener() {
             @Override
+            //called with a snapshot of the data at this location
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
                 User user = dataSnapshot.getValue(User.class);
                 mRole = user.getRole();
-
                 if (mRole != 3) {
                     button_addTemperature.setVisibility(View.INVISIBLE);
                     button_addBloodPressure.setVisibility(View.INVISIBLE);
@@ -273,11 +268,10 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
                     button_addECG.setVisibility(View.INVISIBLE);
                     button_addSymptoms.setVisibility(View.INVISIBLE);
                     button_addPathology.setVisibility(View.INVISIBLE);
-
                 }
             }
-
             @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
             public void onCancelled(DatabaseError databaseError) {
                 // Getting User failed, log a message
                 Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
@@ -292,7 +286,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addTemperature_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_temperatureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_temperatureIntent.putExtra("user_clicked", userClickedId);
             add_temperatureIntent.putExtra("_parameter", "1");
             startActivity(add_temperatureIntent);
@@ -301,7 +297,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addBloodPressure_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             add_bloodPressureIntent.putExtra("_parameter", "2");
             startActivity(add_bloodPressureIntent);
@@ -310,7 +308,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addGlycemia_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_glycemiaIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_glycemiaIntent.putExtra("user_clicked", userClickedId);
             add_glycemiaIntent.putExtra("_parameter", "3");
             startActivity(add_glycemiaIntent);
@@ -319,7 +319,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addHeartbeat_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_heartbeatIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_heartbeatIntent.putExtra("user_clicked", userClickedId);
             add_heartbeatIntent.putExtra("_parameter", "4");
             startActivity(add_heartbeatIntent);
@@ -328,7 +330,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addECG_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_ecgIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_ecgIntent.putExtra("user_clicked", userClickedId);
             add_ecgIntent.putExtra("_parameter", "5");
             startActivity(add_ecgIntent);
@@ -337,7 +341,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addSymptoms_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_symptomsIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
+            //Pass data between intents
             add_symptomsIntent.putExtra("user_clicked", userClickedId);
             add_symptomsIntent.putExtra("_parameter", "6");
             startActivity(add_symptomsIntent);
@@ -346,7 +352,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener button_addPathology_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent add_pathologyIntent = new Intent(MedicalRecordsActivity.this, AddPathologyActivity.class);
+            //Pass data between intents
             add_pathologyIntent.putExtra("user_clicked", userClickedId);
             add_pathologyIntent.putExtra("_parameter", "7");
             startActivity(add_pathologyIntent);
@@ -357,7 +365,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeTemperatureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_temperatureIntent.putExtra("user_clicked", userClickedId);
             see_temperatureIntent.putExtra("_parameter", "1");
             startActivity(see_temperatureIntent);
@@ -366,7 +376,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeBloodPressureStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             see_bloodPressureIntent.putExtra("_parameter", "2");
             startActivity(see_bloodPressureIntent);
@@ -375,7 +387,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeGlycemiaStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_glycemiaIntent.putExtra("user_clicked", userClickedId);
             see_glycemiaIntent.putExtra("_parameter", "3");
             startActivity(see_glycemiaIntent);
@@ -384,7 +398,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeHeartbeatStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_heartbeatIntent.putExtra("user_clicked", userClickedId);
             see_heartbeatIntent.putExtra("_parameter", "4");
             startActivity(see_heartbeatIntent);
@@ -393,7 +409,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeECGStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_ecgIntent.putExtra("user_clicked", userClickedId);
             see_ecgIntent.putExtra("_parameter", "5");
             startActivity(see_ecgIntent);
@@ -402,7 +420,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seeSymptomsStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_symptomsIntent.putExtra("user_clicked", userClickedId);
             see_symptomsIntent.putExtra("_parameter", "6");
             startActivity(see_symptomsIntent);
@@ -411,13 +431,25 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     public View.OnClickListener image_seePathologyStats_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Create new Intent
             Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
+            //Pass data between intents
             see_pathologyIntent.putExtra("user_clicked", userClickedId);
             see_pathologyIntent.putExtra("_parameter", "7");
             startActivity(see_pathologyIntent);
         }
     };
 
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent languageIntent = new Intent(MedicalRecordsActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.MedicalRecordsActivity");
+            startActivityForResult(languageIntent, 1);
+        }
+    };
 
     public void removeItemDoctor() {
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -474,12 +506,14 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     }
 
     public void getUserRole() {
-        // Initialize FirebaseUser
+        //Get Current User
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
+            //called with a snapshot of the data at this location
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
                 User user = dataSnapshot.getValue(User.class);
@@ -492,8 +526,8 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
                     removeItemUser();
                 }
             }
-
             @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
             public void onCancelled(DatabaseError databaseError) {
                 // Getting User failed, log a message
                 Log.w(TAG, "loadUser:onCancelled", databaseError.toException());

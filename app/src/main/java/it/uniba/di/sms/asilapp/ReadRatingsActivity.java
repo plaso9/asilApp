@@ -1,6 +1,5 @@
 package it.uniba.di.sms.asilapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -30,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
-import java.util.Locale;
 
 import it.uniba.di.sms.asilapp.models.Rating;
 import it.uniba.di.sms.asilapp.models.User;
@@ -68,9 +66,10 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         recyclerView = findViewById(R.id.ratingList);
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
-
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
