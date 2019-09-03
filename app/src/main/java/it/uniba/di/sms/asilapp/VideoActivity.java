@@ -3,7 +3,10 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,16 +14,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
+//import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +39,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+import java.util.Vector;
+
 import it.uniba.di.sms.asilapp.models.User;
+import it.uniba.di.sms.asilapp.models.YouTubeVideos;
 
 public class VideoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
@@ -38,14 +51,10 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
     private DatabaseReference mUserReference;
     private DrawerLayout drawer;
-    private VideoView firstVideo, secondVideo;
     private ImageButton imgBtnLanguage;
     private int mRole;
-    private MediaController mediaController, mediaController1;
     private String uId;
-    private String video;
-    private TextView textViewFirstVideo, textViewSecondVideo;
-    private Uri uri;
+
 
     private MenuItem nav_home;
     private MenuItem nav_info;
@@ -65,6 +74,9 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
     private Toolbar toolbar;
 
+    private RecyclerView recyclerView;
+    Vector<YouTubeVideos> youTubeVideos = new Vector<YouTubeVideos>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,18 +84,21 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_video);
 
         //Defined variables
-        textViewFirstVideo = findViewById(R.id.textViewFirstVideo);
-        textViewSecondVideo = findViewById(R.id.textViewSecondVideo);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        recyclerView = findViewById(R.id.recyclerViewVideo);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        VideoAdapter videoAdapter = new VideoAdapter(youTubeVideos);
+
+        recyclerView.setAdapter(videoAdapter);
 
         imgBtnLanguage.setImageResource(R.drawable.italy);
         Configuration config = getBaseContext().getResources().getConfiguration();
         if (config.locale.getLanguage().equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
-
-        firstVideo = findViewById(R.id.videoViewFirstVideo);
-        secondVideo = findViewById(R.id.videoViewSecondVideo);
 
         toolbar = findViewById(R.id.toolbar);
 
@@ -92,8 +107,8 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
-        mediaController = new MediaController(this);
-        mediaController1 = new MediaController(this);
+//        mediaController = new FullScreenMediaController(this);
+//        mediaController1 = new FullScreenMediaController(this);
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
@@ -111,8 +126,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Get userId
         uId = user.getUid();
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
@@ -133,12 +147,6 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         };
         mUserReference.addValueEventListener(userListener);
 
-        //Set the view that acts as the anchor for the control view.
-        mediaController.setAnchorView(firstVideo);
-        mediaController1.setAnchorView(secondVideo);
-        //setMediaController() tell the VideoView that the MediaController will be used to control it
-        firstVideo.setMediaController(mediaController);
-        secondVideo.setMediaController(mediaController1);
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
@@ -249,45 +257,17 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         }
     }
 
-
     public void getRoleActivity(int role_id) {
         if (role_id == 1) {
             //Admin Role
-
-
         } else if (role_id == 2) {
             //User Role
-
-            //String video URL
-            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/pesocorporeo.mp4?alt=media&token=04e2a7cc-9f9d-412c-aa01-ebb4cd0b2129";
-            uri = Uri.parse(video);
-            //Setting video and textview
-            textViewFirstVideo.setText(R.string.bodyweight);
-            firstVideo.setVideoURI(uri);
-            firstVideo.seekTo(1);
-            firstVideo.requestFocus();
-
-            //String video URL
-            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/welcoming.mp4?alt=media&token=006fe9e3-48b8-4f81-8c29-0bcc9af6f0b0";
-            uri = Uri.parse(video);
-            //Setting video and textview
-            textViewSecondVideo.setText(R.string.welcoming);
-            secondVideo.setVideoURI(uri);
-            secondVideo.seekTo(2350);
-            secondVideo.requestFocus();
-
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eWEF1Zrmdow\" frameborder=\"0\" allowfullscreen></iframe>"));
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/KyJ71G2UxTQ\" frameborder=\"0\" allowfullscreen></iframe>"));
 
         } else if (role_id == 3) {
-            // Doctor role
-            video = "https://firebasestorage.googleapis.com/v0/b/asilapp-1dd34.appspot.com/o/doctorvideo.mp4?alt=media&token=f1158309-b1f2-459f-8033-6b9491ffed9d";
-            uri = Uri.parse(video);
-            //Setting video and textview
-            textViewFirstVideo.setText(R.string.mas);
-            firstVideo.setVideoURI(uri);
-            firstVideo.seekTo(1);
-            firstVideo.requestFocus();
-            secondVideo.setVisibility(View.INVISIBLE);
-            textViewSecondVideo.setVisibility(View.INVISIBLE);
+            //Doc Role
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/y8Rr39jKFKU\" frameborder=\"0\" allowfullscreen></iframe>"));
         }
     }
 
@@ -374,5 +354,88 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             }
         };
         mUserReference.addListenerForSingleValueEvent(userListener);
+    }
+
+    public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
+        List<YouTubeVideos> youtubeVideoList;
+
+        public VideoAdapter() {
+        }
+
+        public VideoAdapter(List<YouTubeVideos> youtubeVideoList) {
+            this.youtubeVideoList = youtubeVideoList;
+        }
+
+        @Override
+        public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            View view = LayoutInflater.from( parent.getContext()).inflate(R.layout.video_view, parent, false);
+            return new VideoViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(VideoViewHolder holder, int position) {
+            holder.videoWeb.loadData( youtubeVideoList.get(position).getVideoUrl(), "text/html" , "utf-8" );
+        }
+
+        @Override
+        public int getItemCount() {
+            return youtubeVideoList.size();
+        }
+
+        public class VideoViewHolder extends RecyclerView.ViewHolder{
+            WebView videoWeb;
+            public VideoViewHolder(View itemView) {
+                super(itemView);
+                videoWeb = itemView.findViewById(R.id.videoWebView);
+                videoWeb.getSettings().setJavaScriptEnabled(true);
+                videoWeb.setWebChromeClient(new MyChrome() {
+                });
+            }
+        }
+    }
+
+    private class MyChrome extends WebChromeClient {
+
+        private View mCustomView;
+        private WebChromeClient.CustomViewCallback mCustomViewCallback;
+        protected FrameLayout mFullscreenContainer;
+        private int mOriginalOrientation;
+        private int mOriginalSystemUiVisibility;
+
+        MyChrome() {}
+
+        public Bitmap getDefaultVideoPoster()
+        {
+            if (mCustomView == null) {
+                return null;
+            }
+            return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
+        }
+
+        public void onHideCustomView()
+        {
+            ((FrameLayout)getWindow().getDecorView()).removeView(this.mCustomView);
+            this.mCustomView = null;
+            getWindow().getDecorView().setSystemUiVisibility(this.mOriginalSystemUiVisibility);
+            setRequestedOrientation(this.mOriginalOrientation);
+            this.mCustomViewCallback.onCustomViewHidden();
+            this.mCustomViewCallback = null;
+        }
+
+        public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
+        {
+            if (this.mCustomView != null)
+            {
+                onHideCustomView();
+                return;
+            }
+            this.mCustomView = paramView;
+            this.mOriginalSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
+            this.mOriginalOrientation = getRequestedOrientation();
+            this.mCustomViewCallback = paramCustomViewCallback;
+            ((FrameLayout)getWindow().getDecorView()).addView(this.mCustomView, new FrameLayout.LayoutParams(-1, -1));
+            getWindow().getDecorView().setSystemUiVisibility(3846);
+        }
     }
 }
