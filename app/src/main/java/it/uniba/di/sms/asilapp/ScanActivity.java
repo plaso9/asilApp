@@ -138,11 +138,11 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     // This method will handle the result provided by the scanning
     public void handleResult(Result rawResult) {
         // We will set editTextCode with the result provided
-        Intent intent = new Intent();
-        SearchPatientActivity.editTextCode.setText(rawResult.toString());
+        Intent intent = new Intent(ScanActivity.this, PatientDetailActivity.class);
+        intent.putExtra("user_clicked",rawResult.toString());
+        startActivity(intent);
         onBackPressed();
 
-        setResult(RESULT_OK, intent);
         finish();
     }
 }
