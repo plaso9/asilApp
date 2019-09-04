@@ -33,20 +33,21 @@ import it.uniba.di.sms.asilapp.models.Questionnaires;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class QuestionnairesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //variable declaration
     private static final String TAG = "QuestionnairesActivity";
 
-    private String uId;
-    private String URI1 = "null", URI2 = "null", URI3 = "null", URI4 = "null";
-    private String userClickedId;
-    private DatabaseReference mUserReference;
-    private DrawerLayout drawer;
     private Button btnSf12;
-    private Button btnHabits;
     private Button btnDemo;
+    private Button btnHabits;
     private Button btnQuality;
+    private DatabaseReference mUserReference;
     private DatabaseReference mQuestionnaires;
+    private DrawerLayout drawer;
     private int mRole;
     private ImageButton imgBtnLanguage;
+    private String uId;
+    private String userClickedId;
+    private String URI1 = "null", URI2 = "null", URI3 = "null", URI4 = "null";
 
     private MenuItem nav_home;
     private MenuItem nav_info;
@@ -69,28 +70,27 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaires);
 
-        btnSf12 = (Button) findViewById(R.id.btnSf12);
-        btnSf12.setOnClickListener(btnSf12_listener);
-
-        btnHabits = (Button) findViewById(R.id.btnHabits);
-        btnHabits.setOnClickListener(btnHabits_listener);
-
-        btnDemo = (Button) findViewById(R.id.btnDemo);
-        btnDemo.setOnClickListener(btnDemo_listener);
-
-        btnQuality = (Button) findViewById(R.id.btnQuality);
-        btnQuality.setOnClickListener(btnQuality_listener);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        btnSf12 = findViewById(R.id.btnSf12);
+        btnDemo = findViewById(R.id.btnDemo);
+        btnHabits = findViewById(R.id.btnHabits);
+        btnQuality = findViewById(R.id.btnQuality);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
         //Get user role to hide some menu item
@@ -110,8 +110,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             uId = user.getUid();
         }
         // Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
@@ -131,7 +130,6 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         };
 
         mUserReference.addValueEventListener(userListener);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -141,6 +139,11 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
+        //Set a click listener on the button objects
+        btnSf12.setOnClickListener(btnSf12_listener);
+        btnDemo.setOnClickListener(btnDemo_listener);
+        btnHabits.setOnClickListener(btnHabits_listener);
+        btnQuality.setOnClickListener(btnQuality_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
     }
 

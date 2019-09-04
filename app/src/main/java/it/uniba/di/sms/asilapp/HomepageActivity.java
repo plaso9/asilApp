@@ -62,6 +62,17 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        //defined gridlayout variable
+        gridLayout = findViewById(R.id.gridHomeLayout);
+        //defined card variable
+        card_view_PersonalData = findViewById(R.id.card_personalData);
+        card_view_Informative = findViewById(R.id.card_informationSection);
+        card_view_Questionnaires = findViewById(R.id.card_questionnaires);
+        card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
+        chatButton = findViewById(R.id.chatBtn);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
         // get menu from navigationView
@@ -95,15 +106,6 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        //defined gridlayout variable
-        gridLayout = findViewById(R.id.gridHomeLayout);
-        //defined card variable
-        card_view_PersonalData = findViewById(R.id.card_personalData);
-        card_view_Informative = findViewById(R.id.card_informationSection);
-        card_view_Questionnaires = findViewById(R.id.card_questionnaires);
-        card_view_MedicalRecords = findViewById(R.id.card_medicalRecords);
-        chatButton = findViewById(R.id.chatBtn);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);

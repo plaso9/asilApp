@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -34,43 +33,50 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class PatientDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //Variable declaration
     private static final String TAG = "PatientDetailActivity";
-    //Define variable
+    private DatabaseReference mUserReference;
+    private DrawerLayout drawer;
+    private ImageButton imgBtnLanguage;
     private String user_id;
     private TextView mName;
-    private DatabaseReference mUserReference;
-    private ImageButton imgBtnLanguage;
 
-
-    //Define cards
     CardView card_view_personalData;
     CardView card_view_medicalRecords;
     CardView card_view_questionnaires;
 
-    int PROGRESS_BAR_STATUS = 0;
-    ProgressDialog progressBar;
-    private DrawerLayout drawer;
-
+    private MenuItem nav_home;
+    private MenuItem nav_info;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_readRatings;
-    private MenuItem nav_addAcceptance;
-    private MenuItem nav_addRetrieveNecessities;
-    private MenuItem nav_home;
-    private MenuItem nav_info;
     private MenuItem nav_personalData;
+    private MenuItem nav_addAcceptance;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
+    private MenuItem nav_addRetrieveNecessities;
+
+    int PROGRESS_BAR_STATUS = 0;
+    ProgressDialog progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_patient_detail);
 
+        //Defined variable
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        card_view_personalData = findViewById(R.id.card_personalData);
+        card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
+        card_view_questionnaires = findViewById(R.id.card_questionnaires);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
         // get menu from navigationView
@@ -99,24 +105,23 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         nav_questionnaires.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
+        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
         //Get User Clicked Id
         if (getIntent().getExtras() != null) {
             user_id = getIntent().getStringExtra("user_clicked");
         }
+
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user_id);
         // Defined patient data variable
         mName = findViewById(R.id.text_userNameClicked);
-        //defined card variable
-        card_view_personalData = findViewById(R.id.card_personalData);
-        card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
-        card_view_questionnaires = findViewById(R.id.card_questionnaires);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -127,10 +132,11 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         }
 
 
-        //set function to card
+        //Set a click listener to the cardView objects
         card_view_personalData.setOnClickListener(card_view_Personaldata_listener);
         card_view_medicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
         card_view_questionnaires.setOnClickListener(card_view_Questionnaries_listener);
+        //Set a click listener to the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         ValueEventListener userListener = new ValueEventListener() {
@@ -210,7 +216,7 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         afterExecution();
     }
 
-
+    //Method used to dismiss the progressBar
     public void afterExecution() {
         if (PROGRESS_BAR_STATUS == 1) {
             progressBar.dismiss();
