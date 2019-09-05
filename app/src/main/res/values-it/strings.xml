@@ -117,7 +117,7 @@
         <item quantity="other">Pazienti visitati</item>
     </plurals>
     <string name="notSupported">Temperatura non disponibile</string>
-    <string name="personalCode">Codice personale QR</string>
+    <string name="personalCode">Codice QR</string>
 </resources>
 
 

@@ -46,7 +46,9 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     private EditText mSurname;
     private EditText mBirthPlace;
     private EditText mDateOfBirth;
+    private  EditText mCode;
     private ImageButton imgBtnLanguage;
+
 
     private MenuItem nav_home;
     private MenuItem nav_info;
@@ -65,6 +67,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
     private MenuItem nav_addRetrieveNecessities;
 
     private String uId;
+    private String uCode;
     private String userClickedId;
 
     @Override
@@ -105,7 +108,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
-
+        mCode = findViewById(R.id.editTextCode);
         // Defined personal data variable
         mName = findViewById(R.id.editTextName);
         mSurname = findViewById(R.id.editTextSurname);
@@ -143,6 +146,8 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
                 mGender.setText(user.gender);
                 mEmail.setText(user.getMail());
                 mNation.setText(user.getNation());
+                mCode.setText(user.getUserId());
+                uCode = user.getUserId();
             }
 
             @Override
@@ -154,6 +159,7 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
             }
         };
         mUserReference.addListenerForSingleValueEvent(userListener);
+        mCode.setOnClickListener(qrCodeGenerator);
 
 
     }
@@ -355,4 +361,12 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
         };
         mUserReference.addListenerForSingleValueEvent(userListener);
     }
+    public View.OnClickListener qrCodeGenerator = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent qrIntent = new Intent(PersonalDataActivity.this, PopUpQrcodeActivity.class);
+            qrIntent.putExtra("userId", uCode);
+            startActivityForResult(qrIntent, 1);
+        }
+    };
 }
