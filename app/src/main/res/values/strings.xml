@@ -67,11 +67,12 @@
     <string name="centerRating">How would your rate your center?</string>
     <string name="comment">Add a comment (optional)</string>
     <string name="submit">Submit</string>
-    <string name="food">Food</string>
+    <string name="food">Food goods</string>
     <string name="medicines">Medicines</string>
-    <string name="go">Go to: </string>
+    <string name="goMarket">Go to the convientioned market: </string>
+    <string name="goPharmacy">Go to the convientioned pharmacy: </string>
     <string name="ask">Ask for: </string>
-    <string name="show">Show: </string>
+    <string name="show">Show your personal code: </string>
     <string name="add" translatable="false">+</string>
     <string name="pressure">Pressure</string>
     <string name="lastMeasurement">Last Measurement</string>

@@ -59,9 +59,10 @@
     <string name="comment">Aggiungi un commento (facoltativo)</string>
     <string name="submit">Invia</string>
     <string name="medicines">Farmaci</string>
-    <string name="food">Cibo</string>
-    <string name="go">"Recati presso: "</string>
-    <string name="show">"Mostra: "</string>
+    <string name="food">Beni alimentari</string>
+    <string name="goMarket">Recati presso il supermercato convenzionato: </string>
+    <string name="goPharmacy">Recati presso la farmacia convenzionata: </string>
+    <string name="show">"Mostra il tuo codice personale: "</string>
     <string name="ask">"Richiedi: "</string>
     <string name="addMeasurement">Aggiungi Misurazione</string>
     <string name="lastMeasurement">Ultima Misurazione</string>
