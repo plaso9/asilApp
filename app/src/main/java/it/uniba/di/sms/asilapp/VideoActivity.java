@@ -3,11 +3,8 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,9 +25,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-//import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +50,6 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     private ImageButton imgBtnLanguage;
     private int mRole;
     private String uId;
-
 
     private MenuItem nav_home;
     private MenuItem nav_info;
@@ -88,11 +82,13 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         recyclerView = findViewById(R.id.recyclerViewVideo);
 
+        //Set to true because adapter changes cannot affect the size of the RecyclerView.
         recyclerView.setHasFixedSize(true);
+        //Set the RecyclerView.LayoutManager that this RecyclerView will use.
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        //Defined new Adapter for youtubeVideosVector
         VideoAdapter videoAdapter = new VideoAdapter(youTubeVideos);
-
+        //Set the adapter to the RecyclerView
         recyclerView.setAdapter(videoAdapter);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
@@ -110,11 +106,9 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
         //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
-//        mediaController = new FullScreenMediaController(this);
-//        mediaController1 = new FullScreenMediaController(this);
-
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
+
         //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -391,7 +385,9 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             public VideoViewHolder(View itemView) {
                 super(itemView);
                 videoWeb = itemView.findViewById(R.id.videoWebView);
+                //Tells the WebView to enable JavaScript execution.
                 videoWeb.getSettings().setJavaScriptEnabled(true);
+                //Sets the chrome handler.
                 videoWeb.setWebChromeClient(new MyChrome() {
                 });
             }
@@ -401,6 +397,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
     private class MyChrome extends WebChromeClient {
 
         private View mCustomView;
+        // callback interface used by the host application to notify the current page that its custom view has been dismissed.
         private WebChromeClient.CustomViewCallback mCustomViewCallback;
         protected FrameLayout mFullscreenContainer;
         private int mOriginalOrientation;
@@ -408,6 +405,8 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
 
         MyChrome() {}
 
+        //When not playing, video elements are represented by a 'poster' image
+        //This method allows the ChromeClient to provide that default image.
         public Bitmap getDefaultVideoPoster()
         {
             if (mCustomView == null) {
@@ -416,6 +415,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
         }
 
+        //Notify the host application that the current page has exited full screen mode.
         public void onHideCustomView()
         {
             ((FrameLayout)getWindow().getDecorView()).removeView(this.mCustomView);
@@ -426,6 +426,8 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             this.mCustomViewCallback = null;
         }
 
+        //Notify the host application that the current page has entered full screen mode.
+        // The host application must show the custom View which contains the web contents in full screen mode.
         public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
         {
             if (this.mCustomView != null)

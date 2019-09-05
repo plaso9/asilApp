@@ -19,19 +19,22 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class MainActivity extends AppCompatActivity {
+    //Variable declaration
     private static final String TAG = "MainActivity";
 
-    private TextView goHome;
     private DatabaseReference mUserReference;
-    private String uId;
     private int mRole;
+    private String uId;
+    private TextView goHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_main);
-
+        //Defined variable
         goHome = findViewById(R.id.textViewHome);
+        //Set a click listener on the textView object
         goHome.setOnClickListener(goHome_listener);
 
         //start LoginActivity
@@ -57,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else {
             uId = user.getUid();
-            mUserReference = FirebaseDatabase.getInstance().getReference()
-                    .child("user").child(uId);
+            mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
             ValueEventListener userListener = new ValueEventListener() {
                 @Override
@@ -99,5 +101,4 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
 }
