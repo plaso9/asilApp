@@ -72,6 +72,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="90dp"
                     android:text="@string/sf12Questionnaires"
+                    android:textColor="#000000"
                     android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -80,14 +81,13 @@
                     android:id="@+id/btnSf12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="112dp"
-                    android:layout_marginEnd="@dimen/marginEnd"
+                    android:layout_marginEnd="40dp"
                     android:text="@string/survey"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+                    app:layout_constraintTop_toTopOf="@+id/textView3"
+                    app:layout_constraintVertical_bias="0.428" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -96,6 +96,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/habitsQuestionnaires"
+                    android:textColor="#000000"
                     android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -110,7 +111,8 @@
                     app:layout_constraintEnd_toEndOf="@+id/btnSf12"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/btnSf12"
-                    app:layout_constraintTop_toTopOf="@+id/textView4" />
+                    app:layout_constraintTop_toTopOf="@+id/textView4"
+                    app:layout_constraintVertical_bias="0.38" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -119,6 +121,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/demographicQuestionnaires"
+                    android:textColor="#000000"
                     android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -131,8 +134,10 @@
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="@+id/btnHabits"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/btnHabits"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    app:layout_constraintVertical_bias="0.38" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -141,6 +146,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="36dp"
                     android:text="@string/qualityOfLifeQuestionnaires"
+                    android:textColor="#000000"
                     android:textSize="@dimen/textSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -153,8 +159,10 @@
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/textView6"
                     app:layout_constraintEnd_toEndOf="@+id/btnDemo"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/btnDemo"
-                    app:layout_constraintTop_toTopOf="@+id/textView6" />
+                    app:layout_constraintTop_toTopOf="@+id/textView6"
+                    app:layout_constraintVertical_bias="0.38" />
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
     </LinearLayout>

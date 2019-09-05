@@ -159,10 +159,9 @@
 
                 <EditText
                     android:id="@+id/editTextCenterServices"
-                    android:layout_width="385dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:ems="100"
                     android:hint="@string/services"
                     android:inputType="text"
                     android:textColor="#000000"
