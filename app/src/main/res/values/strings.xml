@@ -141,7 +141,7 @@ reception of migrants for application of international protection. Download this
         <item quantity="one">Visited patient</item>
         <item quantity="other">Visited patients</item>
     </plurals>
-    <string name="notSupported">N</string>
+    <string name="notSupported">Temperature not available</string>
 
 
 </resources>
