@@ -143,6 +143,7 @@ reception of migrants for application of international protection. Download this
         <item quantity="other">Visited patients</item>
     </plurals>
     <string name="notSupported">Temperature not available</string>
+    <string name="personalCode">Personal QR code</string>
 
 
 </resources>
