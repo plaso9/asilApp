@@ -56,6 +56,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <!--    PAGE TITLE -->
+                <Button
+                    android:id="@+id/imageViewScanCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/marginStart"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/scan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/textSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewOr" />
+
                 <TextView
                     android:id="@+id/pageTitle"
                     android:layout_marginTop="20dp"
@@ -73,14 +87,15 @@
                     android:id="@+id/buttonSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
                     android:layout_marginStart="@dimen/marginStart"
-                    android:layout_marginEnd="@dimen/marginEnd"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="8dp"
                     android:text="@string/showPatient"
                     android:textColor="#FFFFFF"
-
+                    android:textSize="@dimen/textSize"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pageTitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
 
                 <!-- OR -->
                 <TextView
@@ -88,33 +103,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="68dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="@dimen/marginEnd"
-                    android:textSize="@dimen/textSize"
                     android:text="@string/alternative"
+                    android:textSize="@dimen/textSize"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.513"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
                 <!-- SCAN QR CODE -->
-                <TextView
-                    android:id="@+id/textViewScanCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marginStart"
-                    android:layout_marginTop="68dp"
-                    android:textSize="@dimen/textSize"
-                    android:text="@string/scan"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewOr" />
-
-                <ImageView
-                    android:id="@+id/imageViewScanCode"
-                    android:layout_width="58dp"
-                    android:layout_height="63dp"
-                    android:layout_marginEnd="@dimen/marginEnd"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewScanCode"
-                    app:srcCompat="@drawable/qrcode" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

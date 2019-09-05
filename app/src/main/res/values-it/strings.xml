@@ -51,7 +51,7 @@
     <string name="patientList">Pazienti visitati</string>
     <string name="alternative">OPPURE</string>
     <string name="search">Cerca</string>
-    <string name="scan">Scansione il codice QR</string>
+    <string name="scan">Scansion il codice QR</string>
     <string name="insertCode">Inserisci il codice del paziente</string>
     <string name="centerRating">Come valuteresti il tuo centro di accoglienza?</string>
     <string name="cityRating">Come valuteresti la tua città?</string>

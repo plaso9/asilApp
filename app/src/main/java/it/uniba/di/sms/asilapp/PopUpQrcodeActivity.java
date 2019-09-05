@@ -35,7 +35,6 @@ public class PopUpQrcodeActivity extends AppCompatActivity {
 
         //GENERATE QR CODE FOR USER ID
         String uId = getIntent().getExtras().getString("userId");
-        System.out.println(uId);
         qrgEncoder = new QRGEncoder(uId, null, QRGContents.Type.TEXT, 100);
         try {
             // Getting QR-Code as Bitmap

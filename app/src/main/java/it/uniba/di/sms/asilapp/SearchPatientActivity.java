@@ -27,7 +27,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
     public static EditText editTextCode;
     private Button buttonSearch;
     private DrawerLayout drawer;
-    private ImageView imageViewScanCode;
+    private Button imageViewScanCode;
     private ImageButton imgBtnLanguage;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -54,7 +54,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
-        imageViewScanCode = (ImageView) findViewById(R.id.imageViewScanCode);
+        imageViewScanCode = (Button) findViewById(R.id.imageViewScanCode);
 
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
