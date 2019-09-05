@@ -22,19 +22,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
+        <activity
+            android:name=".PopUpQrcodeActivity"
+            android:theme="@style/PopupTheme" />
         <activity
             android:name=".PopUpLanguageActivity"
             android:theme="@style/PopupTheme" />
         <activity
             android:name=".PopUpShowMoreActivity"
             android:theme="@style/PopupTheme" />
-
         <activity
             android:name=".PopUpTemperatureActivity"
             android:theme="@style/PopupTheme" />
-
         <activity android:name=".PathologyActivity" />
         <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />
@@ -66,7 +65,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomepageActivity" />
         <activity android:name=".AddUserActivity" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,7 +72,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

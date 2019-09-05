@@ -3,7 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -29,7 +29,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.WriterException;
 
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 import it.uniba.di.sms.asilapp.models.Necessities;
@@ -41,11 +44,10 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     private DatabaseReference mCityReference;
     private DatabaseReference mUserReference;
     private DatabaseReference mBasicNecessities;
-
+    private Bitmap bitmap;
     private DrawerLayout drawer;
-
     private ImageButton imgBtnLanguage;
-
+    private TextView x;
     private ImageView imageMapFood;
     private ImageView imageMapPharmacy;
 
@@ -129,7 +131,8 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         userId = findViewById(R.id.textViewUserId);
         userId2 = findViewById(R.id.textViewUserId2);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
+        userId.setOnClickListener(qrCodeGenerator);
+        userId2.setOnClickListener(qrCodeGenerator);
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         // Get userId
@@ -149,6 +152,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         }
         //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
     }
 
     @Override
@@ -255,6 +259,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                         userId.setText(uId);
                         userId2.setText(uId);
                         getCityName(cityId); //Method to retain the city name
+
                     }
                 }
             }
@@ -328,4 +333,15 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
         super.onStart();
         getAcceptanceId();
     }
+
+    public View.OnClickListener qrCodeGenerator = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent qrIntent = new Intent(RetrieveBasicNecessitiesActivity.this, PopUpQrcodeActivity.class);
+            qrIntent.putExtra("userId", uId);
+            startActivityForResult(qrIntent, 1);
+        }
+    };
+
+
 }
