@@ -102,9 +102,9 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
         //Set a click listener on the imageButton objects
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-        //Set image resource
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         String language = prefs.getString("Language", "");
         if (language.equals("en")) {

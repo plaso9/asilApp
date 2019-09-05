@@ -1,7 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -39,15 +38,8 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     private static final String TAG = "AcceptanceActivity";
     private DatabaseReference mUserReference;
     private DatabaseReference mAcceptanceReference;
+    private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
-    private String uId;
-    private String acceptanceId;
-    private TextView mName;
-    private TextView mCity;
-    private TextView mAddress;
-    private TextView regulation;
-    private TextView mListServices;
-
     private MenuItem nav_video;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
@@ -58,8 +50,15 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     private MenuItem nav_searchPatient;
     private MenuItem nav_visitedPatient;
     private MenuItem nav_addRetrieveNecessities;
-
-    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private String uId;
+    private String acceptanceId;
+    private TextView mName;
+    private TextView mCity;
+    private TextView mAddress;
+    private TextView regulation;
+    private TextView mListServices;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
@@ -67,12 +66,21 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_acceptance);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Defined variable
+        toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        mName = findViewById(R.id.editTextCenterName);
+        mCity = findViewById(R.id.editTextCenterCity);
+        mAddress = findViewById(R.id.editTextCenterLocation);
+        mListServices = findViewById(R.id.editTextCenterServices);
+        regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
 
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
 
@@ -100,29 +108,27 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-
-
-        //Defined variable
-        mName = findViewById(R.id.editTextCenterName);
-        mCity = findViewById(R.id.editTextCenterCity);
-        mAddress = findViewById(R.id.editTextCenterLocation);
-        mListServices = findViewById(R.id.editTextCenterServices);
-        regulation = findViewById(R.id.editTextCenterRegulation);   //Button for norms
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        //Set a click listener on the text object
+        regulation.setOnClickListener(editTextCenterRegulation_listener);
+        //Set a click listener on the button object
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         String language = prefs.getString("Language", "");
         if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
+
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -131,153 +137,18 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
         mAcceptanceReference = FirebaseDatabase.getInstance().getReference("acceptance");
-
-        regulation.setOnClickListener(editTextCenterRegulation_listener);
-        //Set a click listener on the button object
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            Intent refresh = new Intent(this, AcceptanceActivity.class);
-            startActivity(refresh);
-            this.finish();
-
-
-    }
-
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent change_languageIntent = new Intent (AcceptanceActivity.this,PopUpLanguageActivity.class);
-            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AcceptanceActivity");
-            startActivityForResult(change_languageIntent, 1);
-        }
-    };
-
-
-
-
-
-
-    // Listener for the button
-    public View.OnClickListener editTextCenterRegulation_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent open_RegulationIntent = new Intent (AcceptanceActivity.this,InternalRegulationActivity.class);
-            startActivity(open_RegulationIntent);
-        }
-    };
-
-    //Method that retrieves from the Firebase Database the info about the acceptance given the iD acceptance and sets the TextViews
-    public void getAcceptanceInfo(String acceptanceId) {
-        ValueEventListener cityListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Acceptance acceptance = dataSnapshot.getValue(Acceptance.class);
-
-                findCityName(acceptance.getCity());
-                retrieveListOfServices(acceptance.id);
-
-                mName.setText(acceptance.name);
-                mAddress.setText(acceptance.address);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting acceptance failed
-                Log.w(TAG, "loadAcceptance:onCancelled", databaseError.toException());
-                Toast.makeText(AcceptanceActivity.this, "Failed to load acceptance",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-        mAcceptanceReference.child(acceptanceId).addValueEventListener(cityListener);
-    }
-
-    //Method that retrieves from the Firebase Database the list of services offered from a specific acceptance and sets the text of the TextView
-    private void retrieveListOfServices(String id) {
-        FirebaseDatabase.getInstance().getReference("acceptance").child(id).child("listOfServices").addValueEventListener(new ValueEventListener() {
-            ArrayList<String> stringArrayList = new ArrayList<>();
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    stringArrayList.add(snapshot.getValue().toString());
-                }
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < stringArrayList.size(); i++){
-                    sb.append(stringArrayList.get(i));
-                    if (i==stringArrayList.size()-1){
-                        sb.append(".");
-                    } else {
-                        sb.append(", ");
-                    }
-                }
-
-                mListServices.setText(sb.toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting list of services failed
-                Log.w(TAG, "loadListService:onCancelled", databaseError.toException());
-                Toast.makeText(AcceptanceActivity.this, "Failed to load list of services.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    //Method that retrieves from the Firebase Database the name of the city given the iD and sets the text of the TextView
-    public void findCityName(final long cityId) {
-        DatabaseReference mCityDB = FirebaseDatabase.getInstance().getReference("city");
-        ValueEventListener mListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    City city = snapshot.getValue(City.class);
-                    if (cityId == city.getId()) {
-                        mCity.setText(city.name);
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting city failed
-                Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
-                Toast.makeText(AcceptanceActivity.this, "Failed to load city.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-        mCityDB.addValueEventListener(mListener);
-    }
-
-    //Method that retrieves the acceptanceId in which the user is hosted from the Firebase Database
-    public void getAcceptanceId() {
-        mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                acceptanceId = dataSnapshot.getValue(User.class).getAcceptanceId();
-                getAcceptanceInfo(acceptanceId);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Getting Acceptance Id failed, log a message
-                Log.w(TAG, "loadAcceptanceId:onCancelled", databaseError.toException());
-                Toast.makeText(AcceptanceActivity.this, "Failed to load Acceptance Id",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
-    public void onBackPressed() {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  //receive result from activity
+        //Create new Intent
+        Intent refresh = new Intent(this, AcceptanceActivity.class);
+        startActivity(refresh);
+        this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
@@ -292,7 +163,7 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()){
             case R.id.nav_home:
                 drawer.closeDrawer(GravityCompat.START);
@@ -336,4 +207,128 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         }
         return true;
     }
+
+    //Method that retrieves from the Firebase Database the info about the acceptance given the iD acceptance and sets the TextViews
+    public void getAcceptanceInfo(String acceptanceId) {
+        ValueEventListener cityListener = new ValueEventListener() {
+            @Override
+            //called with a snapshot of the data at this location
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Acceptance acceptance = dataSnapshot.getValue(Acceptance.class);
+                findCityName(acceptance.getCity());
+                retrieveListOfServices(acceptance.id);
+                mName.setText(acceptance.name);
+                mAddress.setText(acceptance.address);
+            }
+            @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting acceptance failed
+                Log.w(TAG, "loadAcceptance:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load acceptance",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        mAcceptanceReference.child(acceptanceId).addValueEventListener(cityListener);
+    }
+
+    //Method that retrieves from the Firebase Database the list of services offered from a specific acceptance and sets the text of the TextView
+    private void retrieveListOfServices(String id) {
+        FirebaseDatabase.getInstance().getReference("acceptance").child(id).child("listOfServices").addValueEventListener(new ValueEventListener() {
+            ArrayList<String> stringArrayList = new ArrayList<>();
+            @Override
+            //called with a snapshot of the data at this location
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    stringArrayList.add(snapshot.getValue().toString());
+                }
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < stringArrayList.size(); i++){
+                    sb.append(stringArrayList.get(i));
+                    if (i==stringArrayList.size()-1){
+                        sb.append(".");
+                    } else {
+                        sb.append(", ");
+                    }
+                }
+                mListServices.setText(sb.toString());
+            }
+            @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting list of services failed
+                Log.w(TAG, "loadListService:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load list of services.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    //Method that retrieves from the Firebase Database the name of the city given the iD and sets the text of the TextView
+    public void findCityName(final long cityId) {
+        DatabaseReference mCityDB = FirebaseDatabase.getInstance().getReference("city");
+        ValueEventListener mListener = new ValueEventListener() {
+            @Override
+            //called with a snapshot of the data at this location
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    City city = snapshot.getValue(City.class);
+                    if (cityId == city.getId()) {
+                        mCity.setText(city.name);
+                    }
+                }
+            }
+            @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting city failed
+                Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load city.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        mCityDB.addValueEventListener(mListener);
+    }
+
+    //Method that retrieves the acceptanceId in which the user is hosted from the Firebase Database
+    public void getAcceptanceId() {
+        mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            //called with a snapshot of the data at this location
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                acceptanceId = dataSnapshot.getValue(User.class).getAcceptanceId();
+                getAcceptanceInfo(acceptanceId);
+            }
+            @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Getting Acceptance Id failed, log a message
+                Log.w(TAG, "loadAcceptanceId:onCancelled", databaseError.toException());
+                Toast.makeText(AcceptanceActivity.this, "Failed to load Acceptance Id",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // Listener for the button
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent change_languageIntent = new Intent (AcceptanceActivity.this,PopUpLanguageActivity.class);
+            //Pass data between intents
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AcceptanceActivity");
+            startActivityForResult(change_languageIntent, 1);
+        }
+    };
+
+    // Listener for the button
+    public View.OnClickListener editTextCenterRegulation_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //Create new Intent
+            Intent open_RegulationIntent = new Intent (AcceptanceActivity.this,InternalRegulationActivity.class);
+            startActivity(open_RegulationIntent);
+        }
+    };
 }

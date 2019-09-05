@@ -40,7 +40,6 @@ import it.uniba.di.sms.asilapp.models.City;
 public class AddAcceptanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private static final String TAG = "AddAcceptanceActivity";
-
     private long idCity;
     private EditText eTcenterName;
     private EditText eTcenterLocation;
@@ -59,7 +58,7 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
     private MenuItem nav_visitedPatient;
-
+    private NavigationView navigationView;
     private Toolbar toolbar;
 
     @Override
@@ -69,28 +68,22 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         setContentView(R.layout.activity_add_acceptance);
 
         //Defined variable
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
+        buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
         eTcenterName = findViewById(R.id.editTextCenterName);
         eTcenterLocation = findViewById(R.id.editTextCenterLocation);
         eTcenterServices = findViewById(R.id.editTextCenterServices);
         spinnerCity = findViewById(R.id.spinnerCity);
-        buttonSubmitAcceptance = findViewById(R.id.btnSubmitAcceptance);
-        toolbar = findViewById(R.id.toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
-        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
-                Activity.MODE_PRIVATE);
-        imgBtnLanguage.setImageResource(R.drawable.italy);
-        String language = prefs.getString("Language", "");
-        if (language.equals("en")) {
-            imgBtnLanguage.setImageResource(R.drawable.lang);
-        }
-
-        // get menu from navigationView
-        Menu menu = navigationView.getMenu();
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
+        navigationView.setNavigationItemSelectedListener(this);
+        // get menu from navigationView
+        Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
@@ -116,31 +109,45 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         nav_questionnaires.setVisible(false);
         nav_visitedPatient.setVisible(false);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
-        //Set a listener that will be notified when a menu item is selected.
-        navigationView.setNavigationItemSelectedListener(this);
         //Set a click listener on the button object
         buttonSubmitAcceptance.setOnClickListener(btnSubmitAcceptance_listener);
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+
+        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
+                Activity.MODE_PRIVATE);
+        //Set image resource
+        imgBtnLanguage.setImageResource(R.drawable.italy);
+        String language = prefs.getString("Language", "");
+        if (language.equals("en")) {
+            imgBtnLanguage.setImageResource(R.drawable.lang);
+        }
+
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         //Initialize DB to get acceptance reference
         DatabaseReference cityRef = FirebaseDatabase.getInstance().getReference("city");
         cityRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+            //called with a snapshot of the data at this location
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<City> cities = new ArrayList<>();
                 for (DataSnapshot acceptanceSnapShot : dataSnapshot.getChildren()) {
                     cities.add(acceptanceSnapShot.getValue(City.class));
                 }
+
                 //Get all names of acceptance
                 final List<String> name_list = new ArrayList<>();
                 for (City city : cities) {
                     name_list.add(city.getName());
                 }
+
                 //Create adapter and set for spinner
                 ArrayAdapter<String> stringArrayAdapterCity;
                 stringArrayAdapterCity = new ArrayAdapter<>(AddAcceptanceActivity.this, android.R.layout.simple_list_item_1, name_list);
@@ -152,15 +159,13 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         idCity = cities.get(i).getId();
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
-
                     }
                 });
             }
-
             @Override
+            //triggered in the event that this listener either failed at the server, or is removed as a result of the security and Firebase rules.
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting city failed
                 Log.w(TAG, "loadCity:onCancelled", databaseError.toException());
@@ -171,64 +176,15 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  //receive result from activity
+        //Create new Intent
         Intent refresh = new Intent(this, AddAcceptanceActivity.class);
         startActivity(refresh);
         this.finish();
-
-    }
-
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent change_languageIntent = new Intent(AddAcceptanceActivity.this, PopUpLanguageActivity.class);
-            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddAcceptanceActivity");
-            startActivityForResult(change_languageIntent, 1);
-        }
-    };
-
-
-    public View.OnClickListener btnSubmitAcceptance_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (eTcenterName.getText().toString().equals("") ||
-                    eTcenterLocation.getText().toString().equals("") ||
-                    eTcenterServices.getText().toString().equals("")) { //Check if all the fields are not empty
-                Toast.makeText(AddAcceptanceActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
-
-            } else {
-                addNewAcceptance(); //Method to add a new acceptance
-                Toast.makeText(AddAcceptanceActivity.this, "Added successfully", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        }
-    };
-
-    private void addNewAcceptance() {
-        final String nameCenter = eTcenterName.getText().toString();
-        final String locationCenter = eTcenterLocation.getText().toString();
-        final String centerServices = eTcenterServices.getText().toString();
-        String[] services = centerServices.split(","); //Split string every comma
-        ArrayList<String> listOfServices = new ArrayList<>();
-        //For loop to populate the list of services of the acceptance
-        for (int i = 0; i < services.length; i++) {
-            listOfServices.add(services[i].trim());//add string_service to the list
-        }
-
-        String id = FirebaseDatabase.getInstance().getReference("acceptance").push().getKey(); //push method enters the object in the db
-        Acceptance acceptance = new Acceptance(
-                nameCenter,
-                locationCenter,
-                listOfServices,
-                id,
-                idCity
-        );
-
-        FirebaseDatabase.getInstance().getReference("acceptance").child(id).setValue(acceptance);
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {
             case R.id.nav_homeAdmin:
                 drawer.closeDrawer(GravityCompat.START);
@@ -272,4 +228,55 @@ public class AddAcceptanceActivity extends AppCompatActivity implements Navigati
         }
         return true;
     }
+
+    private void addNewAcceptance() {
+        final String nameCenter = eTcenterName.getText().toString();
+        final String locationCenter = eTcenterLocation.getText().toString();
+        final String centerServices = eTcenterServices.getText().toString();
+        String[] services = centerServices.split(","); //Split string every comma
+        ArrayList<String> listOfServices = new ArrayList<>();
+        //For loop to populate the list of services of the acceptance
+        for (int i = 0; i < services.length; i++) {
+            listOfServices.add(services[i].trim());//add string_service to the list
+        }
+
+        String id = FirebaseDatabase.getInstance().getReference("acceptance").push().getKey(); //push method enters the object in the db
+        Acceptance acceptance = new Acceptance(
+                nameCenter,
+                locationCenter,
+                listOfServices,
+                id,
+                idCity
+        );
+
+        FirebaseDatabase.getInstance().getReference("acceptance").child(id).setValue(acceptance);
+    }
+
+    //Set on click listener
+    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Create new Intent
+            Intent change_languageIntent = new Intent(AddAcceptanceActivity.this, PopUpLanguageActivity.class);
+            //Pass data between intents
+            change_languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.AddAcceptanceActivity");
+            startActivityForResult(change_languageIntent, 1);
+        }
+    };
+
+    public View.OnClickListener btnSubmitAcceptance_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (eTcenterName.getText().toString().equals("") ||
+                    eTcenterLocation.getText().toString().equals("") ||
+                    eTcenterServices.getText().toString().equals("")) { //Check if all the fields are not empty
+                Toast.makeText(AddAcceptanceActivity.this, "No field should be empty", Toast.LENGTH_LONG).show();
+
+            } else {
+                addNewAcceptance(); //Method to add a new acceptance
+                Toast.makeText(AddAcceptanceActivity.this, "Added successfully", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }
+    };
 }

@@ -3,7 +3,6 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -34,7 +33,6 @@ import it.uniba.di.sms.asilapp.models.User;
 public class MedicalRecordsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MedicalRecordsActivity";
-    private Button button_addECG;
     private Button button_addGlycemia;
     private Button button_addSymptoms;
     private Button button_addHeartbeat;
@@ -44,7 +42,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     private DrawerLayout drawer;
     private DatabaseReference mUserReference;
     private ImageButton imgBtnLanguage;
-    private ImageView image_seeECGStats;
     private ImageView image_seeGlycemiaStats;
     private ImageView image_seeSymptomsStats;
     private ImageView image_seeHeartbeatStats;
@@ -85,7 +82,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
-        image_seeECGStats = findViewById(R.id.image_seeECGStats);
         image_seeGlycemiaStats = findViewById(R.id.image_seeGlycemiaStats);
         image_seeSymptomsStats = findViewById(R.id.image_seeSymptomsStats);
         image_seeHeartbeatStats = findViewById(R.id.image_seeHeartbeatStats);
@@ -93,7 +89,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         image_seeTemperatureStats = findViewById(R.id.image_seeTemperatureStats);
         image_seeBloodPressureStats = findViewById(R.id.image_seeBloodPressureStats);
 
-        button_addECG = findViewById(R.id.buttonAddECG);
         button_addGlycemia = findViewById(R.id.buttonAddGlycemia);
         button_addSymptoms = findViewById(R.id.buttonAddSymptoms);
         button_addHeartbeat = findViewById(R.id.buttonAddHeartbeat);
@@ -110,7 +105,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         getUserRole();
 
         //Set a click listener on the imageButton objects
-        image_seeECGStats.setOnClickListener(image_seeECGStats_listener);
         image_seeGlycemiaStats.setOnClickListener(image_seeGlycemiaStats_listener);
         image_seeSymptomsStats.setOnClickListener(image_seeSymptomsStats_listener);
         image_seeHeartbeatStats.setOnClickListener(image_seeHeartbeatStats_listener);
@@ -119,7 +113,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         image_seeBloodPressureStats.setOnClickListener(image_seeBloodPressureStats_listener);
 
         //Set a click listener on the Button objects
-        button_addECG.setOnClickListener(button_addECG_listener);
         button_addGlycemia.setOnClickListener(button_addGlycemia_listener);
         button_addSymptoms.setOnClickListener(button_addSymptoms_listener);
         button_addHeartbeat.setOnClickListener(button_addHeartbeat_listener);
@@ -130,9 +123,9 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         //Set a click listener on the imageButton objects
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
 
-        //Set image resource
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
+        //Set image resource
         imgBtnLanguage.setImageResource(R.drawable.italy);
         String language = prefs.getString("Language", "");
         if (language.equals("en")) {
@@ -268,7 +261,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
                     button_addBloodPressure.setVisibility(View.INVISIBLE);
                     button_addGlycemia.setVisibility(View.INVISIBLE);
                     button_addHeartbeat.setVisibility(View.INVISIBLE);
-                    button_addECG.setVisibility(View.INVISIBLE);
                     button_addSymptoms.setVisibility(View.INVISIBLE);
                     button_addPathology.setVisibility(View.INVISIBLE);
                 }
@@ -328,17 +320,6 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             add_heartbeatIntent.putExtra("user_clicked", userClickedId);
             add_heartbeatIntent.putExtra("_parameter", "4");
             startActivity(add_heartbeatIntent);
-        }
-    };
-    public View.OnClickListener button_addECG_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //Create new Intent
-            Intent add_ecgIntent = new Intent(MedicalRecordsActivity.this, PopUpTemperatureActivity.class);
-            //Pass data between intents
-            add_ecgIntent.putExtra("user_clicked", userClickedId);
-            add_ecgIntent.putExtra("_parameter", "5");
-            startActivity(add_ecgIntent);
         }
     };
     public View.OnClickListener button_addSymptoms_listener = new View.OnClickListener() {
