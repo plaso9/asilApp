@@ -192,7 +192,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
             super.onBackPressed();
         }
     }
-    
+
     public View.OnClickListener card_view_Video_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

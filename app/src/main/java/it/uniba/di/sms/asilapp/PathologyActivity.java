@@ -32,18 +32,19 @@ import it.uniba.di.sms.asilapp.models.Pathology;
 import it.uniba.di.sms.asilapp.models.User;
 
 public class PathologyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //Variable declaration
     private static final String TAG = "PathologyActivity";
     private DatabaseReference mUserReference;
-    private String pathology_id;
+    private DatabaseReference mPathologyReference;
+    private DrawerLayout drawer;
     private EditText mName;
-    private EditText mDescription;
-    private EditText mNutritional;
     private EditText mLifestyle;
     private EditText mMedicines;
-    private DatabaseReference mPathologyReference;
-
+    private EditText mDescription;
+    private EditText mNutritional;
     private ImageButton imgBtnLanguage;
-    private DrawerLayout drawer;
+    private String pathology_id;
+
     private MenuItem nav_home;
     private MenuItem nav_info;
     private MenuItem nav_video;
@@ -63,19 +64,33 @@ public class PathologyActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_pathology);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //Defined variables
         drawer = findViewById(R.id.drawer_layout);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        // Defined personal data variables
+        mName = findViewById(R.id.edit_name_pathology);
+        mLifestyle = findViewById(R.id.edit_lifestyle_pathology);
+        mMedicines = findViewById(R.id.edit_medicines_pathology);
+        mNutritional = findViewById(R.id.edit_nutritional_pathology);
+        mDescription = findViewById(R.id.edit_description_pathology);
+
+        //Set a Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        //Create new ActionBarDrawerToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
         //Get user role to hide some menu item
@@ -90,12 +105,6 @@ public class PathologyActivity extends AppCompatActivity implements NavigationVi
         // Initialize Database Reference
         mPathologyReference = FirebaseDatabase.getInstance().getReference("pathology").child(pathology_id);
 
-        // Defined personal data variable
-        mName = findViewById(R.id.edit_name_pathology);
-        mDescription = findViewById(R.id.edit_description_pathology);
-        mNutritional = findViewById(R.id.edit_nutritional_pathology);
-        mLifestyle = findViewById(R.id.edit_lifestyle_pathology);
-        mMedicines = findViewById(R.id.edit_medicines_pathology);
 
         ValueEventListener pathologyListener = new ValueEventListener() {
             @Override
@@ -118,7 +127,6 @@ public class PathologyActivity extends AppCompatActivity implements NavigationVi
             }
         };
         mPathologyReference.addListenerForSingleValueEvent(pathologyListener);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -134,11 +142,9 @@ public class PathologyActivity extends AppCompatActivity implements NavigationVi
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         Intent refresh = new Intent(this, PathologyActivity.class);
         startActivity(refresh);
         this.finish();
-
     }
 
     public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
