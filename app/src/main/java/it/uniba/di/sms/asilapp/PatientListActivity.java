@@ -216,26 +216,32 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
                         // Add obj to ArrayList
                         mUserList.add(user);
                         searchText.addTextChangedListener(new TextWatcher() {
+
+
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                            //Called to notify you that, within charSequence, the count characters beginning at start are about to be replaced by new text with length after.
-                            }
+                            mUserList.clear();}
                             @Override
                             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                             //Called to notify you that, within charSequence, the count characters beginning at start have just replaced old text that had length before
                             }
                             @Override
                             public void afterTextChanged(Editable editable) {
+
                             //Called to notify you that, somewhere within editable, the text has been changed.
-                                mUserList.clear();
-                                if (editable.toString().toLowerCase().contains(user.getSurname().toLowerCase())) {
+
+                                if (user.getSurname().toLowerCase().contains(editable.toString().toLowerCase()) || user.getName().toLowerCase().contains(editable.toString().toLowerCase()) ) {
+                                    mUserList.clear();
                                     mUserList.add(user);
+                                    patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
+                                    recyclerView.setAdapter(patientAdapter);
                                 }
                             }
                         });
                     }
                     patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
                     recyclerView.setAdapter(patientAdapter);
+
                 }
             }
 
