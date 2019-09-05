@@ -254,12 +254,15 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Necessities basic_necessities = snapshot.getValue(Necessities.class);
                     if (basic_necessities.city == cityId) {
-                        mAddressFood.setText(basic_necessities.mall);
-                        mAddressPharmacy.setText(basic_necessities.pharmacy);
+
+
                         userId.setText(uId);
                         userId2.setText(uId);
                         getCityName(cityId); //Method to retain the city name
-
+                        basic_necessities.mall = basic_necessities.mall + ", " +cityName;
+                        basic_necessities.pharmacy = basic_necessities.pharmacy + ", " +cityName;
+                        mAddressFood.setText(basic_necessities.mall);
+                        mAddressPharmacy.setText(basic_necessities.pharmacy);
                     }
                 }
             }
