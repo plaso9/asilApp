@@ -68,16 +68,6 @@
     <string name="lastMeasurement">Ultima Misurazione</string>
     <string name="pressure">Pressione</string>
     <string name="addUser">Aggiungi utente</string>
-    <string name="itch">Prurito</string>
-    <string name="fever">Febbre</string>
-    <string name="thirst">Sete</string>
-    <string name="bonesPain">Dolori Ossei</string>
-    <string name="arthralgia">Artralgia</string>
-    <string name="paresthesia">Parestesia</string>
-    <string name="cramps">Crampi</string>
-    <string name="dyspnoea">Dispnea</string>
-    <string name="insomnia">Insonnia</string>
-    <string name="asthenia">Astenia</string>
     <string name="save">Salva</string>
     <string name="description">Descrizione</string>
     <string name="nutritionalSuggestions">Suggerimenti Nutrizionali</string>
