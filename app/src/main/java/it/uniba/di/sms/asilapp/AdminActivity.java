@@ -217,6 +217,9 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
                 Intent nav_logoutIntent = new Intent(AdminActivity.this, MainActivity.class);
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;

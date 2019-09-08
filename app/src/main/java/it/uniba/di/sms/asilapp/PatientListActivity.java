@@ -188,8 +188,12 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
                 Intent nav_logoutIntent = new Intent(PatientListActivity.this, MainActivity.class);
+                Log.d("Message Logout", "YES");
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(nav_logoutIntent);
-                finish();
+//                finish();
                 break;
         }
         return true;

@@ -242,6 +242,9 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
                 Intent nav_logoutIntent = new Intent(ChatActivity.this, MainActivity.class);
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(nav_logoutIntent);
                 finish();
                 break;
