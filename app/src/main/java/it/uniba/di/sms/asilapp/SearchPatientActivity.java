@@ -53,8 +53,8 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-        buttonSearch = (Button) findViewById(R.id.buttonSearch);
-        imageViewScanCode = (Button) findViewById(R.id.imageViewScanCode);
+        buttonSearch = findViewById(R.id.buttonSearch);
+        imageViewScanCode = findViewById(R.id.imageViewScanCode);
 
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
@@ -93,6 +93,16 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         if (language.equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
+        //Set a click listener on the button object
+        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+        
+        //Create new ActionBarDraweToggle
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //Adds the specified listener to the list of listeners that will be notified of drawer events.
+        drawer.addDrawerListener(toggle);
+        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
+        toggle.syncState();
 
         //Set a click listener on the imageView objects
         imageViewScanCode.setOnClickListener(new View.OnClickListener() {
@@ -114,13 +124,6 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
             }
         });
 
-        //Create new ActionBarDraweToggle
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //Adds the specified listener to the list of listeners that will be notified of drawer events.
-        drawer.addDrawerListener(toggle);
-        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
-        toggle.syncState();
     }
 
     @Override
