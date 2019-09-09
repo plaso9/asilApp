@@ -133,6 +133,7 @@ reception of migrants for application of international protection. Download this
     </plurals>
     <string name="notSupported">Temperature not available</string>
     <string name="personalCode">QR code</string>
+    <string name="selectLanguage">Select language</string>
 
 
 </resources>

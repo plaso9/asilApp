@@ -118,6 +118,7 @@
     </plurals>
     <string name="notSupported">Temperatura non disponibile</string>
     <string name="personalCode">Codice QR</string>
+    <string name="selectLanguage">Seleziona lingua</string>
 </resources>
 
 

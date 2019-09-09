@@ -100,13 +100,11 @@
                     android:id="@+id/spinnerLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@id/textBylaw"
-                    app:layout_constraintTop_toBottomOf="@+id/textBylaw"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="44dp"
                     android:ems="10"
                     android:spinnerMode="dropdown"
-                    />
+                    app:layout_constraintStart_toStartOf="@+id/textBylaw"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <TextView
                     android:id="@+id/textViewDownloadIntroductionToItaly"
@@ -117,6 +115,7 @@
                     android:text="IntroductionToItaly.pdf"
                     app:layout_constraintStart_toStartOf="@+id/spinnerLanguage"
                     app:layout_constraintTop_toBottomOf="@+id/spinnerLanguage" />
+
                 <TextView
                     android:id="@+id/textViewDownloadGoodLiving"
                     android:layout_width="wrap_content"
@@ -125,6 +124,7 @@
                     android:text="HandbookOfGoodLiving.pdf"
                     app:layout_constraintStart_toStartOf="@+id/textViewDownloadIntroductionToItaly"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDownloadIntroductionToItaly" />
+
                 <TextView
                     android:id="@+id/textViewDownloadItalianConstitution"
                     android:layout_width="wrap_content"
@@ -142,6 +142,19 @@
                     android:text="NHS.pdf"
                     app:layout_constraintStart_toStartOf="@+id/textViewDownloadItalianConstitution"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDownloadItalianConstitution" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/selectLanguage"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnerLanguage"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textBylaw"
+                    app:layout_constraintTop_toBottomOf="@+id/textBylaw" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
