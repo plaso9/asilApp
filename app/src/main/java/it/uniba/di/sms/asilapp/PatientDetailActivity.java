@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -22,66 +23,48 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import it.uniba.di.sms.asilapp.models.User;
-
 public class PatientDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    //Variable declaration
     private static final String TAG = "PatientDetailActivity";
-    private DatabaseReference mUserReference;
-    private DrawerLayout drawer;
-    private ImageButton imgBtnLanguage;
+    //Define variable
     private String user_id;
     private TextView mName;
-
+    private DatabaseReference mUserReference;
+    private ImageButton imgBtnLanguage;
+    //Define cards
     CardView card_view_personalData;
     CardView card_view_medicalRecords;
     CardView card_view_questionnaires;
-
-    private MenuItem nav_home;
-    private MenuItem nav_info;
+    int PROGRESS_BAR_STATUS = 0;
+    ProgressDialog progressBar;
+    private DrawerLayout drawer;
     private MenuItem nav_addUser;
     private MenuItem nav_homeAdmin;
     private MenuItem nav_readRatings;
-    private MenuItem nav_personalData;
     private MenuItem nav_addAcceptance;
+    private MenuItem nav_addRetrieveNecessities;
+    private MenuItem nav_home;
+    private MenuItem nav_info;
+    private MenuItem nav_personalData;
     private MenuItem nav_medicalRecords;
     private MenuItem nav_questionnaires;
-    private MenuItem nav_addRetrieveNecessities;
-
-    int PROGRESS_BAR_STATUS = 0;
-    ProgressDialog progressBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_patient_detail);
-
-        //Defined variable
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        card_view_personalData = findViewById(R.id.card_personalData);
-        card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
-        card_view_questionnaires = findViewById(R.id.card_questionnaires);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
-
-        //Set a Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
-        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
-
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
-
         // find MenuItem you want to change
         nav_home = menu.findItem(R.id.nav_home);
         nav_info = menu.findItem(R.id.nav_info);
@@ -104,172 +87,154 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         nav_medicalRecords.setVisible(false);
         nav_questionnaires.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
-
-        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
-        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
-
         //Get User Clicked Id
         if (getIntent().getExtras() != null) {
             user_id = getIntent().getStringExtra("user_clicked");
         }
-
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user_id);
         // Defined patient data variable
         mName = findViewById(R.id.text_userNameClicked);
+        //defined card variable
+        card_view_personalData = findViewById(R.id.card_personalData);
+        card_view_medicalRecords = findViewById(R.id.card_medicalRecords);
+        card_view_questionnaires = findViewById(R.id.card_questionnaires);
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
         imgBtnLanguage.setImageResource(R.drawable.italy);
-        String language = prefs.getString("Language", "");
-        if (language.equals("en")) {
-            imgBtnLanguage.setImageResource(R.drawable.lang);
-        }
-
-
-        //Set a click listener to the cardView objects
-        card_view_personalData.setOnClickListener(card_view_Personaldata_listener);
-        card_view_medicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
-        card_view_questionnaires.setOnClickListener(card_view_Questionnaries_listener);
-        //Set a click listener to the button object
-        imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-
-        ValueEventListener userListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Get User object and use the values to update the UI
-                User user = dataSnapshot.getValue(User.class);
-                mName.setText("Profilo di : " + user.getName());
+            String language = prefs.getString("Language", "");
+            if (language.equals("en")) {
+                imgBtnLanguage.setImageResource(R.drawable.lang);
             }
 
+            //set function to card
+            card_view_personalData.setOnClickListener(card_view_Personaldata_listener);
+            card_view_medicalRecords.setOnClickListener(card_view_MedicalRecords_listener);
+            card_view_questionnaires.setOnClickListener(card_view_Questionnaries_listener);
+            imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
+            ValueEventListener userListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Get User object and use the values to update the UI
+                    User user = dataSnapshot.getValue(User.class);
+                    mName.setText("Profilo di : " + user.getName());
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Getting User failed, log a message
+                    Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+                    Toast.makeText(PatientDetailActivity.this, "Failed to load user information.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            };
+            mUserReference.addValueEventListener(userListener);
+        }
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            Intent refresh = new Intent(this, PatientDetailActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
+        public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting User failed, log a message
-                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
-                Toast.makeText(PatientDetailActivity.this, "Failed to load user information.",
-                        Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                Intent languageIntent = new Intent(PatientDetailActivity.this, PopUpLanguageActivity.class);
+                languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientDetailActivity");
+                startActivityForResult(languageIntent, 1);
             }
         };
-        mUserReference.addValueEventListener(userListener);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        Intent refresh = new Intent(this, PatientDetailActivity.class);
-        startActivity(refresh);
-        this.finish();
-    }
-
-    public View.OnClickListener imgBtnLanguage_listener = new View.OnClickListener() {
+        //Open Personal Data Intent
+        public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressBar = new ProgressDialog(PatientDetailActivity.this);
+                progressBar.setIndeterminate(true);
+                progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                progressBar.show();
+                Intent personalDataIntent = new Intent(PatientDetailActivity.this, PersonalDataActivity.class);
+                personalDataIntent.putExtra("user_clicked", user_id);
+                startActivity(personalDataIntent);
+                PROGRESS_BAR_STATUS = 1;
+            }
+        };
+        //Open Questionnaires Intent
+        public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent questionnairesIntent = new Intent(PatientDetailActivity.this, QuestionnairesActivity.class);
+                questionnairesIntent.putExtra("user_clicked", user_id);
+                startActivity(questionnairesIntent);
+            }
+        };
+        //Open Medical Records Intent
+        public View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent medicalRecordsIntent = new Intent(PatientDetailActivity.this, MedicalRecordsActivity.class);
+                medicalRecordsIntent.putExtra("user_clicked", user_id);
+                startActivity(medicalRecordsIntent);
+            }
+        };
         @Override
-        public void onClick(View v) {
-            Intent languageIntent = new Intent(PatientDetailActivity.this, PopUpLanguageActivity.class);
-            languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientDetailActivity");
-            startActivityForResult(languageIntent, 1);
+        protected void onStart() {
+            super.onStart();
+            afterExecution();
         }
-    };
-
-
-    //Open Personal Data Intent
-    public View.OnClickListener card_view_Personaldata_listener = new View.OnClickListener() {
+        public void afterExecution() {
+            if (PROGRESS_BAR_STATUS == 1) {
+                progressBar.dismiss();
+                PROGRESS_BAR_STATUS = 0;
+            }
+        }
         @Override
-        public void onClick(View view) {
-            progressBar = new ProgressDialog(PatientDetailActivity.this);
-            progressBar.setIndeterminate(true);
-            progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            progressBar.show();
-            Intent personalDataIntent = new Intent(PatientDetailActivity.this, PersonalDataActivity.class);
-            personalDataIntent.putExtra("user_clicked", user_id);
-            startActivity(personalDataIntent);
-
-            PROGRESS_BAR_STATUS = 1;
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.nav_homeDoctor:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Create new Intent
+                    Intent nav_homeDoctorIntent = new Intent(PatientDetailActivity.this, DoctorActivity.class);
+                    startActivity(nav_homeDoctorIntent);
+                    break;
+                case R.id.nav_search_patient:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Create new Intent
+                    Intent nav_searchPatientIntent = new Intent(PatientDetailActivity.this, SearchPatientActivity.class);
+                    startActivity(nav_searchPatientIntent);
+                    break;
+                case R.id.nav_kit_opening:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Create new Intent
+                    Intent nav_kitOpeningIntent = new Intent(PatientDetailActivity.this, KitOpeningActivity.class);
+                    startActivity(nav_kitOpeningIntent);
+                    break;
+                case R.id.nav_visited_patient:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Create new Intent
+                    Intent nav_visitedPatientIntent = new Intent(PatientDetailActivity.this, PatientListActivity.class);
+                    startActivity(nav_visitedPatientIntent);
+                    break;
+                case R.id.nav_video:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Create new Intent
+                    Intent nav_videoIntent = new Intent(PatientDetailActivity.this, VideoActivity.class);
+                    startActivity(nav_videoIntent);
+                    break;
+                case R.id.nav_logout:
+                    drawer.closeDrawer(GravityCompat.START);
+                    //Sign out function
+                    FirebaseAuth.getInstance().signOut();
+                    //Create new Intent
+                    Intent nav_logoutIntent = new Intent(PatientDetailActivity.this, MainActivity.class);
+                    startActivity(nav_logoutIntent);
+                    finish();
+                    break;
+            }
+            return true;
         }
-    };
-    //Open Questionnaires Intent
-    public View.OnClickListener card_view_Questionnaries_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent questionnairesIntent = new Intent(PatientDetailActivity.this, QuestionnairesActivity.class);
-            questionnairesIntent.putExtra("user_clicked", user_id);
-            startActivity(questionnairesIntent);
-        }
-    };
-    //Open Medical Records Intent
-    public View.OnClickListener card_view_MedicalRecords_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent medicalRecordsIntent = new Intent(PatientDetailActivity.this, MedicalRecordsActivity.class);
-            medicalRecordsIntent.putExtra("user_clicked", user_id);
-            startActivity(medicalRecordsIntent);
-        }
-    };
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        afterExecution();
     }
-
-    //Method used to dismiss the progressBar
-    public void afterExecution() {
-        if (PROGRESS_BAR_STATUS == 1) {
-            progressBar.dismiss();
-            PROGRESS_BAR_STATUS = 0;
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_homeDoctor:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_homeDoctorIntent = new Intent(PatientDetailActivity.this, DoctorActivity.class);
-                startActivity(nav_homeDoctorIntent);
-                break;
-            case R.id.nav_search_patient:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_searchPatientIntent = new Intent(PatientDetailActivity.this, SearchPatientActivity.class);
-                startActivity(nav_searchPatientIntent);
-                break;
-            case R.id.nav_kit_opening:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_kitOpeningIntent = new Intent(PatientDetailActivity.this, KitOpeningActivity.class);
-                startActivity(nav_kitOpeningIntent);
-                break;
-            case R.id.nav_visited_patient:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_visitedPatientIntent = new Intent(PatientDetailActivity.this, PatientListActivity.class);
-                startActivity(nav_visitedPatientIntent);
-                break;
-            case R.id.nav_video:
-                drawer.closeDrawer(GravityCompat.START);
-                //Create new Intent
-                Intent nav_videoIntent = new Intent(PatientDetailActivity.this, VideoActivity.class);
-                startActivity(nav_videoIntent);
-                break;
-            case R.id.nav_logout:
-                drawer.closeDrawer(GravityCompat.START);
-                //Sign out function
-                FirebaseAuth.getInstance().signOut();
-                //Create new Intent
-                Intent nav_logoutIntent = new Intent(PatientDetailActivity.this, MainActivity.class);
-                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                        Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(nav_logoutIntent);
-                finish();
-                break;
-        }
-        return true;
-    }
-}
