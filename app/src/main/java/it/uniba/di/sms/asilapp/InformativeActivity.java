@@ -3,6 +3,7 @@ package it.uniba.di.sms.asilapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,19 +22,20 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
+
 public class InformativeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    //Variable declaration
+    private GridLayout gridLayout;
+
     private CardView card_view_Video;
     private CardView card_view_Acceptance;
     private CardView card_view_CityInfo;
     private CardView card_view_Bylaw;
     private CardView card_view_UsefulNumbers;
     private CardView card_view_MyInfo;
-    private DrawerLayout drawer;
-
-    private GridLayout gridLayout;
 
     private ImageButton imgBtnLanguage;
+    private DrawerLayout drawer;
 
     private MenuItem nav_video;
     private MenuItem nav_addUser;
@@ -48,26 +51,13 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Set the activity content from a layout resource.
         setContentView(R.layout.activity_informative);
 
-        //Defined variables
-        gridLayout = findViewById(R.id.gridInformativeLayout);
-
-        card_view_Video = findViewById(R.id.card_video);
-        card_view_Bylaw = findViewById(R.id.card_bylaw);
-        card_view_CityInfo = findViewById(R.id.city_info);
-        card_view_MyInfo = findViewById(R.id.card_myInfo);
-        card_view_Acceptance = findViewById(R.id.card_acceptance);
-        card_view_UsefulNumbers = findViewById(R.id.card_usefulNumbers);
-        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-        //Set a Toolbar to act as the ActionBar for this activity window
-        setSupportActionBar(toolbar);
-        //Set a listener that will be notified when a menu item is selected.
         navigationView.setNavigationItemSelectedListener(this);
         // get menu from navigationView
         Menu menu = navigationView.getMenu();
@@ -96,15 +86,30 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
         nav_addAcceptance.setVisible(false);
         nav_addRetrieveNecessities.setVisible(false);
 
-        //Create new ActionBarDraweToggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //Adds the specified listener to the list of listeners that will be notified of drawer events.
         drawer.addDrawerListener(toggle);
-        //Synchronize the indicator with the state of the linked DrawerLayout after onRestoreInstanceState has occurred.
         toggle.syncState();
 
+        //defined gridlayout variable
+        gridLayout = findViewById(R.id.gridInformativeLayout);
 
+        //defined card variable
+        card_view_Video = findViewById(R.id.card_video);
+        card_view_Acceptance = findViewById(R.id.card_acceptance);
+        card_view_CityInfo = findViewById(R.id.city_info);
+        card_view_Bylaw = findViewById(R.id.card_bylaw);
+        card_view_UsefulNumbers = findViewById(R.id.card_usefulNumbers);
+        card_view_MyInfo = findViewById(R.id.card_myInfo);
+
+        card_view_Video.setOnClickListener(card_view_Video_listener);
+        card_view_Acceptance.setOnClickListener(card_view_Acceptance_listener);
+        card_view_CityInfo.setOnClickListener(card_view_CityInfo_listener);
+        card_view_Bylaw.setOnClickListener(card_view_Bylaw_listener);
+        card_view_UsefulNumbers.setOnClickListener(card_view_UsefulNumbers_listener);
+        card_view_MyInfo.setOnClickListener(card_view_MyInfo_listener);
+
+        imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
         SharedPreferences prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -114,15 +119,9 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
             imgBtnLanguage.setImageResource(R.drawable.lang);
         }
 
-        //Set a click listener on the button object
         imgBtnLanguage.setOnClickListener(imgBtnLanguage_listener);
-        //Set a click listener on the cardView objects
-        card_view_Video.setOnClickListener(card_view_Video_listener);
-        card_view_Acceptance.setOnClickListener(card_view_Acceptance_listener);
-        card_view_CityInfo.setOnClickListener(card_view_CityInfo_listener);
-        card_view_Bylaw.setOnClickListener(card_view_Bylaw_listener);
-        card_view_UsefulNumbers.setOnClickListener(card_view_UsefulNumbers_listener);
-        card_view_MyInfo.setOnClickListener(card_view_MyInfo_listener);
+
+
     }
 
 
@@ -176,7 +175,7 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(InformativeActivity.this, MainActivity.class);
+                sens = new Intent(InformativeActivity.this, HomepageActivity.class);
                 startActivity(sens);
                 finish();
                 break;
@@ -185,13 +184,17 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else{
             super.onBackPressed();
         }
+        Intent intent = new Intent (InformativeActivity.this, HomepageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
+
 
     public View.OnClickListener card_view_Video_listener = new View.OnClickListener() {
         @Override
@@ -245,5 +248,5 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
 
         }
     };
-}
 
+}

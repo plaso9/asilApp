@@ -25,6 +25,8 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
+
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
     private CardView card_view_Informative;
@@ -107,12 +109,11 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        SharedPreferences prefs = getSharedPreferences("CommonPrefs",
-                Activity.MODE_PRIVATE);
-        imgBtnLanguage.setImageResource(R.drawable.italy);
-        String language = prefs.getString("Language", "");
-        if (language.equals("en")) {
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        if (config.locale.getLanguage().equals("en")) {
             imgBtnLanguage.setImageResource(R.drawable.lang);
+        }else{
+            imgBtnLanguage.setImageResource(R.drawable.italy);
         }
 
         //Set a click listener on the card objects

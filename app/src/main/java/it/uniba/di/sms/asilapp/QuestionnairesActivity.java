@@ -285,12 +285,15 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else{
             super.onBackPressed();
         }
+        Intent intent = new Intent (QuestionnairesActivity.this, HomepageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 

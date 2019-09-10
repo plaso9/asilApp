@@ -221,14 +221,17 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             }
             return true;
         }
-        @Override
-        public void onBackPressed() {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
-            }
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
         }
+        Intent intent = new Intent (VideoActivity.this, InformativeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
         public void getRoleActivity(int role_id) {
             if (role_id == 1) {
                 //Admin Role

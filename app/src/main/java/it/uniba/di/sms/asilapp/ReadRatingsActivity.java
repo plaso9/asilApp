@@ -177,7 +177,17 @@ public class ReadRatingsActivity extends AppCompatActivity implements Navigation
         //Called to associate adapter with the list
         recyclerView.setAdapter(firebaseRecyclerAdapter);
     }
-
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+        Intent intent = new Intent (ReadRatingsActivity.this, AdminActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //Called when an item in the navigation menu is selected.
         switch (item.getItemId()) {

@@ -134,6 +134,41 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         readMessages();
     }
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+        // Initialize FirebaseUser
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object and use the values to update the UI
+                User user = dataSnapshot.getValue(User.class);
+                int role = user.getRole();
+                if (role == 2) {    //role 2 = User I
+                    Intent intent = new Intent(ChatActivity.this, HomepageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                } else if (role == 3) { //role 3 = Doctor
+                    Intent intent = new Intent(ChatActivity.this, DoctorActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity

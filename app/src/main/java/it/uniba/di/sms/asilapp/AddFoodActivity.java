@@ -177,7 +177,17 @@ public class AddFoodActivity extends AppCompatActivity implements NavigationView
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+        Intent intent = new Intent (AddFoodActivity.this, AdminActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 

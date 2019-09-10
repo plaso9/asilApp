@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -154,6 +155,9 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
         }else{
             super.onBackPressed();
         }
+        Intent intent = new Intent (AcceptanceActivity.this, InformativeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     @Override
@@ -334,4 +338,14 @@ public class AcceptanceActivity extends AppCompatActivity implements NavigationV
             startActivity(open_RegulationIntent);
         }
     };
+
+/*    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+
+
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }*/
 }

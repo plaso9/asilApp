@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class PopUpLanguageActivity extends AppCompatActivity {
-    Configuration conf;
     //TextView
     private TextView textViewLangEng, textViewLangIt;
     //Images
@@ -109,9 +108,9 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
                 Locale locale = new Locale("it");
                 Locale.setDefault(locale);
-                conf = new Configuration(config);
-                conf.locale = locale;
-                getBaseContext().getResources().updateConfiguration(conf, getBaseContext().getResources().getDisplayMetrics());
+                config = new Configuration(config);
+                config.locale = locale;
+                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
 
                 Bundle extras = getIntent().getExtras();

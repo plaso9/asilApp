@@ -198,11 +198,14 @@ public class RatingActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else{
             super.onBackPressed();
         }
+        Intent intent = new Intent (RatingActivity.this, MyInfoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     //Set on click listener

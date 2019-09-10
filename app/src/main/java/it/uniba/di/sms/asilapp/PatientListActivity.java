@@ -132,7 +132,17 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         //Create layout manager, it is responsible for measuring and positioning item views within a RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-
+    @Override
+    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+        Intent intent = new Intent (PatientListActivity.this, SearchPatientActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) { //receive result from activity
         //Create new Intent
