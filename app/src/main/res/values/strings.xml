@@ -9,7 +9,7 @@
     <string name="video" translatable="false">Video</string>
     <string name="acceptance">Acceptance</string>
     <string name="cityInfo">City Info</string>
-    <string name="bylaw">Bylaw</string>
+    <string name="bylaw">Documents</string>
     <string name="myInfo">My Info</string>
     <string name="sf12Questionnaires">SF12</string>
     <string name="habitsQuestionnaires">Habits</string>
@@ -119,9 +119,7 @@
     <string name="detected">Detected</string>
     <string name="services">List of services provided by the center</string>
     <string name="readAnswers">Read answers</string>
-    <string name="bylawDescription">Registration to the national health service (ssn). Download this PDF to read the legislative decree on the obligation to register with the national health system</string>
-    <string name="normsDescription">Internal regulations of the agreements for
-reception of migrants for application of international protection. Download this PDF to read your rights and duties. Before the download choose your language</string>
+    <string name="normsDescription">"Internal regulations of the agreements for reception of migrants for application of international protection. Download this PDF to read your rights and duties. "</string>
     <string name="learn">Learn how to use this application by watching this video</string>
     <string name="avg">Avg</string>
     <string name="celsius" translatable="false">°C</string>
@@ -134,6 +132,7 @@ reception of migrants for application of international protection. Download this
     <string name="notSupported">Temperature not available</string>
     <string name="personalCode">QR code</string>
     <string name="selectLanguage">Select language</string>
+    <string name="bylawDescription">Here you can find some useful documents that may help you. In this section you will find: an introduction to Italy and its laws, an handbook of good living, the italian constitution and all the infos about the national health service. Choose the language and press the file name to download it</string>
 
 
 </resources>

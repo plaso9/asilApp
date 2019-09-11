@@ -68,19 +68,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--HEALTH STANDARDS-->
-                <TextView
-                    android:id="@+id/textHealthStandards"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/marginStart"
-                    android:layout_marginTop="90dp"
-                    android:layout_marginEnd="@dimen/marginEnd"
-                    android:text="@string/healthStandards"
-                    android:textSize="@dimen/textSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textBylaw"
@@ -94,7 +81,7 @@
                     android:textSize="@dimen/textSize"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textHealthStandards" />
+                    app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
 
                 <Spinner
                     android:id="@+id/spinnerLanguage"
