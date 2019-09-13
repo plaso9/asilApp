@@ -133,7 +133,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
         }else{
             super.onBackPressed();
         }
-        Intent intent = new Intent (SearchPatientActivity.this, MainActivity.class);
+        Intent intent = new Intent (SearchPatientActivity.this, DoctorActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
