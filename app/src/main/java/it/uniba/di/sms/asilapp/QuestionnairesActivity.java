@@ -292,11 +292,34 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
             super.onBackPressed();
         }
 
-        Intent intent = new Intent (QuestionnairesActivity.this, HomepageActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
+        // Initialize FirebaseUser
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
 
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object and use the values to update the UI
+                User user = dataSnapshot.getValue(User.class);
+                int role = user.getRole();
+                if (role == 2) {    //role 2 = User I
+                    Intent intent = new Intent(QuestionnairesActivity.this, HomepageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                } else if (role == 3) { //role 3 = Doctor
+                    Intent intent = new Intent(QuestionnairesActivity.this, PatientListActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+    }
 
     public void getRoleActivity(int role_id) {
         if (role_id == 3) { //role 3 = Doctor
