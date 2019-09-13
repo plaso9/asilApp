@@ -259,17 +259,41 @@ public class PersonalDataActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
-        Intent intent = new Intent (PersonalDataActivity.this, HomepageActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        // Initialize FirebaseUser
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user.getUid());
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get User object and use the values to update the UI
+                User user = dataSnapshot.getValue(User.class);
+                int role = user.getRole();
+                if (role == 2) {    //role 2 = User I
+                    Intent intent = new Intent(PersonalDataActivity.this, HomepageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                } else if (role == 3) { //role 3 = Doctor
+                    Intent intent = new Intent(PersonalDataActivity.this, PatientListActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
     }
 
-    public View.OnClickListener save_data_listener = new View.OnClickListener() {
+            public View.OnClickListener save_data_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             String newCell = mCell.getText().toString();
