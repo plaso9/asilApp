@@ -94,6 +94,7 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         //Get User Clicked Id
         if (getIntent().getExtras() != null) {
             user_id = getIntent().getStringExtra("user_clicked");
+
         }
         // Initialize Database Reference
         mUserReference = FirebaseDatabase.getInstance().getReference("user").child(user_id);
@@ -149,7 +150,10 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
     }
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            Bundle extras = getIntent().getExtras();
+            String user_clicked = extras.getString("user_clicked");
             Intent refresh = new Intent(this, PatientDetailActivity.class);
+            refresh.putExtra("user_clicked", user_clicked);
             startActivity(refresh);
             this.finish();
         }
@@ -158,6 +162,7 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
             public void onClick(View v) {
                 Intent languageIntent = new Intent(PatientDetailActivity.this, PopUpLanguageActivity.class);
                 languageIntent.putExtra("callingActivity", "it.uniba.di.sms.asilapp.PatientDetailActivity");
+                languageIntent.putExtra("user_clicked", user_id);
                 startActivityForResult(languageIntent, 1);
             }
         };
