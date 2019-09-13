@@ -291,6 +291,7 @@ public class QuestionnairesActivity extends AppCompatActivity implements Navigat
         }else{
             super.onBackPressed();
         }
+
         Intent intent = new Intent (QuestionnairesActivity.this, HomepageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
