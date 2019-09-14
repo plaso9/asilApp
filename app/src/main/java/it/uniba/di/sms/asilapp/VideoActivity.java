@@ -213,9 +213,14 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
                     break;
                 case R.id.nav_logout:
                     drawer.closeDrawer(GravityCompat.START);
+                    //Sign out function
                     FirebaseAuth.getInstance().signOut();
-                    sens = new Intent(VideoActivity.this, MainActivity.class);
-                    startActivity(sens);
+                    //Create new Intent
+                    Intent nav_logoutIntent = new Intent(VideoActivity.this, MainActivity.class);
+                    nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                            Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(nav_logoutIntent);
                     finish();
                     break;
             }

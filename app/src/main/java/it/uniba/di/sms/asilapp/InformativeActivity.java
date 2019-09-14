@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -174,10 +175,16 @@ public class InformativeActivity extends AppCompatActivity implements Navigation
                 break;
             case R.id.nav_logout:
                 drawer.closeDrawer(GravityCompat.START);
+                //Sign out function
                 FirebaseAuth.getInstance().signOut();
-                sens = new Intent(InformativeActivity.this, HomepageActivity.class);
-                startActivity(sens);
-                finish();
+                //Create new Intent
+                Intent nav_logoutIntent = new Intent(InformativeActivity.this, MainActivity.class);
+                Log.d("Message Logout", "YES");
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(nav_logoutIntent);
+//                finish();
                 break;
         }
         return true;

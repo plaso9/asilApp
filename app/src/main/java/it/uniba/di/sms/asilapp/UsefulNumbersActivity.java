@@ -180,8 +180,11 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                sens = new Intent(UsefulNumbersActivity.this, MainActivity.class);
-                startActivity(sens);
+                Intent nav_logoutIntent= new Intent(UsefulNumbersActivity.this, MainActivity.class);
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }

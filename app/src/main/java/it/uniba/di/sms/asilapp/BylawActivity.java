@@ -191,8 +191,11 @@ public class BylawActivity extends AppCompatActivity implements NavigationView.O
                 //Sign out function
                 FirebaseAuth.getInstance().signOut();
                 //Create new Intent
-                sens = new Intent(BylawActivity.this, MainActivity.class);
-                startActivity(sens);
+                Intent nav_logoutIntent = new Intent(BylawActivity.this, MainActivity.class);
+                nav_logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(nav_logoutIntent);
                 finish();
                 break;
         }
