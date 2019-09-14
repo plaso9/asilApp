@@ -381,7 +381,6 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void canSendMessage(){
-        mSend.setEnabled(false);
         final Toast toast = Toast.makeText(getApplicationContext(), "Chat closed, it's open from 10 am to 8 pm, retry later", Toast.LENGTH_LONG);
         toast.show();
         //Allows to send and process Message
@@ -496,10 +495,20 @@ public class ChatActivity extends AppCompatActivity implements NavigationView.On
     public View.OnClickListener mSend_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            String getCurrentTime = sdf.format(c.getTime());
+            String time_start ="10:00";
+            String time_end ="20:00";
+
             if (mMessage.getText().toString().equals("")){
                 Toast.makeText(ChatActivity.this, "Can't send empty message", Toast.LENGTH_SHORT).show();
             } else {
-                sendMessage();
+                if (getCurrentTime .compareTo(time_end) > 0 || getCurrentTime .compareTo(time_start) < 0  ) {
+                    canSendMessage();
+                }else {
+                    sendMessage();
+                }
             }
         }
     };
