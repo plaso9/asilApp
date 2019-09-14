@@ -261,18 +261,19 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             }
         };
     }
-        public void getRoleActivity(int role_id) {
-            if (role_id == 1) {
-                //Admin Role
-            } else if (role_id == 2) {
-                //User Role
-                youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eWEF1Zrmdow\" frameborder=\"0\" allowfullscreen></iframe>"));
-                youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/KyJ71G2UxTQ\" frameborder=\"0\" allowfullscreen></iframe>"));
-            } else if (role_id == 3) {
-                //Doc Role
-                youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/y8Rr39jKFKU\" frameborder=\"0\" allowfullscreen></iframe>"));
-            }
+    public void getRoleActivity(int role_id) {
+        if (role_id == 1) {
+            //Admin Role
+        } else if (role_id == 2) {
+            //User Role
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eSM_Jrs-66Y\" frameborder=\"0\" allowfullscreen></iframe>"));
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xpnj60m_gP8\" frameborder=\"0\" allowfullscreen></iframe>"));
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/oOjteqdFs50\" frameborder=\"0\" allowfullscreen></iframe>"));
+        } else if (role_id == 3) {
+            //Doc Role
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/3HQ-gY4dblE\" frameborder=\"0\" allowfullscreen></iframe>"));
         }
+    }
         public void removeItemDoctor() {
             NavigationView navigationView = findViewById(R.id.nav_view);
             // get menu from navigationView
