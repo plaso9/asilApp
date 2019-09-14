@@ -238,18 +238,23 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
                             @Override
                             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                             //Called to notify you that, within charSequence, the count characters beginning at start have just replaced old text that had length before
-                            }
-                            @Override
+                            }@Override
                             public void afterTextChanged(Editable editable) {
 
-                            //Called to notify you that, somewhere within editable, the text has been changed.
-
-                                if (user.getSurname().toLowerCase().contains(editable.toString().toLowerCase()) || user.getName().toLowerCase().contains(editable.toString().toLowerCase()) ) {
-                                    mUserList.clear();
+                                if (editable.toString().length() == 0) {
                                     mUserList.add(user);
                                     patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
                                     recyclerView.setAdapter(patientAdapter);
-                                }
+
+                                } else
+                                    //Called to notify you that, somewhere within editable, the text has been changed.
+
+                                    if (user.getSurname().toLowerCase().contains(editable.toString().toLowerCase()) || user.getName().toLowerCase().contains(editable.toString().toLowerCase())) {
+                                        mUserList.clear();
+                                        mUserList.add(user);
+                                        patientAdapter = new PatientAdapter(PatientListActivity.this, mUserList);
+                                        recyclerView.setAdapter(patientAdapter);
+                                    }
                             }
                         });
                     }
