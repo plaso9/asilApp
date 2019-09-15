@@ -68,6 +68,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
     private Toolbar toolbar;
 
     private String uId;
+    private String activityName;
     private String userClickedId;
     private int mRole;
 
@@ -76,6 +77,8 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
         super.onCreate(savedInstanceState);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_medical_records);
+
+        activityName = this.getClass().getSimpleName();
 
         //Defined variable
         toolbar = findViewById(R.id.toolbar);
@@ -449,6 +452,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_pathologyIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_pathologyIntent.putExtra("class_name", activityName);
             see_pathologyIntent.putExtra("user_clicked", userClickedId);
             see_pathologyIntent.putExtra("_parameter", "7");
             startActivity(see_pathologyIntent);

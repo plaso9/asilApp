@@ -202,6 +202,7 @@ public class MyInfoActivity extends AppCompatActivity implements NavigationView.
             //Create new Intent
             Intent readMedRecordIntent = new Intent(MyInfoActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            readMedRecordIntent.putExtra("class_name", MyInfoActivity.class.getSimpleName());
             readMedRecordIntent.putExtra("user_clicked", user_clicked);
             readMedRecordIntent.putExtra("_parameter", "7");
             startActivity(readMedRecordIntent);

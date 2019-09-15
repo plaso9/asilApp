@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -42,6 +43,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
     private String uId;
     private String userClickedId;
     private String parameter;
+    private String activityCaller;
 
     private RecyclerView recyclerView;
     private DatabaseReference mMedicalRecordReference;
@@ -80,6 +82,8 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Intent intent = getIntent();
+        activityCaller = intent.getStringExtra("class_name");
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -222,12 +226,20 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
 
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        Intent intent;
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
             super.onBackPressed();
         }
-        Intent intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
+
+        System.out.println("STAMPAAAAAAAAAAAAAA"+activityCaller);
+
+        if (activityCaller.equals(MedicalRecordsActivity.class.getSimpleName())){
+            intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
+        } else {
+            intent = new Intent (ReadMedicalRecordsActivity.this, MyInfoActivity.class);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
