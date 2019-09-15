@@ -165,6 +165,7 @@ public class DoctorActivity extends AppCompatActivity implements NavigationView.
         @Override
         public void onClick(View view) {
             Intent open_PatientListIntent = new Intent(DoctorActivity.this, PatientListActivity.class);
+            open_PatientListIntent.putExtra("class_name", DoctorActivity.class.getSimpleName());
             startActivity(open_PatientListIntent);
 
         }

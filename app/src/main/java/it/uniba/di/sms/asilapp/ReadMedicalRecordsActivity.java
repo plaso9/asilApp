@@ -233,8 +233,6 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
             super.onBackPressed();
         }
 
-        System.out.println("STAMPAAAAAAAAAAAAAA"+activityCaller);
-
         if (activityCaller.equals(MedicalRecordsActivity.class.getSimpleName())){
             intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
         } else {

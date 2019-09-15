@@ -61,6 +61,7 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     private RecyclerView recyclerView;
     private TextView title;
     private Toolbar toolbar;
+    private String activityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {    //Called when the activity is starting.
@@ -76,6 +77,9 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         title = findViewById(R.id.patientListTitle);
         recyclerView = (RecyclerView) findViewById(R.id.userList);
         searchText = findViewById(R.id.searchText);
+
+        Intent intent = getIntent();
+        activityName = intent.getStringExtra("class_name");
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
@@ -134,12 +138,20 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
     }
     @Override
     public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+        Intent intent;
+
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
             super.onBackPressed();
         }
-        Intent intent = new Intent (PatientListActivity.this, SearchPatientActivity.class);
+
+        if (activityName.equals(DoctorActivity.class.getSimpleName())){
+            intent = new Intent (PatientListActivity.this, DoctorActivity.class);
+        } else {
+            intent = new Intent (PatientListActivity.this, SearchPatientActivity.class);
+        }
+        //Control which activity called this one, in order to route correctly the intent
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

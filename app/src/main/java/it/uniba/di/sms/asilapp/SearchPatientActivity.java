@@ -120,6 +120,7 @@ public class SearchPatientActivity extends AppCompatActivity implements Navigati
             public void onClick(View v) {
                 //Create new Intent
                 Intent searchIntent = new Intent(SearchPatientActivity.this, PatientListActivity.class);
+                searchIntent.putExtra("class_name", SearchPatientActivity.class.getSimpleName());
                 startActivityForResult(searchIntent, 1);
             }
         });
