@@ -386,6 +386,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_temperatureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_temperatureIntent.putExtra("class_name", activityName);
             see_temperatureIntent.putExtra("user_clicked", userClickedId);
             see_temperatureIntent.putExtra("_parameter", "1");
             startActivity(see_temperatureIntent);
@@ -397,6 +398,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_bloodPressureIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_bloodPressureIntent.putExtra("class_name", activityName);
             see_bloodPressureIntent.putExtra("user_clicked", userClickedId);
             see_bloodPressureIntent.putExtra("_parameter", "2");
             startActivity(see_bloodPressureIntent);
@@ -408,6 +410,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_glycemiaIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_glycemiaIntent.putExtra("class_name", activityName);
             see_glycemiaIntent.putExtra("user_clicked", userClickedId);
             see_glycemiaIntent.putExtra("_parameter", "3");
             startActivity(see_glycemiaIntent);
@@ -419,6 +422,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_heartbeatIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_heartbeatIntent.putExtra("class_name", activityName);
             see_heartbeatIntent.putExtra("user_clicked", userClickedId);
             see_heartbeatIntent.putExtra("_parameter", "4");
             startActivity(see_heartbeatIntent);
@@ -430,6 +434,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_ecgIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_ecgIntent.putExtra("class_name", activityName);
             see_ecgIntent.putExtra("user_clicked", userClickedId);
             see_ecgIntent.putExtra("_parameter", "5");
             startActivity(see_ecgIntent);
@@ -441,6 +446,7 @@ public class MedicalRecordsActivity extends AppCompatActivity implements Navigat
             //Create new Intent
             Intent see_symptomsIntent = new Intent(MedicalRecordsActivity.this, ReadMedicalRecordsActivity.class);
             //Pass data between intents
+            see_symptomsIntent.putExtra("class_name", activityName);
             see_symptomsIntent.putExtra("user_clicked", userClickedId);
             see_symptomsIntent.putExtra("_parameter", "6");
             startActivity(see_symptomsIntent);
