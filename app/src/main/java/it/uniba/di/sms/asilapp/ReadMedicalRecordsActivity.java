@@ -82,7 +82,9 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Intent used to get the name of the source activity for this target activity
         Intent intent = getIntent();
+        //Get the name of the source activity
         activityCaller = intent.getStringExtra("class_name");
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -233,6 +235,7 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
             super.onBackPressed();
         }
 
+        //If condition, Controls which activity called this one, in order to route correctly the intent
         if (activityCaller.equals(MedicalRecordsActivity.class.getSimpleName())){
             intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
         } else {

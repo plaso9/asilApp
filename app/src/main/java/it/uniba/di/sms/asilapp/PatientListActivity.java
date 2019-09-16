@@ -78,7 +78,9 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
         recyclerView = (RecyclerView) findViewById(R.id.userList);
         searchText = findViewById(R.id.searchText);
 
+        //Intent used to get the name of the source activity for this target activity
         Intent intent = getIntent();
+        //Get the name of the source activity
         activityName = intent.getStringExtra("class_name");
 
         //Set a Toolbar to act as the ActionBar for this Activity window.
@@ -146,12 +148,14 @@ public class PatientListActivity extends AppCompatActivity implements Navigation
             super.onBackPressed();
         }
 
+        //If condition, Controls which activity called this one, in order to route correctly the intent
         if (activityName.equals(DoctorActivity.class.getSimpleName())){
+            //If the intent came from DoctorActivity, go back to DoctorActivity when back is pressed
             intent = new Intent (PatientListActivity.this, DoctorActivity.class);
         } else {
+            //Else, go to SearchPatientActivity
             intent = new Intent (PatientListActivity.this, SearchPatientActivity.class);
         }
-        //Control which activity called this one, in order to route correctly the intent
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

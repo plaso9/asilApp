@@ -134,8 +134,7 @@ public class LoginActivity extends AppCompatActivity {
         //Get userId
         uId = user.getUid();
         //Initialize Database Reference
-        mUserReference = FirebaseDatabase.getInstance().getReference()
-                .child("user").child(uId);
+        mUserReference = FirebaseDatabase.getInstance().getReference("user").child(uId);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
