@@ -293,7 +293,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
         String password = editTextPassword.getText().toString().trim();
         final String gender = spinnerGender.getSelectedItem().toString().trim();
         final String dateOfBirth = editTextBirthday.getText().toString().trim();
-        final String role = spinnerGender.getSelectedItem().toString().trim();
+        final String role = spinnerRole.getSelectedItem().toString().trim();
         final String nation = editTextNation.getText().toString();
         final int int_role;
 
@@ -301,9 +301,9 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
             int_role = 3;
         } else if (role.equalsIgnoreCase("admin")) {
             int_role = 1;
-        } else
+        } else {
             int_role = 2;
-
+        }
         //Method provided by Firebase to create a new user with username and password
         mAuth.createUserWithEmailAndPassword(eMail, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
