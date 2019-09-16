@@ -144,7 +144,7 @@ public class PatientDetailActivity extends AppCompatActivity implements Navigati
         }else{
             super.onBackPressed();
         }
-        Intent intent = new Intent (PatientDetailActivity.this, PatientListActivity.class);
+        Intent intent = new Intent (PatientDetailActivity.this, DoctorActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
