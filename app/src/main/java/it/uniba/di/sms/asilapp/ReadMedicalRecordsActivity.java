@@ -226,24 +226,24 @@ public class ReadMedicalRecordsActivity extends AppCompatActivity implements Nav
         return true;
     }
 
-    @Override
-    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
-        Intent intent;
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-
-        //If condition, Controls which activity called this one, in order to route correctly the intent
-        if (activityCaller.equals(MedicalRecordsActivity.class.getSimpleName())){
-            intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
-        } else {
-            intent = new Intent (ReadMedicalRecordsActivity.this, MyInfoActivity.class);
-        }
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onBackPressed() {   //Called when the activity has detected the user's press of the back key.
+//        Intent intent;
+//        if (drawer.isDrawerOpen(GravityCompat.START)){
+//            drawer.closeDrawer(GravityCompat.START);
+//        }else{
+//            super.onBackPressed();
+//        }
+//
+//        //If condition, Controls which activity called this one, in order to route correctly the intent
+//        if (activityCaller.equals(MedicalRecordsActivity.class.getSimpleName())){
+//            intent = new Intent (ReadMedicalRecordsActivity.this, MedicalRecordsActivity.class);
+//        } else {
+//            intent = new Intent (ReadMedicalRecordsActivity.this, MyInfoActivity.class);
+//        }
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+//    }
 
 
     @Override

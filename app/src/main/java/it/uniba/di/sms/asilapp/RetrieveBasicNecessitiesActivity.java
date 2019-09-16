@@ -237,7 +237,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Food_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressFood.getText() + "%2C+" + cityName); //Query, will search for "INDIRIZZO_SUPERMERCATO, NOME_CIITA' " on Google Maps
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressFood.getText()); //Query, will search for "INDIRIZZO_SUPERMERCATO, NOME_CIITA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -246,7 +246,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     public View.OnClickListener image_Map_Pharmacy_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressPharmacy.getText() + "%2C+" + cityName); //Query, will search for "INDIRIZZO_FARMACIA, NOME_CITTA' " on Google Maps
+            Uri uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + mAddressPharmacy.getText()); //Query, will search for "INDIRIZZO_FARMACIA, NOME_CITTA' " on Google Maps
             Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
             startActivity(mapIntent);
         }
@@ -254,17 +254,16 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
 
     //function to get basic necessities basically information
     public void getBasicNecessitiesInfo(final long cityId) { //Method used to display the infos usefull for retrieving basic necessities
+        getCityName(cityId); //Method to retain the city name
         ValueEventListener cityListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Necessities basic_necessities = snapshot.getValue(Necessities.class);
                     if (basic_necessities.city == cityId) {
-
-
                         userId.setText(uId);
                         userId2.setText(uId);
-                        getCityName(cityId); //Method to retain the city name
+
                         basic_necessities.mall = basic_necessities.mall + ", " +cityName;
                         basic_necessities.pharmacy = basic_necessities.pharmacy + ", " +cityName;
                         mAddressFood.setText(basic_necessities.mall);
