@@ -120,7 +120,9 @@
     <string name="services">List of services provided by the center</string>
     <string name="readAnswers">Read answers</string>
     <string name="normsDescription">"Internal regulations of the agreements for reception of migrants for application of international protection. Download this PDF to read your rights and duties. "</string>
-    <string name="learn">Learn how to use this application by watching this video</string>
+    <string name="learn">AsilApp - Release: 1.0.0</string>
+    <string name="made">Made by #IFC</string>
+    <string name="team">Group\'s member:\nDomenico Palmisano,\nGiulio Piepoli,\nFrancesca Pollicelli,\nDavide Santacesaria</string>
     <string name="avg">Avg</string>
     <string name="celsius" translatable="false">°C</string>
     <string name="signout">Logout</string>
