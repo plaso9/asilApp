@@ -285,7 +285,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
 
     // function to get foreign key _acceptance from basic necessities table
     public void getAcceptanceId() {
-        mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
@@ -303,7 +303,7 @@ public class RetrieveBasicNecessitiesActivity extends AppCompatActivity implemen
     }
 
     private void getCityName(final long cityC) {
-        mCityReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        mCityReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { //Loop that iterates over the children of City in the database
