@@ -269,6 +269,7 @@ public class VideoActivity extends AppCompatActivity implements NavigationView.O
             youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eSM_Jrs-66Y\" frameborder=\"0\" allowfullscreen></iframe>"));
             youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xpnj60m_gP8\" frameborder=\"0\" allowfullscreen></iframe>"));
             youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/oOjteqdFs50\" frameborder=\"0\" allowfullscreen></iframe>"));
+            youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/QmoOdu5bLio\" frameborder=\"0\" allowfullscreen></iframe>"));
         } else if (role_id == 3) {
             //Doc Role
             youTubeVideos.add(new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/3HQ-gY4dblE\" frameborder=\"0\" allowfullscreen></iframe>"));
