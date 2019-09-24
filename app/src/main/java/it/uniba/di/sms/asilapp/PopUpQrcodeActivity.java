@@ -1,10 +1,10 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.google.zxing.WriterException;
@@ -12,7 +12,7 @@ import com.google.zxing.WriterException;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
-public class PopUpQrcodeActivity extends AppCompatActivity {
+public class PopUpQrcodeActivity extends Activity {
 
     private static final String TAG = "PopUpQrcode"; //tag too long
     private Bitmap bitmap;
@@ -21,16 +21,12 @@ public class PopUpQrcodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pop_up_qrcode);
+
         imageViewQr = findViewById(R.id.imageViewQr);
-        //Set window dimentions
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        getWindow().setLayout(1000, 1000);
 
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
 
         //GENERATE QR CODE FOR USER ID

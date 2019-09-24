@@ -24,16 +24,16 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PopUpQrcodeActivity"
-            android:theme="@style/PopupTheme" />
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".PopUpLanguageActivity"
-            android:theme="@style/PopupTheme" />
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".PopUpShowMoreActivity"
-            android:theme="@style/PopupTheme" />
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".PopUpTemperatureActivity"
-            android:theme="@style/PopupTheme" />
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".PathologyActivity" />
         <activity android:name=".ReadMedicalRecordsActivity" />
         <activity android:name=".ChatActivity" />

@@ -13,9 +13,11 @@
         android:id="@+id/textViewTitlePopUpShowMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/textSize"
         android:text="@string/addMeasurement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +32,7 @@
         android:text="AsilApp"
         android:textAllCaps="true"
         android:textSize="24dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,21 +44,22 @@
         android:layout_marginStart="@dimen/marginStart"
         android:layout_marginTop="152dp"
         android:text="asilApp"
-
+        android:textSize="@dimen/textSize"
+        android:textColor="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- PARAMETER VALUE -->
     <EditText
         android:id="@+id/editValueParameter"
-        android:layout_width="180dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/marginEnd"
         android:cursorVisible="false"
         android:ems="10"
         android:inputType="text"
         android:text=""
-
+        android:textSize="@dimen/textSize"
         app:layout_constraintBottom_toBottomOf="@+id/nameParameter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nameParameter"
@@ -68,10 +72,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="307dp"
         android:layout_marginBottom="8dp"
         android:text="@string/save"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameParameter"

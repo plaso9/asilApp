@@ -1,10 +1,10 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import it.uniba.di.sms.asilapp.models.Acceptance;
 import it.uniba.di.sms.asilapp.models.City;
 
-public class PopUpShowMoreActivity extends AppCompatActivity {
+public class PopUpShowMoreActivity extends Activity {
     //variable declaration
     private static final String TAG = "CityInfoActivity";
 
@@ -37,21 +37,13 @@ public class PopUpShowMoreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_pop_up_show_more);
-
+        getWindow().setLayout(1000 , 1000);
         //Defined variables
         mDescription = findViewById(R.id.textViewDescription);
-
-        //Set window dimentions
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
-
 
         // Initialize FirebaseUser
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
