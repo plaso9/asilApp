@@ -16,25 +16,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/textSize"
         android:text="@string/addMeasurement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- PARAMETER TITLE -->
-    <TextView
-        android:id="@+id/titleParameter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="100dp"
-        android:text="AsilApp"
-        android:textAllCaps="true"
-        android:textSize="24dp"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- PARAMETER NAME -->
     <TextView
@@ -45,7 +33,7 @@
         android:layout_marginTop="152dp"
         android:text="asilApp"
         android:textSize="@dimen/textSize"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,13 +58,14 @@
         android:id="@+id/buttonSaveLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStart"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="@string/save"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameParameter"
         app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
