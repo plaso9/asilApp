@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
 
-public class PopUpLanguageActivity extends AppCompatActivity {
+public class PopUpLanguageActivity extends Activity {
     //TextView
     private TextView textViewLangEng, textViewLangIt;
     //Images
@@ -26,7 +28,11 @@ public class PopUpLanguageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int screenWidth = (int) (metrics.widthPixels * 0.80);
         setContentView(R.layout.activity_pop_up_language);
+        getWindow().setLayout(screenWidth, screenWidth);
 
         prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -43,14 +49,6 @@ public class PopUpLanguageActivity extends AppCompatActivity {
 
         textViewLangIt.setOnClickListener(it_listener);
         imgIt.setOnClickListener(it_listener);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
     }
 

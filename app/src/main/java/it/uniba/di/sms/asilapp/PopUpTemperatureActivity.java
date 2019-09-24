@@ -1,5 +1,6 @@
 package it.uniba.di.sms.asilapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ import java.util.Date;
 import it.uniba.di.sms.asilapp.models.Parameter;
 import it.uniba.di.sms.asilapp.models.MedicalRecord;
 
-public class PopUpTemperatureActivity extends AppCompatActivity {
+public class PopUpTemperatureActivity extends Activity {
     private static final String TAG = "PopUpTempActivity";
 
     private String user_clicked_id;
@@ -43,7 +45,11 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int screenWidth = (int) (metrics.widthPixels * 0.80);
         setContentView(R.layout.activity_pop_up_temperature);
+        getWindow().setLayout(screenWidth, screenWidth);
 
         //Get value from previous intent
         if (getIntent().getExtras() != null) {
@@ -57,13 +63,6 @@ public class PopUpTemperatureActivity extends AppCompatActivity {
         //Set listener value variable
         submitMeasurement.setOnClickListener(submitMeasurement_listener);
 
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
     }
 
