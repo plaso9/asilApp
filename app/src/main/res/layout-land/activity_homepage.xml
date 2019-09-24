@@ -237,12 +237,13 @@
             android:id="@+id/chatBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
-            android:src="@drawable/chat" />
+            android:backgroundTint="@color/floatingbutton"
+            android:src="@drawable/messenger"
+            android:layout_margin="16dp" />
 
     </RelativeLayout>
 

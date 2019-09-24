@@ -237,7 +237,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/chat"
+            android:backgroundTint="@color/floatingbutton"
+            android:src="@drawable/messenger"
             android:layout_margin="16dp" />
 
     </RelativeLayout>

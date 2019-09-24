@@ -9,9 +9,7 @@
     android:fitsSystemWindows="true"
     tools:context=".DoctorActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ChatActivity">
@@ -41,7 +39,20 @@
             <FrameLayout
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/sendMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="Type a message"
+                    android:src="@drawable/chat"
+                    app:backgroundTint="@color/floatingbutton" />
+            </FrameLayout>
         </LinearLayout>
 
 
@@ -50,6 +61,7 @@
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
             android:layout_marginTop="55dp"
             android:layout_above="@+id/bottom_bar"/>
 
@@ -62,17 +74,9 @@
             <EditText
                 android:id="@+id/message"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="70dp"
                 android:layout_height="wrap_content" />
-
-            <ImageButton
-                android:id="@+id/sendMessage"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:hint="Type a message"
-                android:background="@drawable/chat"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
     </RelativeLayout>
