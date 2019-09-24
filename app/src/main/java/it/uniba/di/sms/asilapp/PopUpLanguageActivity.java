@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,10 +26,8 @@ public class PopUpLanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int screenWidth = (int) (metrics.widthPixels * 0.80);
         setContentView(R.layout.activity_pop_up_language);
-        getWindow().setLayout(screenWidth, screenWidth);
+        getWindow().setLayout(1000, 1000);
 
         prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);

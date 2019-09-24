@@ -8,18 +8,6 @@
     android:background="@color/white"
     tools:context=".PopUpLanguageActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
     <!--    PAGE TITLE -->
     <ImageView
         android:id="@+id/imgEng"
@@ -29,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
         app:layout_constraintStart_toEndOf="@+id/textViewDescription"
         app:layout_constraintTop_toTopOf="@+id/textViewDescription"
-        app:srcCompat="@drawable/language" />
+        android:src="@drawable/language" />
 
     <TextView
         android:id="@+id/textViewTitlePopUpShowMore"
@@ -38,6 +26,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/textSize"
         android:text="@string/language"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,9 +37,9 @@
         android:id="@+id/textViewDescription"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginStart"
         android:layout_marginTop="64dp"
         android:text="@string/eng"
+        android:textSize="@dimen/textSize"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/textViewTitlePopUpShowMore"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitlePopUpShowMore" />
@@ -61,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="@string/it"
+        android:textSize="@dimen/textSize"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/textViewDescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
@@ -74,8 +65,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewLangIt"
         app:layout_constraintStart_toEndOf="@+id/textViewLangIt"
         app:layout_constraintTop_toTopOf="@+id/textViewLangIt"
-        app:srcCompat="@drawable/italy" />
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
-    </LinearLayout>
+        android:src="@drawable/italy" />
 </android.support.constraint.ConstraintLayout>

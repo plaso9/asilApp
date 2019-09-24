@@ -2,9 +2,7 @@ package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
@@ -41,12 +39,9 @@ public class PopUpShowMoreActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int screenWidth = (int) (metrics.widthPixels * 0.80);
-        getWindow().setLayout(screenWidth, screenWidth);
-
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_pop_up_show_more);
+        getWindow().setLayout(1000 , 1000);
         //Defined variables
         mDescription = findViewById(R.id.textViewDescription);
 
