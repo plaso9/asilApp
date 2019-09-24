@@ -15,12 +15,12 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginStart="@dimen/marginStart"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="116dp"
             android:layout_marginEnd="@dimen/marginEnd"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/asilapp" />
 
         <TextView
