@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
         app:layout_constraintStart_toEndOf="@+id/textViewDescription"
         app:layout_constraintTop_toTopOf="@+id/textViewDescription"
-        android:src="@drawable/language" />
+        android:src="@drawable/lang" />
 
     <TextView
         android:id="@+id/textViewTitlePopUpShowMore"

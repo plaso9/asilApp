@@ -27,7 +27,9 @@ public class PopUpLanguageActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pop_up_language);
-        getWindow().setLayout(1000, 1000);
+        //Set the dialog dimensions
+        setDialogDimensions();
+
 
         prefs = getSharedPreferences("CommonPrefs",
                 Activity.MODE_PRIVATE);
@@ -136,5 +138,17 @@ public class PopUpLanguageActivity extends Activity {
         }
     };
 
+    public void setDialogDimensions(){
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.50);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
+            getWindow().setLayout(width , height);
+        } else {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
+            getWindow().setLayout(width , height);
+        }
+    }
 
 }

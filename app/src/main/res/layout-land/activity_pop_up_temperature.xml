@@ -13,12 +13,12 @@
         android:id="@+id/textViewTitlePopUpShowMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
+        android:text="@string/addMeasurement"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/textSize"
-        android:text="@string/addMeasurement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
