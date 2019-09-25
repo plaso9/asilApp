@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,7 +42,7 @@ public class PopUpShowMoreActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Set the activity content from a layout resource.
         setContentView(R.layout.activity_pop_up_show_more);
-        getWindow().setLayout(1000 , 1000);
+        setDialogDimensions();
         //Defined variables
         mDescription = findViewById(R.id.textViewDescription);
 
@@ -126,6 +127,17 @@ public class PopUpShowMoreActivity extends Activity {
         super.onStart();
         getAcceptanceId();
     }
-
+    public void setDialogDimensions(){
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.50);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
+            getWindow().setLayout(width , height);
+        } else {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
+            getWindow().setLayout(width , height);
+        }
+    }
 
 }

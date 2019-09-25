@@ -1,6 +1,7 @@
 package it.uniba.di.sms.asilapp;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,7 +45,7 @@ public class PopUpTemperatureActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pop_up_temperature);
-        getWindow().setLayout(1000, 1000);
+       setDialogDimensions();
 
         //Get value from previous intent
         if (getIntent().getExtras() != null) {
@@ -135,5 +136,18 @@ public class PopUpTemperatureActivity extends Activity {
                 }
             }
         });
+    }
+
+    public void setDialogDimensions(){
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.50);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
+            getWindow().setLayout(width , height);
+        } else {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
+            getWindow().setLayout(width , height);
+        }
     }
 }
