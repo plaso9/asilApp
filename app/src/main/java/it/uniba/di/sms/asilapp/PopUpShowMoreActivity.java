@@ -130,12 +130,12 @@ public class PopUpShowMoreActivity extends Activity {
     public void setDialogDimensions(){
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.50);
+            int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
             int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
             getWindow().setLayout(width , height);
         } else {
             int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
-            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
             getWindow().setLayout(width , height);
         }
     }
