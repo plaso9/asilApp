@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="179dp"
+            android:layout_height="211dp"
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginTop="116dp"
             android:layout_marginEnd="@dimen/marginEnd"
@@ -22,6 +22,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/asilapp" />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/app_name"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewHome"

@@ -66,8 +66,9 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/colorPrimary"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            android:stateListAnimator="@animator/selector_rais"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="1dp">
 
             <RelativeLayout
                 android:layout_margin="6dp"
@@ -108,8 +109,9 @@
             android:layout_marginTop="60dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            android:stateListAnimator="@animator/selector_rais"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="1dp">
 
             <RelativeLayout
                 android:background="#FFFFFF"
@@ -150,8 +152,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            android:stateListAnimator="@animator/selector_rais"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="1dp">
 
             <RelativeLayout
                 android:background="#FFFFFF"
@@ -192,8 +195,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            android:stateListAnimator="@animator/selector_rais"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="1dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
