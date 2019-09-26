@@ -56,45 +56,45 @@
 
 
                 <!-- PAGE TITLE -->
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewSeaEmergency"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewSeaEmergencyNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergencyNumber"
                     app:srcCompat="@drawable/call" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewFinanceGuard"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewFinanceGuardNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewFinanceGuardNumber"
                     app:srcCompat="@drawable/call" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewMilitaryPolice"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
+                    android:elevation="4dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewMilitaryPoliceNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewMilitaryPoliceNumber"
                     app:srcCompat="@drawable/call" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewFireBrigade"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewFireBrigadeNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewFireBrigadeNumber"
-                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/call" />
 
                 <TextView
@@ -223,15 +223,14 @@
                     app:layout_constraintTop_toTopOf="@+id/textViewPolice"
                     app:layout_constraintVertical_bias="0.0" />
                 <!--MILITARY POLICE NUMBER-->
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewPolice"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewPoliceNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textViewPoliceNumber"
-                    app:layout_constraintVertical_bias="1.0"
                     app:srcCompat="@drawable/call" />
 
                 <TextView
@@ -270,13 +269,14 @@
                     app:layout_constraintTop_toTopOf="@+id/textViewSeaEmergency"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewAmbulance"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/marginEnd"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewAmbulanceNumber"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewAmbulanceNumber"
                     app:srcCompat="@drawable/call" />
 
             </android.support.constraint.ConstraintLayout>

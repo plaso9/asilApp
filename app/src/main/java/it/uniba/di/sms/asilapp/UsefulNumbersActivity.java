@@ -23,12 +23,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class UsefulNumbersActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Variable declaration
-    ImageView imageViewPolice;
-    ImageView imageViewAmbulance;
-    ImageView imageViewFireBrigade;
-    ImageView imageViewFinanceGuard;
-    ImageView imageViewSeaEmergency;
-    ImageView imageViewMilitaryPolice;
+    ImageButton imageButtonPolice;
+    ImageButton imageButtonAmbulance;
+    ImageButton imageButtonFireBrigade;
+    ImageButton imageButtonFinanceGuard;
+    ImageButton imageButtonSeaEmergency;
+    ImageButton imageButtonMilitaryPolice;
 
     private DrawerLayout drawer;
     private ImageButton imgBtnLanguage;
@@ -93,20 +93,20 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         toggle.syncState();
 
         //Defined variables
-        imageViewAmbulance = findViewById(R.id.imageViewAmbulance);
-        imageViewPolice = findViewById(R.id.imageViewPolice);
-        imageViewMilitaryPolice = findViewById(R.id.imageViewMilitaryPolice);
-        imageViewFinanceGuard = findViewById(R.id.imageViewFinanceGuard);
-        imageViewSeaEmergency = findViewById(R.id.imageViewSeaEmergency);
-        imageViewFireBrigade = findViewById(R.id.imageViewFireBrigade);
+        imageButtonAmbulance = findViewById(R.id.imageViewAmbulance);
+        imageButtonPolice = findViewById(R.id.imageViewPolice);
+        imageButtonMilitaryPolice = findViewById(R.id.imageViewMilitaryPolice);
+        imageButtonFinanceGuard = findViewById(R.id.imageViewFinanceGuard);
+        imageButtonSeaEmergency = findViewById(R.id.imageViewSeaEmergency);
+        imageButtonFireBrigade = findViewById(R.id.imageViewFireBrigade);
 
         //Set a click listener on the imageview objects
-        imageViewAmbulance.setOnClickListener(imageViewAmbulance_listener);
-        imageViewPolice.setOnClickListener(imageViewPolice_listener);
-        imageViewMilitaryPolice.setOnClickListener(imageViewMilitaryPolice_listener);
-        imageViewFinanceGuard.setOnClickListener(imageViewFinanceGuard_listener);
-        imageViewSeaEmergency.setOnClickListener(imageViewSeaEmergency_listener);
-        imageViewFireBrigade.setOnClickListener(imageViewFireBrigade_listener);
+        imageButtonAmbulance.setOnClickListener(imageButtonAmbulance_listener);
+        imageButtonPolice.setOnClickListener(imageButtonPolice_listener);
+        imageButtonMilitaryPolice.setOnClickListener(imageButtonMilitaryPolice_listener);
+        imageButtonFinanceGuard.setOnClickListener(imageButtonFinanceGuard_listener);
+        imageButtonSeaEmergency.setOnClickListener(imageButtonSeaEmergency_listener);
+        imageButtonFireBrigade.setOnClickListener(imageButtonFireBrigade_listener);
 
         imgBtnLanguage = findViewById(R.id.imgBtnLanguage);
 
@@ -203,7 +203,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
         startActivity(intent);
     }
 
-    public View.OnClickListener imageViewAmbulance_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonAmbulance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -211,7 +211,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
         }
     };
-    public View.OnClickListener imageViewPolice_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonPolice_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -219,7 +219,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
         }
     };
-    public View.OnClickListener imageViewMilitaryPolice_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonMilitaryPolice_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -227,7 +227,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
         }
     };
-    public View.OnClickListener imageViewFinanceGuard_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonFinanceGuard_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -235,7 +235,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
         }
     };
-    public View.OnClickListener imageViewSeaEmergency_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonSeaEmergency_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -243,7 +243,7 @@ public class UsefulNumbersActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
         }
     };
-    public View.OnClickListener imageViewFireBrigade_listener = new View.OnClickListener() {
+    public View.OnClickListener imageButtonFireBrigade_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
