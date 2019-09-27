@@ -327,7 +327,7 @@ public class AddUserActivity extends AppCompatActivity implements NavigationView
 
                             //The object user is entered in the DB
                             FirebaseDatabase.getInstance().getReference("user")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .child(mAuth.getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
