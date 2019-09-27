@@ -88,7 +88,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/video"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 <!-- ROW 2  -->
@@ -128,7 +129,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/acceptance"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 <!-- ROW 3  -->
@@ -167,7 +169,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/cityInfo"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 <!-- ROW 4  -->
@@ -206,7 +209,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/bylaw"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 <!-- ROW 3  -->
@@ -245,7 +249,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/usefulNumbers"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 <!-- ROW 4  -->
@@ -284,7 +289,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/myInfo"
                             android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingBottom="30dp"/>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </GridLayout>
